@@ -1,7 +1,8 @@
 package de.rieckpil.learning.images;
 
 public class DoorImage {
-	
+
+	// @formatter:off
 	public static void main(String[] args) {
 
 		/** Create following door image with nested for-loops:
@@ -12,6 +13,7 @@ public class DoorImage {
 		 * #  #    #  #
 		 * #   #  #   #   
 		 * #    ##    #
+		 * #    ##    #
 		 * #   #  #   #
 		 * #  #    #  #
 		 * # #      # #
@@ -19,12 +21,24 @@ public class DoorImage {
 		 * ############
 		 * 
 		 */
-		
+
 		draw();
 	}
-	
+	// @formatter:on
+
 	private static void draw() {
-		
+
+		int spaces = 0;
+		int gap = 8;
+
+		System.out.println("#############");
+
+		for (int i = 0; i < 12; i++) {
+			System.out.println("");
+		}
+
+		System.out.println("#############");
+
 	}
 
 }
