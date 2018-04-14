@@ -31,6 +31,9 @@ public class DoorImage {
 		int spaces = 0;
 		int gap = 8;
 
+		spaces = gap;
+		gap = spaces;
+
 		System.out.println("#############");
 
 		for (int i = 0; i < 12; i++) {
