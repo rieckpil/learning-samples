@@ -1,5 +1,6 @@
-package com.airhacks.trainers.control;
+package com.airhacks.shop.boundary;
 
+import com.airhacks.trainers.control.CircuitBreaker;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.PostConstruct;
@@ -9,6 +10,7 @@ import javax.ejb.ConcurrencyManagementType;
 import javax.ejb.Singleton;
 import javax.enterprise.concurrent.ManagedExecutorService;
 import javax.interceptor.Interceptors;
+import javax.json.JsonArray;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
@@ -36,6 +38,10 @@ public class ItemsStore {
 
     public String getItems() {
         return this.itemsTarget.request().get(String.class);
+    }
+    
+    public JsonArray getLatestItems() {
+        return this.client.target("http://localhost:8080/items-microservice/resources/items/newest").request().get(JsonArray.class);
     }
 
 }

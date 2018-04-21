@@ -6,10 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQuery;
 
 @Entity
-@NamedQuery(name = Ping.ALL, query = "SELECT f FROM Flight f")
+//@NamedQuery(name = Ping.ALL, query = "SELECT f FROM Flight f")
 public class Ping {
 
 	private final static String PREFIX = "com.airhacks.ping.entity.Ping.";
