@@ -1,0 +1,4 @@
+CREATE TABLE Book (
+ id INT PRIMARY KEY,
+ title VARCHAR(200) NOT NULL
+);

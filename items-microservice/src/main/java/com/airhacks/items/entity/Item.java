@@ -6,11 +6,13 @@
 package com.airhacks.items.entity;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 
 @Entity
 @NamedQuery(name = "SELECT_ALL", query = "SELECT i FROM Item i")
@@ -22,6 +24,8 @@ public class Item implements Serializable {
     
     private int amount;
     private String name;
+    
+    @OneToOne(cascade = CascadeType.PERSIST)
     private Producer producer;
 
     public Producer getProducer() {

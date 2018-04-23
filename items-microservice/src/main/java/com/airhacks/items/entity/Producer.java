@@ -5,18 +5,23 @@
  */
 package com.airhacks.items.entity;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author Philip
  */
 @Entity
-public class Producer {
+@NamedQuery(name = "SELECT_ALL_PRODUCER", query = "SELECT p FROM Producer p")
+@NamedQuery(name = "COUNT_ALL_PRODUCER", query = "SELECT count(p) FROM Producer p")
+public class Producer implements Serializable {
 
     @Id
     private long id;
+    
     private String name;
 
     public long getId() {
