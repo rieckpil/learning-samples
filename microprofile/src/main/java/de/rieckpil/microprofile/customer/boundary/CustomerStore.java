@@ -22,7 +22,7 @@ public class CustomerStore {
 	@Inject
 	@ConfigProperty(name = "amount.customers", defaultValue = "20")
 	private int amountOfCustomers;
-
+	
 	@PostConstruct
 	public void init() {
 
@@ -38,6 +38,7 @@ public class CustomerStore {
 	}
 
 	public List<Customer> getAllCustomers() {
+		
 		return customers;
 	}
 
