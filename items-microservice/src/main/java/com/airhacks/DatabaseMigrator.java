@@ -25,20 +25,12 @@ public class DatabaseMigrator  {
     
 	private final Logger log = Logger.getLogger(DatabaseMigrator.class.getName());
  
-	@Resource(lookup = "jdbc/__default")
-	private DataSource dataSource;
- 
 	@PostConstruct
 	private void onStartup() {
-		if (dataSource == null) {
-			log.severe("no datasource found to execute the db migrations!");
-			throw new EJBException(
-					"no datasource found to execute the db migrations!");
-		}
- 
+                
 		Flyway flyway = new Flyway();
                 flyway.baseline();
-		flyway.setDataSource(dataSource);
+		flyway.setDataSource("", "", "");
 		for (MigrationInfo i : flyway.info().all()) {
 			log.info("migrate task: " + i.getVersion() + " : "
 					+ i.getDescription() + " from file: " + i.getScript());
