@@ -4,7 +4,10 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
+import javax.json.JsonObject;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -31,6 +34,14 @@ public class CustomerResource {
 		JsonArrayBuilder retVal = Json.createArrayBuilder();
 		customerStore.getAllCustomers().stream().map(Customer::toJSON).forEach(retVal::add);
 		return Response.ok(retVal.build()).build();
+	}
+	
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response createNewCustomer(JsonObject customerAsJson) {
+		
+		System.out.println(customerAsJson.toString());
+		return Response.ok().build();
 	}
 
 	@GET
