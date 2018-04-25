@@ -2,7 +2,9 @@ package de.rieckpil.microprofile.customer.boundary;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javax.annotation.PostConstruct;
@@ -42,4 +44,8 @@ public class CustomerStore {
 		return customers;
 	}
 
+    public Optional<Customer> getCustomerById(String id) {
+	    return Optional.of(customers.get(0));
+
+    }
 }

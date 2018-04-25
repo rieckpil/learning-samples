@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
+import javax.print.attribute.standard.Media;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -18,6 +19,8 @@ import org.eclipse.microprofile.metrics.annotation.Counted;
 import org.eclipse.microprofile.opentracing.Traced;
 
 import de.rieckpil.microprofile.customer.entity.Customer;
+
+import java.util.Optional;
 
 @Path("/customers")
 @RequestScoped
@@ -47,7 +50,11 @@ public class CustomerResource {
 	@GET
 	@Traced
 	@Path("/{id}")
-	public String getSpecificHelloWorld(@PathParam("id") String id) {
-		return "Hello World " + id;
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getSpecificHelloWorld(@PathParam("id") String id) {
+
+		return Response.ok(customerStore.getCustomerById(id).map(Customer::toJSON).get()).build();
+
 	}
+
 }
