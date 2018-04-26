@@ -4,3 +4,6 @@ spring:
   cloud:
     vault:
       enabled: false
+  jpa:
+    hibernate:
+      ddl-auto: validate
