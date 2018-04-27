@@ -1,5 +1,6 @@
 package de.rieckpil.learning.jaxworkshop;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +21,16 @@ public class HelloWorldControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
+    @Before
+    public void before() {
+        System.out.println("HelloWorldControllerTest.before");
+    }
+
     @Test
     public void testGetHelloWorld() throws Exception {
 
         mockMvc.perform(MockMvcRequestBuilders
-                .get("/").accept(MediaType.APPLICATION_JSON))
+                .get("/helloWorld").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("Hello Jax!")));
 

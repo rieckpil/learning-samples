@@ -20,7 +20,7 @@ public class HelloWorldControllerIT {
 
     @Test
     public void shouldGetHelloWorld() {
-        ResponseEntity<String> response = testRestTemplate.getForEntity("/", String.class);
+        ResponseEntity<String> response = testRestTemplate.getForEntity("/helloWorld", String.class);
         assertThat(response.getBody(), equalTo("Hello Jax!"));
     }
 }
