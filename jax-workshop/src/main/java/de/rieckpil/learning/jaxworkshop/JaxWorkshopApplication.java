@@ -11,9 +11,4 @@ public class JaxWorkshopApplication {
     public static void main(String[] args) {
         SpringApplication.run(JaxWorkshopApplication.class, args);
     }
-
-    @Bean(initMethod = "loadData")
-    UserTestDataLoader RepositoryTestData() {
-        return new UserTestDataLoader();
-    }
 }
