@@ -90,6 +90,15 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-contract-maven-plugin</artifactId>
+                <version>1.2.2.RELEASE</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <baseClassForTests>de.rieckpil.learning.MvcTest</baseClassForTests>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
