@@ -7,29 +7,26 @@ import java.util.List;
 
 public class CompareToPerson {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		Person p1 = new Person(24, "Max");
-		Person p2 = new Person(35, "Paul");
-		Person p3 = new Person(10, "Foo");
-		Person p4 = new Person(35, "Patrick");
+        Person p1 = new Person(24, "Max");
+        Person p2 = new Person(35, "Paul");
+        Person p3 = new Person(10, "Foo");
 
-		List<Person> persons = new ArrayList<>();
-		persons.addAll(Arrays.asList(p1, p2, p3, p4));
+        List<Person> persons = new ArrayList<>();
+        persons.addAll(Arrays.asList(p1, p2, p3));
 
-		System.out.println("Before sorting:");
 
-		for (Person person : persons) {
-			System.out.println(person);
-		}
+        for (Person person : persons) {
+            System.out.println(person);
+        }
 
-		Collections.sort(persons);
+        Collections.sort(persons);
+        System.out.println("After sorting:");
 
-		System.out.println("After sorting:");
+        for (Person person : persons) {
+            System.out.println(person);
+        }
 
-		for (Person person : persons) {
-			System.out.println(person);
-		}
-
-	}
+    }
 }

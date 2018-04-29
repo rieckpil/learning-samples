@@ -1,5 +1,6 @@
 package de.rieckpil.learning.http;
 
+/*
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -10,10 +11,11 @@ import java.util.concurrent.CompletableFuture;
 import jdk.incubator.http.HttpClient;
 import jdk.incubator.http.HttpRequest;
 import jdk.incubator.http.HttpResponse;
+*/
 
 public class Http2Client {
 
-	public static void main(String[] args) throws URISyntaxException, IOException, InterruptedException {
+	/*public static void main(String[] args) throws URISyntaxException, IOException, InterruptedException {
 
 		HttpClient httpClient = HttpClient.newHttpClient();
 		System.out.println("HttpClient version is: " + httpClient.version());
@@ -33,6 +35,6 @@ public class Http2Client {
 		System.out.println("passed async");
 
 		
-	}
+	}*/
 
 }
