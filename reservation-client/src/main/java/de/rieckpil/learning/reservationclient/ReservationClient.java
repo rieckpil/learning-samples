@@ -14,7 +14,7 @@ public class ReservationClient {
 
     @PostConstruct
     public void init() {
-        System.out.println(this.getAllReservations().size());
+        // System.out.println(this.getAllReservations().size());
     }
 
     private final RestTemplate restTemplate;
