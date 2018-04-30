@@ -2,12 +2,14 @@ package de.rieckpil.learning.reservations.control;
 
 import de.rieckpil.learning.reservations.entity.Reservation;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.time.Instant;
 import java.util.Arrays;
 
 @Component
+@Profile({"default", "dev", "prod"})
 public class ReservationLoader implements CommandLineRunner {
 
     private final ReservationRepository reservationRepository;

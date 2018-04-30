@@ -7,3 +7,6 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate
+  h2:
+    console:
+      enabled: true
