@@ -13,6 +13,7 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -50,7 +51,6 @@ public class ReservationResourceIT {
 
         for (Reservation r : result.getBody()) {
             System.out.println("r.toString() = " + r.toString());
-
         }
 
     }
@@ -83,5 +83,17 @@ public class ReservationResourceIT {
         assertNotNull(result.getBody().getId());
         assertNotNull(result.getBody().getCreated());
         assertEquals(reservationName, result.getBody().getReservationName());
+    }
+
+    @Test
+    public void testInvalidReservationShouldReturn400() {
+
+        HttpEntity<ReservationDTO> requestEntity = new HttpEntity<>( new ReservationDTO());
+
+        ResponseEntity<Void> result  = testRestTemplate.exchange(urlPrefix + "/api/reservations", HttpMethod.POST,
+                requestEntity, Void.class);
+
+        assertEquals(HttpStatus.BAD_REQUEST, result.getStatusCode());
+
     }
 }
