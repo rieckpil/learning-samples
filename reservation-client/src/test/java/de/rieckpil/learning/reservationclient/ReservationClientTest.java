@@ -29,6 +29,8 @@ public class ReservationClientTest {
         Assertions.assertThat(reservations).isNotNull();
         Assertions.assertThat(reservations.isEmpty()).isFalse();
         assertEquals(2, reservations.size());
+
+
     }
 
 }
