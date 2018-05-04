@@ -1,19 +1,16 @@
 package de.rieckpil.learning.apachepoiword;
 
 import org.apache.poi.xwpf.usermodel.*;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 
-@Component
-public class CreateWordDocument implements CommandLineRunner {
+public class CreateWordDocument {
 
-    @Override
-    public void run(String... args) throws Exception {
+   public static void main(String[] args) throws Exception {
+
         XWPFDocument document = new XWPFDocument();
         XWPFParagraph title = document.createParagraph();
         title.setAlignment(ParagraphAlignment.CENTER);
