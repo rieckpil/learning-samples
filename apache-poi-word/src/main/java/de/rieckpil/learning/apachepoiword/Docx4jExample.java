@@ -1,14 +1,16 @@
 package de.rieckpil.learning.apachepoiword;
 
 import de.rieckpil.learning.apachepoiword.entity.Invoice;
+import fr.opensagres.poi.xwpf.converter.pdf.PdfConverter;
+import fr.opensagres.poi.xwpf.converter.pdf.PdfOptions;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.docx4j.Docx4J;
 import org.docx4j.model.fields.FieldUpdater;
 import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
 import org.docx4j.openpackaging.parts.WordprocessingML.MainDocumentPart;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
-import java.io.OutputStream;
+import java.io.*;
 import java.util.HashMap;
 
 @Service
@@ -18,10 +20,12 @@ public class Docx4jExample {
 
         Docx4jExample example = new Docx4jExample();
 
-        example.createDocument();
+        //example.createDocument();
         // example.replaceVariablesInWord("Boo", "22");
 
-        //example.createInvoicePdf(new Invoice("Hans", "31"), 1);
+        example.createInvoicePdf(new Invoice("Hans", "31"), 1);
+        example.convertToPdf("/Users/Philip/Desktop/junk/pdf/invoice_out_1.docx",
+                "/Users/Philip/Desktop/junk/pdf/invoice_out_1.pdf" );
     }
 
     public void createDocument() throws Exception {
@@ -80,15 +84,27 @@ public class Docx4jExample {
         resultString += (System.currentTimeMillis() - start) + " and creating PDF took: ";
         start = System.currentTimeMillis();
 
-        FieldUpdater updater = new FieldUpdater(wordMLPackage);
-        updater.update(true);
-        OutputStream os = new java.io.FileOutputStream("/Users/Philip/Desktop/junk/pdf/welcome_" + counter+ ".pdf");
-        Docx4J.toPDF(wordMLPackage, os);
+        //FieldUpdater updater = new FieldUpdater(wordMLPackage);
+        //updater.update(true);
+        //OutputStream os = new java.io.FileOutputStream("/Users/Philip/Desktop/junk/pdf/welcome_" + counter+ ".pdf");
+        //Docx4J.toPDF(wordMLPackage, os);
 
-        os.close();
+        //os.close();
 
         resultString += (System.currentTimeMillis() - start) + " ";
 
         return resultString;
+    }
+
+    public void convertToPdf(String docPath, String pdfPath) {
+        try {
+            InputStream doc = new FileInputStream(new File(docPath));
+            XWPFDocument document = new XWPFDocument(doc);
+            PdfOptions options = PdfOptions.create();
+            OutputStream out = new FileOutputStream(new File(pdfPath));
+            PdfConverter.getInstance().convert(document, out, options);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 }
