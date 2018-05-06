@@ -1,16 +1,12 @@
 package de.rieckpil.learning.apachepoiword;
 
 import de.rieckpil.learning.apachepoiword.entity.Invoice;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
 import org.docx4j.Docx4J;
-import org.docx4j.Docx4jProperties;
 import org.docx4j.model.fields.FieldUpdater;
 import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
 import org.docx4j.openpackaging.parts.WordprocessingML.MainDocumentPart;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.OutputStream;
 import java.util.HashMap;
@@ -22,10 +18,10 @@ public class Docx4jExample {
 
         Docx4jExample example = new Docx4jExample();
 
-        // example.createDocument();
+        example.createDocument();
         // example.replaceVariablesInWord("Boo", "22");
 
-        example.createInvoicePdf(new Invoice("Hans", "31"), 1);
+        //example.createInvoicePdf(new Invoice("Hans", "31"), 1);
     }
 
     public void createDocument() throws Exception {
@@ -48,7 +44,6 @@ public class Docx4jExample {
     }
 
     public void replaceVariablesInWord(String name, String age) throws Exception {
-
 
         WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage
                 .load(new File(System.getProperty("user.dir") +"/invoice.docx"));
