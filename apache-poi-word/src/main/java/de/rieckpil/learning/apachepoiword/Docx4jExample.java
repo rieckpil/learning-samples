@@ -47,6 +47,25 @@ public class Docx4jExample {
 
     }
 
+    public OutputStream createDocumentForComparisonTest(String inputFileName, String outputFileName) throws Exception{
+
+        WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage
+                .load(new File(inputFileName));
+        MainDocumentPart documentPart = wordMLPackage.getMainDocumentPart();
+
+        HashMap<String, String> mappings = new HashMap<String, String>();
+        mappings.put("name", "Phil");
+        mappings.put("age", "1137");
+
+        documentPart.variableReplace(mappings);
+
+        OutputStream result = new FileOutputStream(outputFileName);
+
+        wordMLPackage.save(result);
+
+        return result;
+    }
+
     public void replaceVariablesInWord(String name, String age) throws Exception {
 
         WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage
