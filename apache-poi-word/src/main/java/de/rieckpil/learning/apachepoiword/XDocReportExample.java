@@ -10,10 +10,7 @@ import fr.opensagres.xdocreport.template.TemplateEngineKind;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 
 public class XDocReportExample {
 
@@ -22,7 +19,7 @@ public class XDocReportExample {
         example.processTemplate("/Users/Philip/Desktop/Invoice_out.docx");
     }
 
-    public OutputStream processTemplate(String outputFileName) throws Exception {
+    public ByteArrayOutputStream processTemplate(String outputFileName) throws Exception {
 
         Resource resource = new ClassPathResource("/templates/Invoice.docx");
 
@@ -38,7 +35,7 @@ public class XDocReportExample {
             IContext context = report.createContext();
             context.put("name", "World");
 
-            OutputStream out = new FileOutputStream(new File(outputFileName));
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
 
             report.process(context, out);
 
