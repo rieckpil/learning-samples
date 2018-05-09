@@ -8,6 +8,8 @@ import org.docx4j.Docx4J;
 import org.docx4j.model.fields.FieldUpdater;
 import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
 import org.docx4j.openpackaging.parts.WordprocessingML.MainDocumentPart;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
@@ -47,19 +49,19 @@ public class Docx4jExample {
 
     }
 
-    public OutputStream createDocumentForComparisonTest(String inputFileName, String outputFileName) throws Exception{
+    public ByteArrayOutputStream createDocumentForComparisonTest(String inputFileName) throws Exception{
+
+        Resource resource = new ClassPathResource(inputFileName);
 
         WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage
-                .load(new File(inputFileName));
+                .load(resource.getFile());
         MainDocumentPart documentPart = wordMLPackage.getMainDocumentPart();
 
         HashMap<String, String> mappings = new HashMap<String, String>();
         mappings.put("name", "Phil");
-        mappings.put("age", "1137");
-
         documentPart.variableReplace(mappings);
 
-        OutputStream result = new FileOutputStream(outputFileName);
+        ByteArrayOutputStream result = new ByteArrayOutputStream();
 
         wordMLPackage.save(result);
 

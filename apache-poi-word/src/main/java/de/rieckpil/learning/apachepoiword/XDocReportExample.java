@@ -1,8 +1,5 @@
 package de.rieckpil.learning.apachepoiword;
 
-import fr.opensagres.xdocreport.converter.ConverterTypeTo;
-import fr.opensagres.xdocreport.converter.ConverterTypeVia;
-import fr.opensagres.xdocreport.converter.Options;
 import fr.opensagres.xdocreport.document.IXDocReport;
 import fr.opensagres.xdocreport.document.registry.XDocReportRegistry;
 import fr.opensagres.xdocreport.template.IContext;
@@ -10,18 +7,19 @@ import fr.opensagres.xdocreport.template.TemplateEngineKind;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 
 public class XDocReportExample {
 
     public static void main(String[] args) throws Exception {
         XDocReportExample example = new XDocReportExample();
-        example.processTemplate("/Users/Philip/Desktop/Invoice_out.docx");
+        ByteArrayOutputStream byteArrayOutputStream = example.createDocumentForComparisonTest("/templates/Invoice.docx");
     }
 
-    public ByteArrayOutputStream processTemplate(String outputFileName) throws Exception {
+    public ByteArrayOutputStream createDocumentForComparisonTest(String inputFileName) throws Exception {
 
-        Resource resource = new ClassPathResource("/templates/Invoice.docx");
+        Resource resource = new ClassPathResource(inputFileName);
 
         if (resource == null) {
             System.out.println("Resource can't be null");
