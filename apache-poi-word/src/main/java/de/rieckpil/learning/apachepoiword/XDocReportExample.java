@@ -1,20 +1,32 @@
 package de.rieckpil.learning.apachepoiword;
 
+import fr.opensagres.poi.xwpf.converter.pdf.PdfConverter;
+import fr.opensagres.poi.xwpf.converter.pdf.PdfOptions;
+import fr.opensagres.xdocreport.core.XDocReportException;
 import fr.opensagres.xdocreport.document.IXDocReport;
 import fr.opensagres.xdocreport.document.registry.XDocReportRegistry;
 import fr.opensagres.xdocreport.template.IContext;
 import fr.opensagres.xdocreport.template.TemplateEngineKind;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
+import java.io.*;
 
 public class XDocReportExample {
 
+    private Logger log = LoggerFactory.getLogger(this.getClass());
+
     public static void main(String[] args) throws Exception {
         XDocReportExample example = new XDocReportExample();
-        ByteArrayOutputStream byteArrayOutputStream = example.createDocumentForComparisonTest("/templates/Invoice.docx");
+        // ByteArrayOutputStream byteArrayOutputStream = example.createDocumentForComparisonTest("/templates/Invoice" +
+                //".docx");
+
+        example.createPdfFromTemplateWithXDocReport("/templates/invoice.docx",
+                "/Users/Philip/Desktop/junk/pdf/invoice_out.pdf");
     }
 
     public ByteArrayOutputStream createDocumentForComparisonTest(String inputFileName) throws Exception {
@@ -52,5 +64,48 @@ public class XDocReportExample {
              **/
         }
 
+    }
+
+    public void createPdfFromTemplateWithXDocReport(String inputFileName, String outputFileName) throws IOException,
+            XDocReportException {
+
+        Resource resource = new ClassPathResource(inputFileName);
+
+        if(!resource.exists()) {
+            log.error(String.format("No file found at path %s", inputFileName));
+            return;
+        }
+
+        InputStream in = resource.getInputStream();
+
+        IXDocReport report = XDocReportRegistry.getRegistry().loadReport(in, TemplateEngineKind.Velocity);
+
+        IContext context = report.createContext();
+        context.put("name1", "World1");
+        context.put("name2", "World2");
+        context.put("name3", "World3");
+        context.put("name4", "World4");
+        context.put("name5", "World5");
+        context.put("name6", "World6");
+        context.put("name7", "World7");
+        context.put("name8", "World8");
+        context.put("name9", "World9");
+        context.put("name10", "World10");
+
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+
+        report.process(context, out);
+
+        XWPFDocument document = new XWPFDocument(new ByteArrayInputStream(out.toByteArray()));
+        PdfOptions options = PdfOptions.create();
+
+        OutputStream fileOutputStream = new FileOutputStream(new File(outputFileName));
+        PdfConverter.getInstance().convert(document, fileOutputStream, options);
+
+        fileOutputStream.close();
+        out.close();
+        in.close();
+
+        log.info(String.format("Successfully processed file %s to output path %s", inputFileName, outputFileName));
     }
 }
