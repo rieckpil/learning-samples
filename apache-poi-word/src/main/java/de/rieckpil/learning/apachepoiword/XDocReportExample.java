@@ -69,14 +69,14 @@ public class XDocReportExample {
     public void createPdfFromTemplateWithXDocReport(String inputFileName, String outputFileName) throws IOException,
             XDocReportException {
 
-        Resource resource = new ClassPathResource(inputFileName);
+        InputStream in = this.getClass().getResourceAsStream(inputFileName);
 
-        if(!resource.exists()) {
+        if(in == null) {
             log.error(String.format("No file found at path %s", inputFileName));
             return;
         }
 
-        InputStream in = resource.getInputStream();
+        System.out.println("in.available() = " + in.available());
 
         IXDocReport report = XDocReportRegistry.getRegistry().loadReport(in, TemplateEngineKind.Velocity);
 

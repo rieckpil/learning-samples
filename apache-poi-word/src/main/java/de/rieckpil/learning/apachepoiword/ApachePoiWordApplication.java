@@ -12,9 +12,9 @@ public class ApachePoiWordApplication {
 
         XDocReportExample example = new XDocReportExample();
 
-        for (int i = 0; i < 499; i++) {
+        for (int i = 0; i <= 1; i++) {
             example.createPdfFromTemplateWithXDocReport("/templates/Invoice.docx",
-                    "/Users/Philip/Desktop/junk/pdf/invoice_out" + i + ".pdf");
+                    "/Users/Philip/Desktop/junk/pdf/invoice_out.pdf");
         }
 
         // framework is caching the reports -> XDocReportRegistry.getRegistry().getCachedReports().clear();
