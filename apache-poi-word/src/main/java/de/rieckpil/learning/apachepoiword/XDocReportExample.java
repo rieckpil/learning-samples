@@ -11,11 +11,12 @@ import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
+import org.springframework.stereotype.Service;
 
 import java.io.*;
 
+@Service
 public class XDocReportExample {
 
     private Logger log = LoggerFactory.getLogger(this.getClass());
@@ -23,10 +24,21 @@ public class XDocReportExample {
     public static void main(String[] args) throws Exception {
         XDocReportExample example = new XDocReportExample();
         // ByteArrayOutputStream byteArrayOutputStream = example.createDocumentForComparisonTest("/templates/Invoice" +
-                //".docx");
+        //".docx");
 
         example.createPdfFromTemplateWithXDocReport("/templates/invoice.docx",
                 "/Users/Philip/Desktop/junk/pdf/invoice_out.pdf");
+    }
+
+
+    public String createDocument() throws Exception {
+
+        long start = System.currentTimeMillis();
+
+        this.createPdfFromTemplateWithXDocReport("/templates/invoice.docx",
+                "/Users/Philip/Desktop/junk/pdf/invoice_out.pdf");
+
+        return " processing template took: " + (System.currentTimeMillis() - start);
     }
 
     public ByteArrayOutputStream createDocumentForComparisonTest(String inputFileName) throws Exception {
@@ -71,7 +83,7 @@ public class XDocReportExample {
 
         InputStream in = this.getClass().getResourceAsStream(inputFileName);
 
-        if(in == null) {
+        if (in == null) {
             log.error(String.format("No file found at path %s", inputFileName));
             return;
         }
