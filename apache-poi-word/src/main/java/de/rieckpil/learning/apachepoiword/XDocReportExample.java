@@ -14,12 +14,31 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.io.*;
 
 @Service
 public class XDocReportExample {
 
     private Logger log = LoggerFactory.getLogger(this.getClass());
+    private IXDocReport report;
+
+    @PostConstruct
+    public void init() throws Exception {
+
+        InputStream in = this.getClass().getResourceAsStream("/templates/Invoice.docx");
+
+        if (in == null) {
+            log.error(String.format("No file found at path %s", "/templates/Invoice.docx"));
+            return;
+        }
+
+
+        report = XDocReportRegistry.getRegistry().loadReport(in, TemplateEngineKind.Velocity);
+
+        in.close();
+
+    }
 
     public static void main(String[] args) throws Exception {
         XDocReportExample example = new XDocReportExample();
@@ -37,6 +56,15 @@ public class XDocReportExample {
 
         this.createPdfFromTemplateWithXDocReport("/templates/invoice.docx",
                 "/Users/Philip/Desktop/junk/pdf/invoice_out.pdf");
+
+        return " processing template took: " + (System.currentTimeMillis() - start);
+    }
+
+    public String createDocumentWithCache() throws Exception {
+
+        long start = System.currentTimeMillis();
+
+        this.createPdfFromTemplateWithXDocReportWithCache("/Users/Philip/Desktop/junk/pdf/invoice_out.pdf");
 
         return " processing template took: " + (System.currentTimeMillis() - start);
     }
@@ -119,5 +147,37 @@ public class XDocReportExample {
         in.close();
 
         log.info(String.format("Successfully processed file %s to output path %s", inputFileName, outputFileName));
+    }
+
+    public void createPdfFromTemplateWithXDocReportWithCache(String outputFileName) throws
+            IOException,
+            XDocReportException {
+
+        IContext context = report.createContext();
+        context.put("name1", "World1");
+        context.put("name2", "World2");
+        context.put("name3", "World3");
+        context.put("name4", "World4");
+        context.put("name5", "World5");
+        context.put("name6", "World6");
+        context.put("name7", "World7");
+        context.put("name8", "World8");
+        context.put("name9", "World9");
+        context.put("name10", "World10");
+
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+
+        report.process(context, out);
+
+        XWPFDocument document = new XWPFDocument(new ByteArrayInputStream(out.toByteArray()));
+        PdfOptions options = PdfOptions.create();
+
+        OutputStream fileOutputStream = new FileOutputStream(new File(outputFileName));
+        PdfConverter.getInstance().convert(document, fileOutputStream, options);
+
+        fileOutputStream.close();
+        out.close();
+
+        log.info(String.format("Successfully processed file to output path %s", outputFileName));
     }
 }

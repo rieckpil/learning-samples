@@ -28,7 +28,7 @@ public class CreatePdfDocument {
         Long currentCounter = counter.getAndIncrement();
         long start = System.currentTimeMillis();
 
-        String result = xDocReportExample.createDocument();
+        String result = xDocReportExample.createDocumentWithCache();
 
         return result + " whole processing took: " + (System.currentTimeMillis() - start);
 
