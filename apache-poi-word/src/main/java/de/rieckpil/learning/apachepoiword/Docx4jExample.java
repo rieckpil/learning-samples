@@ -13,6 +13,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
+import java.time.Instant;
 import java.util.HashMap;
 
 @Service
@@ -25,7 +26,7 @@ public class Docx4jExample {
         //example.createDocument();
         // example.replaceVariablesInWord("Boo", "22");
 
-        example.createInvoicePdf(new Invoice("Hans", "31"), 1);
+        example.createInvoicePdf(new Invoice("Hans", "31", Instant.now()), 1);
         example.convertToPdf("/Users/Philip/Desktop/junk/pdf/invoice_out_1.docx",
                 "/Users/Philip/Desktop/junk/pdf/invoice_out_1.pdf" );
     }
