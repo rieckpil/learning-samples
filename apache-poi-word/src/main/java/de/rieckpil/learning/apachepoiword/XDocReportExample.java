@@ -1,5 +1,6 @@
 package de.rieckpil.learning.apachepoiword;
 
+import de.rieckpil.learning.apachepoiword.entity.Invoice;
 import fr.opensagres.poi.xwpf.converter.pdf.PdfConverter;
 import fr.opensagres.poi.xwpf.converter.pdf.PdfOptions;
 import fr.opensagres.xdocreport.core.XDocReportException;
@@ -7,6 +8,7 @@ import fr.opensagres.xdocreport.document.IXDocReport;
 import fr.opensagres.xdocreport.document.registry.XDocReportRegistry;
 import fr.opensagres.xdocreport.template.IContext;
 import fr.opensagres.xdocreport.template.TemplateEngineKind;
+import fr.opensagres.xdocreport.template.formatter.FieldsMetadata;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.io.*;
+import java.time.Instant;
 
 @Service
 public class XDocReportExample {
@@ -45,8 +48,10 @@ public class XDocReportExample {
         // ByteArrayOutputStream byteArrayOutputStream = example.createDocumentForComparisonTest("/templates/Invoice" +
         //".docx");
 
-        example.createPdfFromTemplateWithXDocReport("/templates/invoice.docx",
-                "/Users/Philip/Desktop/junk/pdf/invoice_out.pdf");
+        // example.createPdfFromTemplateWithXDocReport("/templates/invoice.docx",
+               // "/Users/Philip/Desktop/junk/pdf/invoice_out.pdf");
+
+        example.processFurtherVelocityTechnologies("/templates/InvoiceAdvanced.docx");
     }
 
 
@@ -179,5 +184,49 @@ public class XDocReportExample {
         out.close();
 
         log.info(String.format("Successfully processed file to output path %s", outputFileName));
+    }
+
+    public void processFurtherVelocityTechnologies(String inputFileName) throws Exception {
+
+        InputStream in = this.getClass().getResourceAsStream(inputFileName);
+
+        if (in == null) {
+            log.error(String.format("No file found at path %s", inputFileName));
+            return;
+        }
+
+        System.out.println("in.available() = " + in.available());
+
+        IXDocReport report = XDocReportRegistry.getRegistry().loadReport(in, TemplateEngineKind.Velocity);
+
+        Invoice invoice = new Invoice("Musterrechnung", "42", null);
+        Invoice invoice2 = new Invoice("Musterrechnung 2", "13237", Instant.now());
+
+
+        IContext context = report.createContext();
+        context.put("invoice1", invoice);
+        context.put("invoice2", invoice2);
+        context.put("comments", "<p><i>Text</i> coming from <b>Java context</b>.</p>");
+
+        FieldsMetadata metadata = new FieldsMetadata();
+        metadata.addFieldAsList("invoice2.Date");
+        report.setFieldsMetadata(metadata);
+
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+
+        report.process(context, out);
+
+        XWPFDocument document = new XWPFDocument(new ByteArrayInputStream(out.toByteArray()));
+        PdfOptions options = PdfOptions.create();
+
+        OutputStream fileOutputStream = new FileOutputStream(new File("/Users/Philip/Desktop/junk/advanced.pdf"));
+        PdfConverter.getInstance().convert(document, fileOutputStream, options);
+
+        fileOutputStream.close();
+        out.close();
+        in.close();
+
+        log.info(String.format("Successfully processed file %s to output path %s", inputFileName, "/Users/Philip/Desktop/junk/advanced.pdf"));
+
     }
 }
