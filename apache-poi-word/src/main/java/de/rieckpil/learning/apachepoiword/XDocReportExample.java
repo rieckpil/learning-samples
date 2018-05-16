@@ -4,6 +4,7 @@ import de.rieckpil.learning.apachepoiword.entity.Invoice;
 import fr.opensagres.poi.xwpf.converter.pdf.PdfConverter;
 import fr.opensagres.poi.xwpf.converter.pdf.PdfOptions;
 import fr.opensagres.xdocreport.core.XDocReportException;
+import fr.opensagres.xdocreport.core.document.SyntaxKind;
 import fr.opensagres.xdocreport.document.IXDocReport;
 import fr.opensagres.xdocreport.document.registry.XDocReportRegistry;
 import fr.opensagres.xdocreport.template.IContext;
@@ -210,9 +211,13 @@ public class XDocReportExample {
         context.put("invoice1", invoice);
         context.put("invoice2", invoice2);
         context.put("names", names);
+        context.put("url", "https://rieckpil.de");
         context.put("comments", "<p><i>Text</i> coming from <b>Java context</b>.</p>");
+        context.put("link", "<a href=\"$url\">Link</a> ");
 
         FieldsMetadata metadata = new FieldsMetadata();
+        metadata.addFieldAsTextStyling("comments", SyntaxKind.Html);
+        metadata.addFieldAsTextStyling("link", SyntaxKind.Html, true);
         metadata.addFieldAsList("invoice2.Date");
         report.setFieldsMetadata(metadata);
 
