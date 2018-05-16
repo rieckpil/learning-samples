@@ -19,6 +19,8 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.io.*;
 import java.time.Instant;
+import java.util.Arrays;
+import java.util.List;
 
 @Service
 public class XDocReportExample {
@@ -49,7 +51,7 @@ public class XDocReportExample {
         //".docx");
 
         // example.createPdfFromTemplateWithXDocReport("/templates/invoice.docx",
-               // "/Users/Philip/Desktop/junk/pdf/invoice_out.pdf");
+        // "/Users/Philip/Desktop/junk/pdf/invoice_out.pdf");
 
         example.processFurtherVelocityTechnologies("/templates/InvoiceAdvanced.docx");
     }
@@ -202,10 +204,12 @@ public class XDocReportExample {
         Invoice invoice = new Invoice("Musterrechnung", "42", null);
         Invoice invoice2 = new Invoice("Musterrechnung 2", "13237", Instant.now());
 
+        List<String> names = Arrays.asList("Mike", "Franz", "Paul", "Tom");
 
         IContext context = report.createContext();
         context.put("invoice1", invoice);
         context.put("invoice2", invoice2);
+        context.put("names", names);
         context.put("comments", "<p><i>Text</i> coming from <b>Java context</b>.</p>");
 
         FieldsMetadata metadata = new FieldsMetadata();
