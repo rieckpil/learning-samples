@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Facelet Title</title>
+</h:head>
+<h:body>
+    <h:form>
+        <p:editor id="editor" widgetVar="editorWidget" value="#{editorView.text}" width="600" />
+
+        <h:panelGrid columns="2" style="margin-top: 10px">
+            <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="ui-icon-disk" />
+
+            <p:commandButton value="Clear" type="button" onclick="PF('editorWidget').clear();" icon="ui-icon-close" />
+        </h:panelGrid>
+
+        <p:dialog header="Content" widgetVar="dlg" showEffect="fade" hideEffect="fade">
+            <h:outputText id="display" value="#{editorView.text}" escape="false" />
+        </p:dialog>
+    </h:form>
+    <h:form>
+        <h:inputText value="#{index.hello}"/>
+        <h:commandButton action="#{index.save}" value="Save"/>
+    </h:form>
+</h:body>
+</html>
