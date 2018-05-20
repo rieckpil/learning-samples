@@ -5,5 +5,5 @@
 /____/ .___/_/  /_/_/ /_/\__, /  /_____/\____/\____/\__/   /____/  /_____/\____/\____/_/|_|
     /_/                 /____/
 
-${application.title} - ${application.version} - Spring Boot Version: ${AnsiColor
-.GREEN}${spring-boot.version}${AnsiColor.DEFAULT}
+Application title: ${application.title} - Application version: ${application.version} -
+                                                           Spring Boot Version: ${AnsiColor.GREEN}${spring-boot.version}${AnsiColor.DEFAULT}
