@@ -3,8 +3,8 @@ spring:
     name: Spring Boot 2 Book
 example:
     the-greeting: "Hello, World!"
-    interval: 1000
     precision: 42.23
     servers:
         - name: "springbootbuch"
           url: "http://springbootbuch.de"
+    interval: 11

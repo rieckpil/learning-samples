@@ -45,6 +45,9 @@ public class ExampleProperties {
     @Size(min = 1)
     private String theGreeting;
 
+    /**
+     * The interval of the scraping workflow.
+     **/
     @Min(10)
     private Integer interval;
 
