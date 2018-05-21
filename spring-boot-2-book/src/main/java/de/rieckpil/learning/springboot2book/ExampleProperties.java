@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Map;
 
 @Component
+// supports Relaxed Binding, @Value() does not support this -> different cases allowed -> theGreeting the-greeting
+// THE_GREETING
 @ConfigurationProperties("example")
 @Validated
 public class ExampleProperties {
@@ -37,7 +39,7 @@ public class ExampleProperties {
         }
     }
 
-    public static enum Environment {
+    public enum Environment {
         dev, prod, cloud
     }
 
