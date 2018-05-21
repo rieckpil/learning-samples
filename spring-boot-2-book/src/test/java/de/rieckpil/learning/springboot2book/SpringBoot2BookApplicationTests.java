@@ -1,5 +1,6 @@
 package de.rieckpil.learning.springboot2book;
 
+import de.rieckpil.learning.springboot2book.christmas.ChristmasBean;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,13 @@ public class SpringBoot2BookApplicationTests {
     @Test
     public void testInstantiationOfFooBean() {
         assertThat(context.getBeansOfType(Foo.class).size(), is(equalTo(1)));
-        assertThat(context.containsBean("foo"), is(true));
+        // the bean gets the name of the method it was created when the Java based bean configuration is used
+        assertThat(context.containsBean("foo2"), is(true));
+    }
+
+    @Test
+    public void testChristmasBeanIsNotPresent() {
+        assertThat(context.getBeansOfType(ChristmasBean.class).size(), is(equalTo(0)));
     }
 
 }

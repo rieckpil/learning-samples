@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 public class JavaBeanConfiguration {
 
     @Bean
-    public Foo foo(@Value("${foo.name:n/a}") String name) {
+    public Foo foo2(@Value("${foo.name:n/a}") String name) {
         return new Foo(name);
     }
 
