@@ -10,3 +10,6 @@ example:
     interval: 11
 logging:
   path: /Users/Philip/Desktop/junk/logs
+  pattern:
+    level: user:%X{user} %5p
+  config: logtofileonly.xml
