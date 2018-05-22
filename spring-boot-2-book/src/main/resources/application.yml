@@ -12,7 +12,6 @@ logging:
   path: logs
   pattern:
     level: user:%X{user} %5p
-  config: logtofileonly.xml
 server:
   tomcat:
     basedir: tc
@@ -21,3 +20,11 @@ server:
       pattern: \%h %l %u %t \"%r\" %s %b
       prefix: access
       suffix: .log
+management:
+  endpoint:
+    loggers:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: 'loggers'
