@@ -8,3 +8,5 @@ example:
         - name: "springbootbuch"
           url: "http://springbootbuch.de"
     interval: 11
+logging:
+  path: /Users/Philip/Desktop/junk/logs
