@@ -9,7 +9,15 @@ example:
           url: "http://springbootbuch.de"
     interval: 11
 logging:
-  path: /Users/Philip/Desktop/junk/logs
+  path: logs
   pattern:
     level: user:%X{user} %5p
   config: logtofileonly.xml
+server:
+  tomcat:
+    basedir: tc
+    accesslog:
+      enabled: true
+      pattern: \%h %l %u %t \"%r\" %s %b
+      prefix: access
+      suffix: .log
