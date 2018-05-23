@@ -21,10 +21,7 @@ server:
       prefix: access
       suffix: .log
 management:
-  endpoint:
-    loggers:
-      enabled: true
   endpoints:
     web:
       exposure:
-        include: 'loggers'
+        include: 'loggers, logfile'
