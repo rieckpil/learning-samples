@@ -1,5 +1,6 @@
 package de.rieckpil.learning.springboot2book;
 
+import de.rieckpil.learning.springboot2book.entity.Person;
 import org.hibernate.validator.internal.constraintvalidators.bv.number.bound.MinValidatorForLong;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,6 +31,14 @@ public class HelloWorldController {
     public String getLocale(final Locale locale) {
         System.out.println(locale.getCountry() + " " + locale.toString());
         return locale.getDisplayName();
+    }
+
+    @GetMapping("/persons")
+    public Person getPerson() {
+
+        Person p1 = new Person(1, "Philip", 22);
+        return p1;
+
     }
 
 }
