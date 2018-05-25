@@ -1,5 +1,6 @@
-package de.rieckpil.learning.springboot2book;
+package de.rieckpil.learning.springboot2book.configuration;
 
+import de.rieckpil.learning.springboot2book.Foo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.ServletComponentScan;

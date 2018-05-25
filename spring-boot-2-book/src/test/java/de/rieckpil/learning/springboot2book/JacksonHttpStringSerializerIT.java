@@ -1,6 +1,6 @@
 package de.rieckpil.learning.springboot2book;
 
-import de.rieckpil.learning.springboot2book.entity.Person;
+import de.rieckpil.learning.springboot2book.entities.Person;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

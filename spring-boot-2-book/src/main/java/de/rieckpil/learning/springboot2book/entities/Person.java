@@ -1,4 +1,4 @@
-package de.rieckpil.learning.springboot2book.entity;
+package de.rieckpil.learning.springboot2book.entities;
 
 public class Person {
 

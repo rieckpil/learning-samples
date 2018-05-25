@@ -1,4 +1,4 @@
-package de.rieckpil.learning.springboot2book;
+package de.rieckpil.learning.springboot2book.configuration;
 
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.server.WebServerFactoryCustomizer;

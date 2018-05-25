@@ -3,7 +3,7 @@ package de.rieckpil.learning.springboot2book;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
-import de.rieckpil.learning.springboot2book.entity.Person;
+import de.rieckpil.learning.springboot2book.entities.Person;
 import org.springframework.boot.jackson.JsonComponent;
 
 import java.io.IOException;

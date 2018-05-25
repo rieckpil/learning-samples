@@ -1,6 +1,6 @@
 package de.rieckpil.learning.springboot2book;
 
-import de.rieckpil.learning.springboot2book.entity.Person;
+import de.rieckpil.learning.springboot2book.entities.Person;
 import org.hibernate.validator.internal.constraintvalidators.bv.number.bound.MinValidatorForLong;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +11,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.CacheControl;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -53,12 +54,6 @@ public class HelloWorldController {
 
         Person p1 = new Person(1, "Philip", 22);
         return p1;
-
-    }
-
-    @GetMapping("/greeting")
-    public String getGreeting(final Principal principal) {
-        return String.format("Hello, %s.", Optional.ofNullable(principal).map(Principal::getName).orElse("Anonymous"));
 
     }
 
