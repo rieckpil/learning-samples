@@ -4,7 +4,7 @@ spring:
   security:
     user:
       name: philip
-      password: changeme
+      password: "{bcrypt}$2a$10$omOExa5kkG6JTnh3JY.pfOl2pTl6xdOdrNRp6pTbp20UxNnCRdBcK"
       roles: USER, ADMIN
 example:
     the-greeting: "Hello, World!"

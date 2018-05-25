@@ -16,7 +16,9 @@ public class UserRepository {
 
     public Optional<UserEntity> findOneByLogin(String username) {
 
-        UserEntity user = new UserEntity("Philip",passwordEncoder.encode("hello"));
+        UserEntity user = new UserEntity("Philip", passwordEncoder.encode("hello2"));
+
+        System.out.println(user.getHashedPassword());
 
         return Optional.ofNullable(user);
 
