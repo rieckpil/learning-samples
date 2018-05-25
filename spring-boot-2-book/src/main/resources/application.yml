@@ -1,6 +1,11 @@
 spring:
   application:
     name: Spring Boot 2 Book
+  security:
+    user:
+      name: philip
+      password: changeme
+      roles: USER, ADMIN
 example:
     the-greeting: "Hello, World!"
     precision: 42.23
@@ -25,3 +30,7 @@ management:
     web:
       exposure:
         include: 'loggers, logfile'
+  metrics:
+    export:
+      influx:
+        password:

@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.security.Principal;
 import java.util.Locale;
+import java.util.Optional;
 
 import static org.springframework.util.DigestUtils.md5DigestAsHex;
 
@@ -51,6 +53,12 @@ public class HelloWorldController {
 
         Person p1 = new Person(1, "Philip", 22);
         return p1;
+
+    }
+
+    @GetMapping("/greeting")
+    public String getGreeting(final Principal principal) {
+        return String.format("Hello, %s.", Optional.ofNullable(principal).map(Principal::getName).orElse("Anonymous"));
 
     }
 
