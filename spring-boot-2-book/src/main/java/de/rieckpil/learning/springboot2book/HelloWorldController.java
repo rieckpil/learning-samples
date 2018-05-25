@@ -5,6 +5,7 @@ import org.hibernate.validator.internal.constraintvalidators.bv.number.bound.Min
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.CacheControl;
@@ -24,6 +25,9 @@ public class HelloWorldController {
 
     private Logger log = LoggerFactory.getLogger(this.getClass());
 
+    @Autowired
+    private MessageSource messageSource;
+
     @GetMapping("/hello")
     public String helloWorld(@RequestParam final String name) {
 
@@ -31,6 +35,7 @@ public class HelloWorldController {
         // curl -X "POST" -H "Content-Type: application/json; charset=utf-8" -d  $'{"configuredLevel":"DEBUG"}' http://localhost:8080/actuator/loggers/de.rieckpil.learning
         log.debug("DEBUGGING the helloWorld enpoint!");
         log.info("Incoming message: " + name);
+        log.info(messageSource.toString());
 
         return "Hello, " + name + "\n";
     }
