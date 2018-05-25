@@ -929,3 +929,5 @@ Using generated security password: 1a25a1e4-44ef-4293-8b4f-bad8b88c6a0f
 2018-05-25 20:40:08.296 user:  INFO 2661 --- [RMI TCP Connection(9)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
 2018-05-25 20:40:08.297 user:  INFO 2661 --- [RMI TCP Connection(9)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
 2018-05-25 20:40:08.314 user:  INFO 2661 --- [RMI TCP Connection(9)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 17 ms
+2018-05-25 20:55:21.572 user:  INFO 2661 --- [Thread-14] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@6aeb35e6: startup date [Fri May 25 20:40:03 CEST 2018]; root of context hierarchy
+2018-05-25 20:55:21.577 user:  INFO 2661 --- [Thread-14] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown

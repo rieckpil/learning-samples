@@ -19,7 +19,7 @@ public class SecurityConfig {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
-    /*@Bean
+    @Bean
     public UserDetailsService userDetailsService(final UserRepository userRepository) {
 
         return username -> userRepository.findOneByLogin(username).map(userEntity ->
@@ -29,6 +29,6 @@ public class SecurityConfig {
                     new ArrayList<>())
         ).orElseThrow(() -> new UsernameNotFoundException(username));
 
-    }*/
+    }
 
 }
