@@ -1,4 +1,4 @@
-package de.rieckpil.learning.springboot2bookdata.transactions;
+package de.rieckpil.learning.springboot2bookdata.h2.transactions;
 
 import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;

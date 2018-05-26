@@ -1,4 +1,4 @@
-package de.rieckpil.learning.springboot2bookdata.jdbc;
+package de.rieckpil.learning.springboot2bookdata.h2.jdbc;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
