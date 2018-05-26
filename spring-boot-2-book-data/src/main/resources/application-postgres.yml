@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: @build.datasource.url@
+    username: @build.datasource.username@
+    password: @build.datasource.password@
+  flyway:
+    enabled: false
+  test:
+    database:
+      replace: none
+  jooq:
+    sql-dialect: POSTGRES

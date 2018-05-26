@@ -19,9 +19,11 @@
     </parent>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
+        <build.datasource.url>
+            jdbc:postgresql://localhost:5432/pagila
+        </build.datasource.url>
+        <build.datasource.username>spring</build.datasource.username>
+        <build.datasource.password>spring</build.datasource.password>
     </properties>
 
     <dependencies>
@@ -53,13 +55,58 @@
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jooq</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
+        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.jooq</groupId>
+                <artifactId>jooq-codegen-maven</artifactId>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals><goal>generate</goal></goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <jdbc>
+                        <driver>org.postgresql.Driver</driver>
+                        <url>${build.datasource.url}</url>
+                        <user>${build.datasource.username}</user>
+                        <password>${build.datasource.password}</password>
+                    </jdbc>
+                    <generator>
+                        <database>
+                            <name>org.jooq.util.postgres.PostgresDatabase</name>
+                            <schemaVersionProvider>SELECT :schema_name || '_' || MAX("version") FROM "flyway_schema_history"</schemaVersionProvider>
+                            <includes>.*</includes>
+                            <excludes>schema_version</excludes>
+                            <schemata>
+                                <schema>
+                                    <inputSchema>public</inputSchema>
+                                    <outputSchemaToDefault>true</outputSchemaToDefault>
+                                </schema>
+                            </schemata>
+                        </database>
+                        <target>
+                            <packageName>de.rieckpil.learning.springboot2bookdata.jooq</packageName>
+                            <directory>target/generated-sources/jooq</directory>
+                        </target>
+                    </generator>
+                </configuration>
             </plugin>
         </plugins>
     </build>

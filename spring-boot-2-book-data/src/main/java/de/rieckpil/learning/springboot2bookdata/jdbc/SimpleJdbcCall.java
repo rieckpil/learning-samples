@@ -1,12 +1,14 @@
 package de.rieckpil.learning.springboot2bookdata.jdbc;
 
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Component
+@Profile("h2")
 public class SimpleJdbcCall implements CommandLineRunner {
 
     private final JdbcTemplate jdbcTemplate;
