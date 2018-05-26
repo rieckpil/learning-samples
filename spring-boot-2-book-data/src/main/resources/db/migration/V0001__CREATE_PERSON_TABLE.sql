@@ -1,0 +1,4 @@
+CREATE TABLE PERSON (
+  id BIGINT AUTO_INCREMENT,
+  name varchar(255)
+);
