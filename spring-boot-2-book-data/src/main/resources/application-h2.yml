@@ -17,3 +17,5 @@ spring:
       ddl-auto: validate
   jta:
     log-dir: jta
+  flyway:
+    locations: ["classpath:db/migration/h2"]

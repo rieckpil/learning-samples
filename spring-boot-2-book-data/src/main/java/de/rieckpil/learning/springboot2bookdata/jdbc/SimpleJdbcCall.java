@@ -26,7 +26,7 @@ public class SimpleJdbcCall implements CommandLineRunner {
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void doInsert() {
 
-        this.jdbcTemplate.update("INSERT INTO person (name) values (?)", "Mike");
+        this.jdbcTemplate.update("INSERT INTO person (name) values (?)", "Tom");
         this.jdbcTemplate.update("INSERT INTO person (name) values (?)", "Paul");
         this.jdbcTemplate.update("INSERT INTO person (name) values (?)", "John");
 
