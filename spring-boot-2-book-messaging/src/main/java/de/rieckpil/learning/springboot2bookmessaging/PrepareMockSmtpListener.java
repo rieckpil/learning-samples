@@ -21,7 +21,7 @@ import static de.rieckpil.learning.springboot2bookmessaging.PrepareMockSmtpListe
 
 public class PrepareMockSmtpListener implements SpringApplicationRunListener {
 
-    public static final CountDownLatch LATCH = new CountDownLatch(1);
+    static final CountDownLatch LATCH = new CountDownLatch(1);
 
     private final SMTPServer smtpServer;
 
@@ -64,7 +64,7 @@ public class PrepareMockSmtpListener implements SpringApplicationRunListener {
 
 class MessageHandlerImpl implements MessageHandlerFactory {
 
-    static final Logger LOG = LoggerFactory
+    private static final Logger LOG = LoggerFactory
             .getLogger(SpringBoot2BookMessagingApplication.class);
 
     @Override
@@ -75,7 +75,7 @@ class MessageHandlerImpl implements MessageHandlerFactory {
     static class Handler implements MessageHandler {
         MessageContext ctx;
 
-        public Handler(MessageContext ctx) {
+        Handler(MessageContext ctx) {
             this.ctx = ctx;
         }
 
@@ -89,7 +89,7 @@ class MessageHandlerImpl implements MessageHandlerFactory {
             LOG.info("RECIPIENT: {}", recipient);
         }
 
-        public void data(InputStream data) throws IOException {
+        public void data(InputStream data) {
             LOG.info("DATA:");
             LOG.info(convertStreamToString(data));
         }
@@ -102,12 +102,13 @@ class MessageHandlerImpl implements MessageHandlerFactory {
         String convertStreamToString(InputStream is) {
             final BufferedReader reader = new BufferedReader(new InputStreamReader(is));
             final StringBuilder sb = new StringBuilder();
-            String line = null;
+            String line;
             try {
                 while ((line = reader.readLine()) != null) {
                     sb.append(line).append("\n");
                 }
             } catch (IOException e) {
+                LOG.info("Error occured");
             }
             return sb.toString();
         }
