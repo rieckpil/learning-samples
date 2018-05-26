@@ -20,6 +20,7 @@ public class FilmJOOQRepository {
 
     public List<Film> findAll() {
 
+        /**
         return this.ctx
                 .select(FILM.TITLE, FILM.RELEASE_YEAR)
                 .from(FILM)
@@ -27,6 +28,10 @@ public class FilmJOOQRepository {
                         r.get(FILM.TITLE),
                         Year.of(r.get(FILM.RELEASE_YEAR)))
                 );
+
+         */
+
+        return null;
 
     }
 }
