@@ -2,3 +2,7 @@ spring:
   activemq:
     in-memory: false
     broker-url: tcp://127.0.0.1:61616
+  mail:
+    host: localhost
+    port: 41209
+    test-connection: false

@@ -1,0 +1,1 @@
+org.springframework.boot.SpringApplicationRunListener = de.rieckpil.learning.springboot2bookmessaging.PrepareMockSmtpListener
