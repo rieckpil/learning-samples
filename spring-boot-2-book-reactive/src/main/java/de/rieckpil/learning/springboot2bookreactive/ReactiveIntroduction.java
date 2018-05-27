@@ -12,7 +12,7 @@ import reactor.core.scheduler.Schedulers;
 import java.time.Duration;
 
 @Component
-public class DatabaseFiller implements CommandLineRunner {
+public class ReactiveIntroduction implements CommandLineRunner {
 
     private Logger LOG = LoggerFactory.getLogger(this.getClass());
 

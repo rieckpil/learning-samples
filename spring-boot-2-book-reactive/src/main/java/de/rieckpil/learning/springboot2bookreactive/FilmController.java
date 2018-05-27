@@ -17,7 +17,7 @@ public class FilmController {
 
     private final FilmRepository filmRepository;
 
-    @GetMapping("/api/films")
+    @GetMapping(path= "/api/films",  produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<Film> getAll() {
         return filmRepository.findAll(Sort.by("title").ascending());
     }
