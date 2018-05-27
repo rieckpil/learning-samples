@@ -5,10 +5,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.io.ResourceLoader;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 
 import java.io.IOException;
+import java.time.Year;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Component
 public class FilmRepositoryPopulator implements CommandLineRunner {
@@ -40,6 +43,17 @@ public class FilmRepositoryPopulator implements CommandLineRunner {
                         LOG.info("Film '{}' (id={}) saved",
                                 f.getTitle(), f.getId()))
                 .blockLast();
+    }
+
+    @Scheduled(fixedRate = 5000)
+    public void addNewFilm() {
+
+        LOG.info("Scheduled!");
+
+        Film film = new Film("Scheduled Film", ThreadLocalRandom.current().nextInt(1900, Year.now().getValue()));
+
+        filmRepository.save(film);
+
     }
 
     private Film[] loadFilms() throws IOException {

@@ -2,6 +2,7 @@ package de.rieckpil.learning.springboot2bookreactive;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.reactive.function.server.HandlerFunction;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
@@ -11,6 +12,7 @@ import reactor.core.publisher.Mono;
 import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
 
 @SpringBootApplication
+@EnableScheduling
 public class SpringBoot2BookReactiveApplication {
 
     public static void main(String[] args) {

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:lang="${#locale.language}">
+<head>
+    <title>Watched now</title>
+</head>
+<body>
+<h2>Movies being watched right now at the filmstore...</h2>
+<h3 th:text="${info}"></h3>
+<ul>
+    <li th:each="title : ${filmsBeingWatched}" th:text="${title}">...</li>
+</ul>
+</body>
+</html>
