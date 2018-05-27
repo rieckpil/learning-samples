@@ -1,0 +1,321 @@
+[
+  {
+    "_class": "de.rieckpil.learning.springboot2bookreactive.Film",
+    "actors": [
+      {
+        "firstName": "PENELOPE",
+        "lastName": "GUINESS"
+      },
+      {
+        "firstName": "CHRISTIAN",
+        "lastName": "GABLE"
+      },
+      {
+        "firstName": "LUCILLE",
+        "lastName": "TRACY"
+      },
+      {
+        "firstName": "SANDRA",
+        "lastName": "PECK"
+      },
+      {
+        "firstName": "JOHNNY",
+        "lastName": "CAGE"
+      },
+      {
+        "firstName": "MENA",
+        "lastName": "TEMPLE"
+      },
+      {
+        "firstName": "WARREN",
+        "lastName": "NOLTE"
+      },
+      {
+        "firstName": "OPRAH",
+        "lastName": "KILMER"
+      },
+      {
+        "firstName": "ROCK",
+        "lastName": "DUKAKIS"
+      },
+      {
+        "firstName": "MARY",
+        "lastName": "KEITEL"
+      }
+    ],
+    "id": "foobar",
+    "releaseYear": 2006,
+    "title": "ACADEMY DINOSAUR"
+  },
+  {
+    "_class": "de.rieckpil.learning.springboot2bookreactive.Film",
+    "actors": [
+      {
+        "firstName": "BOB",
+        "lastName": "FAWCETT"
+      },
+      {
+        "firstName": "MINNIE",
+        "lastName": "ZELLWEGER"
+      },
+      {
+        "firstName": "SEAN",
+        "lastName": "GUINESS"
+      },
+      {
+        "firstName": "CHRIS",
+        "lastName": "DEPP"
+      }
+    ],
+    "releaseYear": 2006,
+    "title": "ACE GOLDFINGER"
+  },
+  {
+    "_class": "de.rieckpil.learning.springboot2bookreactive.Film",
+    "actors": [
+      {
+        "firstName": "NICK",
+        "lastName": "WAHLBERG"
+      },
+      {
+        "firstName": "BOB",
+        "lastName": "FAWCETT"
+      },
+      {
+        "firstName": "CAMERON",
+        "lastName": "STREEP"
+      },
+      {
+        "firstName": "RAY",
+        "lastName": "JOHANSSON"
+      },
+      {
+        "firstName": "JULIANNE",
+        "lastName": "DENCH"
+      }
+    ],
+    "releaseYear": 2006,
+    "title": "ADAPTATION HOLES"
+  },
+  {
+    "_class": "de.rieckpil.learning.springboot2bookreactive.Film",
+    "actors": [
+      {
+        "firstName": "JODIE",
+        "lastName": "DEGENERES"
+      },
+      {
+        "firstName": "SCARLETT",
+        "lastName": "DAMON"
+      },
+      {
+        "firstName": "KENNETH",
+        "lastName": "PESCI"
+      },
+      {
+        "firstName": "FAY",
+        "lastName": "WINSLET"
+      },
+      {
+        "firstName": "OPRAH",
+        "lastName": "KILMER"
+      }
+    ],
+    "releaseYear": 2006,
+    "title": "AFFAIR PREJUDICE"
+  },
+  {
+    "_class": "de.rieckpil.learning.springboot2bookreactive.Film",
+    "actors": [
+      {
+        "firstName": "GARY",
+        "lastName": "PHOENIX"
+      },
+      {
+        "firstName": "DUSTIN",
+        "lastName": "TAUTOU"
+      },
+      {
+        "firstName": "MATTHEW",
+        "lastName": "LEIGH"
+      },
+      {
+        "firstName": "MATTHEW",
+        "lastName": "CARREY"
+      },
+      {
+        "firstName": "THORA",
+        "lastName": "TEMPLE"
+      }
+    ],
+    "releaseYear": 2006,
+    "title": "AFRICAN EGG"
+  },
+  {
+    "_class": "de.rieckpil.learning.springboot2bookreactive.Film",
+    "actors": [
+      {
+        "firstName": "KIRSTEN",
+        "lastName": "PALTROW"
+      },
+      {
+        "firstName": "SANDRA",
+        "lastName": "KILMER"
+      },
+      {
+        "firstName": "JAYNE",
+        "lastName": "NEESON"
+      },
+      {
+        "firstName": "WARREN",
+        "lastName": "NOLTE"
+      },
+      {
+        "firstName": "MORGAN",
+        "lastName": "WILLIAMS"
+      },
+      {
+        "firstName": "KENNETH",
+        "lastName": "HOFFMAN"
+      },
+      {
+        "firstName": "REESE",
+        "lastName": "WEST"
+      }
+    ],
+    "releaseYear": 2006,
+    "title": "AGENT TRUMAN"
+  },
+  {
+    "_class": "de.rieckpil.learning.springboot2bookreactive.Film",
+    "actors": [
+      {
+        "firstName": "JIM",
+        "lastName": "MOSTEL"
+      },
+      {
+        "firstName": "RICHARD",
+        "lastName": "PENN"
+      },
+      {
+        "firstName": "OPRAH",
+        "lastName": "KILMER"
+      },
+      {
+        "firstName": "MENA",
+        "lastName": "HOPPER"
+      },
+      {
+        "firstName": "MICHAEL",
+        "lastName": "BOLGER"
+      }
+    ],
+    "releaseYear": 2006,
+    "title": "AIRPLANE SIERRA"
+  },
+  {
+    "_class": "de.rieckpil.learning.springboot2bookreactive.Film",
+    "actors": [
+      {
+        "firstName": "FAY",
+        "lastName": "KILMER"
+      },
+      {
+        "firstName": "GENE",
+        "lastName": "WILLIS"
+      },
+      {
+        "firstName": "SUSAN",
+        "lastName": "DAVIS"
+      },
+      {
+        "firstName": "LUCILLE",
+        "lastName": "DEE"
+      }
+    ],
+    "releaseYear": 2006,
+    "title": "AIRPORT POLLOCK"
+  },
+  {
+    "_class": "de.rieckpil.learning.springboot2bookreactive.Film",
+    "actors": [
+      {
+        "firstName": "CHRISTIAN",
+        "lastName": "GABLE"
+      },
+      {
+        "firstName": "ELVIS",
+        "lastName": "MARX"
+      },
+      {
+        "firstName": "RIP",
+        "lastName": "CRAWFORD"
+      },
+      {
+        "firstName": "MENA",
+        "lastName": "TEMPLE"
+      },
+      {
+        "firstName": "RIP",
+        "lastName": "WINSLET"
+      },
+      {
+        "firstName": "WARREN",
+        "lastName": "NOLTE"
+      },
+      {
+        "firstName": "GRETA",
+        "lastName": "KEITEL"
+      },
+      {
+        "firstName": "WILLIAM",
+        "lastName": "HACKMAN"
+      },
+      {
+        "firstName": "MERYL",
+        "lastName": "ALLEN"
+      }
+    ],
+    "releaseYear": 2006,
+    "title": "ALABAMA DEVIL"
+  },
+  {
+    "_class": "de.rieckpil.learning.springboot2bookreactive.Film",
+    "actors": [
+      {
+        "firstName": "ALEC",
+        "lastName": "WAYNE"
+      },
+      {
+        "firstName": "JUDY",
+        "lastName": "DEAN"
+      },
+      {
+        "firstName": "VAL",
+        "lastName": "BOLGER"
+      },
+      {
+        "firstName": "RAY",
+        "lastName": "JOHANSSON"
+      },
+      {
+        "firstName": "RENEE",
+        "lastName": "TRACY"
+      },
+      {
+        "firstName": "JADA",
+        "lastName": "RYDER"
+      },
+      {
+        "firstName": "GRETA",
+        "lastName": "MALDEN"
+      },
+      {
+        "firstName": "ROCK",
+        "lastName": "DUKAKIS"
+      }
+    ],
+    "releaseYear": 2006,
+    "title": "ALADDIN CALENDAR"
+  }
+]
