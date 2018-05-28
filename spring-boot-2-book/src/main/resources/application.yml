@@ -6,6 +6,9 @@ spring:
       name: philip
       password: "{bcrypt}$2a$10$omOExa5kkG6JTnh3JY.pfOl2pTl6xdOdrNRp6pTbp20UxNnCRdBcK"
       roles: USER, ADMIN
+  h2:
+    console:
+      enabled: true
 example:
     the-greeting: "Hello, World!"
     precision: 42.23

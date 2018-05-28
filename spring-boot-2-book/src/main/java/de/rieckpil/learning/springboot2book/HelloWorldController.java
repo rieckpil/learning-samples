@@ -1,6 +1,7 @@
 package de.rieckpil.learning.springboot2book;
 
 import de.rieckpil.learning.springboot2book.entities.Person;
+import de.rieckpil.learning.springboot2book.repositories.PersonRepository;
 import org.hibernate.validator.internal.constraintvalidators.bv.number.bound.MinValidatorForLong;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 import java.security.Principal;
+import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 
@@ -30,6 +32,9 @@ public class HelloWorldController {
 
     @Autowired
     private MessageSource messageSource;
+
+    @Autowired
+    private PersonRepository personRepository;
 
     @GetMapping("/hello")
     public String helloWorld(@RequestParam final String name) {
@@ -50,10 +55,9 @@ public class HelloWorldController {
     }
 
     @GetMapping("/persons")
-    public Person getPerson() {
+    public List<Person> getPersons() {
 
-        Person p1 = new Person(1, "Philip", 22);
-        return p1;
+       return personRepository.findAll();
 
     }
 
