@@ -507,3 +507,10 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 2018-05-28 06:22:13.574 user:  INFO 1846 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 24 ms
 2018-05-28 06:22:13.655 user:  INFO 1846 --- [main] d.r.l.s.PersonControllerIT               : Started PersonControllerIT in 6.345 seconds (JVM running for 8.545)
 2018-05-28 06:22:14.067 user:  INFO 1846 --- [Thread-2] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@40317ba2: startup date [Mon May 28 06:22:08 CEST 2018]; root of context hierarchy
+2018-05-28 06:28:25.606 user:  INFO 1308 --- [Thread-20] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@77888435: startup date [Mon May 28 05:53:00 CEST 2018]; root of context hierarchy
+2018-05-28 06:28:25.641 user:  INFO 1308 --- [Thread-20] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2018-05-28 06:28:25.642 user:  INFO 1308 --- [Thread-20] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2018-05-28 06:28:25.645 user:  INFO 1308 --- [Thread-20] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2018-05-28 06:28:25.648 user:  INFO 1308 --- [Thread-20] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed drop of schema as part of SessionFactory shut-down'
+2018-05-28 06:28:25.693 user:  INFO 1308 --- [Thread-20] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2018-05-28 06:28:25.700 user:  INFO 1308 --- [Thread-20] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

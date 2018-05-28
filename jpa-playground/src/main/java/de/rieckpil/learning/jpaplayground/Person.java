@@ -1,9 +1,13 @@
 package de.rieckpil.learning.jpaplayground;
 
+import lombok.Data;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Data
 public class Person {
 
     @Id
@@ -14,8 +18,18 @@ public class Person {
     private String lastName;
 
     @OneToMany(mappedBy = "person")
-    private List<Address> addressList;
+    private List<Address> addressList = new ArrayList<Address>();
 
-    @OneToOne(optional = false)
+    @OneToOne(cascade = CascadeType.PERSIST)
     private Passport passport;
+
+    public void setPassport(Passport passport, boolean setReference) {
+
+        this.passport = passport;
+
+        if(setReference) {
+            passport.setPerson(this, false);
+        }
+
+    }
 }
