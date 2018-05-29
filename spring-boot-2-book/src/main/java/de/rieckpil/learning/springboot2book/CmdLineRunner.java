@@ -15,11 +15,13 @@ public class CmdLineRunner implements CommandLineRunner {
     private final Foo foo;
     private final ExampleProperties exampleProperties;
     private final PersonRepository personRepository;
+    private final ExternalSystemCallService externalSystemCallService;
 
-    public CmdLineRunner(Foo foo, ExampleProperties exampleProperties, PersonRepository personRepository) {
+    public CmdLineRunner(Foo foo, ExampleProperties exampleProperties, PersonRepository personRepository, ExternalSystemCallService externalSystemCallService) {
         this.foo = foo;
         this.exampleProperties = exampleProperties;
         this.personRepository = personRepository;
+        this.externalSystemCallService = externalSystemCallService;
     }
 
     @Override
@@ -30,6 +32,8 @@ public class CmdLineRunner implements CommandLineRunner {
         for (int i = 0; i < 100; i++) {
             personRepository.save(createPerson());
         }
+
+        System.out.println("External system call: " + externalSystemCallService.getRemoteInfo());
 
     }
 
