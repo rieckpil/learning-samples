@@ -19,3 +19,932 @@
 2018-05-29 06:03:48.392 user:  INFO 1354 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 22 ms
 2018-05-29 06:03:48.472 user:  INFO 1354 --- [main] d.r.l.s.PersonControllerIT               : Started PersonControllerIT in 5.17 seconds (JVM running for 8.781)
 2018-05-29 06:03:49.036 user:  INFO 1354 --- [Thread-2] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@1b45c0e: startup date [Tue May 29 06:03:44 CEST 2018]; root of context hierarchy
+2018-05-29 06:35:02.190 user:  INFO 2422 --- [main] d.r.l.s.SecuredControllerTest            : Starting SecuredControllerTest on Philips-MBP.fritz.box with PID 2422 (started by Philip in /Users/Philip/git/learning-samples/spring-boot-2-book)
+2018-05-29 06:35:02.200 user:  INFO 2422 --- [main] d.r.l.s.SecuredControllerTest            : No active profile set, falling back to default profiles: default
+2018-05-29 06:35:02.235 user:  INFO 2422 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@4763c727: startup date [Tue May 29 06:35:02 CEST 2018]; root of context hierarchy
+2018-05-29 06:35:03.559 user:  WARN 2422 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'helloWorldController': Unsatisfied dependency expressed through field 'personRepository'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'de.rieckpil.learning.springboot2book.repositories.PersonRepository' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2018-05-29 06:35:03.565 user:  INFO 2422 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2018-05-29 06:35:03.615 user: ERROR 2422 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field personRepository in de.rieckpil.learning.springboot2book.HelloWorldController required a bean of type 'de.rieckpil.learning.springboot2book.repositories.PersonRepository' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'de.rieckpil.learning.springboot2book.repositories.PersonRepository' in your configuration.
+
+2018-05-29 06:35:03.674 user:  INFO 2422 --- [main] d.r.l.s.SecuredControllerTest            : Starting SecuredControllerTest on Philips-MBP.fritz.box with PID 2422 (started by Philip in /Users/Philip/git/learning-samples/spring-boot-2-book)
+2018-05-29 06:35:03.676 user:  INFO 2422 --- [main] d.r.l.s.SecuredControllerTest            : No active profile set, falling back to default profiles: default
+2018-05-29 06:35:03.687 user:  INFO 2422 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@4e38d975: startup date [Tue May 29 06:35:03 CEST 2018]; root of context hierarchy
+2018-05-29 06:35:03.966 user:  WARN 2422 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'helloWorldController': Unsatisfied dependency expressed through field 'personRepository'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'de.rieckpil.learning.springboot2book.repositories.PersonRepository' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2018-05-29 06:35:03.968 user:  INFO 2422 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2018-05-29 06:35:04.006 user: ERROR 2422 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field personRepository in de.rieckpil.learning.springboot2book.HelloWorldController required a bean of type 'de.rieckpil.learning.springboot2book.repositories.PersonRepository' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'de.rieckpil.learning.springboot2book.repositories.PersonRepository' in your configuration.
+
+2018-05-29 06:35:04.016 user: ERROR 2422 --- [main] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@f99f5e0] to prepare test instance [de.rieckpil.learning.springboot2book.SecuredControllerTest@45d2ade3]
+
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:125) ~[spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:108) ~[spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:117) ~[spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:83) ~[spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener.prepareTestInstance(SpringBootDependencyInjectionTestExecutionListener.java:44) ~[spring-boot-test-autoconfigure-2.0.2.RELEASE.jar:2.0.2.RELEASE]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:246) ~[spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:227) [spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:289) [spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:291) [spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:246) [spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97) [spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268) [junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61) [spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70) [spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363) [junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190) [spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365) [surefire-junit4-2.21.0.jar:2.21.0]
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273) [surefire-junit4-2.21.0.jar:2.21.0]
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238) [surefire-junit4-2.21.0.jar:2.21.0]
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159) [surefire-junit4-2.21.0.jar:2.21.0]
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:379) [surefire-booter-2.21.0.jar:2.21.0]
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:340) [surefire-booter-2.21.0.jar:2.21.0]
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:125) [surefire-booter-2.21.0.jar:2.21.0]
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:413) [surefire-booter-2.21.0.jar:2.21.0]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'helloWorldController': Unsatisfied dependency expressed through field 'personRepository'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'de.rieckpil.learning.springboot2book.repositories.PersonRepository' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:587) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:91) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:373) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1348) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:578) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:501) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:760) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:869) ~[spring-context-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550) ~[spring-context-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:759) ~[spring-boot-2.0.2.RELEASE.jar:2.0.2.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:395) ~[spring-boot-2.0.2.RELEASE.jar:2.0.2.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:327) ~[spring-boot-2.0.2.RELEASE.jar:2.0.2.RELEASE]
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:139) ~[spring-boot-test-2.0.2.RELEASE.jar:2.0.2.RELEASE]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:99) ~[spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:117) ~[spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	... 28 common frames omitted
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'de.rieckpil.learning.springboot2book.repositories.PersonRepository' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1509) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1104) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1065) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:584) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	... 46 common frames omitted
+
+2018-05-29 06:35:04.047 user:  INFO 2422 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [de.rieckpil.learning.springboot2book.SecuredServiceTest], using SpringBootContextLoader
+2018-05-29 06:35:04.048 user:  INFO 2422 --- [main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [de.rieckpil.learning.springboot2book.SecuredServiceTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2018-05-29 06:35:04.048 user:  INFO 2422 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [de.rieckpil.learning.springboot2book.SecuredServiceTest]: SecuredServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2018-05-29 06:35:04.052 user:  INFO 2422 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration de.rieckpil.learning.springboot2book.SpringBoot2BookApplication for test class de.rieckpil.learning.springboot2book.SecuredServiceTest
+2018-05-29 06:35:04.056 user:  INFO 2422 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener]
+2018-05-29 06:35:04.059 user:  INFO 2422 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@5e1218b4, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@12958360, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@c6e0f32, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6f3f0fae, org.springframework.test.context.support.DirtiesContextTestExecutionListener@21a66d45, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1f966492, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@63fdffcd, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@7428de63, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@66f659e6, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@4a68135e, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@46678e49, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@748e9b20, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@2063c53e, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@2a9bc08f]
+2018-05-29 06:35:04.126 user:  INFO 2422 --- [main] d.r.l.s.SecuredServiceTest               : Starting SecuredServiceTest on Philips-MBP.fritz.box with PID 2422 (started by Philip in /Users/Philip/git/learning-samples/spring-boot-2-book)
+2018-05-29 06:35:04.127 user:  INFO 2422 --- [main] d.r.l.s.SecuredServiceTest               : No active profile set, falling back to default profiles: default
+2018-05-29 06:35:04.130 user:  INFO 2422 --- [main] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@a52ca2e: startup date [Tue May 29 06:35:04 CEST 2018]; root of context hierarchy
+2018-05-29 06:35:05.594 user:  INFO 2422 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$e33d1c36] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-05-29 06:35:05.656 user:  INFO 2422 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration$$EnhancerBySpringCGLIB$$7beae470] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-05-29 06:35:05.666 user:  INFO 2422 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-05-29 06:35:05.668 user:  INFO 2422 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@4ba02375' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-05-29 06:35:05.690 user:  INFO 2422 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration$$EnhancerBySpringCGLIB$$a0bf8722] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-05-29 06:35:05.709 user:  INFO 2422 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-05-29 06:35:06.258 user:  INFO 2422 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-05-29 06:35:06.623 user:  INFO 2422 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2018-05-29 06:35:06.732 user:  INFO 2422 --- [main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-05-29 06:35:06.770 user:  INFO 2422 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-05-29 06:35:06.995 user:  INFO 2422 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.2.17.Final}
+2018-05-29 06:35:06.997 user:  INFO 2422 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-05-29 06:35:07.069 user:  INFO 2422 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-05-29 06:35:07.337 user:  INFO 2422 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-05-29 06:35:08.344 user:  INFO 2422 --- [main] o.h.t.schema.internal.SchemaCreatorImpl  : HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@15586843'
+2018-05-29 06:35:08.349 user:  INFO 2422 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-05-29 06:35:10.332 user:  INFO 2422 --- [main] d.r.l.s.SecuredServiceTest               : Started SecuredServiceTest in 6.266 seconds (JVM running for 11.081)
+2018-05-29 06:35:10.780 user:  INFO 2422 --- [main] o.t.d.DockerClientProviderStrategy       : Loaded org.testcontainers.dockerclient.UnixSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2018-05-29 06:35:27.210 user: ERROR 2422 --- [testcontainers-netty-3-4] c.g.d.core.async.ResultCallbackTemplate  : Error during callback
+
+com.github.dockerjava.api.exception.InternalServerErrorException: dial unix /Users/Philip/Library/Containers/com.docker.docker/Data/vms/0/00000003.00000948: connect: connection refused
+
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:109) [testcontainers-1.7.3.jar:na]
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:33) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:105) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:438) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:310) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:284) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:253) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1342) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:934) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.kqueue.AbstractKQueueStreamChannel$KQueueStreamUnsafe.readReady(AbstractKQueueStreamChannel.java:593) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.kqueue.KQueueDomainSocketChannel$KQueueDomainUnsafe.readReady(KQueueDomainSocketChannel.java:131) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.kqueue.AbstractKQueueChannel$AbstractKQueueUnsafe.readReady(AbstractKQueueChannel.java:367) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.kqueue.KQueueEventLoop.processReady(KQueueEventLoop.java:198) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.kqueue.KQueueEventLoop.run(KQueueEventLoop.java:270) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:138) [testcontainers-1.7.3.jar:na]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_152]
+
+2018-05-29 06:35:32.418 user: ERROR 2422 --- [testcontainers-netty-5-1] c.g.d.core.async.ResultCallbackTemplate  : Error during callback
+
+com.github.dockerjava.api.exception.DockerException: Bad response from Docker engine
+
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:111) [testcontainers-1.7.3.jar:na]
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:33) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:105) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:438) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:310) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:284) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:253) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1342) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:934) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:134) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:645) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:580) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:497) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:459) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:138) [testcontainers-1.7.3.jar:na]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_152]
+
+2018-05-29 06:35:32.929 user: ERROR 2422 --- [testcontainers-netty-5-2] c.g.d.core.async.ResultCallbackTemplate  : Error during callback
+
+com.github.dockerjava.api.exception.DockerException: Bad response from Docker engine
+
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:111) [testcontainers-1.7.3.jar:na]
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:33) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:105) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:438) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:310) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:284) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:253) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1342) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:934) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:134) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:645) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:580) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:497) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:459) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:138) [testcontainers-1.7.3.jar:na]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_152]
+
+2018-05-29 06:35:33.443 user: ERROR 2422 --- [testcontainers-netty-5-3] c.g.d.core.async.ResultCallbackTemplate  : Error during callback
+
+com.github.dockerjava.api.exception.DockerException: Bad response from Docker engine
+
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:111) [testcontainers-1.7.3.jar:na]
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:33) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:105) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:438) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:310) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:284) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:253) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1342) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:934) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:134) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:645) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:580) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:497) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:459) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:138) [testcontainers-1.7.3.jar:na]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_152]
+
+2018-05-29 06:35:33.952 user: ERROR 2422 --- [testcontainers-netty-5-4] c.g.d.core.async.ResultCallbackTemplate  : Error during callback
+
+com.github.dockerjava.api.exception.DockerException: Bad response from Docker engine
+
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:111) [testcontainers-1.7.3.jar:na]
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:33) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:105) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:438) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:310) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:284) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:253) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1342) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:934) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:134) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:645) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:580) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:497) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:459) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:138) [testcontainers-1.7.3.jar:na]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_152]
+
+2018-05-29 06:35:34.460 user: ERROR 2422 --- [testcontainers-netty-5-5] c.g.d.core.async.ResultCallbackTemplate  : Error during callback
+
+com.github.dockerjava.api.exception.DockerException: Bad response from Docker engine
+
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:111) [testcontainers-1.7.3.jar:na]
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:33) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:105) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:438) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:310) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:284) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:253) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1342) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:934) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:134) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:645) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:580) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:497) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:459) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:138) [testcontainers-1.7.3.jar:na]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_152]
+
+2018-05-29 06:35:34.971 user: ERROR 2422 --- [testcontainers-netty-5-6] c.g.d.core.async.ResultCallbackTemplate  : Error during callback
+
+com.github.dockerjava.api.exception.DockerException: Bad response from Docker engine
+
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:111) [testcontainers-1.7.3.jar:na]
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:33) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:105) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:438) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:310) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:284) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:253) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1342) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:934) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:134) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:645) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:580) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:497) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:459) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:138) [testcontainers-1.7.3.jar:na]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_152]
+
+2018-05-29 06:35:35.483 user: ERROR 2422 --- [testcontainers-netty-5-7] c.g.d.core.async.ResultCallbackTemplate  : Error during callback
+
+com.github.dockerjava.api.exception.DockerException: Bad response from Docker engine
+
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:111) [testcontainers-1.7.3.jar:na]
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:33) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:105) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:438) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:310) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:284) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:253) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1342) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:934) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:134) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:645) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:580) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:497) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:459) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:138) [testcontainers-1.7.3.jar:na]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_152]
+
+2018-05-29 06:35:35.990 user: ERROR 2422 --- [testcontainers-netty-5-8] c.g.d.core.async.ResultCallbackTemplate  : Error during callback
+
+com.github.dockerjava.api.exception.DockerException: Bad response from Docker engine
+
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:111) [testcontainers-1.7.3.jar:na]
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:33) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:105) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:438) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:310) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:284) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:253) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1342) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:934) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:134) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:645) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:580) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:497) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:459) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:138) [testcontainers-1.7.3.jar:na]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_152]
+
+2018-05-29 06:35:36.499 user: ERROR 2422 --- [testcontainers-netty-5-1] c.g.d.core.async.ResultCallbackTemplate  : Error during callback
+
+com.github.dockerjava.api.exception.DockerException: Bad response from Docker engine
+
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:111) [testcontainers-1.7.3.jar:na]
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:33) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:105) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:438) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:310) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:284) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:253) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1342) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:934) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:134) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:645) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:580) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:497) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:459) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:138) [testcontainers-1.7.3.jar:na]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_152]
+
+2018-05-29 06:35:37.009 user: ERROR 2422 --- [testcontainers-netty-5-2] c.g.d.core.async.ResultCallbackTemplate  : Error during callback
+
+com.github.dockerjava.api.exception.DockerException: Bad response from Docker engine
+
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:111) [testcontainers-1.7.3.jar:na]
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:33) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:105) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:438) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:310) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:284) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:253) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1342) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:934) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:134) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:645) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:580) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:497) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:459) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:138) [testcontainers-1.7.3.jar:na]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_152]
+
+2018-05-29 06:35:37.514 user: ERROR 2422 --- [testcontainers-netty-5-3] c.g.d.core.async.ResultCallbackTemplate  : Error during callback
+
+com.github.dockerjava.api.exception.DockerException: Bad response from Docker engine
+
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:111) [testcontainers-1.7.3.jar:na]
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:33) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:105) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:438) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:310) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:284) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:253) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1342) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:934) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:134) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:645) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:580) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:497) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:459) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:138) [testcontainers-1.7.3.jar:na]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_152]
+
+2018-05-29 06:35:38.020 user: ERROR 2422 --- [testcontainers-netty-5-4] c.g.d.core.async.ResultCallbackTemplate  : Error during callback
+
+com.github.dockerjava.api.exception.DockerException: Bad response from Docker engine
+
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:111) [testcontainers-1.7.3.jar:na]
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:33) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:105) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:438) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:310) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:284) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:253) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1342) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:934) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:134) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:645) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:580) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:497) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:459) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:138) [testcontainers-1.7.3.jar:na]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_152]
+
+2018-05-29 06:35:38.527 user: ERROR 2422 --- [testcontainers-netty-5-5] c.g.d.core.async.ResultCallbackTemplate  : Error during callback
+
+com.github.dockerjava.api.exception.DockerException: Bad response from Docker engine
+
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:111) [testcontainers-1.7.3.jar:na]
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:33) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:105) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:438) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:310) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:284) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:253) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1342) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:934) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:134) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:645) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:580) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:497) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:459) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:138) [testcontainers-1.7.3.jar:na]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_152]
+
+2018-05-29 06:35:39.037 user: ERROR 2422 --- [testcontainers-netty-5-6] c.g.d.core.async.ResultCallbackTemplate  : Error during callback
+
+com.github.dockerjava.api.exception.DockerException: Bad response from Docker engine
+
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:111) [testcontainers-1.7.3.jar:na]
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:33) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:105) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:438) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:310) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:284) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:253) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1342) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:934) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:134) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:645) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:580) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:497) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:459) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:138) [testcontainers-1.7.3.jar:na]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_152]
+
+2018-05-29 06:35:39.546 user: ERROR 2422 --- [testcontainers-netty-5-7] c.g.d.core.async.ResultCallbackTemplate  : Error during callback
+
+com.github.dockerjava.api.exception.DockerException: Bad response from Docker engine
+
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:111) [testcontainers-1.7.3.jar:na]
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:33) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:105) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:438) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:310) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:284) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:253) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1342) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:934) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:134) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:645) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:580) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:497) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:459) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:138) [testcontainers-1.7.3.jar:na]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_152]
+
+2018-05-29 06:35:40.054 user: ERROR 2422 --- [testcontainers-netty-5-8] c.g.d.core.async.ResultCallbackTemplate  : Error during callback
+
+com.github.dockerjava.api.exception.DockerException: Bad response from Docker engine
+
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:111) [testcontainers-1.7.3.jar:na]
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:33) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:105) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:438) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:310) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:284) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:253) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1342) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:934) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:134) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:645) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:580) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:497) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:459) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:138) [testcontainers-1.7.3.jar:na]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_152]
+
+2018-05-29 06:35:40.559 user: ERROR 2422 --- [testcontainers-netty-5-1] c.g.d.core.async.ResultCallbackTemplate  : Error during callback
+
+com.github.dockerjava.api.exception.DockerException: Bad response from Docker engine
+
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:111) [testcontainers-1.7.3.jar:na]
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:33) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:105) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:438) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:310) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:284) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:253) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1342) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:934) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:134) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:645) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:580) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:497) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:459) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:138) [testcontainers-1.7.3.jar:na]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_152]
+
+2018-05-29 06:35:41.066 user: ERROR 2422 --- [testcontainers-netty-5-2] c.g.d.core.async.ResultCallbackTemplate  : Error during callback
+
+com.github.dockerjava.api.exception.DockerException: Bad response from Docker engine
+
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:111) [testcontainers-1.7.3.jar:na]
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:33) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:105) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:438) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:310) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:284) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:253) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1342) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:934) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:134) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:645) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:580) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:497) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:459) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:138) [testcontainers-1.7.3.jar:na]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_152]
+
+2018-05-29 06:35:41.573 user: ERROR 2422 --- [testcontainers-netty-5-3] c.g.d.core.async.ResultCallbackTemplate  : Error during callback
+
+com.github.dockerjava.api.exception.DockerException: Bad response from Docker engine
+
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:111) [testcontainers-1.7.3.jar:na]
+	at com.github.dockerjava.netty.handler.HttpResponseHandler.channelRead0(HttpResponseHandler.java:33) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:105) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:438) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:310) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:284) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:253) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1342) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:934) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:134) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:645) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:580) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:497) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:459) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858) [testcontainers-1.7.3.jar:na]
+	at org.testcontainers.shaded.io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:138) [testcontainers-1.7.3.jar:na]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_152]
+
+2018-05-29 06:35:41.930 user:  INFO 2422 --- [main] .t.d.DockerMachineClientProviderStrategy : Found docker-machine, and will use machine named 
+2018-05-29 06:35:41.958 user: ERROR 2422 --- [main] o.t.d.DockerClientProviderStrategy       : Could not find a valid Docker environment. Please check configuration. Attempted configurations were:
+2018-05-29 06:35:41.958 user: ERROR 2422 --- [main] o.t.d.DockerClientProviderStrategy       :     UnixSocketClientProviderStrategy: failed with exception InvalidConfigurationException (ping failed). Root cause NativeConnectException (syscall:connect(..) failed: Connection refused)
+2018-05-29 06:35:41.958 user: ERROR 2422 --- [main] o.t.d.DockerClientProviderStrategy       :     UnixSocketClientProviderStrategy: failed with exception InvalidConfigurationException (ping failed). Root cause InternalServerErrorException (dial unix /Users/Philip/Library/Containers/com.docker.docker/Data/vms/0/00000003.00000948: connect: connection refused
+)
+2018-05-29 06:35:41.958 user: ERROR 2422 --- [main] o.t.d.DockerClientProviderStrategy       :     ProxiedUnixSocketClientProviderStrategy: failed with exception InvalidConfigurationException (ping failed). Root cause DockerException (Bad response from Docker engine
+)
+2018-05-29 06:35:41.958 user: ERROR 2422 --- [main] o.t.d.DockerClientProviderStrategy       :     DockerMachineClientProviderStrategy: failed with exception InvalidConfigurationException (Exception when executing docker-machine status )
+2018-05-29 06:35:41.958 user: ERROR 2422 --- [main] o.t.d.DockerClientProviderStrategy       : As no valid configuration was found, execution cannot continue
+2018-05-29 06:35:41.973 user:  INFO 2422 --- [main] .b.t.a.w.s.WebMvcTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [de.rieckpil.learning.springboot2book.ApplicationTest], using SpringBootContextLoader
+2018-05-29 06:35:41.974 user:  INFO 2422 --- [main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [de.rieckpil.learning.springboot2book.ApplicationTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2018-05-29 06:35:41.975 user:  INFO 2422 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [de.rieckpil.learning.springboot2book.ApplicationTest]: ApplicationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2018-05-29 06:35:41.981 user:  INFO 2422 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration de.rieckpil.learning.springboot2book.SpringBoot2BookApplication for test class de.rieckpil.learning.springboot2book.ApplicationTest
+2018-05-29 06:35:41.994 user:  INFO 2422 --- [main] .b.t.a.w.s.WebMvcTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener]
+2018-05-29 06:35:41.995 user:  INFO 2422 --- [main] .b.t.a.w.s.WebMvcTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@24f3fb87, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@c7673ae, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@113c4ad6, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@7be859de, org.springframework.test.context.support.DirtiesContextTestExecutionListener@40fcaae7, org.springframework.test.context.transaction.TransactionalTestExecutionListener@7fa85a55, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@cb1c58c, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@352e4b6d, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@10a064bd, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@2de7fe0e, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@2ff8d39b, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@684a802a, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@7b5c9412, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@69d902f9]
+2018-05-29 06:35:42.063 user:  INFO 2422 --- [main] d.r.l.springboot2book.ApplicationTest    : Starting ApplicationTest on Philips-MBP.fritz.box with PID 2422 (started by Philip in /Users/Philip/git/learning-samples/spring-boot-2-book)
+2018-05-29 06:35:42.065 user:  INFO 2422 --- [main] d.r.l.springboot2book.ApplicationTest    : No active profile set, falling back to default profiles: default
+2018-05-29 06:35:42.070 user:  INFO 2422 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@50ef2906: startup date [Tue May 29 06:35:42 CEST 2018]; root of context hierarchy
+2018-05-29 06:35:42.627 user:  WARN 2422 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'helloWorldController': Unsatisfied dependency expressed through field 'personRepository'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'de.rieckpil.learning.springboot2book.repositories.PersonRepository' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2018-05-29 06:35:42.632 user:  INFO 2422 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2018-05-29 06:35:42.680 user: ERROR 2422 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field personRepository in de.rieckpil.learning.springboot2book.HelloWorldController required a bean of type 'de.rieckpil.learning.springboot2book.repositories.PersonRepository' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'de.rieckpil.learning.springboot2book.repositories.PersonRepository' in your configuration.
+
+2018-05-29 06:35:42.751 user:  INFO 2422 --- [main] d.r.l.springboot2book.ApplicationTest    : Starting ApplicationTest on Philips-MBP.fritz.box with PID 2422 (started by Philip in /Users/Philip/git/learning-samples/spring-boot-2-book)
+2018-05-29 06:35:42.753 user:  INFO 2422 --- [main] d.r.l.springboot2book.ApplicationTest    : No active profile set, falling back to default profiles: default
+2018-05-29 06:35:42.757 user:  INFO 2422 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@77f04d1a: startup date [Tue May 29 06:35:42 CEST 2018]; root of context hierarchy
+2018-05-29 06:35:43.254 user:  WARN 2422 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'helloWorldController': Unsatisfied dependency expressed through field 'personRepository'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'de.rieckpil.learning.springboot2book.repositories.PersonRepository' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2018-05-29 06:35:43.256 user:  INFO 2422 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2018-05-29 06:35:43.307 user: ERROR 2422 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field personRepository in de.rieckpil.learning.springboot2book.HelloWorldController required a bean of type 'de.rieckpil.learning.springboot2book.repositories.PersonRepository' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'de.rieckpil.learning.springboot2book.repositories.PersonRepository' in your configuration.
+
+2018-05-29 06:35:43.309 user: ERROR 2422 --- [main] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@7be859de] to prepare test instance [de.rieckpil.learning.springboot2book.ApplicationTest@21f479cd]
+
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:125) ~[spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:108) ~[spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:117) ~[spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:83) ~[spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener.prepareTestInstance(SpringBootDependencyInjectionTestExecutionListener.java:44) ~[spring-boot-test-autoconfigure-2.0.2.RELEASE.jar:2.0.2.RELEASE]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:246) ~[spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:227) [spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:289) [spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:291) [spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:246) [spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97) [spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268) [junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61) [spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70) [spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363) [junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190) [spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:365) [surefire-junit4-2.21.0.jar:2.21.0]
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:273) [surefire-junit4-2.21.0.jar:2.21.0]
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:238) [surefire-junit4-2.21.0.jar:2.21.0]
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:159) [surefire-junit4-2.21.0.jar:2.21.0]
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:379) [surefire-booter-2.21.0.jar:2.21.0]
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:340) [surefire-booter-2.21.0.jar:2.21.0]
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:125) [surefire-booter-2.21.0.jar:2.21.0]
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:413) [surefire-booter-2.21.0.jar:2.21.0]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'helloWorldController': Unsatisfied dependency expressed through field 'personRepository'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'de.rieckpil.learning.springboot2book.repositories.PersonRepository' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:587) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:91) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:373) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1348) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:578) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:501) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:760) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:869) ~[spring-context-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550) ~[spring-context-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:759) ~[spring-boot-2.0.2.RELEASE.jar:2.0.2.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:395) ~[spring-boot-2.0.2.RELEASE.jar:2.0.2.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:327) ~[spring-boot-2.0.2.RELEASE.jar:2.0.2.RELEASE]
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:139) ~[spring-boot-test-2.0.2.RELEASE.jar:2.0.2.RELEASE]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:99) ~[spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:117) ~[spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	... 28 common frames omitted
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'de.rieckpil.learning.springboot2book.repositories.PersonRepository' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1509) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1104) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1065) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:584) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	... 46 common frames omitted
+
+2018-05-29 06:35:43.314 user:  INFO 2422 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [de.rieckpil.learning.springboot2book.SpringBoot2BookApplicationTests], using SpringBootContextLoader
+2018-05-29 06:35:43.316 user:  INFO 2422 --- [main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [de.rieckpil.learning.springboot2book.SpringBoot2BookApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+2018-05-29 06:35:43.316 user:  INFO 2422 --- [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [de.rieckpil.learning.springboot2book.SpringBoot2BookApplicationTests]: SpringBoot2BookApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2018-05-29 06:35:43.319 user:  INFO 2422 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration de.rieckpil.learning.springboot2book.SpringBoot2BookApplication for test class de.rieckpil.learning.springboot2book.SpringBoot2BookApplicationTests
+2018-05-29 06:35:43.324 user:  INFO 2422 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener]
+2018-05-29 06:35:43.326 user:  INFO 2422 --- [main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@fe38c0e, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@6167c42f, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@2cbc2db2, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@2de96eba, org.springframework.test.context.support.DirtiesContextTestExecutionListener@3ef914f5, org.springframework.test.context.transaction.TransactionalTestExecutionListener@61e0f9b9, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@2c7c898a, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@4a86be01, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@3cae4518, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@5a654e05, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@121dac1a, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@6d946eee, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@23dc70c1, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@53b907d9]
+2018-05-29 06:35:43.376 user:  INFO 2422 --- [main] d.r.l.s.SpringBoot2BookApplicationTests  : Starting SpringBoot2BookApplicationTests on Philips-MBP.fritz.box with PID 2422 (started by Philip in /Users/Philip/git/learning-samples/spring-boot-2-book)
+2018-05-29 06:35:43.377 user:  INFO 2422 --- [main] d.r.l.s.SpringBoot2BookApplicationTests  : No active profile set, falling back to default profiles: default
+2018-05-29 06:35:43.381 user:  INFO 2422 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@52963839: startup date [Tue May 29 06:35:43 CEST 2018]; root of context hierarchy
+2018-05-29 06:35:44.945 user:  INFO 2422 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$e33d1c36] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-05-29 06:35:44.954 user:  INFO 2422 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration$$EnhancerBySpringCGLIB$$7beae470] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-05-29 06:35:44.957 user:  INFO 2422 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-05-29 06:35:44.958 user:  INFO 2422 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@44580de0' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-05-29 06:35:44.967 user:  INFO 2422 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration$$EnhancerBySpringCGLIB$$a0bf8722] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-05-29 06:35:44.969 user:  INFO 2422 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-05-29 06:35:45.201 user:  INFO 2422 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2018-05-29 06:35:45.211 user:  INFO 2422 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2018-05-29 06:35:45.229 user:  INFO 2422 --- [main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-05-29 06:35:45.230 user:  INFO 2422 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-05-29 06:35:45.254 user:  INFO 2422 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-05-29 06:35:45.383 user:  INFO 2422 --- [main] o.h.t.schema.internal.SchemaCreatorImpl  : HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@15586843'
+2018-05-29 06:35:45.384 user:  INFO 2422 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-05-29 06:35:46.693 user:  INFO 2422 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-05-29 06:35:47.260 user:  INFO 2422 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@52963839: startup date [Tue May 29 06:35:43 CEST 2018]; root of context hierarchy
+2018-05-29 06:35:47.484 user:  WARN 2422 --- [main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2018-05-29 06:35:47.593 user:  INFO 2422 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/locale],methods=[GET]}" onto public java.lang.String de.rieckpil.learning.springboot2book.HelloWorldController.getLocale(java.util.Locale)
+2018-05-29 06:35:47.595 user:  INFO 2422 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/hello],methods=[GET]}" onto public java.lang.String de.rieckpil.learning.springboot2book.HelloWorldController.helloWorld(java.lang.String)
+2018-05-29 06:35:47.595 user:  INFO 2422 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/persons],methods=[GET]}" onto public java.util.List<de.rieckpil.learning.springboot2book.entities.Person> de.rieckpil.learning.springboot2book.HelloWorldController.getPersons()
+2018-05-29 06:35:47.596 user:  INFO 2422 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/image],methods=[GET]}" onto public org.springframework.http.ResponseEntity<org.springframework.core.io.Resource> de.rieckpil.learning.springboot2book.HelloWorldController.getImage() throws java.io.IOException
+2018-05-29 06:35:47.600 user:  INFO 2422 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/greeting],methods=[GET]}" onto public java.lang.String de.rieckpil.learning.springboot2book.SecuredController.getGreeting(java.security.Principal)
+2018-05-29 06:35:47.601 user:  INFO 2422 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/greeting-secret],methods=[GET]}" onto public java.lang.String de.rieckpil.learning.springboot2book.SecuredController.getSecretGreeting(java.security.Principal)
+2018-05-29 06:35:47.609 user:  INFO 2422 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-05-29 06:35:47.610 user:  INFO 2422 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-05-29 06:35:47.724 user:  INFO 2422 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-05-29 06:35:47.725 user:  INFO 2422 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-05-29 06:35:48.878 user:  INFO 2422 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/**'], [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1259b2a5, org.springframework.security.web.context.SecurityContextPersistenceFilter@28ffa527, org.springframework.security.web.header.HeaderWriterFilter@1a1dd8eb, org.springframework.security.web.authentication.logout.LogoutFilter@321558f8, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@6d514259, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@463746eb, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3e729d46, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6779af40, org.springframework.security.web.session.SessionManagementFilter@3305897c, org.springframework.security.web.access.ExceptionTranslationFilter@c194c4e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@155767a7]
+2018-05-29 06:35:48.996 user:  INFO 2422 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2018-05-29 06:35:49.008 user:  INFO 2422 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/logfile],methods=[GET],produces=[application/octet-stream]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2018-05-29 06:35:49.009 user:  INFO 2422 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/loggers],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2018-05-29 06:35:49.010 user:  INFO 2422 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/loggers/{name}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2018-05-29 06:35:49.011 user:  INFO 2422 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/loggers/{name}],methods=[POST],consumes=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2018-05-29 06:35:49.012 user:  INFO 2422 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-05-29 06:35:49.104 user:  INFO 2422 --- [main] d.r.l.s.SpringBoot2BookApplicationTests  : Started SpringBoot2BookApplicationTests in 5.774 seconds (JVM running for 49.851)
+2018-05-29 06:35:49.509 user:  INFO 2422 --- [Thread-7] s.c.a.AnnotationConfigApplicationContext : Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@a52ca2e: startup date [Tue May 29 06:35:04 CEST 2018]; root of context hierarchy
+2018-05-29 06:35:49.515 user:  INFO 2422 --- [Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2018-05-29 06:35:49.518 user:  INFO 2422 --- [Thread-7] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed drop of schema as part of SessionFactory shut-down'
+2018-05-29 06:35:49.523 user:  INFO 2422 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2018-05-29 06:35:49.529 user:  INFO 2422 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2018-05-29 06:35:49.552 user:  INFO 2422 --- [Thread-18] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@52963839: startup date [Tue May 29 06:35:43 CEST 2018]; root of context hierarchy
+2018-05-29 06:35:49.570 user:  INFO 2422 --- [Thread-0] o.s.c.support.GenericApplicationContext  : Closing org.springframework.context.support.GenericApplicationContext@69930714: startup date [Tue May 29 06:35:00 CEST 2018]; root of context hierarchy
+2018-05-29 06:35:49.576 user:  INFO 2422 --- [Thread-18] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2018-05-29 06:35:49.577 user:  INFO 2422 --- [Thread-18] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed drop of schema as part of SessionFactory shut-down'
+2018-05-29 06:35:49.579 user:  INFO 2422 --- [Thread-18] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2018-05-29 06:35:49.583 user:  INFO 2422 --- [Thread-18] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2018-05-29 06:37:51.938 user:  INFO 2731 --- [main] d.r.l.s.PersonControllerIT               : Starting PersonControllerIT on Philips-MBP.fritz.box with PID 2731 (started by Philip in /Users/Philip/git/learning-samples/spring-boot-2-book)
+2018-05-29 06:37:51.957 user:  INFO 2731 --- [main] d.r.l.s.PersonControllerIT               : No active profile set, falling back to default profiles: default
+2018-05-29 06:37:52.245 user:  INFO 2731 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@225129c: startup date [Tue May 29 06:37:52 CEST 2018]; root of context hierarchy
+2018-05-29 06:37:55.847 user:  INFO 2731 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-05-29 06:37:56.506 user:  INFO 2731 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@225129c: startup date [Tue May 29 06:37:52 CEST 2018]; root of context hierarchy
+2018-05-29 06:37:56.657 user:  INFO 2731 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/hello],methods=[GET]}" onto public java.lang.String de.rieckpil.learning.springboot2book.HelloWorldController.helloWorld(java.lang.String)
+2018-05-29 06:37:56.658 user:  INFO 2731 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/persons],methods=[GET]}" onto public java.util.List<de.rieckpil.learning.springboot2book.entities.Person> de.rieckpil.learning.springboot2book.HelloWorldController.getPersons()
+2018-05-29 06:37:56.659 user:  INFO 2731 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/image],methods=[GET]}" onto public org.springframework.http.ResponseEntity<org.springframework.core.io.Resource> de.rieckpil.learning.springboot2book.HelloWorldController.getImage() throws java.io.IOException
+2018-05-29 06:37:56.659 user:  INFO 2731 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/locale],methods=[GET]}" onto public java.lang.String de.rieckpil.learning.springboot2book.HelloWorldController.getLocale(java.util.Locale)
+2018-05-29 06:37:56.660 user:  INFO 2731 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/greeting],methods=[GET]}" onto public java.lang.String de.rieckpil.learning.springboot2book.SecuredController.getGreeting(java.security.Principal)
+2018-05-29 06:37:56.662 user:  INFO 2731 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/greeting-secret],methods=[GET]}" onto public java.lang.String de.rieckpil.learning.springboot2book.SecuredController.getSecretGreeting(java.security.Principal)
+2018-05-29 06:37:56.665 user:  INFO 2731 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-05-29 06:37:56.666 user:  INFO 2731 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-05-29 06:37:56.737 user:  INFO 2731 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-05-29 06:37:56.738 user:  INFO 2731 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-05-29 06:37:57.624 user:  INFO 2731 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5981f4a6, org.springframework.security.web.context.SecurityContextPersistenceFilter@71c17a57, org.springframework.security.web.header.HeaderWriterFilter@7f5b9db, org.springframework.security.web.csrf.CsrfFilter@5d8ab698, org.springframework.security.web.authentication.logout.LogoutFilter@432f521f, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@5a75ec37, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@329bad59, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@5a8ab2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1e0a864d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@527fc8e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@63dfada0, org.springframework.security.web.session.SessionManagementFilter@37045b48, org.springframework.security.web.access.ExceptionTranslationFilter@80bfa9d, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@26c89563]
+2018-05-29 06:37:57.698 user:  INFO 2731 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
+2018-05-29 06:37:57.699 user:  INFO 2731 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2018-05-29 06:37:57.725 user:  INFO 2731 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 25 ms
+2018-05-29 06:37:57.804 user:  INFO 2731 --- [main] d.r.l.s.PersonControllerIT               : Started PersonControllerIT in 7.031 seconds (JVM running for 10.154)
+2018-05-29 06:37:58.343 user:  INFO 2731 --- [Thread-2] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@225129c: startup date [Tue May 29 06:37:52 CEST 2018]; root of context hierarchy
