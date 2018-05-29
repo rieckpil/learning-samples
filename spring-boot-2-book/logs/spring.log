@@ -948,3 +948,138 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 2018-05-29 06:37:57.725 user:  INFO 2731 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 25 ms
 2018-05-29 06:37:57.804 user:  INFO 2731 --- [main] d.r.l.s.PersonControllerIT               : Started PersonControllerIT in 7.031 seconds (JVM running for 10.154)
 2018-05-29 06:37:58.343 user:  INFO 2731 --- [Thread-2] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@225129c: startup date [Tue May 29 06:37:52 CEST 2018]; root of context hierarchy
+2018-05-29 18:59:11.510 user:  INFO 1457 --- [main] d.r.l.s.SecuredControllerTest            : Starting SecuredControllerTest on Philips-MBP.fritz.box with PID 1457 (started by Philip in /Users/Philip/git/learning-samples/spring-boot-2-book)
+2018-05-29 18:59:11.515 user:  INFO 1457 --- [main] d.r.l.s.SecuredControllerTest            : No active profile set, falling back to default profiles: default
+2018-05-29 18:59:11.555 user:  INFO 1457 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@1f75a668: startup date [Tue May 29 18:59:11 CEST 2018]; root of context hierarchy
+2018-05-29 18:59:13.455 user:  WARN 1457 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'securedController': Unsatisfied dependency expressed through field 'securedService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'de.rieckpil.learning.springboot2book.SecuredService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2018-05-29 18:59:13.464 user:  INFO 1457 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2018-05-29 18:59:13.519 user: ERROR 1457 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field securedService in de.rieckpil.learning.springboot2book.SecuredController required a bean of type 'de.rieckpil.learning.springboot2book.SecuredService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'de.rieckpil.learning.springboot2book.SecuredService' in your configuration.
+
+2018-05-29 18:59:13.580 user:  INFO 1457 --- [main] d.r.l.s.SecuredControllerTest            : Starting SecuredControllerTest on Philips-MBP.fritz.box with PID 1457 (started by Philip in /Users/Philip/git/learning-samples/spring-boot-2-book)
+2018-05-29 18:59:13.583 user:  INFO 1457 --- [main] d.r.l.s.SecuredControllerTest            : No active profile set, falling back to default profiles: default
+2018-05-29 18:59:13.588 user:  INFO 1457 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@6bfdb014: startup date [Tue May 29 18:59:13 CEST 2018]; root of context hierarchy
+2018-05-29 18:59:14.005 user:  WARN 1457 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'securedController': Unsatisfied dependency expressed through field 'securedService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'de.rieckpil.learning.springboot2book.SecuredService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2018-05-29 18:59:14.007 user:  INFO 1457 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2018-05-29 18:59:14.042 user: ERROR 1457 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field securedService in de.rieckpil.learning.springboot2book.SecuredController required a bean of type 'de.rieckpil.learning.springboot2book.SecuredService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'de.rieckpil.learning.springboot2book.SecuredService' in your configuration.
+
+2018-05-29 18:59:14.051 user: ERROR 1457 --- [main] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6580cfdd] to prepare test instance [de.rieckpil.learning.springboot2book.SecuredControllerTest@14dd9eb7]
+
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:125) ~[spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:108) ~[spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:117) ~[spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:83) ~[spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener.prepareTestInstance(SpringBootDependencyInjectionTestExecutionListener.java:44) ~[spring-boot-test-autoconfigure-2.0.2.RELEASE.jar:2.0.2.RELEASE]
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:246) ~[spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:227) [spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:289) [spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) [junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:291) [spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:246) [spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97) [spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58) [junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268) [junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61) [spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70) [spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363) [junit-4.12.jar:4.12]
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190) [spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137) [junit-4.12.jar:4.12]
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68) [junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47) [junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242) [junit-rt.jar:na]
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70) [junit-rt.jar:na]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'securedController': Unsatisfied dependency expressed through field 'securedService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'de.rieckpil.learning.springboot2book.SecuredService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:587) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:91) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:373) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1348) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:578) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:501) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:760) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:869) ~[spring-context-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550) ~[spring-context-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:759) ~[spring-boot-2.0.2.RELEASE.jar:2.0.2.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:395) ~[spring-boot-2.0.2.RELEASE.jar:2.0.2.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:327) ~[spring-boot-2.0.2.RELEASE.jar:2.0.2.RELEASE]
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:139) ~[spring-boot-test-2.0.2.RELEASE.jar:2.0.2.RELEASE]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:99) ~[spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:117) ~[spring-test-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	... 25 common frames omitted
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'de.rieckpil.learning.springboot2book.SecuredService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1509) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1104) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1065) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:584) ~[spring-beans-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	... 43 common frames omitted
+
+2018-05-29 18:59:40.845 user:  INFO 1467 --- [main] d.r.l.s.SecuredControllerTest            : Starting SecuredControllerTest on Philips-MBP.fritz.box with PID 1467 (started by Philip in /Users/Philip/git/learning-samples/spring-boot-2-book)
+2018-05-29 18:59:40.850 user:  INFO 1467 --- [main] d.r.l.s.SecuredControllerTest            : No active profile set, falling back to default profiles: default
+2018-05-29 18:59:40.881 user:  INFO 1467 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@5a5338df: startup date [Tue May 29 18:59:40 CEST 2018]; root of context hierarchy
+2018-05-29 18:59:43.447 user:  INFO 1467 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-05-29 18:59:43.874 user:  INFO 1467 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@5a5338df: startup date [Tue May 29 18:59:40 CEST 2018]; root of context hierarchy
+2018-05-29 18:59:44.138 user:  INFO 1467 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/greeting-secret],methods=[GET]}" onto public java.lang.String de.rieckpil.learning.springboot2book.SecuredController.getSecretGreeting(java.security.Principal)
+2018-05-29 18:59:44.140 user:  INFO 1467 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/greeting],methods=[GET]}" onto public java.lang.String de.rieckpil.learning.springboot2book.SecuredController.getGreeting(java.security.Principal)
+2018-05-29 18:59:44.144 user:  INFO 1467 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-05-29 18:59:44.145 user:  INFO 1467 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-05-29 18:59:44.194 user:  INFO 1467 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-05-29 18:59:44.195 user:  INFO 1467 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-05-29 18:59:44.978 user:  INFO 1467 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6b350309, org.springframework.security.web.context.SecurityContextPersistenceFilter@59dc36d4, org.springframework.security.web.header.HeaderWriterFilter@a9f023e, org.springframework.security.web.csrf.CsrfFilter@7e74a380, org.springframework.security.web.authentication.logout.LogoutFilter@a451491, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@10f7c76, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@7fdab70c, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@5dd903be, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5679e96b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@77bbadc, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7ecec90d, org.springframework.security.web.session.SessionManagementFilter@4b200971, org.springframework.security.web.access.ExceptionTranslationFilter@620c8641, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5a6d30e2]
+2018-05-29 18:59:45.042 user:  INFO 1467 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
+2018-05-29 18:59:45.043 user:  INFO 1467 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2018-05-29 18:59:45.073 user:  INFO 1467 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 30 ms
+2018-05-29 18:59:45.205 user:  INFO 1467 --- [main] d.r.l.s.SecuredControllerTest            : Started SecuredControllerTest in 5.492 seconds (JVM running for 8.36)
+2018-05-29 18:59:45.491 user:  INFO 1467 --- [Thread-2] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@5a5338df: startup date [Tue May 29 18:59:40 CEST 2018]; root of context hierarchy
+2018-05-29 19:01:28.169 user:  INFO 1496 --- [main] d.r.l.s.SecuredControllerTest            : Starting SecuredControllerTest on Philips-MBP.fritz.box with PID 1496 (started by Philip in /Users/Philip/git/learning-samples/spring-boot-2-book)
+2018-05-29 19:01:28.173 user:  INFO 1496 --- [main] d.r.l.s.SecuredControllerTest            : No active profile set, falling back to default profiles: default
+2018-05-29 19:01:28.217 user:  INFO 1496 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@68d279ec: startup date [Tue May 29 19:01:28 CEST 2018]; root of context hierarchy
+2018-05-29 19:01:31.031 user:  INFO 1496 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-05-29 19:01:31.641 user:  INFO 1496 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@68d279ec: startup date [Tue May 29 19:01:28 CEST 2018]; root of context hierarchy
+2018-05-29 19:01:31.956 user:  INFO 1496 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/greeting],methods=[GET]}" onto public java.lang.String de.rieckpil.learning.springboot2book.SecuredController.getGreeting(java.security.Principal)
+2018-05-29 19:01:31.958 user:  INFO 1496 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/greeting-secret],methods=[GET]}" onto public java.lang.String de.rieckpil.learning.springboot2book.SecuredController.getSecretGreeting(java.security.Principal)
+2018-05-29 19:01:31.961 user:  INFO 1496 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-05-29 19:01:31.963 user:  INFO 1496 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-05-29 19:01:32.016 user:  INFO 1496 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-05-29 19:01:32.017 user:  INFO 1496 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-05-29 19:01:32.887 user:  INFO 1496 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3cd9aa64, org.springframework.security.web.context.SecurityContextPersistenceFilter@a92be4f, org.springframework.security.web.header.HeaderWriterFilter@1422ac7f, org.springframework.security.web.csrf.CsrfFilter@4b200971, org.springframework.security.web.authentication.logout.LogoutFilter@50850539, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4613311f, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@7baf1f5a, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@7724704f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@337bbfdf, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6cff61fc, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@42b84286, org.springframework.security.web.session.SessionManagementFilter@7bc44ce8, org.springframework.security.web.access.ExceptionTranslationFilter@6f94a5a5, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5a6fa56e]
+2018-05-29 19:01:32.980 user:  INFO 1496 --- [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
+2018-05-29 19:01:32.981 user:  INFO 1496 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2018-05-29 19:01:33.011 user:  INFO 1496 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 30 ms
+2018-05-29 19:01:33.135 user:  INFO 1496 --- [main] d.r.l.s.SecuredControllerTest            : Started SecuredControllerTest in 6.18 seconds (JVM running for 9.418)
+2018-05-29 19:01:33.471 user:  INFO 1496 --- [Thread-2] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@68d279ec: startup date [Tue May 29 19:01:28 CEST 2018]; root of context hierarchy
