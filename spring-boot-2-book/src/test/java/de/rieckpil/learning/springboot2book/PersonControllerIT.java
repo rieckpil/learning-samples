@@ -5,6 +5,7 @@ import de.rieckpil.learning.springboot2book.repositories.PersonRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.ComponentScan;
@@ -19,6 +20,12 @@ import java.util.Arrays;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Mockito.when;
+import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
+import static org.springframework.restdocs.operation.preprocess.Preprocessors.preprocessRequest;
+import static org.springframework.restdocs.operation.preprocess.Preprocessors.preprocessResponse;
+import static org.springframework.restdocs.operation.preprocess.Preprocessors.prettyPrint;
+import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
+import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -28,6 +35,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         type = FilterType.ASSIGNABLE_TYPE,
         classes = SecuredService.class
 ))
+@AutoConfigureRestDocs(
+        outputDir = "target/generated-snippets",
+        uriHost = "rieckpil.de",
+        uriPort = 8080
+)
 public class PersonControllerIT {
 
     @Autowired
@@ -72,7 +84,17 @@ public class PersonControllerIT {
                 .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$[0].lastName", equalTo(lastName.toUpperCase())))
                 .andExpect(jsonPath("$[0].id", equalTo(1)))
-                .andExpect(jsonPath("$[0].dob", equalTo(Year.now().getValue() - age)));
+                .andExpect(jsonPath("$[0].dob", equalTo(Year.now().getValue() - age)))
+                .andDo(document("persons/get",
+                        preprocessRequest(prettyPrint()),
+                        preprocessResponse(prettyPrint()),
+                        responseFields(
+                                fieldWithPath("[]").description("Liste aller Personen"),
+                                fieldWithPath("[].lastName").description("Nachname der Person"),
+                                fieldWithPath("[].id").description("Id der Person"),
+                                fieldWithPath("[].dob").description("Geburtsjahr der Person")
+
+                )));
 
     }
 }
