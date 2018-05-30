@@ -4,7 +4,7 @@ spring:
   security:
     user:
       name: philip
-      password: "{bcrypt}$2a$10$omOExa5kkG6JTnh3JY.pfOl2pTl6xdOdrNRp6pTbp20UxNnCRdBcK"
+      password: "{bcrypt}$2a$10$LVSXeub.faU.nO7VRuYzgud7Uj.kVAu5XajVAGDU.8huZ/m0BWlBO"
       roles: USER, ADMIN
   h2:
     console:
@@ -32,8 +32,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: 'loggers, logfile'
-  metrics:
-    export:
-      influx:
-        password:
+        include: '*'
+    jms:
+      exposure:
+        include: '*'
