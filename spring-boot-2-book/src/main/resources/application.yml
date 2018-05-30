@@ -36,3 +36,7 @@ management:
     jms:
       exposure:
         include: '*'
+info:
+  description: "@description@"
+  organization: "@organization.name@"
+  greeting: "Hello, Reader!"
