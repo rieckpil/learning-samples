@@ -11,6 +11,7 @@ public class SecuredService {
 
     @PreAuthorize("hasRole('SUPERADMIN')")
     public String getSecuredValue() {
+        System.out.println("User with SUPERADMIM role accessed secured space");
         return "Foo, bar";
     }
 

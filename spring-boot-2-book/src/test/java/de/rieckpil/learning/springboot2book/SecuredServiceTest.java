@@ -6,6 +6,7 @@ import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.rule.OutputCapture;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -15,7 +16,6 @@ import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
-
 public class SecuredServiceTest {
 
     @Autowired
@@ -23,6 +23,9 @@ public class SecuredServiceTest {
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
+
+    @Rule
+    public OutputCapture outputCapture = new OutputCapture();
 
     @Test
     @WithMockUser(
@@ -41,6 +44,9 @@ public class SecuredServiceTest {
     )
     public void testSecretGreetingShouldBeVisibleForNotSuperadmins() {
         String securedValue = securedService.getSecuredValue();
+
+        System.out.println("Caputerd following console logs: " + outputCapture.toString());
+
         assertNotNull(securedValue);
     }
 

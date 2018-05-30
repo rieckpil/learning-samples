@@ -271,3 +271,30 @@
 2018-05-30 05:59:41.247 user:  INFO 1321 --- [Thread-5] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed drop of schema as part of SessionFactory shut-down'
 2018-05-30 05:59:41.256 user:  INFO 1321 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2018-05-30 05:59:41.261 user:  INFO 1321 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2018-05-30 06:05:14.815 user:  INFO 1461 --- [main] d.r.l.s.SecuredServiceTest               : Starting SecuredServiceTest on Philips-MBP.fritz.box with PID 1461 (started by Philip in /Users/Philip/git/learning-samples/spring-boot-2-book)
+2018-05-30 06:05:14.822 user:  INFO 1461 --- [main] d.r.l.s.SecuredServiceTest               : No active profile set, falling back to default profiles: default
+2018-05-30 06:05:14.893 user:  INFO 1461 --- [main] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@275bf9b3: startup date [Wed May 30 06:05:14 CEST 2018]; root of context hierarchy
+2018-05-30 06:05:18.262 user:  INFO 1461 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$18712359] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-05-30 06:05:18.422 user:  INFO 1461 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration$$EnhancerBySpringCGLIB$$b11eeb93] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-05-30 06:05:18.456 user:  INFO 1461 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-05-30 06:05:18.458 user:  INFO 1461 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@35636217' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-05-30 06:05:18.469 user:  INFO 1461 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration$$EnhancerBySpringCGLIB$$d5f38e45] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-05-30 06:05:18.498 user:  INFO 1461 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-05-30 06:05:19.337 user:  INFO 1461 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-05-30 06:05:19.891 user:  INFO 1461 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2018-05-30 06:05:20.050 user:  INFO 1461 --- [main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-05-30 06:05:20.145 user:  INFO 1461 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-05-30 06:05:20.385 user:  INFO 1461 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.2.17.Final}
+2018-05-30 06:05:20.389 user:  INFO 1461 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-05-30 06:05:20.525 user:  INFO 1461 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-05-30 06:05:20.993 user:  INFO 1461 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-05-30 06:05:22.185 user:  INFO 1461 --- [main] o.h.t.schema.internal.SchemaCreatorImpl  : HHH000476: Executing import script 'org.hibernate.tool.schema.internal.exec.ScriptSourceInputNonExistentImpl@71560f51'
+2018-05-30 06:05:22.189 user:  INFO 1461 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-05-30 06:05:25.191 user:  INFO 1461 --- [main] d.r.l.s.SecuredServiceTest               : Started SecuredServiceTest in 11.988 seconds (JVM running for 16.293)
+2018-05-30 06:05:27.143 user:  INFO 1461 --- [Thread-4] s.c.a.AnnotationConfigApplicationContext : Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@275bf9b3: startup date [Wed May 30 06:05:14 CEST 2018]; root of context hierarchy
+2018-05-30 06:05:27.151 user:  INFO 1461 --- [Thread-4] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2018-05-30 06:05:27.152 user:  INFO 1461 --- [Thread-4] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed drop of schema as part of SessionFactory shut-down'
+2018-05-30 06:05:27.162 user:  INFO 1461 --- [Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2018-05-30 06:05:27.168 user:  INFO 1461 --- [Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
