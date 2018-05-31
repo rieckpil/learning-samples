@@ -537,3 +537,10 @@
 2018-05-31 18:21:56.067 user:  INFO 3727 --- [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
 2018-05-31 18:21:56.069 user:  INFO 3727 --- [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
 2018-05-31 18:21:56.086 user:  INFO 3727 --- [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 16 ms
+2018-05-31 18:29:36.295 user:  INFO 3727 --- [Thread-19] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@639c2c1d: startup date [Thu May 31 18:21:47 CEST 2018]; root of context hierarchy
+2018-05-31 18:29:36.301 user:  INFO 3727 --- [Thread-19] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2018-05-31 18:29:36.302 user:  INFO 3727 --- [Thread-19] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2018-05-31 18:29:36.304 user:  INFO 3727 --- [Thread-19] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2018-05-31 18:29:36.305 user:  INFO 3727 --- [Thread-19] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed drop of schema as part of SessionFactory shut-down'
+2018-05-31 18:29:36.314 user:  INFO 3727 --- [Thread-19] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2018-05-31 18:29:36.321 user:  INFO 3727 --- [Thread-19] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
