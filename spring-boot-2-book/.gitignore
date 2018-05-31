@@ -25,4 +25,4 @@
 /.nb-gradle/
 
 /tc/
-/logs/*.log
+logs/*.log
