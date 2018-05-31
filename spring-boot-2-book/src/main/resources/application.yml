@@ -36,6 +36,9 @@ management:
     jms:
       exposure:
         include: '*'
+  endpoint:
+    health:
+      show-details: always
 info:
   description: "@description@"
   organization: "@organization.name@"
