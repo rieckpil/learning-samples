@@ -1,5 +1,6 @@
 package de.rieckpil.learning.springboot2book.configuration;
 
+import de.rieckpil.learning.springboot2book.CustomActuatorEndpoint;
 import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.boot.actuate.health.HealthEndpoint;
 import org.springframework.boot.actuate.info.InfoEndpoint;
@@ -23,7 +24,8 @@ public class CustomHttpSecurityConfig  extends WebSecurityConfigurerAdapter {
                     .cacheControl().disable()
                 .and()
                 .authorizeRequests()
-                .requestMatchers(EndpointRequest.to(MetricsEndpoint.class, HealthEndpoint.class, InfoEndpoint.class))
+                .requestMatchers(EndpointRequest.to(MetricsEndpoint.class, HealthEndpoint.class, InfoEndpoint.class,
+                        CustomActuatorEndpoint.class))
                     .permitAll()
                 .requestMatchers(EndpointRequest.toAnyEndpoint())
                     .authenticated()

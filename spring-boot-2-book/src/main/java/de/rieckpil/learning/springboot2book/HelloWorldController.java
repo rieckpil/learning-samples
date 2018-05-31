@@ -2,6 +2,9 @@ package de.rieckpil.learning.springboot2book;
 
 import de.rieckpil.learning.springboot2book.entities.Person;
 import de.rieckpil.learning.springboot2book.repositories.PersonRepository;
+import io.micrometer.core.annotation.Timed;
+import io.micrometer.core.instrument.Gauge;
+import io.micrometer.core.instrument.MeterRegistry;
 import org.hibernate.validator.internal.constraintvalidators.bv.number.bound.MinValidatorForLong;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +25,7 @@ import java.security.Principal;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
+import java.util.concurrent.LinkedBlockingDeque;
 
 import static org.springframework.util.DigestUtils.md5DigestAsHex;
 
@@ -30,13 +34,16 @@ public class HelloWorldController {
 
     private Logger log = LoggerFactory.getLogger(this.getClass());
 
-    @Autowired
     private MessageSource messageSource;
-
-    @Autowired
     private PersonRepository personRepository;
 
+    public HelloWorldController(MessageSource messageSource, PersonRepository personRepository) {
+        this.messageSource = messageSource;
+        this.personRepository = personRepository;
+    }
+
     @GetMapping("/hello")
+    @Timed(value = "helloWorld.access", description = "helloWorld.access")
     public String helloWorld(@RequestParam final String name) {
 
         // change log level remotely:
