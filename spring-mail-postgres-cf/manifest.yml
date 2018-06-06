@@ -1,0 +1,8 @@
+---
+applications:
+- name: mail_example
+  memory: 1G
+  instances: 1
+  services:
+   - mail-sender
+   - mail-store
