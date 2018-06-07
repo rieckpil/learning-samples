@@ -1,5 +1,7 @@
 package de.rieckpil.learning.testcontainerssample;
 
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,7 +23,6 @@ import static org.junit.Assert.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = TestcontainersSampleApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ContextConfiguration(initializers = PersonBoundaryAllTest.Initializer.class)
 public class PersonBoundaryAllTest {
 
     @ClassRule
@@ -33,21 +34,13 @@ public class PersonBoundaryAllTest {
 
     public TestRestTemplate testRestTemplate = new TestRestTemplate();
 
-    public static class Initializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
+    @BeforeClass
+    public static void beforeClass() {
 
-        @Override
-        public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
+        System.setProperty("spring.datasource.url", postgreSQLContainer.getJdbcUrl());
+        System.setProperty("spring.datasource.password", postgreSQLContainer.getPassword());
+        System.setProperty("spring.datasource.username", postgreSQLContainer.getUsername());
 
-            System.out.println("##########" + postgreSQLContainer.getJdbcUrl());
-
-            TestPropertyValues values = TestPropertyValues.of(
-                    "spring.datasource.url=" + postgreSQLContainer.getJdbcUrl(),
-                    "spring.datasource.password=" + postgreSQLContainer.getPassword(),
-                    "spring.datasource.username=" + postgreSQLContainer.getUsername()
-            );
-
-            values.applyTo(configurableApplicationContext);
-        }
     }
 
     @Test
