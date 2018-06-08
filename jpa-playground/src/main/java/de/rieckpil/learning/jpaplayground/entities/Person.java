@@ -4,12 +4,14 @@ import de.rieckpil.learning.jpaplayground.auditing.AuditedEntity;
 import de.rieckpil.learning.jpaplayground.entities.Address;
 import de.rieckpil.learning.jpaplayground.entities.Passport;
 import lombok.Data;
+import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Audited
 @Data
 public class Person extends AuditedEntity {
 

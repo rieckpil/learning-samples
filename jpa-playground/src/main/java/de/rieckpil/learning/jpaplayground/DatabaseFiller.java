@@ -8,6 +8,8 @@ import de.rieckpil.learning.jpaplayground.repositories.PassportRepository;
 import de.rieckpil.learning.jpaplayground.repositories.PersonRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.data.history.Revision;
+import org.springframework.data.history.Revisions;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -35,6 +37,18 @@ public class DatabaseFiller implements CommandLineRunner {
         toUpdatePerson.setFirstName("Falsch");
         personRepository.save(toUpdatePerson);
 
+        Thread.sleep(1000 * 5);
+
+        Person toFixPerson = personRepository.findAll().get(0);
+        toFixPerson.setFirstName("Ausgebessert");
+        personRepository.save(toFixPerson);
+
+        Revisions<Integer, Person> revisions = personRepository.findRevisions(1L);
+
+        for (Revision<Integer, Person> revision : revisions) {
+
+            System.out.println("revision.getEntity().getFirstName() = " + revision.getEntity().getFirstName());
+        }
 
 
     }

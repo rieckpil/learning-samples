@@ -17,6 +17,7 @@ public class Auditor implements AuditorAware<String> {
 
     @Override
     public Optional<String> getCurrentAuditor() {
+        System.out.println("called");
         return Optional.of(this.user);
     }
 }
