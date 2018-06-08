@@ -43,12 +43,12 @@ public class DatabaseFiller implements CommandLineRunner {
         toFixPerson.setFirstName("Ausgebessert");
         personRepository.save(toFixPerson);
 
-        Revisions<Integer, Person> revisions = personRepository.findRevisions(1L);
+        /**Revisions<Integer, Person> revisions = personRepository.findRevisions(1L);
 
         for (Revision<Integer, Person> revision : revisions) {
 
             System.out.println("revision.getEntity().getFirstName() = " + revision.getEntity().getFirstName());
-        }
+        } */
 
 
     }
