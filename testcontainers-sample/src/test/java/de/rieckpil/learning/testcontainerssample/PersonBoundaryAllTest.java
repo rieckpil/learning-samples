@@ -43,6 +43,7 @@ public class PersonBoundaryAllTest {
 
     }
 
+
     @Test
     @Sql("/insertPersons.sql")
     public void testRestEndpointForAllPersons() {

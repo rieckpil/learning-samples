@@ -22,8 +22,8 @@
         <build.datasource.url>
             jdbc:postgresql://localhost:5432/pagila
         </build.datasource.url>
-        <build.datasource.username>spring</build.datasource.username>
-        <build.datasource.password>spring</build.datasource.password>
+        <build.datasource.username>postgres</build.datasource.username>
+        <build.datasource.password>postgres</build.datasource.password>
     </properties>
 
     <dependencies>
