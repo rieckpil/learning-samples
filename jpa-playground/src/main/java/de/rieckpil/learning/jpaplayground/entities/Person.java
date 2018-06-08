@@ -1,5 +1,8 @@
-package de.rieckpil.learning.jpaplayground;
+package de.rieckpil.learning.jpaplayground.entities;
 
+import de.rieckpil.learning.jpaplayground.auditing.AuditedEntity;
+import de.rieckpil.learning.jpaplayground.entities.Address;
+import de.rieckpil.learning.jpaplayground.entities.Passport;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -8,11 +11,7 @@ import java.util.List;
 
 @Entity
 @Data
-public class Person {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Person extends AuditedEntity {
 
     private String firstName;
     private String lastName;

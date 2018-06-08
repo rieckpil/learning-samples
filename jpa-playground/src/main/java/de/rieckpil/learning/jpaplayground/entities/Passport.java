@@ -1,16 +1,13 @@
-package de.rieckpil.learning.jpaplayground;
+package de.rieckpil.learning.jpaplayground.entities;
 
+import de.rieckpil.learning.jpaplayground.auditing.AuditedEntity;
 import lombok.Data;
 
 import javax.persistence.*;
 
 @Entity
 @Data
-public class Passport {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Passport extends AuditedEntity {
 
     private String passportId;
 
