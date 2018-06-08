@@ -9,6 +9,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Data
 @MappedSuperclass
@@ -30,4 +31,11 @@ public class AuditedEntity {
 
     @LastModifiedBy
     private String modifier;
+
+    private long random;
+
+    @PrePersist
+    public void prePersist() {
+        this.random = ThreadLocalRandom.current().nextLong();
+    }
 }
