@@ -37,6 +37,7 @@ public class PersonBoundaryAllTest {
     @BeforeClass
     public static void beforeClass() {
 
+        System.out.println(postgreSQLContainer.getJdbcUrl());
         System.setProperty("spring.datasource.url", postgreSQLContainer.getJdbcUrl());
         System.setProperty("spring.datasource.password", postgreSQLContainer.getPassword());
         System.setProperty("spring.datasource.username", postgreSQLContainer.getUsername());
@@ -49,8 +50,7 @@ public class PersonBoundaryAllTest {
     public void testRestEndpointForAllPersons() {
 
         ResponseEntity<Person[]> result = testRestTemplate.getForEntity("http://localhost:" + localPort +
-                        "/persons",
-                Person[]
+                        "/persons", Person[]
                         .class);
 
         System.out.println(result);
