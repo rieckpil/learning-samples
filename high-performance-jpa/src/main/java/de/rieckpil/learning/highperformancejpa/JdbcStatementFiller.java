@@ -29,6 +29,8 @@ public class JdbcStatementFiller implements CommandLineRunner {
     ResultSet executeQuery = preparedSelect.executeQuery();
 
     System.out.println("Isolation level:" + jdbcTemplate.getDataSource().getConnection().getMetaData().getDefaultTransactionIsolation());
+    System.out.println("JDBC version:" + jdbcTemplate.getDataSource().getConnection().getMetaData().getJDBCMajorVersion() + "."
+        + jdbcTemplate.getDataSource().getConnection().getMetaData().getJDBCMinorVersion());
     System.out.println("Amount of columns: " + executeQuery.getMetaData().getColumnCount());
 
     while (executeQuery.next()) {
