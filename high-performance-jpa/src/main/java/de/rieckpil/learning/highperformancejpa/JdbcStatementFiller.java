@@ -24,8 +24,8 @@ public class JdbcStatementFiller implements CommandLineRunner {
 
     PreparedStatement preparedSelect = jdbcTemplate.getDataSource().getConnection().prepareStatement("SELECT * FROM person");
     preparedSelect.setFetchSize(5);
-    preparedSelect.setMaxRows(10);
-
+    preparedSelect.setMaxRows(100);
+    
     ResultSet executeQuery = preparedSelect.executeQuery();
 
     System.out.println("Amount of columns: " + executeQuery.getMetaData().getColumnCount());
@@ -48,12 +48,9 @@ public class JdbcStatementFiller implements CommandLineRunner {
 
   private void insertMultiplePersons() throws Exception {
 
-    jdbcTemplate.getDataSource().getConnection().createStatement().execute("INSERT INTO person (name) VALUES ('" + ThreadLocalRandom.current().nextInt() + "')");
-    jdbcTemplate.getDataSource().getConnection().createStatement().execute("INSERT INTO person (name) VALUES ('" + ThreadLocalRandom.current().nextInt() + "')");
-    jdbcTemplate.getDataSource().getConnection().createStatement().execute("INSERT INTO person (name) VALUES ('" + ThreadLocalRandom.current().nextInt() + "')");
-    jdbcTemplate.getDataSource().getConnection().createStatement().execute("INSERT INTO person (name) VALUES ('" + ThreadLocalRandom.current().nextInt() + "')");
-    jdbcTemplate.getDataSource().getConnection().createStatement().execute("INSERT INTO person (name) VALUES ('" + ThreadLocalRandom.current().nextInt() + "')");
-    jdbcTemplate.getDataSource().getConnection().createStatement().execute("INSERT INTO person (name) VALUES ('" + ThreadLocalRandom.current().nextInt() + "')");
+    for (int i = 0; i < 1000; i++) {
+      jdbcTemplate.execute("INSERT INTO person (name) VALUES ('" + ThreadLocalRandom.current().nextInt() + "')");
+    }
 
   }
 }
