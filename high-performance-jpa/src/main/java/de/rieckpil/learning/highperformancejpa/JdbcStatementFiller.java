@@ -13,47 +13,50 @@ import org.springframework.stereotype.Component;
 @Component
 public class JdbcStatementFiller implements CommandLineRunner {
 
-  @Autowired
-  private JdbcTemplate jdbcTemplate;
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
-  @Override
-  public void run(String... args) throws Exception {
+    @Override
+    public void run(String... args) throws Exception {
 
-    runPreparedStatement();
-    insertMultiplePersons();
+        runPreparedStatement();
+        insertMultiplePersons();
 
-    PreparedStatement preparedSelect = jdbcTemplate.getDataSource().getConnection().prepareStatement("SELECT * FROM person");
-    preparedSelect.setFetchSize(5);
-    preparedSelect.setMaxRows(100);
-    
-    ResultSet executeQuery = preparedSelect.executeQuery();
+        PreparedStatement preparedSelect = jdbcTemplate.getDataSource().getConnection().prepareStatement("SELECT * FROM person");
+        preparedSelect.setFetchSize(5);
+        preparedSelect.setMaxRows(100);
 
-    System.out.println("Isolation level:" + jdbcTemplate.getDataSource().getConnection().getMetaData().getDefaultTransactionIsolation());
-    System.out.println("JDBC version:" + jdbcTemplate.getDataSource().getConnection().getMetaData().getJDBCMajorVersion() + "."
-        + jdbcTemplate.getDataSource().getConnection().getMetaData().getJDBCMinorVersion());
-    System.out.println("Amount of columns: " + executeQuery.getMetaData().getColumnCount());
+        ResultSet executeQuery = preparedSelect.executeQuery();
 
-    while (executeQuery.next()) {
-      System.out.println(executeQuery.getString("name"));
+        System.out.println("Isolation level:" + jdbcTemplate.getDataSource().getConnection().getMetaData().getDefaultTransactionIsolation());
+        System.out.println("JDBC version:" + jdbcTemplate.getDataSource().getConnection().getMetaData().getJDBCMajorVersion() + "."
+                + jdbcTemplate.getDataSource().getConnection().getMetaData().getJDBCMinorVersion());
+        System.out.println("Amount of columns: " + executeQuery.getMetaData().getColumnCount());
+
+        while (executeQuery.next()) {
+            // System.out.println(executeQuery.getString("name"));
+        }
+
     }
 
-  }
+    private void runPreparedStatement() throws SQLException {
 
-  private void runPreparedStatement() throws SQLException {
+        PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement("INSERT" +
+                " " +
+                "INTO person (name) VALUES (?)");
+        preparedStatement.setString(1, "Paul");
 
-    PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement("INSERT INTO person (name) VALUES (?)");
-    preparedStatement.setString(1, "Paul");
+        boolean isFirstResultAResultSet = preparedStatement.execute();
 
-    boolean isFirstResultAResultSet = preparedStatement.execute();
+        System.out.println("isFirstResultAResultSet = " + isFirstResultAResultSet);
 
-    System.out.println("isFirstResultAResultSet = " + isFirstResultAResultSet);
-  }
-
-  private void insertMultiplePersons() throws Exception {
-
-    for (int i = 0; i < 1000; i++) {
-      jdbcTemplate.execute("INSERT INTO person (name) VALUES ('" + ThreadLocalRandom.current().nextInt() + "')");
     }
 
-  }
+    private void insertMultiplePersons() throws Exception {
+
+        for (int i = 0; i < 1000; i++) {
+            jdbcTemplate.execute("INSERT INTO person (name) VALUES ('" + ThreadLocalRandom.current().nextInt() + "')");
+        }
+
+    }
 }
