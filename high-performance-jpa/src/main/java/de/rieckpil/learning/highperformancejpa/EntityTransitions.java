@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 @Component
@@ -22,6 +23,9 @@ public class EntityTransitions implements CommandLineRunner {
         p.setName("Rieckpil");
 
         entityManager.persist(p);
+        TypedQuery<Person> select = entityManager.createNamedQuery("findAllPersons", Person.class);
+        Person singleResult = select.getSingleResult();
+        System.out.println("ID of the first person is: " + singleResult.getId());
 
     }
 }
