@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
+import java.sql.SQLException;
 
 @Component
 public class EntityTransitions implements CommandLineRunner {
@@ -16,8 +17,9 @@ public class EntityTransitions implements CommandLineRunner {
     private EntityManager entityManager;
 
     @Override
-    @Transactional
-    public void run(String... args) throws Exception {
+    @Transactional(value = Transactional.TxType.REQUIRED, rollbackOn = SQLException.class, dontRollbackOn =
+            NullPointerException.class)
+    public void run(String... args) {
 
         Person p = new Person();
         p.setName("Rieckpil");
