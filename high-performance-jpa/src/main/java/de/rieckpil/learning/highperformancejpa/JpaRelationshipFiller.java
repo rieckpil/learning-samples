@@ -2,6 +2,7 @@ package de.rieckpil.learning.highperformancejpa;
 
 import de.rieckpil.learning.highperformancejpa.entity.Post;
 import de.rieckpil.learning.highperformancejpa.entity.PostComment;
+import de.rieckpil.learning.highperformancejpa.entity.PostDetails;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -17,8 +18,24 @@ public class JpaRelationshipFiller implements CommandLineRunner {
 
     @Transactional
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
 
+        Post post = new Post();
+        post.setTitle("King Kong");
+
+        PostComment postComment = new PostComment();
+        postComment.setReview("Nice movie! 4 ****");
+
+        PostDetails postDetails = new PostDetails();
+
+        post.setPostDetails(postDetails);
+        post.addComment(postComment);
+
+        entityManager.persist(post);
+
+    }
+
+    public void detachingExample() throws Exception{
         Post post = entityManager.find(Post.class, 1L);
 
         PostComment postComment = new PostComment();
@@ -35,6 +52,24 @@ public class JpaRelationshipFiller implements CommandLineRunner {
         postComment.setReview("Nice movie! 5 *****");
 
         entityManager.merge(postComment);
+    }
 
+    public void orphanRemovalAndCascadingTypeAll() {
+
+        Post post = new Post();
+        post.setTitle("King Kong");
+
+        PostComment postComment2 = new PostComment();
+        postComment2.setReview("Nice animal");
+
+        PostComment postComment = new PostComment();
+        postComment.setReview("Nice movie! 4 ****");
+
+        post.addComment(postComment);
+        post.addComment(postComment2);
+
+        entityManager.persist(post);
+
+        post.removeComment(postComment2);
     }
 }
