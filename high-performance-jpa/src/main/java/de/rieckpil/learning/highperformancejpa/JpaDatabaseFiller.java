@@ -27,7 +27,6 @@ public class JpaDatabaseFiller implements CommandLineRunner {
         personRepository.save(p1);
 
         Post post = new Post();
-        post.setId(UUID.randomUUID());
         postRepository.save(post);
 
     }
