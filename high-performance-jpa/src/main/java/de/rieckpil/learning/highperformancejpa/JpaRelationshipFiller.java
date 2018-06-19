@@ -29,7 +29,12 @@ public class JpaRelationshipFiller implements CommandLineRunner {
 
         Thread.sleep(2 * 1000);
 
+        entityManager.detach(postComment);
+
         postComment.setPost(null);
+        postComment.setReview("Nice movie! 5 *****");
+
+        entityManager.merge(postComment);
 
     }
 }
