@@ -2,6 +2,7 @@ package de.rieckpil.learning.highperformancejpa;
 
 import de.rieckpil.learning.highperformancejpa.entity.Person;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
@@ -11,6 +12,7 @@ import javax.transaction.Transactional;
 import java.sql.SQLException;
 
 @Component
+@Profile("transition")
 public class EntityTransitions implements CommandLineRunner {
 
     @PersistenceContext

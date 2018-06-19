@@ -1,25 +1,19 @@
 package de.rieckpil.learning.highperformancejpa.entity;
 
-import org.hibernate.annotations.GenericGenerator;
+import lombok.Data;
 
-import javax.persistence.*;
-import java.util.UUID;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
-@Table(name = "post")
+@Data
 public class Post {
 
     @Id
-    @Column(columnDefinition = "UUID")
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
+    private String title;
 }

@@ -1,13 +1,13 @@
 package de.rieckpil.learning.highperformancejpa;
 
 import de.rieckpil.learning.highperformancejpa.entity.Person;
-import de.rieckpil.learning.highperformancejpa.entity.Post;
+import de.rieckpil.learning.highperformancejpa.entity.Envelope;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-import java.util.UUID;
-
 @Component
+@Profile("jpa")
 public class JpaDatabaseFiller implements CommandLineRunner {
 
     private final PersonRepository personRepository;
@@ -26,8 +26,8 @@ public class JpaDatabaseFiller implements CommandLineRunner {
 
         personRepository.save(p1);
 
-        Post post = new Post();
-        postRepository.save(post);
+        Envelope envelope = new Envelope();
+        postRepository.save(envelope);
 
     }
 }

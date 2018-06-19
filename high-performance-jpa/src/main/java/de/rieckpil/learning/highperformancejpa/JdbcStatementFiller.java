@@ -7,10 +7,12 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
+@Profile("jdbc")
 public class JdbcStatementFiller implements CommandLineRunner {
 
     @Autowired
@@ -52,7 +54,7 @@ public class JdbcStatementFiller implements CommandLineRunner {
 
     }
 
-    private void insertMultiplePersons() throws Exception {
+    private void insertMultiplePersons() {
 
         for (int i = 0; i < 1000; i++) {
             jdbcTemplate.execute("INSERT INTO person (name) VALUES ('" + ThreadLocalRandom.current().nextInt() + "')");
