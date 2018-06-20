@@ -3,6 +3,7 @@ package de.rieckpil.learning.highperformancejpa;
 import de.rieckpil.learning.highperformancejpa.entity.Post;
 import de.rieckpil.learning.highperformancejpa.entity.PostComment;
 import de.rieckpil.learning.highperformancejpa.entity.PostDetails;
+import de.rieckpil.learning.highperformancejpa.entity.Tag;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -31,7 +32,21 @@ public class JpaRelationshipFiller implements CommandLineRunner {
         post.setPostDetails(postDetails);
         post.addComment(postComment);
 
+        Tag tag = new Tag();
+        tag.setName("Action");
+
+        Tag tag2 = new Tag();
+        tag2.setName("Thriller");
+
+        post.getTags().add(tag);
+        post.getTags().add(tag2);
+
+        Post post2 = new Post();
+        post2.setTitle("James Bond");
+        post2.getTags().add(tag);
+
         entityManager.persist(post);
+        entityManager.persist(post2);
 
     }
 
