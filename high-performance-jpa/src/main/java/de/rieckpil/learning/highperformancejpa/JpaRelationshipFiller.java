@@ -4,12 +4,14 @@ import de.rieckpil.learning.highperformancejpa.entity.Post;
 import de.rieckpil.learning.highperformancejpa.entity.PostComment;
 import de.rieckpil.learning.highperformancejpa.entity.PostDetails;
 import de.rieckpil.learning.highperformancejpa.entity.Tag;
+import org.hibernate.jpa.QueryHints;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Component
 public class JpaRelationshipFiller implements CommandLineRunner {
@@ -48,9 +50,19 @@ public class JpaRelationshipFiller implements CommandLineRunner {
         entityManager.persist(post);
         entityManager.persist(post2);
 
+        entityManager.flush();
+
+
+        List<Post> posts = entityManager.createQuery("select p from Post p", Post.class).setHint
+                (QueryHints.HINT_READONLY, true).getResultList();
+
+        for (Post postFromDb : posts) {
+            System.out.println("postFromDb.getTitle() = " + postFromDb.getTitle());
+        }
+
     }
 
-    public void detachingExample() throws Exception{
+    public void detachingExample() throws Exception {
         Post post = entityManager.find(Post.class, 1L);
 
         PostComment postComment = new PostComment();

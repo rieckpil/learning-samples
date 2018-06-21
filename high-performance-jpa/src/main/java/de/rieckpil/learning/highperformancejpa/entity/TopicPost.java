@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Data
 @Entity
-@Table(name="post")
+@Table(name="topic_post")
 public class TopicPost extends Topic {
 
     private String content;
