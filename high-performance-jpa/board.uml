@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.board</OriginalElement>
+  <nodes>
+    <node x="7.5" y="0.0">f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.board</node>
+    <node x="0.0" y="480.0">f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.tag</node>
+    <node x="442.25" y="605.0">f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.post_comment</node>
+    <node x="0.0" y="747.0">f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.envelope</node>
+    <node x="0.0" y="125.0">f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.topic</node>
+    <node x="670.25" y="480.0">f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.person</node>
+    <node x="211.25" y="605.0">f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.post_details</node>
+    <node x="29.0" y="360.0">f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.topic_statistics</node>
+    <node x="52.25" y="616.5">f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.post_tag</node>
+    <node x="234.75" y="480.0">f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.post</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.post_tag" target="f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.post">
+      <point x="34.75" y="-37.0" />
+      <point x="156.5" y="580.0" />
+      <point x="262.0833333333333" y="580.0" />
+      <point x="-54.666666666666686" y="37.5" />
+    </edge>
+    <edge source="f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.post_comment" target="f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.post">
+      <point x="0.0" y="-48.5" />
+      <point x="533.75" y="580.0" />
+      <point x="371.41666666666663" y="580.0" />
+      <point x="54.66666666666663" y="37.5" />
+    </edge>
+    <edge source="f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.topic" target="f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.board">
+      <point x="0.0" y="-92.5" />
+      <point x="0.0" y="37.5" />
+    </edge>
+    <edge source="f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.post_tag" target="f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.tag">
+      <point x="-34.75" y="-37.0" />
+      <point x="0.0" y="37.5" />
+    </edge>
+    <edge source="f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.post_details" target="f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.post">
+      <point x="0.0" y="-48.5" />
+      <point x="0.0" y="37.5" />
+    </edge>
+    <edge source="f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.topic_statistics" target="f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.topic">
+      <point x="0.0" y="-37.5" />
+      <point x="0.0" y="92.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.6788766788766789" x="878.4001798561152" y="409.5" />
+  <SelectedNodes>
+    <node>f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.board</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Key columns</Category>
+    <Category>Columns</Category>
+  </Categories>
+</Diagram>
+
