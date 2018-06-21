@@ -5,6 +5,7 @@ import de.rieckpil.learning.highperformancejpa.entity.Board;
 import de.rieckpil.learning.highperformancejpa.entity.TopicPost;
 import de.rieckpil.learning.highperformancejpa.entity.TopicStatistics;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
@@ -13,6 +14,7 @@ import javax.transaction.Transactional;
 import java.time.Instant;
 
 @Component
+@Profile("inheritance")
 public class JpaInheritanceFiller implements CommandLineRunner {
 
     @PersistenceContext

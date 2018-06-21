@@ -6,6 +6,7 @@ import de.rieckpil.learning.highperformancejpa.entity.PostDetails;
 import de.rieckpil.learning.highperformancejpa.entity.Tag;
 import org.hibernate.jpa.QueryHints;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
@@ -14,6 +15,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Component
+@Profile("relationship")
 public class JpaRelationshipFiller implements CommandLineRunner {
 
     @PersistenceContext
@@ -58,6 +60,7 @@ public class JpaRelationshipFiller implements CommandLineRunner {
 
         for (Post postFromDb : posts) {
             System.out.println("postFromDb.getTitle() = " + postFromDb.getTitle());
+            postFromDb.setTitle(postFromDb.getTitle().toUpperCase());
         }
 
     }
