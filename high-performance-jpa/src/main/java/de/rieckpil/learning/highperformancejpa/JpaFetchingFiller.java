@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.transform.AliasToBeanConstructorResultTransformer;
 import org.hibernate.transform.AliasToBeanResultTransformer;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @Component
 @Transactional
+@Profile("fetching")
 public class JpaFetchingFiller implements CommandLineRunner {
 
     @PersistenceContext
