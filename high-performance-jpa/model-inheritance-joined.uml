@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.announcement</OriginalElement>
+  <nodes>
+    <node x="360.0" y="294.0">f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.topic_post</node>
+    <node x="158.5" y="0.0">f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.board</node>
+    <node x="451.25" y="414.0">f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.tag</node>
+    <node x="434.0" y="550.5">f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.post_tag</node>
+    <node x="231.0" y="539.0">f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.post_comment</node>
+    <node x="0.0" y="681.0">f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.envelope</node>
+    <node x="670.25" y="414.0">f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.person</node>
+    <node x="151.0" y="294.0">f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.announcement</node>
+    <node x="0.0" y="539.0">f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.post_details</node>
+    <node x="0.0" y="294.0">f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.topic_statistics</node>
+    <node x="156.0" y="125.0">f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.topic</node>
+    <node x="240.5" y="414.0">f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.post</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.announcement" target="f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.topic">
+      <point x="0.0" y="-37.5" />
+      <point x="0.0" y="59.5" />
+    </edge>
+    <edge source="f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.post_tag" target="f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.post">
+      <point x="-34.75" y="-37.0" />
+      <point x="468.75" y="514.0" />
+      <point x="377.16666666666663" y="514.0" />
+      <point x="54.66666666666663" y="37.5" />
+    </edge>
+    <edge source="f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.post_comment" target="f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.post">
+      <point x="0.0" y="-48.5" />
+      <point x="0.0" y="37.5" />
+    </edge>
+    <edge source="f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.topic_post" target="f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.topic">
+      <point x="0.0" y="-37.5" />
+      <point x="454.0" y="269.0" />
+      <point x="305.16666666666663" y="269.0" />
+      <point x="59.66666666666663" y="59.5" />
+    </edge>
+    <edge source="f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.topic" target="f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.board">
+      <point x="0.0" y="-59.5" />
+      <point x="0.0" y="37.5" />
+    </edge>
+    <edge source="f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.post_tag" target="f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.tag">
+      <point x="34.75" y="-37.0" />
+      <point x="0.0" y="37.5" />
+    </edge>
+    <edge source="f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.post_details" target="f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.post">
+      <point x="0.0" y="-48.5" />
+      <point x="105.5" y="514.0" />
+      <point x="267.83333333333337" y="514.0" />
+      <point x="-54.66666666666666" y="37.5" />
+    </edge>
+    <edge source="f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.topic_statistics" target="f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.topic">
+      <point x="0.0" y="-37.5" />
+      <point x="65.5" y="269.0" />
+      <point x="185.83333333333334" y="269.0" />
+      <point x="-59.66666666666666" y="59.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.750332005312085" x="422.5" y="356.5" />
+  <SelectedNodes>
+    <node>f30c9d83-f33e-41fe-89d2-e298b8d8fe47.TABLE:test.public.announcement</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Key columns</Category>
+    <Category>Columns</Category>
+  </Categories>
+</Diagram>
+
