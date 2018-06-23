@@ -1,12 +1,15 @@
 package de.rieckpil.learning.highperformancejpa.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 
 @Entity
 @Data
 @NamedQuery(name = "findAllPersons", query = "SELECT p FROM Person p")
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Person {
 
     @Id

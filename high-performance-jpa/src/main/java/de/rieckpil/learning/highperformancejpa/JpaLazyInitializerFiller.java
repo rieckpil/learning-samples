@@ -4,6 +4,7 @@ import de.rieckpil.learning.highperformancejpa.entity.Attachment;
 import de.rieckpil.learning.highperformancejpa.entity.MediaType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
@@ -15,6 +16,7 @@ import java.io.FileInputStream;
 @Component
 @Transactional
 @Slf4j
+@Profile("lazy")
 public class JpaLazyInitializerFiller implements CommandLineRunner {
 
     @PersistenceContext
