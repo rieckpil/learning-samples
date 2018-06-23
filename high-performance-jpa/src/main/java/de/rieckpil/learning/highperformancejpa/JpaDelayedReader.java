@@ -11,38 +11,20 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
-@Component
 @Transactional
 @Slf4j
-public class HibernateSecondLevelCacheFiller implements CommandLineRunner {
+@Component
+public class JpaDelayedReader implements CommandLineRunner {
 
     @PersistenceContext
     private EntityManager entityManager;
 
     @Override
-    public void run(String... args) {
+    public void run(String... args) throws Exception {
 
-        Person p1 = new Person();
-        p1.setName("Phil");
-        
-        Person p2 = new Person();
-        p2.setName("Phil");
-        
-        Person p3 = new Person();
-        p3.setName("Phil");
-       
-        Person p4 = new Person();
-        p4.setName("Phil");
-        
-        entityManager.persist(p1);
-        entityManager.persist(p2);
-        entityManager.persist(p3);
-        entityManager.persist(p4);
-        entityManager.flush();
+        Thread.sleep(5 * 1000);
 
         Person personFromDb = entityManager.find(Person.class, 1L);
-
-        System.out.println("personFromDb = " + personFromDb);
 
         String region = Person.class.getName();
 
