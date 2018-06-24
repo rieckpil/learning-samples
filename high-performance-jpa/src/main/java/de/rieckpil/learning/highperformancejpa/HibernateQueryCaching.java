@@ -7,6 +7,7 @@ import org.hibernate.cache.internal.StandardQueryCache;
 import org.hibernate.jpa.QueryHints;
 import org.hibernate.stat.SecondLevelCacheStatistics;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @Slf4j
 @Component
+@Profile("querycaching")
 @Transactional
 public class HibernateQueryCaching implements CommandLineRunner {
 
