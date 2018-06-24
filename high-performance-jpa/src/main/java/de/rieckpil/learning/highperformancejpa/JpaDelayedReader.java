@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
 import org.hibernate.stat.SecondLevelCacheStatistics;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
@@ -13,6 +14,7 @@ import javax.transaction.Transactional;
 
 @Transactional
 @Slf4j
+@Profile("secondlevel")
 @Component
 public class JpaDelayedReader implements CommandLineRunner {
 
