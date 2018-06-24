@@ -18,6 +18,9 @@ public class Person {
 
     private String name;
 
+    @Version
+    private int version;
+
     @OneToOne(cascade = CascadeType.ALL)
     private Address address;
 

@@ -26,12 +26,13 @@ public class HibernateQueryCaching implements CommandLineRunner {
     public void run(String... args) {
 
         List<Person> persons = entityManager.createQuery("SELECT p FROM Person p ORDER BY p.id", Person.class)
-                .setMaxResults(3)
+                .setMaxResults(5)
                 .setHint(QueryHints.HINT_CACHEABLE, true)
                 .getResultList();
 
         for (Person p : persons) {
             System.out.println("p = " + p);
+            p.setName(p.getName().toUpperCase());
         }
 
     }
