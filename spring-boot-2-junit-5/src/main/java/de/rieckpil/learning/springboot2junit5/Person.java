@@ -1,6 +1,8 @@
 package de.rieckpil.learning.springboot2junit5;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +12,9 @@ import java.time.LocalDate;
 
 @Entity
 @Data
-public class Person {
+@AllArgsConstructor
+@NoArgsConstructor
+class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
