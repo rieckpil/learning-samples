@@ -1,24 +1,14 @@
 package de.rieckpil.learning.streamsandlambdas;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.*;
 
 public class LambdaStart {
 
     public static void main(String[] args) {
 
-
-        List<Person> persons = createPersons();
-
-        System.out.println(
-                persons.stream()
-                    .collect(Collectors.toMap(
-                            person -> person.getName() + "-" + person.getAge(),
-                            person -> person)
-                    ));
 
     }
 
@@ -29,10 +19,29 @@ public class LambdaStart {
                 numbers.stream()
                         .filter(e -> e % 2 == 0)
                         .map(e -> e * 2)
-                        .collect(Collectors.toList());
+                        .collect(toList());
 
         System.out.println(newList);
 
+        List<Person> persons = createPersons();
+
+        System.out.println(
+                persons.stream()
+                        .collect(toMap(
+                                person -> person.getName() + "-" + person.getAge(),
+                                person -> person)
+                        ));
+
+        System.out.println(
+                persons.stream()
+                        .collect(groupingBy(Person::getName)
+                        ));
+
+        System.out.println(
+                persons.stream()
+                        .collect(groupingBy(Person::getName, mapping(Person::getAge,
+                                toList())
+                        )));
     }
 
     public static List<Person> createPersons() {
