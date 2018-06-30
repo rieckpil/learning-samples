@@ -5,18 +5,16 @@ import org.flywaydb.core.api.MigrationInfo;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import javax.ejb.EJBException;
-import javax.ejb.Singleton;
-import javax.ejb.Startup;
+import javax.ejb.*;
 import javax.sql.DataSource;
 import java.util.logging.Logger;
 
 @Startup
+@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
 @Singleton
 public class FlywayMigration {
 
     private final Logger log = Logger.getLogger(this.getClass().getName());
-
 
     @Resource(lookup = "jdbc/sample")
     DataSource dataSource;
@@ -26,7 +24,7 @@ public class FlywayMigration {
 
         if (dataSource == null) {
             log.severe("no datasource found to execute the db migrations!");
-            throw new EJBException(
+            throw new RuntimeException(
                     "no datasource found to execute the db migrations!");
         }
 
