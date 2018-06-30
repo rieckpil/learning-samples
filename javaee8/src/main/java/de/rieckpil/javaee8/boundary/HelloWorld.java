@@ -1,5 +1,6 @@
 package de.rieckpil.javaee8.boundary;
 
+import com.sendgrid.SendGrid;
 import de.rieckpil.javaee8.control.NameResolver;
 import org.eclipse.microprofile.metrics.annotation.Counted;
 
@@ -22,6 +23,9 @@ public class HelloWorld {
 
     @Inject
     private NameResolver nameResolver;
+
+    @Inject
+    private SendGrid sendGrid;
 
     @GET
     @Counted(name = "getName")
@@ -63,5 +67,14 @@ public class HelloWorld {
         JsonObject object = response.readEntity(JsonObject.class);
 
         return Response.ok(object.get("name")).build();
+    }
+
+    @GET
+    @Path("/mail")
+    public void sendMail() {
+
+        System.out.println("Sending mail ...");
+        System.out.println(sendGrid.getVersion());
+
     }
 }

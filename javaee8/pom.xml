@@ -28,6 +28,12 @@
             <version>5.0.7</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.sendgrid</groupId>
+            <artifactId>sendgrid-java</artifactId>
+            <version>4.2.1</version>
+        </dependency>
+
     </dependencies>
     <build>
         <finalName>javaee8</finalName>
