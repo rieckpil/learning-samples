@@ -1,6 +1,7 @@
 package de.rieckpil.javaee8.boundary;
 
 import de.rieckpil.javaee8.control.NameResolver;
+import org.eclipse.microprofile.metrics.annotation.Counted;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -23,6 +24,7 @@ public class HelloWorld {
     private NameResolver nameResolver;
 
     @GET
+    @Counted(name = "getName")
     @Produces(MediaType.APPLICATION_JSON)
     public Response sayHello() {
 
