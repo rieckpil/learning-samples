@@ -46,3 +46,37 @@ println(max(1,2,34234234,1221,1232312323))
 val values = intArrayOf(1, 12, 1848, 2018, 1337, 42)
 
 println(max(*values))
+
+System.getProperties().forEach{t, u -> println("$t: $u")}
+
+for(x in 10 downTo 1 step 2) {
+    println(x)
+}
+
+val names = listOf("Phil", "Tom", "Henry", "Mike")
+
+for(name in names) {
+    println(name)
+}
+
+for(index in names.indices) {
+    println("$index --- ${names.get(index)}")
+}
+
+fun process(input: Any) {
+
+    when(input) {
+        1 -> println("one")
+        7,8 -> println("seven or eight")
+        in 13..19 -> println("lazy as a teen")
+        is String -> println("we have a string of length ${input.length}")
+        else -> println("I have no clue")
+    }
+}
+
+process(1)
+process(7)
+process(14)
+process(20)
+process("hello")
+
