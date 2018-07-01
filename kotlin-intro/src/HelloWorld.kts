@@ -30,7 +30,7 @@ val isBigString = if (x.length > 20) "Big Sting" else "not so big"
 println(isBigString)
 
 fun greet(name: String, msg: String = "What's up? ${name.length}"): String {
-    return "$msg $name";
+    return "$msg $name"
 }
 
 val result = greet(name = "Philip", msg = "Hello")
@@ -114,9 +114,20 @@ class Car {
 val car = Car()
 println(car.yearOfRegistration)
 println(car.yearSinceRegistration)
+println(car.toString())
+
 
 object Util {
     fun getNomberOfCores() = Runtime.getRuntime().availableProcessors()
 }
 
 println(Util.getNomberOfCores())
+
+class Pizza {
+    infix fun spread(item: String) = println("spread $item")
+
+}
+
+val pizza = Pizza()
+pizza spread "sauce"
+pizza spread "salami"
