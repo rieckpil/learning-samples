@@ -80,3 +80,20 @@ process(14)
 process(20)
 process("hello")
 
+fun nickName(name: String) : String? {
+    if(name == "Philip")
+        return "nice guy"
+
+    return null
+}
+
+println(nickName("Philip"))
+println(nickName("Phil"))
+
+fun receive(name: String?) {
+    println("length is ${name?.length ?: 0}")
+}
+
+receive("Philip")
+receive(null)
+receive("Tom")
