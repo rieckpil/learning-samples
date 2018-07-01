@@ -1,3 +1,5 @@
+import java.time.LocalDateTime
+
 println("Hello!")
 
 fun foo(a: Int) {
@@ -97,3 +99,24 @@ fun receive(name: String?) {
 receive("Philip")
 receive(null)
 receive("Tom")
+
+class Car {
+    var yearOfRegistration = 2010
+      private set(value) {
+          if(value > LocalDateTime.now().year) throw RuntimeException("not possible ...")
+          field = value
+      }
+
+    val yearSinceRegistration
+      get() = 2018 - yearOfRegistration
+}
+
+val car = Car()
+println(car.yearOfRegistration)
+println(car.yearSinceRegistration)
+
+object Util {
+    fun getNomberOfCores() = Runtime.getRuntime().availableProcessors()
+}
+
+println(Util.getNomberOfCores())
