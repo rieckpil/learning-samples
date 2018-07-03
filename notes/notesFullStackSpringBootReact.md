@@ -311,7 +311,6 @@ const SecuredRoute = ({ component: Component, ...rest, isAuthenticated }) => (
     )
   )}/>
 )
-
 <Switch>
     <Route path="/login" component={Login} />
     <Route path="/contact" component={Contact} />
