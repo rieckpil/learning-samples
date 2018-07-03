@@ -304,13 +304,17 @@ const SecuredRoute = ({ component: Component, ...rest, isAuthenticated }) => (
     isAuthenticated ? (
       <Component {...props}/>
     ) : (
-      <Redirect to={{
+      <Redirect to=
         pathname: '/login',
         state: { from: props.location }
-      }}/>
+      /> // missing two { because of failing jekyll build
     )
   )}/>
 )
+```
+# Switch statement for configuration of available routes
+
+```javascript
 <Switch>
     <Route path="/login" component={Login} />
     <Route path="/contact" component={Contact} />
