@@ -1,0 +1,160 @@
+<?xml version = "1.0"?>
+<!DOCTYPE jasperReport PUBLIC
+        "//JasperReports//DTD Report Design//EN"
+        "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport xmlns = "http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation = "http://jasperreports.sourceforge.net/jasperreports
+   http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name = "jasper_report_template" pageWidth = "595"
+              pageHeight = "842" columnWidth = "515"
+              leftMargin = "40" rightMargin = "40" topMargin = "50" bottomMargin = "50">
+
+    <parameter name = "ReportTitle" class = "java.lang.String"/>
+    <parameter name = "Author" class = "java.lang.String"/>
+
+    <queryString>
+        <![CDATA[]]>
+    </queryString>
+
+    <field name = "country" class = "java.lang.String">
+        <fieldDescription>
+            <![CDATA[country]]>
+        </fieldDescription>
+    </field>
+
+    <field name = "name" class = "java.lang.String">
+        <fieldDescription>
+            <![CDATA[name]]>
+        </fieldDescription>
+    </field>
+
+    <variable name = "countNumber" class = "java.lang.Integer" calculation = "Count">
+        <variableExpression>
+            <![CDATA[Boolean.TRUE]]>
+        </variableExpression>
+    </variable>
+
+    <title>
+        <band height = "70">
+
+            <line>
+                <reportElement x = "0" y = "0" width = "515" height = "1"/>
+            </line>
+
+            <textField isBlankWhenNull = "true" bookmarkLevel = "1">
+                <reportElement x = "0" y = "10" width = "515" height = "30"/>
+
+                <textElement textAlignment = "Center">
+                    <font size = "22"/>
+                </textElement>
+
+                <textFieldExpression class = "java.lang.String">
+                    <![CDATA[$P{ReportTitle}]]>
+                </textFieldExpression>
+
+                <anchorNameExpression>
+                    <![CDATA["Title"]]>
+                </anchorNameExpression>
+            </textField>
+
+            <textField isBlankWhenNull = "true">
+                <reportElement  x = "0" y = "40" width = "515" height = "20"/>
+
+                <textElement textAlignment = "Center">
+                    <font size = "10"/>
+                </textElement>
+
+                <textFieldExpression class = "java.lang.String">
+                    <![CDATA[$P{Author}]]>
+                </textFieldExpression>
+            </textField>
+
+        </band>
+    </title>
+
+    <columnHeader>
+        <band height = "23">
+
+            <staticText>
+                <reportElement mode = "Opaque" x = "0" y = "3" width = "535"	height = "15"
+                               backcolor = "#70A9A9" />
+
+                <box>
+                    <bottomPen lineWidth = "1.0" lineColor = "#CCCCCC" />
+                </box>
+
+                <textElement />
+
+                <text>
+                    <![CDATA[]]>
+                </text>
+            </staticText>
+
+            <staticText>
+                <reportElement x = "414" y = "3" width = "121" height = "15" />
+
+                <textElement textAlignment = "Center" verticalAlignment = "Middle">
+                    <font isBold = "true" />
+                </textElement>
+
+                <text><![CDATA[Country]]></text>
+            </staticText>
+
+            <staticText>
+                <reportElement x = "0" y = "3" width = "136" height = "15" />
+
+                <textElement textAlignment = "Center" verticalAlignment = "Middle">
+                    <font isBold = "true" />
+                </textElement>
+
+                <text><![CDATA[Name]]></text>
+            </staticText>
+
+        </band>
+    </columnHeader>
+
+    <detail>
+        <band height = "16">
+
+            <staticText>
+                <reportElement mode = "Opaque" x = "0" y = "0" width = "535" height = "14"
+                               backcolor = "#E5ECF9" />
+
+                <box>
+                    <bottomPen lineWidth = "0.25" lineColor = "#CCCCCC" />
+                </box>
+
+                <textElement />
+
+                <text>
+                    <![CDATA[]]>
+                </text>
+            </staticText>
+
+            <textField>
+                <reportElement x = "414" y = "0" width = "121" height = "15" />
+
+                <textElement textAlignment = "Center" verticalAlignment = "Middle">
+                    <font size = "9" />
+                </textElement>
+
+                <textFieldExpression class = "java.lang.String">
+                    <![CDATA[$F{country}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x = "0" y = "0" width = "136" height = "15" />
+                <textElement textAlignment = "Center" verticalAlignment = "Middle" />
+
+                <textFieldExpression class = "java.lang.String">
+                    <![CDATA["  " + String.valueOf($V{countNumber}) +"."+$F{name}]]>
+                </textFieldExpression>
+            </textField>
+
+        </band>
+    </detail>
+
+</jasperReport>
