@@ -16,8 +16,39 @@ import java.util.Map;
 public class JasperReportController {
 
     @GetMapping("/jasper")
-
     public void getJasperReport() {
+
+        String sourceFileName = "jasper/third_report.jrxml";
+        String pdfFileName = "third_report.pdf";
+
+        ArrayList<DataBean> dataBeans = new ArrayList<>();
+        dataBeans.add(new DataBean("Phil", "Germany"));
+        dataBeans.add(new DataBean("Tom", "USA"));
+
+        JRBeanCollectionDataSource beanColDataSource =
+                new JRBeanCollectionDataSource(dataBeans);
+
+        Map parameters = new HashMap();
+        parameters.put("PRICE", 99.8);
+
+        try {
+            InputStream inputStreamJasperReport = this.getClass().getClassLoader().getResourceAsStream(sourceFileName);
+
+            JasperDesign jasperDesign = JRXmlLoader.load(inputStreamJasperReport);
+            JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+
+            JasperPrint jprint = JasperFillManager.fillReport(
+                    jasperReport, parameters, beanColDataSource);
+
+            JasperExportManager.exportReportToPdfFile(jprint, pdfFileName);
+        } catch (JRException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    private void createSecondReport() {
         String sourceFileName = "jasper/second_report.jrxml";
         String pdfFileName = "second_report.pdf";
 
