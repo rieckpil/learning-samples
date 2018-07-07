@@ -20,30 +20,11 @@ public class JasperReportController {
 
         String sourceFileName = "jasper/third_report.jrxml";
         String pdfFileName = "third_report.pdf";
+        createReport(sourceFileName, pdfFileName);
 
-        ArrayList<DataBean> dataBeans = new ArrayList<>();
-        dataBeans.add(new DataBean("Phil", "Germany"));
-        dataBeans.add(new DataBean("Tom", "USA"));
-
-        JRBeanCollectionDataSource beanColDataSource =
-                new JRBeanCollectionDataSource(dataBeans);
-
-        Map parameters = new HashMap();
-        parameters.put("PRICE", 99.8);
-
-        try {
-            InputStream inputStreamJasperReport = this.getClass().getClassLoader().getResourceAsStream(sourceFileName);
-
-            JasperDesign jasperDesign = JRXmlLoader.load(inputStreamJasperReport);
-            JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
-
-            JasperPrint jprint = JasperFillManager.fillReport(
-                    jasperReport, parameters, beanColDataSource);
-
-            JasperExportManager.exportReportToPdfFile(jprint, pdfFileName);
-        } catch (JRException e) {
-            e.printStackTrace();
-        }
+        sourceFileName = "jasper/fourth_report.jrxml";
+        pdfFileName = "fourth_report.pdf";
+        createReport(sourceFileName, pdfFileName);
 
 
     }
@@ -51,6 +32,11 @@ public class JasperReportController {
     private void createSecondReport() {
         String sourceFileName = "jasper/second_report.jrxml";
         String pdfFileName = "second_report.pdf";
+        createReport(sourceFileName, pdfFileName);
+    }
+
+    private void createReport(String fileName, String outputFileName) {
+
 
         ArrayList<DataBean> dataBeans = new ArrayList<>();
         dataBeans.add(new DataBean("Phil", "Germany"));
@@ -62,9 +48,11 @@ public class JasperReportController {
         Map parameters = new HashMap();
         parameters.put("ReportTitle", "List of Contacts");
         parameters.put("Author", "Prepared By Rieckpil");
+        parameters.put("PRICE", 99.8);
+        parameters.put("logo",  this.getClass().getClassLoader().getResourceAsStream("jasper/spring-boot-logo.png"));
 
         try {
-            InputStream inputStreamJasperReport = this.getClass().getClassLoader().getResourceAsStream(sourceFileName);
+            InputStream inputStreamJasperReport = this.getClass().getClassLoader().getResourceAsStream(fileName);
 
             JasperDesign jasperDesign = JRXmlLoader.load(inputStreamJasperReport);
             JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
@@ -72,10 +60,11 @@ public class JasperReportController {
             JasperPrint jprint = JasperFillManager.fillReport(
                     jasperReport, parameters, beanColDataSource);
 
-            JasperExportManager.exportReportToPdfFile(jprint, pdfFileName);
+            JasperExportManager.exportReportToPdfFile(jprint, outputFileName);
         } catch (JRException e) {
             e.printStackTrace();
         }
+
     }
 
     private void createFirstReport() {
