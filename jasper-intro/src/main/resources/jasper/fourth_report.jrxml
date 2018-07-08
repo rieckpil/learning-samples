@@ -1,27 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="third_report" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f7dbc78d-73a9-4529-a9a4-50dea43bf9a1">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="third_report" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20"
+              topMargin="20" bottomMargin="20" uuid="f7dbc78d-73a9-4529-a9a4-50dea43bf9a1">
     <property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
     <parameter name="PRICE" class="java.lang.Double"/>
-    <parameter name="logo" class="Object" isForPrompting="false">
-        <parameterDescription><![CDATA[The letterhead image]]></parameterDescription>
-        <defaultValueExpression><![CDATA[]]></defaultValueExpression>
-    </parameter>
+    <parameter name="logo"/>
+
     <queryString>
         <![CDATA[]]>
     </queryString>
-    <field name="name" class="java.lang.String"/>
-    <field name="country" class="java.lang.String"/>
+    <field name="name"/>
+    <field name="country"/>
     <background>
         <band splitType="Stretch"/>
     </background>
     <title>
         <band height="99" splitType="Stretch">
             <image>
-                <reportElement mode="Transparent" x="500" y="0" width="50" height="50" uuid="4a01ad5a-1c62-4ff0-a351-37ab68cb866c"/>
+                <reportElement mode="Transparent" x="500" y="0" width="50" height="50"
+                               uuid="4a01ad5a-1c62-4ff0-a351-37ab68cb866c"/>
                 <box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
                 <imageExpression><![CDATA[$P{logo}]]></imageExpression>
-                <hyperlinkTooltipExpression><![CDATA[123]]></hyperlinkTooltipExpression>
             </image>
         </band>
     </title>
@@ -36,13 +38,15 @@
             </staticText>
             <staticText>
                 <reportElement x="363" y="0" width="100" height="30" uuid="a0ca5b3c-79db-4e97-88dd-eb375394658a">
-                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cfd6de71-29de-4ff4-a119-879cb91b8f3e"/>
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID"
+                              value="cfd6de71-29de-4ff4-a119-879cb91b8f3e"/>
                 </reportElement>
                 <text><![CDATA[Name]]></text>
             </staticText>
             <staticText>
                 <reportElement x="283" y="0" width="100" height="30" uuid="c52c149b-69d6-4a7c-95ca-720fb9278338">
-                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54d7af15-0364-4cd1-996b-cf054596a8d9"/>
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID"
+                              value="54d7af15-0364-4cd1-996b-cf054596a8d9"/>
                 </reportElement>
                 <text><![CDATA[Country]]></text>
             </staticText>
@@ -52,13 +56,15 @@
         <band height="125" splitType="Stretch">
             <textField>
                 <reportElement x="363" y="71" width="100" height="30" uuid="8095d917-eeaf-4058-b2ef-1ea81112ebc1">
-                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cfd6de71-29de-4ff4-a119-879cb91b8f3e"/>
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID"
+                              value="cfd6de71-29de-4ff4-a119-879cb91b8f3e"/>
                 </reportElement>
                 <textFieldExpression><![CDATA[$F{country}]]></textFieldExpression>
             </textField>
             <textField>
                 <reportElement x="270" y="30" width="100" height="30" uuid="e0c3061f-6198-4ce8-8fbf-fa738a42f90c">
-                    <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="54d7af15-0364-4cd1-996b-cf054596a8d9"/>
+                    <property name="com.jaspersoft.studio.spreadsheet.connectionID"
+                              value="54d7af15-0364-4cd1-996b-cf054596a8d9"/>
                 </reportElement>
                 <textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
             </textField>

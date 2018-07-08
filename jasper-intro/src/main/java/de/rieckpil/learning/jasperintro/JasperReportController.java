@@ -49,7 +49,9 @@ public class JasperReportController {
         parameters.put("ReportTitle", "List of Contacts");
         parameters.put("Author", "Prepared By Rieckpil");
         parameters.put("PRICE", 99.8);
-        parameters.put("logo",  this.getClass().getClassLoader().getResourceAsStream("jasper/spring-boot-logo.png"));
+        parameters.put("logo",  ClassLoader.getSystemResource("jasper/spring-boot-logo.png").getPath());
+
+        System.out.println(ClassLoader.getSystemResource("jasper/spring-boot-logo.png").getPath());
 
         try {
             InputStream inputStreamJasperReport = this.getClass().getClassLoader().getResourceAsStream(fileName);
