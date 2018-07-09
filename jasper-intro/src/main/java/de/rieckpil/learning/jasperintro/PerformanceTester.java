@@ -23,15 +23,20 @@ public class PerformanceTester {
     private JasperReport jasperReport;
 
     @PostConstruct
-    public void init() throws Exception {
+    public void init() {
 
         this.logoPath = ClassLoader.getSystemResource("jasper/spring-boot-logo.png").getPath();
 
         InputStream inputStreamJasperReport = this.getClass().getClassLoader().getResourceAsStream
                 ("jasper/performance.jrxml");
 
-        JasperDesign jasperDesign = JRXmlLoader.load(inputStreamJasperReport);
-        this.jasperReport = JasperCompileManager.compileReport(jasperDesign);
+        try {
+            JasperDesign jasperDesign = JRXmlLoader.load(inputStreamJasperReport);
+            this.jasperReport = JasperCompileManager.compileReport(jasperDesign);
+        } catch (JRException e) {
+            e.printStackTrace();
+            throw new IllegalArgumentException("Can't initialize Jasper Report for Performance testing");
+        }
 
     }
 
