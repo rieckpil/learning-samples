@@ -22,7 +22,7 @@ public class JasperIntroApplication {
 
             long start = System.currentTimeMillis();
 
-            for (int i = 0; i < 500; i++) {
+            for (int i = 0; i < 10; i++) {
                 performanceTester.createJasperReport(pdfOutputFileName + i + ".pdf",
                         100);
             }

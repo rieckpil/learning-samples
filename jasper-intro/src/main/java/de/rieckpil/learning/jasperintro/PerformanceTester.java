@@ -4,9 +4,12 @@ import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
@@ -25,15 +28,17 @@ public class PerformanceTester {
     @PostConstruct
     public void init() {
 
-        this.logoPath = ClassLoader.getSystemResource("jasper/spring-boot-logo.png").getPath();
+        this.logoPath = new ClassPathResource("jasper/spring-boot-logo.png").getPath();
 
-        InputStream inputStreamJasperReport = this.getClass().getClassLoader().getResourceAsStream
-                ("jasper/performance.jrxml");
+        System.out.println("### this.logoPath: " + logoPath);
+
+        ClassPathResource report = new ClassPathResource("jasper/performance.jrxml");
 
         try {
+            InputStream inputStreamJasperReport = report.getInputStream();
             JasperDesign jasperDesign = JRXmlLoader.load(inputStreamJasperReport);
             this.jasperReport = JasperCompileManager.compileReport(jasperDesign);
-        } catch (JRException e) {
+        } catch (JRException | IOException e) {
             e.printStackTrace();
             throw new IllegalArgumentException("Can't initialize Jasper Report for Performance testing");
         }
