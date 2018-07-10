@@ -45,7 +45,7 @@ public class PerformanceTester {
 
     }
 
-    public void createJasperReport(String outputPdfFileName, int amountOfBeans) {
+    public byte[] createJasperReport(String outputPdfFileName, int amountOfBeans) {
 
         JRBeanCollectionDataSource beanColDataSource =
                 new JRBeanCollectionDataSource(createPersons(amountOfBeans));
@@ -60,9 +60,12 @@ public class PerformanceTester {
                     this.jasperReport, parameters, beanColDataSource);
 
             JasperExportManager.exportReportToPdfFile(jprint, outputPdfFileName);
+            return JasperExportManager.exportReportToPdf(jprint);
         } catch (JRException e) {
             e.printStackTrace();
         }
+
+        return null;
 
     }
 
