@@ -1,4 +1,4 @@
-package com.airhacks.ping.entity;
+package de.rieckpil.learning.ping.entity;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;

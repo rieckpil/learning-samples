@@ -1,6 +1,6 @@
-package com.airhacks.ping.control;
+package de.rieckpil.learning.ping.control;
 
-import com.airhacks.ping.entity.MyEvent;
+import de.rieckpil.learning.ping.entity.MyEvent;
 
 import javax.annotation.Priority;
 import javax.enterprise.event.Observes;

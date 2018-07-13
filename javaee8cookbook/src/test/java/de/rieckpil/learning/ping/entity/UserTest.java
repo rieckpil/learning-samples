@@ -1,4 +1,4 @@
-package com.airhacks.ping.entity;
+package de.rieckpil.learning.ping.entity;
 
 import org.junit.BeforeClass;
 import org.junit.Test;

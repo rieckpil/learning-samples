@@ -13,6 +13,8 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- BEAN Validation -->
+
         <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
@@ -23,10 +25,31 @@
             <artifactId>javax.el</artifactId>
             <version>3.0.1-b10</version>
         </dependency>
+
+        <!-- CDI -->
+
         <dependency>
             <groupId>org.jboss.weld.se</groupId>
             <artifactId>weld-se-shaded</artifactId>
             <version>3.0.0.Final</version>
+        </dependency>
+
+        <!-- JAX-RS -->
+
+        <dependency>
+            <groupId>org.glassfish.jersey.containers</groupId>
+            <artifactId>jersey-container-grizzly2-http</artifactId>
+            <version>2.26-b09</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.inject</groupId>
+            <artifactId>jersey-hk2</artifactId>
+            <version>2.26-b09</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-sse</artifactId>
+            <version>2.26-b09</version>
         </dependency>
 
         <dependency>

@@ -1,4 +1,4 @@
-package com.airhacks.ping.entity;
+package de.rieckpil.learning.ping.entity;
 
 public class MyEvent {
 
