@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Date;
 
 @WebServlet(name = "UserServlet", urlPatterns = {"/UserServlet"})
 public class UserServlet extends HttpServlet {
@@ -45,7 +43,7 @@ public class UserServlet extends HttpServlet {
     }
 
     protected void doRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        /**
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             out.println("<html>");
@@ -61,5 +59,10 @@ public class UserServlet extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
         }
+         */
+
+        request.getRequestDispatcher("/user.jsp")
+                .forward(request, response);
+        System.out.println("Redirected to user.jsp");
     }
 }
