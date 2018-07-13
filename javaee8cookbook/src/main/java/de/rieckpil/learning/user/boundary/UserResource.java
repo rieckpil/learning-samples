@@ -1,9 +1,7 @@
 package de.rieckpil.learning.user.boundary;
 
-import de.rieckpil.learning.user.entity.Profile;
-import de.rieckpil.learning.user.entity.ProfileType;
-import de.rieckpil.learning.user.entity.User;
-import de.rieckpil.learning.user.entity.UserProfile;
+import de.rieckpil.learning.user.control.JpaUserCacheBean;
+import de.rieckpil.learning.user.entity.*;
 
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.event.Event;
@@ -24,6 +22,9 @@ public class UserResource {
     private User user;
 
     @Inject
+    private JpaUserCacheBean userCacheBean;
+
+    @Inject
     @Profile(ProfileType.ADMIN)
     private UserProfile userProfileAdmin;
 
@@ -39,6 +40,14 @@ public class UserResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getUser() {
         return Response.ok(user).build();
+    }
+
+
+    @GET
+    @Path("getJpaUser")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getJpaUser() {
+        return Response.ok(userCacheBean.get()).build();
     }
 
     @GET

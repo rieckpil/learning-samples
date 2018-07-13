@@ -9,7 +9,7 @@ public class ImplAdmin implements UserProfile {
 
     @Override
     public ProfileType type() {
-        System.out.println("User is admin");
+        System.out.println("BeanValidationUser is admin");
         return ProfileType.ADMIN;
     }
 }

@@ -12,7 +12,7 @@ public class ImplOperator implements UserProfile {
 
     @Override
     public ProfileType type() {
-        System.out.println("User is operator");
+        System.out.println("BeanValidationUser is operator");
         return ProfileType.OPERATOR;
     }
 }

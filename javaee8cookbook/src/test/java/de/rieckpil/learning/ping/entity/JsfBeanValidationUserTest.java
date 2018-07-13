@@ -12,7 +12,7 @@ import java.util.Set;
 import static java.util.Arrays.asList;
 import static org.junit.Assert.*;
 
-public class UserTest {
+public class JsfBeanValidationUserTest {
 
     private static Validator validator;
 
@@ -24,49 +24,49 @@ public class UserTest {
 
     @Test
     public void validUser() {
-        User user = new User(
+        BeanValidationUser beanValidationUser = new BeanValidationUser(
                 "elder",
                 "elder@eldermoraes.com",
                 asList(1,2));
 
-        Set<ConstraintViolation<User>> cv = validator
-                .validate(user);
+        Set<ConstraintViolation<BeanValidationUser>> cv = validator
+                .validate(beanValidationUser);
         assertTrue(cv.isEmpty());
     }
 
     @Test
     public void invalidName() {
-        User user = new User(
+        BeanValidationUser beanValidationUser = new BeanValidationUser(
                 "",
                 "elder@eldermoraes.com",
                 asList(1,2));
 
-        Set<ConstraintViolation<User>> cv = validator
-                .validate(user);
+        Set<ConstraintViolation<BeanValidationUser>> cv = validator
+                .validate(beanValidationUser);
         assertEquals(1, cv.size());
     }
 
     @Test
     public void invalidEmail() {
-        User user = new User(
+        BeanValidationUser beanValidationUser = new BeanValidationUser(
                 "elder",
                 "elder-eldermoraes_com",
                 asList(1,2));
 
-        Set<ConstraintViolation<User>> cv = validator
-                .validate(user);
+        Set<ConstraintViolation<BeanValidationUser>> cv = validator
+                .validate(beanValidationUser);
         assertEquals(1, cv.size());
     }
 
     @Test
     public void invalidId() {
-        User user = new User(
+        BeanValidationUser beanValidationUser = new BeanValidationUser(
                 "elder",
                 "elder@eldermoraes.com",
                 asList(-1,-2,1,2));
 
-        Set<ConstraintViolation<User>> cv = validator
-                .validate(user);
+        Set<ConstraintViolation<BeanValidationUser>> cv = validator
+                .validate(beanValidationUser);
         assertEquals(2, cv.size());
     }
 }

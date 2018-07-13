@@ -10,22 +10,22 @@
 <h:body>
     <h:form>
         <h:outputLabel for="name" value="Name"/>
-        <h:inputText id="name" value="#{user.name}"/>
+        <h:inputText id="name" value="#{jsfUser.name}"/>
         <br/>
         <h:outputLabel for="email" value="E-mail"/>
-        <h:inputText id="email" value="#{user.email}"/>
+        <h:inputText id="email" value="#{jsfUser.email}"/>
         <br/>
         <h:outputLabel for="created" value="Created"/>
-        <h:inputText id="created" value="#{user.created}">
+        <h:inputText id="created" value="#{jsfUser.created}">
             <f:convertDateTime type="localDate" pattern="dd.MM.uuuu"/>
         </h:inputText>
         <br/>
         <h:outputLabel for="expire" value="Expire"/>
-        <h:inputText id="expire" value="#{user.expires}">
+        <h:inputText id="expire" value="#{jsfUser.expires}">
             <f:convertDateTime type="localDate" pattern="dd.MM.uuuu"/>
         </h:inputText>
         <br/>
-        <h:commandButton value="submit" type="submit" action="#{user.valid()}"/>
+        <h:commandButton value="submit" type="submit" action="#{jsfUser.valid()}"/>
     </h:form>
 
 

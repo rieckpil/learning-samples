@@ -6,7 +6,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.PositiveOrZero;
 import java.util.List;
 
-public class User {
+public class BeanValidationUser {
 
     @NotBlank
     private String name;
@@ -17,7 +17,7 @@ public class User {
     @NotEmpty
     private List<@PositiveOrZero Integer> profileId;
 
-    public User(String name, String email, List<Integer> profileId) {
+    public BeanValidationUser(String name, String email, List<Integer> profileId) {
         this.name = name;
         this.email = email;
         this.profileId = profileId;

@@ -9,7 +9,7 @@ import java.time.LocalDate;
 
 @Named
 @RequestScoped
-public class User {
+public class JsfUser {
 
     @NotBlank(message = "Name should not be blank")
     @Size(min = 4, max = 10, message = "Name should be between 4and 10characters")

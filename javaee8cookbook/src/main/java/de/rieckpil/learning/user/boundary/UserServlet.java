@@ -1,6 +1,6 @@
 package de.rieckpil.learning.user.boundary;
 
-import de.rieckpil.learning.user.entity.User;
+import de.rieckpil.learning.user.entity.JpaUser;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletException;
@@ -13,11 +13,11 @@ import java.io.IOException;
 @WebServlet(name = "UserServlet", urlPatterns = {"/UserServlet"})
 public class UserServlet extends HttpServlet {
 
-    private User user;
+    private JpaUser jpaUser;
 
     @PostConstruct
     public void instantiateUser(){
-        user = new User("Philip Riecks", "hello@mail.com");
+        jpaUser = new JpaUser("Philip Riecks", "hello@mail.com");
     }
 
     @Override
@@ -54,15 +54,15 @@ public class UserServlet extends HttpServlet {
             out.println("<h2>Servlet UserServlet at " +
                     request.getContextPath() + "</h2>");
             out.println("<h2>Now: " + new Date() + "</h2>");
-            out.println("<h2>User: " + user.getName() + "/" +
-                    user.getEmail() + "</h2>");
+            out.println("<h2>BeanValidationUser: " + jpaUser.getName() + "/" +
+                    jpaUser.getEmail() + "</h2>");
             out.println("</body>");
             out.println("</html>");
         }
          */
 
-        request.getRequestDispatcher("/user.jsp")
+        request.getRequestDispatcher("/jpaUser.jsp")
                 .forward(request, response);
-        System.out.println("Redirected to user.jsp");
+        System.out.println("Redirected to jpaUser.jsp");
     }
 }
