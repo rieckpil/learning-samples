@@ -39,7 +39,7 @@ public class UserResource {
     @Path("getUser")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getUser() {
-        return Response.ok(user).build();
+        return Response.ok().build();
     }
 
 

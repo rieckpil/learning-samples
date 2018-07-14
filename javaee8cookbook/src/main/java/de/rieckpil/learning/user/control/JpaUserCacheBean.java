@@ -24,9 +24,6 @@ public class JpaUserCacheBean {
     @PersistenceContext
     private EntityManager em;
 
-    public JpaUserCacheBean() {
-    }
-
     @PostConstruct
     protected void init() {
         System.out.println("... initializing the cache");

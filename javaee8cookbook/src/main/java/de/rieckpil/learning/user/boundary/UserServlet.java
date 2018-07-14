@@ -61,8 +61,8 @@ public class UserServlet extends HttpServlet {
         }
          */
 
-        request.getRequestDispatcher("/jpaUser.jsp")
+        request.getRequestDispatcher("/user.jsp")
                 .forward(request, response);
-        System.out.println("Redirected to jpaUser.jsp");
+        System.out.println("Redirected to user.jsp");
     }
 }

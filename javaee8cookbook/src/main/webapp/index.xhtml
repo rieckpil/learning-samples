@@ -28,6 +28,13 @@
         <h:commandButton value="submit" type="submit" action="#{jsfUser.valid()}"/>
     </h:form>
 
+    <h:form>
+        <h:outputLabel value="#{userBean.get()}" />
+        <br />
+        <h:commandButton value="Run" action="index" actionListener="#{userBean.run()}"/>
+        <h:commandButton value="Reload" action="index"/>
+    </h:form>
+
 
 </h:body>
 
