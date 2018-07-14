@@ -3,9 +3,7 @@ package de.rieckpil.learning.user.entity;
 import javax.json.bind.annotation.JsonbDateFormat;
 import javax.json.bind.annotation.JsonbNumberFormat;
 import javax.json.bind.annotation.JsonbProperty;
-import javax.json.bind.annotation.JsonbTransient;
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Message {
 
@@ -16,7 +14,7 @@ public class Message {
 
     private String email;
 
-    @JsonbNumberFormat("#0.00")
+    @JsonbNumberFormat("#0.0000")
     private Double privateNumber;
 
     @JsonbDateFormat("dd.MM.yyyy")
