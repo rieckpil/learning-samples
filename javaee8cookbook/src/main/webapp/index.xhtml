@@ -29,13 +29,38 @@
     </h:form>
 
     <h:form>
-        <h:outputLabel value="#{userBean.get()}" />
-        <br />
+        <h:outputLabel value="#{userBean.get()}"/>
+        <br/>
         <h:commandButton value="Run" action="index" actionListener="#{userBean.run()}"/>
         <h:commandButton value="Reload" action="index"/>
     </h:form>
 
+    <h:form>
+        <h:outputLabel for="countClient" value="Number of Clients"/>
+        <h:inputText id="countClient" value="#{sseBean.countClient}"/>
 
+        <br/>
+        <h:commandButton type="submit" action="#{sseBean.sendEvent()}"
+                         value="Send Events"/>
+    </h:form>
+
+
+    <h:form>
+        <h:commandButton type="submit"
+                         action="#{userView.loadUsers()}"
+                         value="Load Users"/>
+    </h:form>
+    <h:form>
+        <h:commandButton type="submit" action="#{userView.loadJson()}"
+                         value="Load JSON" />
+
+        <br />
+
+        <h:outputLabel for="json" value="JSON" />
+        <br />
+        <h:inputTextarea id="json" value="#{userView.json}"
+                         style="width: 300px; height: 300px;" />
+    </h:form>
 </h:body>
 
 </html>
