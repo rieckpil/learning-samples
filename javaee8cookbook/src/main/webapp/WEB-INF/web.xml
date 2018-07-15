@@ -10,6 +10,20 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
 
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>CH05-Authentication</web-resource-name>
+            <url-pattern>/authServlet</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>role1</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <security-role>
+        <role-name>role1</role-name>
+    </security-role>
+
     <!-- Map these files with JSF -->
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
