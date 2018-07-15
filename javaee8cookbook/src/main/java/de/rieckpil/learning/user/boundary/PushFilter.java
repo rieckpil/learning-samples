@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.PushBuilder;
 import java.io.IOException;
 
-@WebFilter(filterName = "PushFilter", urlPatterns = {"/*"})
+@WebFilter(filterName = "PushFilter", urlPatterns = {"/*"}, asyncSupported = true)
 public class PushFilter implements Filter {
 
     @Override
@@ -14,7 +14,7 @@ public class PushFilter implements Filter {
 
         HttpServletRequest httpReq = (HttpServletRequest) request;
 
-        PushBuilder builder =  httpReq.newPushBuilder();
+        PushBuilder builder = httpReq.newPushBuilder();
 
         if (builder != null) {
             System.out.println("Filtered");
