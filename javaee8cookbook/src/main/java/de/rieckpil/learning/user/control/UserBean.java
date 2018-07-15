@@ -5,12 +5,12 @@ import de.rieckpil.learning.user.entity.JpaUser;
 import javax.batch.operations.JobOperator;
 import javax.batch.operations.JobStartException;
 import javax.batch.runtime.BatchRuntime;
-import javax.ejb.Stateless;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
@@ -51,6 +51,10 @@ public class UserBean {
 
     public JpaUser findById(Long id){
         return em.find(JpaUser.class, id);
+    }
+
+    public Long getTimestamp(){
+        return new Date().getTime();
     }
 
 }
