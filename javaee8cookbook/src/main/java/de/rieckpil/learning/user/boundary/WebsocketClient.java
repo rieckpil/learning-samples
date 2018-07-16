@@ -37,7 +37,9 @@ public class WebsocketClient {
 
     @OnMessage
     public void onMessage(String message, Session session) {
+        System.out.println("message incoming to client: " + message);
         response.resume(message);
+        this.close();
     }
 
     public void send(String message) {

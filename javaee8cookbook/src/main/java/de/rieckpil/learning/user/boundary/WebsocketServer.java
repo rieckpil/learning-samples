@@ -14,24 +14,30 @@ public class WebsocketServer {
     private final List<Session> peers = Collections.synchronizedList(new ArrayList<>());
 
     @OnOpen
-    public void onOpen(Session peer){
+    public void onOpen(Session peer) {
         peers.add(peer);
     }
 
     @OnClose
-    public void onClose(Session peer){
+    public void onClose(Session peer) {
         peers.remove(peer);
     }
 
     @OnError
-    public void onError(Throwable t){
+    public void onError(Throwable t) {
         System.err.println(t.getMessage());
     }
 
     @OnMessage
-    public void onMessage(String message, Session peer){
+    public void onMessage(String message, Session peer) {
+
+        System.out.println("Incoming message to websocket server: " + message);
+        System.out.println(peers.size());
+
+        peers.stream().forEach(p -> System.out.println(p.getAsyncRemote()));
+
         peers.stream().filter((p) ->
-                (p.isOpen())).forEachOrdered((p) -> {
+                (p.isOpen())).forEach((p) -> {
             p.getAsyncRemote().sendText(message +
                     " - Total peers: " + peers.size());
         });
