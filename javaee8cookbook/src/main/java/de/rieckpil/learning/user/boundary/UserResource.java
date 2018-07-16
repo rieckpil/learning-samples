@@ -1,7 +1,10 @@
 package de.rieckpil.learning.user.boundary;
 
 import de.rieckpil.learning.user.control.JpaUserCacheBean;
-import de.rieckpil.learning.user.entity.*;
+import de.rieckpil.learning.user.entity.Profile;
+import de.rieckpil.learning.user.entity.ProfileType;
+import de.rieckpil.learning.user.entity.User;
+import de.rieckpil.learning.user.entity.UserProfile;
 
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.event.Event;
@@ -13,6 +16,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 @Path("user")
 @RequestScoped
@@ -62,6 +67,20 @@ public class UserResource {
     public Response getProfileOperator() {
         fireUserEvents(userProfileOperator.type());
         return Response.ok().build();
+    }
+
+    @GET
+    @Path("slow")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response slowServiceCall() {
+        try {
+            TimeUnit.SECONDS.sleep(5);
+            long id = new Date().getTime();
+            return Response.ok(new User(id + "@mail.com", "User " + id)).build();
+        } catch (InterruptedException ex) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(ex).build();
+        }
+
     }
 
     private ProfileType fireUserEvents(ProfileType type) {
