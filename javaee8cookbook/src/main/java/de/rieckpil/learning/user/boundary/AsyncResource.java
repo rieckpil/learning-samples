@@ -11,6 +11,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.container.AsyncResponse;
 import javax.ws.rs.container.Suspended;
 import javax.ws.rs.core.Response;
+import java.util.Date;
 
 
 @Stateless
@@ -47,5 +48,17 @@ public class AsyncResource {
         thread.setName("Managed Async Task");
         thread.setPriority(Thread.MIN_PRIORITY);
         thread.start();
+    }
+
+    @GET
+    @Path("wscall")
+    public void websocketCall(@Suspended AsyncResponse response){
+
+        System.out.println("trying to call websocket");
+
+        WebsocketClient client = new WebsocketClient(response);
+        client.connect();
+        client.send("Message from client " + new Date().getTime());
+        client.close();
     }
 }
