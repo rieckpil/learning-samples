@@ -2,7 +2,9 @@ package de.rieckpil.learning.user.boundary;
 
 import de.rieckpil.learning.user.control.AsyncResultClient;
 
+import javax.annotation.Resource;
 import javax.ejb.Stateless;
+import javax.enterprise.concurrent.ManagedThreadFactory;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -18,6 +20,9 @@ public class AsyncResource {
     @Inject
     private AsyncResultClient client;
 
+    @Resource
+    private ManagedThreadFactory managedThreadFactory;
+
     @GET
     public void asyncService(@Suspended AsyncResponse response) {
         try {
@@ -29,5 +34,18 @@ public class AsyncResource {
 
     private String readResponse(Response response) {
         return response.readEntity(String.class);
+    }
+
+    @GET
+    @Path("thread")
+    public void threadAsync(@Suspended AsyncResponse response) {
+
+        Thread thread = managedThreadFactory.newThread(() -> {
+            response.resume(Response.ok("managed").build());
+        });
+
+        thread.setName("Managed Async Task");
+        thread.setPriority(Thread.MIN_PRIORITY);
+        thread.start();
     }
 }
