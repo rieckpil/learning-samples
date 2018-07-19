@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <f:metadata>
+        <f:viewParam id="query" name="query" value="#{search.query}"/>
+        <f:viewAction action="#{search.onload}"/>
+    </f:metadata>
+</h:head>
+<h:body>
+    <form>
+        <label for="query">Query</label>
+        <input type="text" name="query"
+               value="#{empty search.query ? param.query : search.query}">
+        </input>
+        <input type="submit" value="Search"/>
+        <h:message for="query"/>
+    </form>
+    <h:dataTable id="results" rendered="#{not empty search.results}"
+                 value="#{search.results}" var="result">
+        <h:column>#{result.name}</h:column>
+        <h:column>#{result.description}</h:column>
+    </h:dataTable>
+</h:body>
+</html>

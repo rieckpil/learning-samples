@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Login</title>
+</h:head>
+<h:body>
+    <f:view transient="true" locale="de_DE">
+        <h:form id="login">
+            <fieldset>
+                <legend>Login</legend>
+                <section>
+                    <h:outputLabel for="email" value="Email address"/>
+                    <h:inputText id="email" value="#{login.email}"
+                                 required="true">
+                        <f:ajax event="keypress" listener="#{login.onChangeLoginForm}"/>
+                    </h:inputText>
+                    <h:message id="m_email" for="email"/>
+                </section>
+                <section>
+                    <h:outputLabel for="password" value="Password"/>
+                    <h:inputSecret id="password" value="#{login.password}"
+                                   required="true"/>
+                    <h:message id="m_password" for="password"/>
+                </section>
+                <section>
+                    <h:outputLabel for="rnd_number" value="Random number"/>
+                    <h:inputText id="rnd_number" converter="javax.faces.Integer"
+                                   required="true"/>
+                    <h:message id="m_rnd_number" for="rnd_number"/>
+                    <h:outputText value="#{login.price}">
+                        <f:convertNumber type="currency" locale="en_US" />
+                    </h:outputText>
+                </section>
+                <footer>
+                    <h:commandButton id="submit" value="Login"
+                                     action="#{login.submit}"/>
+                    <h:message id="m_submit" for="submit"/>
+
+                </footer>
+            </fieldset>
+        </h:form>
+        <h:messages id="messages" globalOnly="true"
+                    rendered="#{component.namingContainer.submitted}"/>
+    </f:view>
+</h:body>
+</html>
