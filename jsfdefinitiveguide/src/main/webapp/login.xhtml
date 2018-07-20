@@ -3,6 +3,7 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
@@ -13,7 +14,7 @@
         <h:form id="login">
             <fieldset>
                 <legend>Login</legend>
-                <section>
+                <section jsf:id="section">
                     <h:outputLabel for="email" value="Email address"/>
                     <h:inputText id="email" value="#{login.email}"
                                  required="true">

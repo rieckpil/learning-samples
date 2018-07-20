@@ -1,0 +1,22 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+    <a href="#{request.contextPath}/">
+        <h:graphicImage name="images/logo.jpg"/>
+    </a>
+    <nav>
+        <ul>
+            <li>
+                <h:link outcome="/home" value="About"/>
+            </li>
+            <li>
+                <h:link outcome="/hello" value="Help"/>
+            </li>
+            <li>
+                <h:link outcome="/login" value="Contact"/>
+            </li>
+        </ul>
+    </nav>
+</ui:composition>

@@ -4,9 +4,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head>
-
+    <h:outputStylesheet name="styles/some.css"/>
 </h:head>
 <h:body>
 
@@ -54,5 +55,11 @@
         </h:commandButton>
     </h:form>
 
+    <h:dataTable value="#{products.products}" var="product">
+        <c:forEach items="#{products.properties}" var="property">
+            <f:facet name="header">#{property}</f:facet>
+            <h:column>#{product[property]}</h:column>
+        </c:forEach>
+    </h:dataTable>
 </h:body>
 </html>

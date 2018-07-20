@@ -8,6 +8,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 
 @ViewScoped
@@ -18,11 +19,13 @@ public class Products implements Serializable {
     private ProductsService productsService;
 
     private List<Product> products;
+    private List<String> properties;
     private Product product = new Product();
 
     @PostConstruct
     public void init() {
         this.products = productsService.list();
+        properties = Arrays.asList("id", "name", "description");
     }
 
     public void save() {
@@ -38,6 +41,14 @@ public class Products implements Serializable {
     public void delete(Product product) {
         productsService.delete(product);
         products.remove(product);
+    }
+
+    public List<String> getProperties() {
+        return properties;
+    }
+
+    public void setProperties(List<String> properties) {
+        this.properties = properties;
     }
 
     public Product getProduct() {
