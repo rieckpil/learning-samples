@@ -27,6 +27,9 @@ public class JavaDocExample {
      *
      *
      * @param age the age of the user to verify
+     * @throws NullPointerException if the age is null
+     * @see FormattingStrings#main(String[])
+     *
      */
     public void someMethod(int age) {
 
