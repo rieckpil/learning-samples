@@ -4,41 +4,84 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 <h:head>
-
+    <h:outputStylesheet>
+        input {
+            display: block;
+            margin-bottom: 15px;
+        }
+    </h:outputStylesheet>
 </h:head>
 <h:body>
     <h:form id="form">
-        <h:inputText id="date" value="#{time.date}">
+        <h:inputText id="date" value="#{time.date}" required="true">
             <f:convertDateTime type="date" pattern="yyyy-MM-dd"/>
         </h:inputText>
+
         <h:inputText id="time" value="#{time.time}">
             <f:convertDateTime type="time" pattern="HH:mm:ss"/>
         </h:inputText>
+
         <h:inputText id="both" value="#{time.both}">
             <f:convertDateTime type="both" pattern="yyyy-MM-dd HH:mm:ss"/>
         </h:inputText>
+
         <h:inputText id="localDate" value="#{time.localDate}">
             <f:convertDateTime type="localDate" pattern="yyyy-MM-dd"/>
         </h:inputText>
+
         <h:inputText id="localTime" value="#{time.localTime}">
             <f:convertDateTime type="localTime" pattern="HH:mm:ss"/>
         </h:inputText>
+
         <h:inputText id="localDateTime" value="#{time.localDateTime}">
             <f:convertDateTime type="localDateTime"
                                pattern="yyyy-MM-dd HH:mm:ss">
             </f:convertDateTime>
         </h:inputText>
+
         <h:inputText id="offsetTime" value="#{time.offsetTime}">
             <f:convertDateTime type="offsetTime"/>
         </h:inputText>
+
         <h:inputText id="offsetDateTime" value="#{time.offsetDateTime}">
             <f:convertDateTime type="offsetDateTime"/>
         </h:inputText>
+
         <h:inputText id="zonedDateTime" value="#{time.zonedDateTime}">
             <f:convertDateTime type="zonedDateTime"/>
         </h:inputText>
+
+        <h:inputText id="localDate2" a:type="date" value="#{time.localDate}">
+            <f:convertDateTime type="localDate" pattern="yyyy-MM-dd"/>
+        </h:inputText>
+
+        <h:inputText id="localTime2" a:type="time" value="#{time.localTime}">
+            <f:convertDateTime type="localTime" pattern="HH:mm"/>
+        </h:inputText>
+
+        <h:inputText id="localDateTime2" a:type="datetime-local"
+                     value="#{time.localDateTime}">
+            <f:convertDateTime type="localDateTime"
+                               pattern="yyyy-MM-dd'T'HH:mm">
+            </f:convertDateTime>
+        </h:inputText>
+
+        <h:inputText value="#{time.quantity}"
+                     a:type="number" a:min="1" a:max="10">
+            <f:validateLongRange minimum="1" maximum="10"/>
+        </h:inputText>
+        <h:inputText value="#{time.volume}"
+                     a:type="range" a:min="1" a:max="10" a:step="0.1">
+            <f:validateLongRange minimum="1" maximum="10"/>
+        </h:inputText>
+
+        <h:inputText id="name" value="#{time.name}">
+            <f:validateBean disabled="false"/>
+        </h:inputText>
+
         <h:commandButton value="submit" action="#{time.submit}"/>
         <h:messages showSummary="false" showDetail="true"/>
     </h:form>

@@ -7,4 +7,7 @@ http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd"
         version="2.3"
 >
     <!-- JSF configuration here. -->
+    <application>
+        <message-bundle>i18n.messages</message-bundle>
+    </application>
 </faces-config>

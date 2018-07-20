@@ -2,6 +2,7 @@ package de.rieckpil.learning;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
+import javax.validation.constraints.NotNull;
 import java.time.*;
 import java.util.Date;
 
@@ -19,6 +20,12 @@ public class Time {
     private OffsetDateTime offsetDateTime;
     private ZonedDateTime zonedDateTime;
 
+    private double quantity;
+    private double volume;
+
+    @NotNull(message = "Name must not be null! Please enter your name :)")
+    private String name;
+
     public void submit() {
         System.out.println("date: " + date);
         System.out.println("time: " + time);
@@ -29,6 +36,30 @@ public class Time {
         System.out.println("offsetTime: " + offsetTime);
         System.out.println("offsetDateTime: " + offsetDateTime);
         System.out.println("zonedDateTime: " + zonedDateTime);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(double quantity) {
+        this.quantity = quantity;
+    }
+
+    public double getVolume() {
+        return volume;
+    }
+
+    public void setVolume(double volume) {
+        this.volume = volume;
     }
 
     public Date getDate() {
