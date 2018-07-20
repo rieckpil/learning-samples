@@ -24,7 +24,7 @@ public class Time {
     private double volume;
 
     @NotNull(message = "Name must not be null! Please enter your name :)")
-    private String name;
+    private String name = "Philip";
 
     public void submit() {
         System.out.println("date: " + date);

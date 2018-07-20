@@ -12,9 +12,23 @@
             display: block;
             margin-bottom: 15px;
         }
+        a {
+            display:block;
+
+        }
     </h:outputStylesheet>
 </h:head>
 <h:body>
+    <h:link outcome="date" value="date"/>
+    <a href="#{request.contextPath}/date.xhtml">date</a>
+    <h:link outcome="/hello" value="hello"/>
+    <a href="#{request.contextPath}/hello.xhtml">hello</a>
+    <h:link outcome="/index" value="index"/>
+    <a href="#{request.contextPath}/index.xhtml">index</a>
+    <h:link outcome="/test" value="test"/>
+    <a href="#{request.contextPath}/test.xhtml">test</a>
+
+    <p>Hello, #{time.name}!</p>
     <h:form id="form">
         <h:inputText id="date" value="#{time.date}" required="true">
             <f:convertDateTime type="date" pattern="yyyy-MM-dd"/>
