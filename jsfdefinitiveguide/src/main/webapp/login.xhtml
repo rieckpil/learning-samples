@@ -30,11 +30,13 @@
                 <section>
                     <h:outputLabel for="rnd_number" value="Random number"/>
                     <h:inputText id="rnd_number" converter="javax.faces.Integer"
-                                   required="true"/>
+                                 required="true"/>
                     <h:message id="m_rnd_number" for="rnd_number"/>
+                    <br/>
                     <h:outputText value="#{login.price}">
-                        <f:convertNumber type="currency" locale="en_US" />
+                        <f:convertNumber minFractionDigits="5" maxFractionDigits="5" type="currency" locale="en_US"/>
                     </h:outputText>
+                    <br/>
                 </section>
                 <footer>
                     <h:commandButton id="submit" value="Login"

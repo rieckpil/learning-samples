@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+
+</h:head>
+<h:body>
+    <h:form id="form">
+        <h:inputText id="date" value="#{time.date}">
+            <f:convertDateTime type="date" pattern="yyyy-MM-dd"/>
+        </h:inputText>
+        <h:inputText id="time" value="#{time.time}">
+            <f:convertDateTime type="time" pattern="HH:mm:ss"/>
+        </h:inputText>
+        <h:inputText id="both" value="#{time.both}">
+            <f:convertDateTime type="both" pattern="yyyy-MM-dd HH:mm:ss"/>
+        </h:inputText>
+        <h:inputText id="localDate" value="#{time.localDate}">
+            <f:convertDateTime type="localDate" pattern="yyyy-MM-dd"/>
+        </h:inputText>
+        <h:inputText id="localTime" value="#{time.localTime}">
+            <f:convertDateTime type="localTime" pattern="HH:mm:ss"/>
+        </h:inputText>
+        <h:inputText id="localDateTime" value="#{time.localDateTime}">
+            <f:convertDateTime type="localDateTime"
+                               pattern="yyyy-MM-dd HH:mm:ss">
+            </f:convertDateTime>
+        </h:inputText>
+        <h:inputText id="offsetTime" value="#{time.offsetTime}">
+            <f:convertDateTime type="offsetTime"/>
+        </h:inputText>
+        <h:inputText id="offsetDateTime" value="#{time.offsetDateTime}">
+            <f:convertDateTime type="offsetDateTime"/>
+        </h:inputText>
+        <h:inputText id="zonedDateTime" value="#{time.zonedDateTime}">
+            <f:convertDateTime type="zonedDateTime"/>
+        </h:inputText>
+        <h:commandButton value="submit" action="#{time.submit}"/>
+        <h:messages showSummary="false" showDetail="true"/>
+    </h:form>
+</h:body>
+</html>
