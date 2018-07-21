@@ -2,10 +2,7 @@ package de.rieckpil.learning.javabycomparison.exceptions;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.nio.file.DirectoryStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.file.*;
 
 public class TryWithMultipleResources {
 
@@ -16,7 +13,7 @@ public class TryWithMultipleResources {
     public static void main(String[] args) throws IOException {
 
         try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(LOG_FOLDER, FILE_FILTER);
-             BufferedWriter writer = Files.newBufferedWriter(STATISTICS_CSV)) {
+             BufferedWriter writer = Files.newBufferedWriter(STATISTICS_CSV, StandardOpenOption.APPEND)) {
 
             for (Path logFile : directoryStream) {
                 String csvLine = String.format("%s, %d, %s",
