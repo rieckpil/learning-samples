@@ -15,63 +15,62 @@ import java.util.List;
 @Named
 public class Products implements Serializable {
 
-    @Inject
-    private ProductsService productsService;
+  @Inject private ProductsService productsService;
 
-    private List<Product> products;
-    private List<String> properties;
-    private Product product = new Product();
+  private List<Product> products;
+  private List<String> properties;
+  private Product product = new Product();
 
-    @PostConstruct
-    public void init() {
-        this.products = productsService.list();
-        properties = Arrays.asList("id", "name", "description");
-    }
+  @PostConstruct
+  public void init() {
+    this.products = productsService.list();
+    properties = Arrays.asList("id", "name", "description");
+  }
 
-    public void save() {
-        productsService.update(products);
-    }
+  public void save() {
+    productsService.update(products);
+  }
 
-    public void add() {
-        productsService.create(product);
-        products.add(0, product);
-        product = new Product();
-    }
+  public void add() {
+    productsService.create(product);
+    products.add(0, product);
+    product = new Product();
+  }
 
-    public void delete(Product product) {
-        productsService.delete(product);
-        products.remove(product);
-    }
+  public void delete(Product product) {
+    productsService.delete(product);
+    products.remove(product);
+  }
 
-    public List<String> getProperties() {
-        return properties;
-    }
+  public List<String> getProperties() {
+    return properties;
+  }
 
-    public void setProperties(List<String> properties) {
-        this.properties = properties;
-    }
+  public void setProperties(List<String> properties) {
+    this.properties = properties;
+  }
 
-    public Product getProduct() {
-        return product;
-    }
+  public Product getProduct() {
+    return product;
+  }
 
-    public void setProduct(Product product) {
-        this.product = product;
-    }
+  public void setProduct(Product product) {
+    this.product = product;
+  }
 
-    public ProductsService getProductsService() {
-        return productsService;
-    }
+  public ProductsService getProductsService() {
+    return productsService;
+  }
 
-    public void setProductsService(ProductsService productsService) {
-        this.productsService = productsService;
-    }
+  public void setProductsService(ProductsService productsService) {
+    this.productsService = productsService;
+  }
 
-    public List<Product> getProducts() {
-        return products;
-    }
+  public List<Product> getProducts() {
+    return products;
+  }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
+  public void setProducts(List<Product> products) {
+    this.products = products;
+  }
 }
