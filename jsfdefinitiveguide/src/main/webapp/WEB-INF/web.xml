@@ -18,6 +18,11 @@
     </context-param>
 
     <context-param>
+        <param-name>javax.faces.ENABLE_WEBSOCKET_ENDPOINT</param-name>
+        <param-value>true</param-value>
+    </context-param>
+
+    <context-param>
         <param-name>
             javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL
         </param-name>
@@ -39,6 +44,11 @@
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet>
+        <servlet-name>facesServlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
     </servlet>
 
     <!-- Map these files with JSF -->
