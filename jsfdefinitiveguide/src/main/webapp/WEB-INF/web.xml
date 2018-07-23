@@ -13,6 +13,11 @@
     </error-page>
 
     <context-param>
+        <param-name>javax.faces.FACELETS_BUFFER_SIZE</param-name>
+        <param-value>102400</param-value> <!-- 100 kB. -->
+    </context-param>
+
+    <context-param>
         <param-name>
             javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL
         </param-name>
