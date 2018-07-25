@@ -12,6 +12,7 @@
     <h:outputScript>
         function logMessage(message, channel, event) {
             console.log(message);
+            document.getElementById("clockId").innerHTML += message + "<br/>";
         }
     </h:outputScript>
 
@@ -20,7 +21,7 @@
             <f:ajax/>
         </h:commandButton>
     </h:form>
-    <f:websocket channel="test" onmessage="logMessage"/>
-
+    <f:websocket channel="chat2" onmessage="logMessage" />
+    <div id="clockId"></div>
 </h:body>
 </html>
