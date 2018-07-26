@@ -16,4 +16,10 @@ http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd"
             de.rieckpil.learning.jsf.AjaxExceptionHandler$Factory
         </exception-handler-factory>
     </factory>
+
+    <protected-views>
+        <url-pattern>/index.xhtml</url-pattern>
+        <url-pattern>/home.xhtml</url-pattern>
+        <url-pattern>/chat.xhtml</url-pattern>
+    </protected-views>
 </faces-config>
