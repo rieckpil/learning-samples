@@ -18,8 +18,6 @@ http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd"
     </factory>
 
     <protected-views>
-        <url-pattern>/index.xhtml</url-pattern>
-        <url-pattern>/home.xhtml</url-pattern>
-        <url-pattern>/chat.xhtml</url-pattern>
+        <url-pattern>/search.xhtml</url-pattern>
     </protected-views>
 </faces-config>
