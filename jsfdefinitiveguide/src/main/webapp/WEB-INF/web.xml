@@ -7,6 +7,39 @@
         <param-value>Development</param-value>
     </context-param>
 
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>The /resources folder</web-resource-name>
+            <url-pattern>/resources/*</url-pattern>
+        </web-resource-collection>
+    </security-constraint>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>User pages</web-resource-name>
+            <url-pattern>/user/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>VIEW_USER_PAGES</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Admin pages</web-resource-name>
+            <url-pattern>/admin/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>VIEW_ADMIN_PAGES</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-role>
+        <role-name>VIEW_USER_PAGES</role-name>
+    </security-role>
+    <security-role>
+        <role-name>VIEW_ADMIN_PAGES</role-name>
+    </security-role>
+
     <error-page>
         <error-code>500</error-code>
         <location>/WEB-INF/errorpages/500.xhtml</location>

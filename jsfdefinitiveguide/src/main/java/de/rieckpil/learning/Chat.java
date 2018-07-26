@@ -56,6 +56,7 @@ public class Chat {
         return users.entrySet().stream()
                 .filter(entry -> entry.getValue().intValue() > 0)
                 .map(entry -> entry.getKey())
+
                 .collect(Collectors.toSet());
     }
 
