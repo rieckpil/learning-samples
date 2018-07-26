@@ -19,6 +19,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import java.io.IOException;
+
 import static javax.security.enterprise.AuthenticationStatus.NOT_DONE;
 
 @Named
@@ -44,7 +46,7 @@ public class Login {
     @Inject
     private FacesContext facesContext;
 
-    public void submit() {
+    public void submit() throws IOException {
 
         switch (continueAuthentication()) {
             case SEND_CONTINUE:
@@ -57,6 +59,8 @@ public class Login {
             case SUCCESS:
                 facesContext.addMessage(null, new FacesMessage(
                         FacesMessage.SEVERITY_INFO, "Login succeed", null));
+                externalContext.redirect(
+                        externalContext.getRequestContextPath() + "/index.xhtml");
                 break;
             case NOT_DONE:
         }

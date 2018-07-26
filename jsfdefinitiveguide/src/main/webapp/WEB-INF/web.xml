@@ -30,14 +30,15 @@
             <url-pattern>/admin/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
-            <role-name>VIEW_ADMIN_PAGES</role-name>
+            <role-name>ADMIN</role-name>
         </auth-constraint>
     </security-constraint>
+
     <security-role>
         <role-name>VIEW_USER_PAGES</role-name>
     </security-role>
     <security-role>
-        <role-name>VIEW_ADMIN_PAGES</role-name>
+        <role-name>ADMIN</role-name>
     </security-role>
 
     <error-page>
@@ -89,11 +90,11 @@
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
     </servlet>
 
-    <!-- Map these files with JSF -->
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
     </servlet-mapping>
+    <!-- Map these files with JSF -->
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.jsf</url-pattern>

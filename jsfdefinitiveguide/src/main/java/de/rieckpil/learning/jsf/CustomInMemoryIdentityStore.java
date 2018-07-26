@@ -21,7 +21,7 @@ public class CustomInMemoryIdentityStore implements IdentityStore {
 
         if (login.getCaller().equals("admin@web.de") && login.getPasswordAsString().equals("ADMIN1234")) {
             return new CredentialValidationResult(
-                    "admin", new HashSet<>(Arrays.asList("ADMIN_ALL", "USER"))
+                    "admin", new HashSet<>(Arrays.asList("ADMIN", "ADMIN_ALL", "USER"))
             );
         } else {
             return CredentialValidationResult.NOT_VALIDATED_RESULT;
