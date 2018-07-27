@@ -14,6 +14,8 @@
             <supported-locale>pt_BR</supported-locale>
             <supported-locale>hi</supported-locale>
             <supported-locale>de</supported-locale>
+            <supported-locale>zh</supported-locale>
+            <supported-locale>nl</supported-locale>
         </locale-config>
         <resource-bundle>
             <base-name>i18n.text</base-name>
