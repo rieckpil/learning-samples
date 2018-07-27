@@ -22,11 +22,7 @@ import java.util.stream.Collectors;
 public class Chat {
 
     @Inject
-    @Push(channel = "test")
-    private PushContext test;
-
-    @Inject
-    @Push(channel = "chat2")
+    @Push(channel = "chat")
     private PushContext chat;
 
     private Map<Serializable, AtomicInteger> users;
@@ -68,13 +64,12 @@ public class Chat {
         String time = now.get(Calendar.HOUR_OF_DAY) + ":" +
                 now.get(Calendar.MINUTE) + ":" + now.get(Calendar.SECOND);
 
-        test.send(time);
         chat.send("Hallooooooooooo");
-        test.send("Hallooooooooooo123");
     }
 
     public void submitChatMsg() {
         System.out.println("websocket triggered for chatmsg");
-        test.send("Hello World!", 43);
+        chat.send("Hallooooooooooo");
+
     }
 }

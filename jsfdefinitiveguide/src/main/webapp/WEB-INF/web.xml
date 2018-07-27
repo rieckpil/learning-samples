@@ -73,11 +73,11 @@
         <param-value>/WEB-INF/example.taglib.xml</param-value>
     </context-param>
 
-    <data-source>
-        <name>java:global/DataSourceName</name>
-        <class-name>org.h2.jdbcx.JdbcDataSource</class-name>
-        <url>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1</url>
-    </data-source>
+    <!-- <data-source>
+         <name>java:global/DataSourceName</name>
+         <class-name>org.h2.jdbcx.JdbcDataSource</class-name>
+         <url>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1</url>
+     </data-source> -->
 
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
@@ -112,6 +112,10 @@
         <session-timeout>
             30
         </session-timeout>
+        <cookie-config>
+            <http-only>true</http-only>
+            <secure>true</secure>
+        </cookie-config>
     </session-config>
 
     <welcome-file-list>
