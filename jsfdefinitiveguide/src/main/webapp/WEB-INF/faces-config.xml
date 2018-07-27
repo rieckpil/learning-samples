@@ -8,6 +8,17 @@
     <!-- JSF configuration here. -->
     <application>
         <message-bundle>i18n.messages</message-bundle>
+
+        <locale-config>
+            <default-locale>en</default-locale>
+            <supported-locale>pt_BR</supported-locale>
+            <supported-locale>hi</supported-locale>
+            <supported-locale>de</supported-locale>
+        </locale-config>
+        <resource-bundle>
+            <base-name>i18n.text</base-name>
+            <var>text</var>
+        </resource-bundle>
     </application>
 
     <factory>
