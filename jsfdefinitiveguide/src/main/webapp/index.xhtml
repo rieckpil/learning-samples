@@ -9,6 +9,9 @@
 <f:view locale="#{activeLocale.current}">
     <h:head>
         <title>#{text['title']}</title>
+        <f:metadata>
+            <f:importConstants type="de.rieckpil.learning.jsf.entity.Group"/>
+        </f:metadata>
     </h:head>
     <h:body>
         <h1>#{text['heading']}</h1>
@@ -21,6 +24,11 @@
             </f:selectItems>
             <f:ajax listener="#{activeLocale.reload()}"/>
         </h:selectOneMenu>
+
+        <h:selectManyCheckbox>
+            <f:selectItems value="#{Group.values()}" var="group"
+                           itemLabel="#{text['Group.' += group]}"/>
+        </h:selectManyCheckbox>
     </h:form>
     </h:body>
 </f:view>
