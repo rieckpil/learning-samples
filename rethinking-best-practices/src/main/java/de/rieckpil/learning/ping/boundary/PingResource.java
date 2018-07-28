@@ -1,8 +1,6 @@
 package de.rieckpil.learning.ping.boundary;
 
-import de.rieckpil.learning.ping.control.PingManager;
-import de.rieckpil.learning.ping.control.PingManufacturer;
-import de.rieckpil.learning.ping.entity.Ping;
+import de.rieckpil.learning.ping.control.PingService;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -17,7 +15,7 @@ import javax.ws.rs.core.Response;
 public class PingResource {
 
     @Inject
-    private PingManager pingManager;
+    private PingService pingService;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -25,7 +23,7 @@ public class PingResource {
 
         System.out.println("incoming call");
 
-        return Response.ok(pingManager.getPing()).build();
+        return Response.ok(pingService.getPing()).build();
     }
 }
 
