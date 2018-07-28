@@ -5,8 +5,10 @@ import de.rieckpil.learning.ping.entity.Ping;
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.interceptor.Interceptors;
 
 @Stateless
+@Interceptors({PingInterceptor.class})
 public class PingManager {
 
     @Inject
