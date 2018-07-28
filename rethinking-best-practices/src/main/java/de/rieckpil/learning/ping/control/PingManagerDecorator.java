@@ -16,6 +16,6 @@ public class PingManagerDecorator implements PingService {
     @Override
     public Ping getPing() {
         System.out.println("DECORATING THE CALL TO PING MANAGER");
-        return pingService.getPing();
+        return new Ping(pingService.getPing().getContent().toUpperCase());
     }
 }
