@@ -54,7 +54,7 @@ public class XDocReportExample {
         // example.createPdfFromTemplateWithXDocReport("/templates/invoice.docx",
         // "/Users/Philip/Desktop/junk/pdf/invoice_out.pdf");
 
-        example.processFurtherVelocityTechnologies("/templates/InvoiceAdvanced.docx");
+        example.processFurtherVelocityTechnologies("/templates/MVP.docx");
     }
 
 
