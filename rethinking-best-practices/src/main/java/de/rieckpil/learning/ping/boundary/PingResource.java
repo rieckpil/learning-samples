@@ -54,5 +54,15 @@ public class PingResource {
 
     }
 
+    @GET
+    @Path("async")
+    public String doAysncWork() {
+
+        pingService.doAsyncWork();
+
+        return "async";
+
+    }
+
 }
 

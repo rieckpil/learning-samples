@@ -3,6 +3,7 @@ package de.rieckpil.learning.ping.control;
 import de.rieckpil.learning.ping.entity.Ping;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.Asynchronous;
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
@@ -23,5 +24,17 @@ public class PingManager implements PingService {
     public Ping getPing() {
         return ping;
     }
+
+    @Override
+    @Asynchronous
+    public void doAsyncWork() {
+        try {
+            Thread.sleep(1000 * 5);
+            System.out.println("Hello World from async!");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

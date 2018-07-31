@@ -18,4 +18,10 @@ public class PingManagerDecorator implements PingService {
         System.out.println("DECORATING THE CALL TO PING MANAGER");
         return new Ping(pingService.getPing().getContent().toUpperCase());
     }
+
+    @Override
+    public void doAsyncWork() {
+        System.out.println("DECORATING ASYNC CALL TO PING MANAGER");
+        pingService.doAsyncWork();
+    }
 }

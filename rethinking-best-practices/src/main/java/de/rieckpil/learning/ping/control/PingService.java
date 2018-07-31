@@ -6,4 +6,5 @@ public interface PingService {
 
     Ping getPing();
 
+    void doAsyncWork();
 }
