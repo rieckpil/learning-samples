@@ -26,6 +26,10 @@ import java.util.List;
 @Service
 public class XDocReportExample {
 
+    /**
+     * This is the best evaluated solution.
+     */
+
     private Logger log = LoggerFactory.getLogger(this.getClass());
     private IXDocReport report;
 
@@ -48,11 +52,7 @@ public class XDocReportExample {
 
     public static void main(String[] args) throws Exception {
         XDocReportExample example = new XDocReportExample();
-        // ByteArrayOutputStream byteArrayOutputStream = example.createDocumentForComparisonTest("/templates/Invoice" +
-        //".docx");
 
-        // example.createPdfFromTemplateWithXDocReport("/templates/invoice.docx",
-        // "/Users/Philip/Desktop/junk/pdf/invoice_out.pdf");
 
         example.processFurtherVelocityTechnologies("/templates/MVP.docx");
     }
