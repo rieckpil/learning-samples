@@ -1,7 +1,5 @@
 package de.rieckpil.learning.apachepoiword;
 
-import fr.opensagres.xdocreport.document.registry.XDocReportRegistry;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -15,8 +13,8 @@ public class ApachePoiWordApplication {
 
         XDocReportExample xDocReportExample = (XDocReportExample) applicationContext.getBean("XDocReportExample");
 
-        for (int i = 0; i <= 500; i++) {
-            xDocReportExample.createPdfFromTemplateWithXDocReportWithCache("/Users/Philip/Desktop/junk/pdf/invoice_out.pdf");
+        for (int i = 0; i <= 2; i++) {
+            xDocReportExample.processMVPTemplate(i);
         }
 
         // framework is caching the reports -> XDocReportRegistry.getRegistry().getCachedReports().clear();

@@ -1,6 +1,7 @@
 package de.rieckpil.learning.apachepoiword;
 
 import de.rieckpil.learning.apachepoiword.entity.Invoice;
+import de.rieckpil.learning.apachepoiword.entity.Property;
 import fr.opensagres.poi.xwpf.converter.pdf.PdfConverter;
 import fr.opensagres.poi.xwpf.converter.pdf.PdfOptions;
 import fr.opensagres.xdocreport.core.XDocReportException;
@@ -20,6 +21,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.io.*;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
@@ -34,27 +36,73 @@ public class XDocReportExample {
     private IXDocReport report;
 
     @PostConstruct
-    public void init() throws Exception {
+    public void init() {
 
-        InputStream in = this.getClass().getResourceAsStream("/templates/Invoice.docx");
+        try (InputStream in = this.getClass().getResourceAsStream("/templates/MVP.docx")) {
 
-        if (in == null) {
-            log.error(String.format("No file found at path %s", "/templates/Invoice.docx"));
-            return;
+            if (in == null) {
+                log.error(String.format("No file found at path %s", "/templates/MVP.docx"));
+                throw new IllegalArgumentException("can't find the requested cached MVP report");
+            }
+
+            report = XDocReportRegistry.getRegistry().loadReport(in, TemplateEngineKind.Velocity);
+
+        } catch (IOException | XDocReportException e) {
+            throw new RuntimeException("unable to init cached MVP report", e.getCause());
         }
-
-
-        report = XDocReportRegistry.getRegistry().loadReport(in, TemplateEngineKind.Velocity);
-
-        in.close();
 
     }
 
     public static void main(String[] args) throws Exception {
+
         XDocReportExample example = new XDocReportExample();
 
+        example.processMVPTemplate(1);
 
-        example.processFurtherVelocityTechnologies("/templates/MVP.docx");
+        // example.processFurtherVelocityTechnologies("/templates/MVP.docx");
+    }
+
+    public void processMVPTemplate(int counter) {
+
+        String inputFileName = "/templates/MVP.docx";
+
+        try (InputStream in = this.getClass().getResourceAsStream(inputFileName);
+             ByteArrayOutputStream out = new ByteArrayOutputStream();
+             OutputStream fileOutputStream = new FileOutputStream(new File("/Users/Philip/Desktop/junk/mvp" + counter +
+                     ".pdf"));
+        ) {
+
+            if (in == null) {
+                log.error(String.format("No file found at path %s", inputFileName));
+                return;
+            }
+
+            System.out.println("in.available() = " + in.available());
+
+            FieldsMetadata fieldsMetadata = report.createFieldsMetadata();
+            fieldsMetadata.load("objekt", Property.class);
+
+            Property property = new Property();
+            property.setMarktwert(199454);
+
+            IContext context = report.createContext();
+            context.put("objekt", property);
+            context.put("email", "mail@philipriecks.de");
+            context.put("aktuellesDatum", LocalDate.now());
+
+            report.process(context, out);
+
+            XWPFDocument document = new XWPFDocument(new ByteArrayInputStream(out.toByteArray()));
+            PdfOptions options = PdfOptions.create();
+
+            PdfConverter.getInstance().convert(document, fileOutputStream, options);
+
+            log.info(String.format("Successfully processed file %s to output path %s", inputFileName, "/Users/Philip/Desktop/junk/advanced.pdf"));
+
+        } catch (IOException | XDocReportException e) {
+            e.printStackTrace();
+        }
+
     }
 
 
