@@ -1,5 +1,6 @@
 package de.rieckpil.learning.apachepoiword;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import de.rieckpil.learning.apachepoiword.entity.Invoice;
 import de.rieckpil.learning.apachepoiword.entity.Property;
 import fr.opensagres.poi.xwpf.converter.pdf.PdfConverter;
@@ -14,6 +15,7 @@ import fr.opensagres.xdocreport.template.formatter.FieldsMetadata;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
@@ -31,6 +33,9 @@ public class XDocReportExample {
     /**
      * This is the best evaluated solution.
      */
+
+    @Autowired
+    private ObjectMapper objectMapper;
 
     private Logger log = LoggerFactory.getLogger(this.getClass());
     private IXDocReport report;
@@ -84,6 +89,8 @@ public class XDocReportExample {
 
             Property property = new Property();
             property.setMarktwert(199454);
+
+            System.out.println(objectMapper.writeValueAsString(property));
 
             IContext context = report.createContext();
             context.put("objekt", property);

@@ -6,7 +6,10 @@ import lombok.Data;
 @Data
 public class Property {
 
-    @JsonProperty("marktwert")
+    @JsonProperty("marktWert")
     private int marktwert;
+
+    @JsonProperty("someValue")
+    private int wasgeht;
 
 }
