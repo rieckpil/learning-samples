@@ -5,6 +5,7 @@ import de.rieckpil.learning.ping.entity.Ping;
 import javax.ejb.Schedule;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
+import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -24,8 +25,14 @@ public class PingTimer {
     @Cache
     ConcurrentHashMap<String, Object> cache;
 
+    @Inject
+    Event<String> txListeners;
+
     @Schedule(second = "*/30", minute = "*", hour = "*", persistent = false)
     public void ping() {
+
+        txListeners.fire("starting persisting of ping entity");
+
         System.out.println(Instant.now());
 
         Ping ping = new Ping(UUID.randomUUID().toString());
