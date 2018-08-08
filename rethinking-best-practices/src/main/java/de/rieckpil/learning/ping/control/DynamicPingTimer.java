@@ -14,8 +14,14 @@ public class DynamicPingTimer {
     @PostConstruct
     public void init() {
         ScheduleExpression expression = new ScheduleExpression();
-        expression.second("*/1").minute("*").hour("*");
-        timerService.createCalendarTimer(expression);
+        expression.second("*/10").minute("*").hour("*");
+
+        System.out.println(expression.toString());
+
+        TimerConfig timerConfig = new TimerConfig();
+        timerConfig.setPersistent(false);
+
+        timerService.createCalendarTimer(expression, timerConfig);
     }
 
     @Timeout
