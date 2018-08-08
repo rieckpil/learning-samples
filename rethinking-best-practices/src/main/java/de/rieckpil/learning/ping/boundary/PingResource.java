@@ -1,6 +1,7 @@
 package de.rieckpil.learning.ping.boundary;
 
 import de.rieckpil.learning.ping.control.PingService;
+import de.rieckpil.learning.ping.control.RateLimited;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -22,6 +23,7 @@ public class PingResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @RateLimited
     public Response ping() {
 
         System.out.println("incoming call");
