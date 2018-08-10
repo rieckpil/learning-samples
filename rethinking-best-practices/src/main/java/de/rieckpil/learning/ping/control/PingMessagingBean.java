@@ -1,22 +1,31 @@
 package de.rieckpil.learning.ping.control;
 
+import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
+import javax.jms.TextMessage;
 
-@MessageDriven
+@MessageDriven(activationConfig = {
+        @ActivationConfigProperty(propertyName = "destinationLookup",
+                propertyValue = "jms/JmsQueue"),
+        @ActivationConfigProperty(propertyName = "destinationType",
+                propertyValue = "javax.jms.Queue")
+})
 public class PingMessagingBean implements MessageListener {
 
     @Override
     public void onMessage(Message message) {
 
+        TextMessage textMessage = (TextMessage) message;
+
         try {
-            System.out.println(message.toString());
-            System.out.println(message.getJMSTimestamp());
-            System.out.println(message.getJMSType());
+            System.out.print("Got new message on queue: ");
+            System.out.println(textMessage.getText());
+            System.out.println();
         } catch (JMSException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
 
     }

@@ -7,6 +7,7 @@ import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
+import javax.jms.JMSException;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.time.Instant;
@@ -28,10 +29,19 @@ public class PingTimer {
     @Inject
     Event<String> txListeners;
 
+    @Inject
+    PingMessageSender sender;
+
     @Schedule(second = "*/30", minute = "*", hour = "*", persistent = false)
     public void ping() {
 
         txListeners.fire("starting persisting of ping entity");
+
+        try {
+            sender.send();
+        } catch (JMSException e) {
+            e.printStackTrace();
+        }
 
         System.out.println(Instant.now());
 
