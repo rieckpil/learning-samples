@@ -6,6 +6,10 @@ import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonReader;
+import java.io.StringReader;
 
 @MessageDriven(activationConfig = {
         @ActivationConfigProperty(propertyName = "destinationLookup",
@@ -21,9 +25,10 @@ public class PingMessagingBean implements MessageListener {
         TextMessage textMessage = (TextMessage) message;
 
         try {
-            System.out.print("Got new message on queue: ");
-            System.out.println(textMessage.getText());
-            System.out.println();
+            JsonReader jsonReader = Json.createReader(new StringReader(textMessage.getText()));
+            JsonObject jobj = jsonReader.readObject();
+            System.out.print("Got new message on queue: " + jobj);
+            System.out.println("\n");
         } catch (JMSException e) {
             System.err.println(e.getMessage());
         }

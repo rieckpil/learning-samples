@@ -3,6 +3,9 @@ package de.rieckpil.learning.ping.control;
 import javax.annotation.Resource;
 import javax.ejb.Stateless;
 import javax.jms.*;
+import javax.json.Json;
+import javax.json.JsonObject;
+import java.time.Instant;
 import java.util.Date;
 
 @Stateless
@@ -13,18 +16,23 @@ public class PingMessageSender {
 
     @Resource(mappedName = "jms/JmsQueue")
     private Queue jmsQueue;
+
     public void send() throws JMSException {
 
         MessageProducer producer;
         TextMessage message;
         try (Connection connection = jmsFactory.createConnection();
-             Session session = connection.createSession(false,
-                     Session.AUTO_ACKNOWLEDGE)) {
+             Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE)) {
+
+            JsonObject data = Json.createObjectBuilder().add("name", "Duke").add("age", 22).add("timestamp",
+                    Instant.now().getEpochSecond()).build();
+
+            String jsonString = data.toString();
+
             producer = session.createProducer(jmsQueue);
             message = session.createTextMessage();
-            String msg = "Now it is " + new Date();
-            message.setText(msg);
-            System.out.println("Message sent to queue: " + msg);
+            message.setText(jsonString);
+            System.out.println("Message sent to queue: " + jsonString);
             producer.send(message);
             producer.close();
         }
