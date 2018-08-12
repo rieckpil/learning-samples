@@ -1,10 +1,14 @@
 package de.rieckpil.learning.ping.control;
 
+import de.rieckpil.learning.ping.entity.Ping;
+
 import javax.annotation.Resource;
 import javax.ejb.Stateless;
 import javax.jms.*;
 import javax.json.Json;
 import javax.json.JsonObject;
+import javax.json.bind.Jsonb;
+import javax.json.bind.JsonbBuilder;
 import java.time.Instant;
 import java.util.Date;
 
@@ -19,6 +23,13 @@ public class PingMessageSender {
 
     public void send() throws JMSException {
 
+        Ping ping = new Ping();
+        ping.setId(1L);
+        ping.setContent("Hello Duke!");
+
+        Jsonb jsonb = JsonbBuilder.create();
+        String pingJson = jsonb.toJson(ping);
+
         MessageProducer producer;
         TextMessage message;
         try (Connection connection = jmsFactory.createConnection();
@@ -31,7 +42,7 @@ public class PingMessageSender {
 
             producer = session.createProducer(jmsQueue);
             message = session.createTextMessage();
-            message.setText(jsonString);
+            message.setText(jsonString + "-" + pingJson);
             System.out.println("Message sent to queue: " + jsonString);
             producer.send(message);
             producer.close();

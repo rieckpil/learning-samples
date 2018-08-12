@@ -36,4 +36,12 @@ public class Ping {
     public void setId(Long id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "Ping{" +
+                "id=" + id +
+                ", content='" + content + '\'' +
+                '}';
+    }
 }

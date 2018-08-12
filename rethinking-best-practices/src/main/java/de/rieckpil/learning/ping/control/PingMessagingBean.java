@@ -1,5 +1,7 @@
 package de.rieckpil.learning.ping.control;
 
+import de.rieckpil.learning.ping.entity.Ping;
+
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
 import javax.jms.JMSException;
@@ -9,6 +11,8 @@ import javax.jms.TextMessage;
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
+import javax.json.bind.Jsonb;
+import javax.json.bind.JsonbBuilder;
 import java.io.StringReader;
 
 @MessageDriven(activationConfig = {
@@ -24,11 +28,25 @@ public class PingMessagingBean implements MessageListener {
 
         TextMessage textMessage = (TextMessage) message;
 
+        Jsonb jsonb = JsonbBuilder.create();
+
         try {
-            JsonReader jsonReader = Json.createReader(new StringReader(textMessage.getText()));
+
+            System.out.println(textMessage.getText());
+            String[] result = textMessage.getText().split("-");
+
+            System.out.println(result[0] + "\n");
+            System.out.println(result[1] + "\n");
+
+            JsonReader jsonReader = Json.createReader(new StringReader(result[0]));
             JsonObject jobj = jsonReader.readObject();
             System.out.print("Got new message on queue: " + jobj);
             System.out.println("\n");
+
+            Ping ping = jsonb.fromJson(result[1], Ping.class);
+
+            System.out.println("Got new Ping: " + ping.toString());
+
         } catch (JMSException e) {
             System.err.println(e.getMessage());
         }
