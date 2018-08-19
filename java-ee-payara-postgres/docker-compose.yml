@@ -1,0 +1,15 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:10.5
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: example
+  application:
+    build: .
+    ports:
+      - "8080:8080"
+      - "4848:4848"
+    links:
+      - postgres
