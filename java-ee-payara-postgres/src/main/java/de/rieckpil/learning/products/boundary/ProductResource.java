@@ -2,6 +2,7 @@ package de.rieckpil.learning.products.boundary;
 
 import de.rieckpil.learning.products.entity.Product;
 
+import javax.ejb.Stateless;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
@@ -17,6 +18,7 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
+@Stateless
 @Path("products")
 public class ProductResource {
 
@@ -27,24 +29,17 @@ public class ProductResource {
     private EntityManager em2;
 
     @GET
+    @Produces(MediaType.APPLICATION_JSON)
     public Response getAllProducts() {
         JsonObject json = Json.createObjectBuilder().add("name", "coffee").add("price", 42.0).build();
 
         List<Product> listEm1 = em1.createQuery("SELECT p FROM Product p", Product.class).getResultList();
 
-        List<JsonObject> list1 = listEm1.stream().map(Product::toJson).collect(Collectors.toList());
-
         List<Product> listEm2 = em2.createQuery("SELECT p FROM Product p", Product.class).getResultList();
 
-        List<JsonObject> list2 = listEm2.stream().map(Product::toJson).collect(Collectors.toList());
+        listEm1.addAll(listEm2);
 
-        list1.addAll(list2);
-
-        JsonArray jsonArray = Json.createArrayBuilder().build();
-
-        jsonArray.addAll(list1);
-
-        return Response.ok(jsonArray).build();
+        return Response.ok(listEm1).build();
     }
 
     @GET
@@ -56,8 +51,11 @@ public class ProductResource {
         product.setName(name);
         product.setPrice(ThreadLocalRandom.current().nextDouble(100));
 
-        em1.persist(product);
-        em2.persist(product);
+        if (Math.random() < 0.5) {
+            em1.persist(product);
+        } else {
+            em2.persist(product);
+        }
 
         return Response.ok(product).build();
     }
