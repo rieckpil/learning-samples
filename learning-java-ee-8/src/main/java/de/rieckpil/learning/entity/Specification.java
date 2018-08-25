@@ -1,8 +1,13 @@
 package de.rieckpil.learning.entity;
 
+import javax.validation.constraints.NotNull;
+
 public class Specification {
 
+    @NotNull
     private Color color;
+
+    @NotNull
     private EngineType engineType;
 
     public Specification(Color color, EngineType engineType) {

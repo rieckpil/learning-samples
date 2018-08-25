@@ -10,6 +10,8 @@ import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.stream.JsonCollectors;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import java.net.URI;
@@ -47,7 +49,7 @@ public class CarsResource {
     }
 
     @POST
-    public Response createCar(Specification specification) {
+    public Response createCar(@Valid @NotNull Specification specification) {
 
         // Color color = Color.valueOf(jsonObject.getString("color"));
         // EngineType engineType = EngineType.valueOf(jsonObject.getString("engineType"));
