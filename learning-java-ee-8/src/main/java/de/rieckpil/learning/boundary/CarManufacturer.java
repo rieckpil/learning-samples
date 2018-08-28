@@ -9,6 +9,8 @@ import de.rieckpil.learning.entity.Specification;
 import javax.ejb.Stateless;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Stateless
@@ -23,8 +25,12 @@ public class CarManufacturer {
     @Inject
     Event<CarCreated> carCreatedEvent;
 
+    @PersistenceContext
+    EntityManager entityManager;
+
     public Car manufactureCar(Specification specification) {
         Car car = carFactory.createCar(specification);
+        entityManager.persist(car);
 
         // store car
         carRepository.store(car);
@@ -34,7 +40,7 @@ public class CarManufacturer {
     }
 
     public List<Car> retrieveCars() {
-        return null;
+        return entityManager.createNamedQuery(Car.FIND_ALL, Car.class).getResultList();
     }
 
     public Car retrieveCar(String id) {

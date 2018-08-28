@@ -1,14 +1,11 @@
 package de.rieckpil.learning.boundary;
 
 import de.rieckpil.learning.entity.Car;
-import de.rieckpil.learning.entity.Color;
-import de.rieckpil.learning.entity.EngineType;
 import de.rieckpil.learning.entity.Specification;
 
 import javax.inject.Inject;
 import javax.json.Json;
 import javax.json.JsonArray;
-import javax.json.JsonObject;
 import javax.json.stream.JsonCollectors;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -36,6 +33,7 @@ public class CarsResource {
                 .map(c -> Json.createObjectBuilder()
                         .add("color", c.getColor().name())
                         .add("engine", c.getEngineType().name())
+                        .add("identifier", c.getIdentifier())
                         .build())
                 .collect(JsonCollectors.toJsonArray());
 

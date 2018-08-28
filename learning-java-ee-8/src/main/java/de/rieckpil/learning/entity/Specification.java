@@ -10,6 +10,9 @@ public class Specification {
     @NotNull
     private EngineType engineType;
 
+    public Specification() {
+    }
+
     public Specification(Color color, EngineType engineType) {
         this.color = color;
         this.engineType = engineType;

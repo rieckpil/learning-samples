@@ -1,6 +1,9 @@
 package de.rieckpil.learning.control;
 
-public class CarCreationException extends RuntimeException {
+import javax.ejb.ApplicationException;
+
+@ApplicationException(rollback = true)
+public class CarCreationException extends Exception {
 
     public CarCreationException(String message) {
         super(message);

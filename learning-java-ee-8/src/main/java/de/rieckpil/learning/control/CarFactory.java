@@ -5,6 +5,7 @@ import de.rieckpil.learning.entity.Color;
 import de.rieckpil.learning.entity.Specification;
 
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import java.util.UUID;
 
 // @Dependent is added at default
@@ -14,6 +15,7 @@ public class CarFactory {
     @Diesel
     Color defaultColor;
 
+    @Transactional(value = Transactional.TxType.REQUIRED, rollbackOn = CarCreationException.class)
     public Car createCar(Specification specification) {
         Car car = new Car();
         car.setIdentifier(UUID.randomUUID().toString());
