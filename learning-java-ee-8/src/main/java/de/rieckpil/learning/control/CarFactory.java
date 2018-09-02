@@ -15,10 +15,14 @@ public class CarFactory {
     @Diesel
     Color defaultColor;
 
+    @Inject
+    @Config("identifier.prefix")
+    String indentifierPrefix;
+
     @Transactional(value = Transactional.TxType.REQUIRED, rollbackOn = CarCreationException.class)
     public Car createCar(Specification specification) {
         Car car = new Car();
-        car.setIdentifier(UUID.randomUUID().toString());
+        car.setIdentifier(indentifierPrefix + "-" + UUID.randomUUID().toString());
         car.setColor(specification.getColor() == null ? defaultColor : specification.getColor());
         car.setEngineType(specification.getEngineType());
         return car;
