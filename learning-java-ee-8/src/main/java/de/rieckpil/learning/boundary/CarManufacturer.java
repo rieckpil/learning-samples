@@ -2,6 +2,7 @@ package de.rieckpil.learning.boundary;
 
 import de.rieckpil.learning.control.CarFactory;
 import de.rieckpil.learning.control.CarRepository;
+import de.rieckpil.learning.control.Tracked;
 import de.rieckpil.learning.entity.Car;
 import de.rieckpil.learning.entity.CarCreated;
 import de.rieckpil.learning.entity.Specification;
@@ -28,6 +29,7 @@ public class CarManufacturer {
     @PersistenceContext
     EntityManager entityManager;
 
+    @Tracked
     public Car manufactureCar(Specification specification) {
         Car car = carFactory.createCar(specification);
         entityManager.persist(car);
