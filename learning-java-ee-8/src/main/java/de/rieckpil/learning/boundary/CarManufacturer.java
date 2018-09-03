@@ -1,9 +1,6 @@
 package de.rieckpil.learning.boundary;
 
-import de.rieckpil.learning.control.CarFactory;
-import de.rieckpil.learning.control.CarRepository;
-import de.rieckpil.learning.control.FatalLogger;
-import de.rieckpil.learning.control.Tracked;
+import de.rieckpil.learning.control.*;
 import de.rieckpil.learning.entity.Car;
 import de.rieckpil.learning.entity.CarCreated;
 import de.rieckpil.learning.entity.Specification;
@@ -30,6 +27,9 @@ public class CarManufacturer {
     @Inject
     FatalLogger fatalLogger;
 
+    @Inject
+    CarProcessor carProcessor;
+
     @PersistenceContext
     EntityManager entityManager;
 
@@ -41,6 +41,7 @@ public class CarManufacturer {
             // store car
             carRepository.store(car);
             carCreatedEvent.fire(new CarCreated(car.getIdentifier()));
+            carProcessor.processNewCar(car);
             return car;
         } catch (Exception e) {
             fatalLogger.fatal(e);
