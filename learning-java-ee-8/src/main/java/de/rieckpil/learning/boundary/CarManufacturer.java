@@ -5,7 +5,9 @@ import de.rieckpil.learning.entity.Car;
 import de.rieckpil.learning.entity.CarCreated;
 import de.rieckpil.learning.entity.Specification;
 
+import javax.annotation.Resource;
 import javax.ejb.Stateless;
+import javax.enterprise.concurrent.ManagedExecutorService;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -30,6 +32,9 @@ public class CarManufacturer {
     @Inject
     CarProcessor carProcessor;
 
+    @Resource
+    ManagedExecutorService managedExecutorService;
+
     @PersistenceContext
     EntityManager entityManager;
 
@@ -42,7 +47,10 @@ public class CarManufacturer {
             carRepository.store(car);
             carCreatedEvent.fire(new CarCreated(car.getIdentifier()));
             carCreatedEvent.fireAsync(new CarCreated(car.getIdentifier()));
-            carProcessor.processNewCar(car);
+            managedExecutorService.execute(() -> carProcessor.processNewCar(car));
+            // carProcessor.processNewCar(car);
+            carProcessor.processNewCarAsync(car);
+            System.out.println("CAR GOT MANUFACTURED");
             return car;
         } catch (Exception e) {
             fatalLogger.fatal(e);

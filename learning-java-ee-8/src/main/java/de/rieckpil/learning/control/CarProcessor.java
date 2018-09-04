@@ -9,11 +9,17 @@ import java.util.concurrent.Future;
 import java.util.concurrent.locks.LockSupport;
 
 @Stateless
-@Asynchronous
 public class CarProcessor {
+
+    @Asynchronous
+    public void processNewCarAsync(Car car) {
+        LockSupport.parkNanos(2_000_000_000L);
+        System.out.println("DONE SLEEPING ASYNC");
+    }
 
     public void processNewCar(Car car) {
         LockSupport.parkNanos(2_000_000_000L);
+        System.out.println("DONE SLEEPING SYNC");
     }
 
     public Future<String> calculateTax(Car car) {
