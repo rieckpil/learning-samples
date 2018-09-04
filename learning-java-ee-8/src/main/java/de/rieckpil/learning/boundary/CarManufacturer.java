@@ -41,6 +41,7 @@ public class CarManufacturer {
             // store car
             carRepository.store(car);
             carCreatedEvent.fire(new CarCreated(car.getIdentifier()));
+            carCreatedEvent.fireAsync(new CarCreated(car.getIdentifier()));
             carProcessor.processNewCar(car);
             return car;
         } catch (Exception e) {
