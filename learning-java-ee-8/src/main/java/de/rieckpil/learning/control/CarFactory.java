@@ -37,7 +37,7 @@ public class CarFactory {
 
     @PostConstruct
     public void activateTimer() {
-        managedScheduledExecutorService.scheduleAtFixedRate(this::doSomething, 60, 10, TimeUnit.SECONDS);
+        managedScheduledExecutorService.scheduleAtFixedRate(this::doSomething, 60, 10, TimeUnit.MINUTES);
     }
 
     public void doSomething() {

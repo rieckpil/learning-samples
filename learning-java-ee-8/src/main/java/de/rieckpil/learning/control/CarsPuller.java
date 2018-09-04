@@ -37,7 +37,7 @@ public class CarsPuller {
         this.webTarget = client.target("http://localhost:8080/learning-java-ee/resources/cars");
     }
 
-    @Schedule(hour = "*", minute = "*", second = "*/30")
+    @Schedule(hour = "1", minute = "*", second = "*/30")
     public void getLatestCars() {
 
         System.out.println("Getting all cars");
@@ -51,7 +51,7 @@ public class CarsPuller {
 
     }
 
-    @Schedule(hour = "*", minute = "*", second = "*/30")
+    @Schedule(hour = "1", minute = "*", second = "*/30")
     public void postNewCar() {
 
         System.out.println("Posting new car");
