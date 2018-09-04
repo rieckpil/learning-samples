@@ -16,9 +16,12 @@ import javax.ws.rs.container.AsyncResponse;
 import javax.ws.rs.container.Suspended;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.net.URI;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.LockSupport;
 
 @Path("cars")
 @Produces(MediaType.APPLICATION_JSON)
@@ -61,6 +64,11 @@ public class CarsResource {
 
         // Color color = Color.valueOf(jsonObject.getString("color"));
         // EngineType engineType = EngineType.valueOf(jsonObject.getString("engineType"));
+
+        asyncResponse.setTimeout(10, TimeUnit.SECONDS);
+        asyncResponse.setTimeoutHandler(response -> response.resume(Response.status(Response.Status.SERVICE_UNAVAILABLE).build()));
+
+        // LockSupport.parkNanos(10_100_000_000L);
 
         Car car = carManufacturer.manufactureCar(specification);
 
