@@ -2,6 +2,7 @@
 !.mvn/wrapper/maven-wrapper.jar
 src/main/resources/templates/*
 src/main/resources/key.xml
+*.pdf
 
 ### STS ###
 .apt_generated
