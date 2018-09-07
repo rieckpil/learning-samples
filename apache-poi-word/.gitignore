@@ -1,6 +1,7 @@
 /target/
 !.mvn/wrapper/maven-wrapper.jar
 src/main/resources/templates/*
+src/main/resources/itextkey.xml
 
 ### STS ###
 .apt_generated

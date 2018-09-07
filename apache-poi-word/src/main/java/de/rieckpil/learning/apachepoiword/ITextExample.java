@@ -1,4 +1,4 @@
-package de.rieckpil.learning;
+package de.rieckpil.learning.apachepoiword;
 
 import com.itextpdf.html2pdf.HtmlConverter;
 import com.itextpdf.io.font.constants.StandardFonts;
