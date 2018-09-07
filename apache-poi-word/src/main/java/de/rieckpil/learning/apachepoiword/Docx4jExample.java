@@ -5,7 +5,9 @@ import fr.opensagres.poi.xwpf.converter.pdf.PdfConverter;
 import fr.opensagres.poi.xwpf.converter.pdf.PdfOptions;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.docx4j.Docx4J;
+import org.docx4j.model.datastorage.migration.VariablePrepare;
 import org.docx4j.model.fields.FieldUpdater;
+import org.docx4j.model.fields.merge.DataFieldName;
 import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
 import org.docx4j.openpackaging.parts.WordprocessingML.MainDocumentPart;
 import org.springframework.core.io.ClassPathResource;
@@ -14,7 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.time.Instant;
-import java.util.HashMap;
+import java.util.*;
 
 @Service
 public class Docx4jExample {
@@ -23,13 +25,51 @@ public class Docx4jExample {
 
         Docx4jExample example = new Docx4jExample();
 
-        //example.createDocument();
-        // example.replaceVariablesInWord("Boo", "22");
-
         example.createInvoicePdf(new Invoice("Hans", "31", Instant.now()), 1);
-        example.convertToPdf("/Users/Philip/Desktop/junk/pdf/invoice_out_1.docx",
-                "/Users/Philip/Desktop/junk/pdf/invoice_out_1.pdf" );
+
     }
+
+    public String createInvoicePdf(Invoice invoice, long counter) throws Exception {
+
+        String resultString = "Replacing variable tooks: ";
+
+        long start = System.currentTimeMillis();
+
+        WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage
+                .load(new ClassPathResource("templates/Invoice.docx").getInputStream());
+
+        MainDocumentPart documentPart = wordMLPackage.getMainDocumentPart();
+
+        List<Map<DataFieldName, String>> data = new ArrayList<Map<DataFieldName, String>>();
+
+        VariablePrepare.prepare(wordMLPackage);
+
+        Map<DataFieldName, String> map1 = new HashMap<>();
+        map1.put(new DataFieldName("FirstName"), UUID.randomUUID().toString());
+        map1.put(new DataFieldName("LastName"), "myFirstname2");
+        data.add(map1);
+
+
+        HashMap<String, String> mappings = new HashMap<String, String>();
+        mappings.put("name1", UUID.randomUUID().toString());
+        mappings.put("name2", UUID.randomUUID().toString());
+        mappings.put("name3", UUID.randomUUID().toString());
+        mappings.put("name4", UUID.randomUUID().toString());
+
+        // MailMerger.performMerge(wordMLPackage, map1, true);
+
+        documentPart.variableReplace(mappings);
+
+        wordMLPackage.save(new File("/Users/Philip/Desktop/junk/pdf/invoice_out_" + counter + ".docx"));
+
+        resultString += (System.currentTimeMillis() - start) + " and creating PDF took: ";
+        start = System.currentTimeMillis();
+
+        resultString += (System.currentTimeMillis() - start) + " ";
+
+        return resultString;
+    }
+
 
     public void createDocument() throws Exception {
         WordprocessingMLPackage wordPackage = WordprocessingMLPackage.createPackage();
@@ -50,7 +90,7 @@ public class Docx4jExample {
 
     }
 
-    public ByteArrayOutputStream createDocumentForComparisonTest(String inputFileName) throws Exception{
+    public ByteArrayOutputStream createDocumentForComparisonTest(String inputFileName) throws Exception {
 
         Resource resource = new ClassPathResource(inputFileName);
 
@@ -72,7 +112,7 @@ public class Docx4jExample {
     public void replaceVariablesInWord(String name, String age) throws Exception {
 
         WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage
-                .load(new File(System.getProperty("user.dir") +"/invoice.docx"));
+                .load(new File(System.getProperty("user.dir") + "/invoice.docx"));
         MainDocumentPart documentPart = wordMLPackage.getMainDocumentPart();
 
 
@@ -83,39 +123,6 @@ public class Docx4jExample {
         documentPart.variableReplace(mappings);
 
         wordMLPackage.save(new File("invoice_out.docx"));
-    }
-
-    public String createInvoicePdf(Invoice invoice, long counter) throws Exception{
-
-        String resultString = "Replacing variable tooks: ";
-
-        long start = System.currentTimeMillis();
-
-        WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage
-                .load(new File(System.getProperty("user.dir") +"/invoice.docx"));
-        MainDocumentPart documentPart = wordMLPackage.getMainDocumentPart();
-
-        HashMap<String, String> mappings = new HashMap<String, String>();
-        mappings.put("name", invoice.getName());
-        mappings.put("age", invoice.getAge());
-
-        documentPart.variableReplace(mappings);
-
-        wordMLPackage.save(new File("/Users/Philip/Desktop/junk/pdf/invoice_out_" + counter+ ".docx"));
-
-        resultString += (System.currentTimeMillis() - start) + " and creating PDF took: ";
-        start = System.currentTimeMillis();
-
-        //FieldUpdater updater = new FieldUpdater(wordMLPackage);
-        //updater.update(true);
-        //OutputStream os = new java.io.FileOutputStream("/Users/Philip/Desktop/junk/pdf/welcome_" + counter+ ".pdf");
-        //Docx4J.toPDF(wordMLPackage, os);
-
-        //os.close();
-
-        resultString += (System.currentTimeMillis() - start) + " ";
-
-        return resultString;
     }
 
     public void convertToPdf(String docPath, String pdfPath) {

@@ -4,8 +4,12 @@ import com.itextpdf.html2pdf.HtmlConverter;
 import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.geom.Rectangle;
 import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfString;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.annot.PdfAnnotation;
+import com.itextpdf.kernel.pdf.annot.PdfTextAnnotation;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Div;
 import com.itextpdf.layout.element.List;
@@ -39,6 +43,13 @@ public class ITextExample {
         PdfFont font = PdfFontFactory.createFont(StandardFonts.TIMES_ROMAN);
         Div div = new Div().setFont(font).setFontSize(14);
         div.add(new Paragraph("iText is:"));
+
+        PdfAnnotation ann = new PdfTextAnnotation(new Rectangle(20, 800, 0, 0))
+                .setTitle(new PdfString("iText"))
+                .setContents("With iText, "
+                        + "you can truly take your documentation needs to the next level.");
+
+        pdf.getFirstPage().addAnnotation(ann);
 
         List list = new List()
                 .setSymbolIndent(12)
