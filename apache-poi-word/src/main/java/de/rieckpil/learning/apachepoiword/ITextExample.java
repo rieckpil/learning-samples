@@ -11,6 +11,7 @@ import com.itextpdf.layout.element.Div;
 import com.itextpdf.layout.element.List;
 import com.itextpdf.layout.element.ListItem;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.licensekey.LicenseKey;
 import org.springframework.core.io.ClassPathResource;
 
 import java.io.File;
@@ -19,6 +20,14 @@ import java.io.IOException;
 public class ITextExample {
 
     public static void main(String[] args) throws IOException {
+
+        LicenseKey.loadLicenseFile(new ClassPathResource("key.xml").getInputStream());
+
+        for (String info :
+                LicenseKey.getLicenseeInfo()) {
+            System.out.println(info);
+        }
+
         createSimplePdf();
         createPdfFromHtml();
     }
