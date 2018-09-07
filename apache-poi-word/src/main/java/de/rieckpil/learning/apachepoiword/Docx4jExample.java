@@ -1,8 +1,13 @@
 package de.rieckpil.learning.apachepoiword;
 
+import com.lowagie.text.pdf.PdfWriter;
 import de.rieckpil.learning.apachepoiword.entity.Invoice;
 import fr.opensagres.poi.xwpf.converter.pdf.PdfConverter;
 import fr.opensagres.poi.xwpf.converter.pdf.PdfOptions;
+import org.apache.poi.hslf.record.Document;
+import org.apache.poi.hwpf.HWPFDocument;
+import org.apache.poi.hwpf.extractor.WordExtractor;
+import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.docx4j.Docx4J;
 import org.docx4j.model.datastorage.migration.VariablePrepare;
@@ -15,7 +20,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
-import java.time.Instant;
+import java.time.LocalDate;
 import java.util.*;
 
 @Service
@@ -25,7 +30,7 @@ public class Docx4jExample {
 
         Docx4jExample example = new Docx4jExample();
 
-        example.createInvoicePdf(new Invoice("Hans", "31", Instant.now()), 1);
+        example.createExampleForMVP();
 
     }
 
@@ -68,6 +73,33 @@ public class Docx4jExample {
         resultString += (System.currentTimeMillis() - start) + " ";
 
         return resultString;
+    }
+
+    public void createExampleForMVP() throws Exception {
+
+        WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage
+                .load(new ClassPathResource("templates/MVP.docx").getInputStream());
+
+        VariablePrepare.prepare(wordMLPackage);
+
+        MainDocumentPart documentPart = wordMLPackage.getMainDocumentPart();
+
+        HashMap<String, String> variables = new HashMap<>();
+        variables.put("DatumHeute", LocalDate.now().toString());
+        variables.put("Strasse", "Braumeisterweg");
+        variables.put("Hausnummer", "42");
+        variables.put("Stadt", "Hopfengold");
+        variables.put("Marktwert", "192.20 €");
+
+        documentPart.variableReplace(variables);
+
+        wordMLPackage.save(new File("/Users/Philip/Desktop/junk/pdf/mvp_out.docx"));
+
+        FieldUpdater updater = new FieldUpdater(wordMLPackage);
+        updater.update(true);
+
+        Docx4J.toPDF(wordMLPackage, new FileOutputStream("/Users/Philip/Desktop/junk/pdf/mvp.pdf"));
+
     }
 
 
