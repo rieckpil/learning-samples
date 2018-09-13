@@ -22,7 +22,5 @@ public class SampleReflection {
         for (Field field : fields) {
             ReflectionUtility.printFieldInfo(field);
         }
-
-
     }
 }
