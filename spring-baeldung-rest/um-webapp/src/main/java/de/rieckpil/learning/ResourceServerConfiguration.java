@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 
@@ -22,10 +23,14 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 	@Autowired
 	private UserDetailsService userDetailsService;
 
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
 	@Bean
 	public AuthenticationProvider authenticationProvider() {
 		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
 		authProvider.setUserDetailsService(userDetailsService);
+		authProvider.setPasswordEncoder(passwordEncoder);
 		return authProvider;
 	}
 
@@ -41,5 +46,4 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 				.csrf().disable();
 		// @formatter:on
 	}
-
 }
