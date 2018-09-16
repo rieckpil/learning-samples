@@ -6,13 +6,15 @@ import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import de.rieckpil.learning.entity.Ping;
 
-@RestController("/pings")
+@RestController
+@RequestMapping("/pings")
 public class PingResource {
-	
+
 	@GetMapping
 	public List<Ping> getPings() {
 		List<Ping> pings = new ArrayList<>();
@@ -20,7 +22,12 @@ public class PingResource {
 		pings.add(createPing());
 		return pings;
 	}
-	
+
+	@GetMapping("/async")
+	public String getAsync() {
+		return "I am async!";
+	}
+
 	private Ping createPing() {
 		Ping result = new Ping();
 		result.setAge(ThreadLocalRandom.current().nextInt(100));

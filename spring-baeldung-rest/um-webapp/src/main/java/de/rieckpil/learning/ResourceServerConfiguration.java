@@ -40,7 +40,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 		// @formatter:off
 		http
 			.authorizeRequests()
-				.antMatchers("/pings").permitAll()
+				.antMatchers("/pings/**").permitAll()
 				.antMatchers("/actuator/**").permitAll()
 				.antMatchers("/swagger-ui.html").permitAll()
 				.antMatchers(HttpMethod.GET, "/api/**").permitAll()
