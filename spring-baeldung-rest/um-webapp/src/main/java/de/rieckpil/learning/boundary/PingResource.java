@@ -25,6 +25,18 @@ public class PingResource {
 
 	@GetMapping("/async")
 	public String getAsync() {
+
+		Ping x = new Ping();
+		x.setAge(12);
+		x.setId("12345");
+
+		Ping y = new Ping();
+		x.setAge(16);
+		x.setId("12345");
+
+		System.out.println(x.toString());
+		System.out.println(x.equals(y));
+		
 		return "I am async!";
 	}
 
