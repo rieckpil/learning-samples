@@ -5,9 +5,11 @@ import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import de.rieckpil.learning.entity.Ping;
 
@@ -37,6 +39,10 @@ public class PingResource {
 		System.out.println(x.toString());
 		System.out.println(x.equals(y));
 		
+		if(Math.random() < 0.5) {
+			throw new ResponseStatusException(HttpStatus.I_AM_A_TEAPOT, "I am a teapot x)");
+		}
+ 		
 		return "I am async!";
 	}
 
