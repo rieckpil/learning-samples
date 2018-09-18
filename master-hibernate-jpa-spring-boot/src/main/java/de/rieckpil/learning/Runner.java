@@ -1,5 +1,6 @@
 package de.rieckpil.learning;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,10 @@ public class Runner implements CommandLineRunner {
 		Person p1 = repository.findById(1);
 
 		System.out.println("#1 == " + p1);
+
+		System.out.println(repository.deleteById(1));
+		System.out.println(repository.insert(new Person(1848, "Paul", "Bochum", LocalDateTime.now())));
+		System.out.println("#1848 == " + repository.findById(1848));
 
 	}
 
