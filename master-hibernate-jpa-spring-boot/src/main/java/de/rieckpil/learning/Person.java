@@ -5,8 +5,10 @@ import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQuery(name = "find_all_persons", query = "SELECT p FROM Person p")
 public class Person {
 
 	@Id
