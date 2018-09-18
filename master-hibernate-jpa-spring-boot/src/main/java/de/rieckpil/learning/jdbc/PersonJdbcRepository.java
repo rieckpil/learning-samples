@@ -1,11 +1,14 @@
 package de.rieckpil.learning.jdbc;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import de.rieckpil.learning.Person;
@@ -16,8 +19,22 @@ public class PersonJdbcRepository {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 
+	class PersonRowMapper implements RowMapper<Person> {
+
+		@Override
+		public Person mapRow(ResultSet rs, int rowNum) throws SQLException {
+			Person result = new Person();
+			result.setId(rs.getInt("id"));
+			result.setName(rs.getString("name"));
+			result.setLocation(rs.getString("location"));
+			result.setBirthDate(rs.getTimestamp("birth_date").toLocalDateTime());
+			return result;
+		}
+
+	}
+
 	public List<Person> findAll() {
-		return jdbcTemplate.query("SELECT * FROM person", new BeanPropertyRowMapper(Person.class));
+		return jdbcTemplate.query("SELECT * FROM person", new PersonRowMapper());
 	}
 
 	public Person findById(int id) {
