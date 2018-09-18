@@ -23,6 +23,10 @@ public class Runner implements CommandLineRunner {
 			System.out.println(person);
 		}
 
+		Person p1 = repository.findById(1);
+
+		System.out.println("#1 == " + p1);
+
 	}
 
 }

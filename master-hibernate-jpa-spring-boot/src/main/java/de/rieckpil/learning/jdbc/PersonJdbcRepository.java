@@ -17,7 +17,11 @@ public class PersonJdbcRepository {
 
 	public List<Person> findAll() {
 		return jdbcTemplate.query("SELECT * FROM person", new BeanPropertyRowMapper(Person.class));
+	}
 
+	public Person findById(int id) {
+		return jdbcTemplate.queryForObject("SELECT * FROM person where id=?", new Object[] { id },
+				new BeanPropertyRowMapper<Person>(Person.class));
 	}
 
 }
