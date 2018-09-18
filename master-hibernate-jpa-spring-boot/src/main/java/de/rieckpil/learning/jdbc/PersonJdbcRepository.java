@@ -20,7 +20,6 @@ public class PersonJdbcRepository {
 	JdbcTemplate jdbcTemplate;
 
 	class PersonRowMapper implements RowMapper<Person> {
-
 		@Override
 		public Person mapRow(ResultSet rs, int rowNum) throws SQLException {
 			Person result = new Person();
@@ -30,7 +29,6 @@ public class PersonJdbcRepository {
 			result.setBirthDate(rs.getTimestamp("birth_date").toLocalDateTime());
 			return result;
 		}
-
 	}
 
 	public List<Person> findAll() {
