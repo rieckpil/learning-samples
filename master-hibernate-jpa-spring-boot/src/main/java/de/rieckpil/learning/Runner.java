@@ -5,12 +5,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import de.rieckpil.learning.jdbc.PersonJdbcRepository;
 import de.rieckpil.learning.jpa.PersonJpaRepository;
 
 @Component
+@Profile("jdbc")
 public class Runner implements CommandLineRunner {
 
 	@Autowired
