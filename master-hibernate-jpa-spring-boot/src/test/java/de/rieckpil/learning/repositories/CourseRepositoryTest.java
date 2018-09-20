@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import de.rieckpil.learning.MasterHibernateJpaSpringBootApplication;
@@ -29,10 +30,17 @@ public class CourseRepositoryTest {
 	}
 	
 	@Test
+	@DirtiesContext
 	public void testDeleteById() {
 		courseRepository.deleteById(1001L);
 		Course course = courseRepository.findById(1001L);
 		assertNull(course);
+	}
+	
+	@Test
+	@DirtiesContext
+	public void testPlayWithEntityManager() {
+		courseRepository.playWithEntityManager();
 	}
 
 }

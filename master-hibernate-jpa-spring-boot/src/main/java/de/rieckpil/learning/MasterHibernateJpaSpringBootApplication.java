@@ -20,7 +20,10 @@ public class MasterHibernateJpaSpringBootApplication implements CommandLineRunne
 
 	@Override
 	public void run(String... args) throws Exception {
+		courseRepository.playWithEntityManager();
+	}
 
+	private void insertStuff() {
 		Course course = new Course("Mathe I");
 		courseRepository.save(course);
 		course.setName("No Mathe");
@@ -30,6 +33,5 @@ public class MasterHibernateJpaSpringBootApplication implements CommandLineRunne
 		courseRepository.save(new Course("Webprogrammierung"));
 
 		System.out.println(courseRepository.findById(1L));
-
 	}
 }
