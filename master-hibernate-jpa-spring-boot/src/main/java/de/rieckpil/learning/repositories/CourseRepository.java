@@ -39,9 +39,26 @@ public class CourseRepository {
 
 	public void playWithEntityManager() {
 		logger.info("--- Starting to play with the EntityManager");
-		Course entity = new Course("Web Services");
-		em.persist(entity);
-		entity.setName("Updated - Web Services");
+
+		Course course1 = new Course("Web Services");
+		em.persist(course1);
+		Course course2 = new Course("React");
+		em.persist(course2);
+
+		em.flush();
+
+		// em.clear();
+		// em.detach(course2);
+
+		Course extracted = em.find(Course.class, 1L);
+
+		course1.setName("Updated - Web Services");
+		course2.setName("Updated - React");
+
+		em.refresh(course1);
+
+		em.flush();
+
 	}
 
 }
