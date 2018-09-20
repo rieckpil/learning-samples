@@ -21,7 +21,10 @@ public class MasterHibernateJpaSpringBootApplication implements CommandLineRunne
 	@Override
 	public void run(String... args) throws Exception {
 
-		courseRepository.save(new Course("Mathe I"));
+		Course course = new Course("Mathe I");
+		courseRepository.save(course);
+		course.setName("No Mathe");
+		courseRepository.save(course);
 		courseRepository.save(new Course("Mathe II"));
 		courseRepository.save(new Course("Datenbanken"));
 		courseRepository.save(new Course("Webprogrammierung"));
