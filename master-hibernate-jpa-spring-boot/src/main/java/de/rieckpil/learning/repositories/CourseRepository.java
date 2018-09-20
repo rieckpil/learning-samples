@@ -1,5 +1,7 @@
 package de.rieckpil.learning.repositories;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -58,6 +60,19 @@ public class CourseRepository {
 		em.refresh(course1);
 
 		em.flush();
+
+	}
+
+	public void queryWithJPQL() {
+
+		List courseUnTyped = em.createQuery("SELECT c FROM Course c").getResultList();
+		List<Course> courses = em.createQuery("SELECT c FROM Course c", Course.class).getResultList();
+		List<Course> coursesWhere = em.createQuery("SELECT c FROM Course c WHERE name like 'in%'", Course.class)
+				.getResultList();
+
+		for (Course course : coursesWhere) {
+			System.out.println(course);
+		}
 
 	}
 

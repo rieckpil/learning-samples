@@ -13,5 +13,6 @@ INSERT INTO person (id, name, location, birth_date) VALUES (1003, 'John', 'HZA',
 INSERT INTO person (id, name, location, birth_date) VALUES (1004, 'Tom', 'HZA', '2018-09-17 20:55:42.697');
 INSERT INTO person (id, name, location, birth_date) VALUES (1005, 'Tim', 'HZA', '2018-09-17 20:55:42.697');
 
-INSERT INTO course (id, name) VALUES (1000, 'in28Minutes');
-INSERT INTO course (id, name) VALUES (1001, 'SpringframeworkGuru');
+INSERT INTO course_details (id, name) VALUES (1000, 'in28Minutes Beginner');
+INSERT INTO course_details (id, name) VALUES (1001, 'in28Minutes Advanced');
+INSERT INTO course_details (id, name) VALUES (1002, 'SpringframeworkGuru');
