@@ -20,7 +20,7 @@ public class MasterHibernateJpaSpringBootApplication implements CommandLineRunne
 
 	@Override
 	public void run(String... args) throws Exception {
-		courseRepository.queryWithJPQL();
+		courseRepository.nativeQuery();
 	}
 
 	private void insertStuff() {

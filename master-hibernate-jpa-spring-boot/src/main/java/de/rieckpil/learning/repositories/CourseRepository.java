@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.List;
 
 @Repository
@@ -76,6 +77,20 @@ public class CourseRepository {
         for (Course course : get_all_courses) {
             System.out.println(course);
         }
+
+    }
+
+    public void nativeQuery() {
+
+        Query query = em.createNativeQuery("SELECT * FROM course_details WHERE id = ?", Course.class);
+        query.setParameter(1, 1001);
+
+        List<Course> resultList =query.getResultList();
+
+        for (Course course : resultList) {
+            System.out.println(course);
+        }
+
 
     }
 
