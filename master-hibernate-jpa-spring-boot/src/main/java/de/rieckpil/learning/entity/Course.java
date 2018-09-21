@@ -1,9 +1,13 @@
 package de.rieckpil.learning.entity;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "CourseDetails")
@@ -14,6 +18,12 @@ public class Course {
 	private Long id;
 
 	private String name;
+
+	@UpdateTimestamp
+	private LocalDateTime lastUpdatedDate;
+
+	@CreationTimestamp
+	private LocalDateTime creationDate;
 
 	protected Course() {
 		super();
@@ -40,9 +50,29 @@ public class Course {
 		this.name = name;
 	}
 
-	@Override
-	public String toString() {
-		return "Course [id=" + id + ", name=" + name + "]";
+	public LocalDateTime getLastUpdatedDate() {
+		return lastUpdatedDate;
 	}
 
+	public void setLastUpdatedDate(LocalDateTime lastUpdatedDate) {
+		this.lastUpdatedDate = lastUpdatedDate;
+	}
+
+	public LocalDateTime getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(LocalDateTime creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	@Override
+	public String toString() {
+		return "Course{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", lastUpdatedDate=" + lastUpdatedDate +
+				", creationDate=" + creationDate +
+				'}';
+	}
 }
