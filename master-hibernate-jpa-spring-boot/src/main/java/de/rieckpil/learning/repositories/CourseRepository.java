@@ -92,6 +92,10 @@ public class CourseRepository {
             System.out.println(course);
         }
 
+        int rowsUpdated =
+                em.createNativeQuery("UPDATE course_details SET last_updated_date = sysdate()").executeUpdate();
+
+        System.out.println("rowsUpdated = " + rowsUpdated);
 
     }
 
