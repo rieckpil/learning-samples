@@ -82,7 +82,8 @@ public class CourseRepository {
 
     public void nativeQuery() {
 
-        Query query = em.createNativeQuery("SELECT * FROM course_details WHERE id = ?", Course.class);
+        Query query = em.createNativeQuery("SELECT * FROM course_details WHERE id = ? AND name = :name", Course.class);
+        query.setParameter("name", "in28Minutes Advanced");
         query.setParameter(1, 1001);
 
         List<Course> resultList =query.getResultList();
