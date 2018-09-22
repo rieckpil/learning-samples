@@ -86,7 +86,7 @@ public class CourseRepository {
         query.setParameter("name", "in28Minutes Advanced");
         query.setParameter(1, 1001);
 
-        List<Course> resultList =query.getResultList();
+        List<Course> resultList = query.getResultList();
 
         for (Course course : resultList) {
             System.out.println(course);
@@ -96,6 +96,17 @@ public class CourseRepository {
                 em.createNativeQuery("UPDATE course_details SET last_updated_date = sysdate()").executeUpdate();
 
         System.out.println("rowsUpdated = " + rowsUpdated);
+
+        Query q2 = em.createNativeQuery("SELECT name FROM course_details");
+
+        List nativeResult = q2.getResultList();
+
+        for (Object name : nativeResult) {
+
+            String columnResult = (String) name;
+            System.out.println("--- " + columnResult);
+
+        }
 
     }
 
