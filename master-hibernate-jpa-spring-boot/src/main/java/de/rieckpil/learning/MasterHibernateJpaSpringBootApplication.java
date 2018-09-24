@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.transaction.annotation.Transactional;
 
 import de.rieckpil.learning.entity.Course;
+import de.rieckpil.learning.entity.Student;
 import de.rieckpil.learning.repositories.CourseRepository;
 import de.rieckpil.learning.repositories.StudentRepository;
 
@@ -23,8 +25,14 @@ public class MasterHibernateJpaSpringBootApplication implements CommandLineRunne
 	}
 
 	@Override
+	@Transactional
 	public void run(String... args) throws Exception {
 		studentRepository.saveStudentWithPassport();
+
+		Student student = studentRepository.findById(2L);
+
+		System.out.println(student.getPassport());
+
 	}
 
 	private void insertStuff() {

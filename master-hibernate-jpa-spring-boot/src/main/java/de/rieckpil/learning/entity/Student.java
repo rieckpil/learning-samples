@@ -1,6 +1,7 @@
 package de.rieckpil.learning.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -13,14 +14,14 @@ public class Student {
 	private Long id;
 
 	private String name;
-	
-	@OneToOne
+
+	@OneToOne(fetch = FetchType.LAZY)
 	private Passport passport;
-	
+
 	public Student() {
-		
+
 	}
-	
+
 	public Student(String name) {
 		super();
 		this.name = name;
