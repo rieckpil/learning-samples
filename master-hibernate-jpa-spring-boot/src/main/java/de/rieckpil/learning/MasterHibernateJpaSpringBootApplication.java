@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import de.rieckpil.learning.entity.Course;
 import de.rieckpil.learning.repositories.CourseRepository;
+import de.rieckpil.learning.repositories.StudentRepository;
 
 @SpringBootApplication
 public class MasterHibernateJpaSpringBootApplication implements CommandLineRunner {
@@ -14,13 +15,16 @@ public class MasterHibernateJpaSpringBootApplication implements CommandLineRunne
 	@Autowired
 	CourseRepository courseRepository;
 
+	@Autowired
+	StudentRepository studentRepository;
+
 	public static void main(String[] args) {
 		SpringApplication.run(MasterHibernateJpaSpringBootApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
-		courseRepository.nativeQuery();
+		studentRepository.saveStudentWithPassport();
 	}
 
 	private void insertStuff() {

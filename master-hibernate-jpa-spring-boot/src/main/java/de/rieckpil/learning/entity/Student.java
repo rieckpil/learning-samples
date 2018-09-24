@@ -3,6 +3,7 @@ package de.rieckpil.learning.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Student {
@@ -13,6 +14,9 @@ public class Student {
 
 	private String name;
 	
+	@OneToOne
+	private Passport passport;
+	
 	public Student() {
 		
 	}
@@ -20,6 +24,14 @@ public class Student {
 	public Student(String name) {
 		super();
 		this.name = name;
+	}
+
+	public Passport getPassport() {
+		return passport;
+	}
+
+	public void setPassport(Passport passport) {
+		this.passport = passport;
 	}
 
 	public Long getId() {
