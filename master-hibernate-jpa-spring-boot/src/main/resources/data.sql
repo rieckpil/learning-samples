@@ -19,3 +19,12 @@ INSERT INTO course_details (id, name, last_updated_date, creation_date) VALUES (
 (), sysdate());
 INSERT INTO course_details (id, name, last_updated_date, creation_date) VALUES (1002, 'SpringframeworkGuru', sysdate
 (), sysdate());
+
+INSERT INTO student (id, name) VALUES (20001, 'Max');
+INSERT INTO student (id, name) VALUES (20002, 'Tom');
+INSERT INTO student (id, name) VALUES (20003, 'Duke');
+
+
+INSERT INTO passport (id, number) VALUES (40001, '1337');
+INSERT INTO passport (id, number) VALUES (40002, '42');
+INSERT INTO passport (id, number) VALUES (40003, '0815');
