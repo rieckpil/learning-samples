@@ -12,6 +12,15 @@ public class Student {
 	private Long id;
 
 	private String name;
+	
+	public Student() {
+		
+	}
+	
+	public Student(String name) {
+		super();
+		this.name = name;
+	}
 
 	public Long getId() {
 		return id;

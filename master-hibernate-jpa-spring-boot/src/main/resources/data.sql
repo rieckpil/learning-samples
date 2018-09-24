@@ -28,3 +28,7 @@ INSERT INTO student (id, name) VALUES (20003, 'Duke');
 INSERT INTO passport (id, number) VALUES (40001, '1337');
 INSERT INTO passport (id, number) VALUES (40002, '42');
 INSERT INTO passport (id, number) VALUES (40003, '0815');
+
+INSERT INTO review (id, rating, description) VALUES (50001, '1', 'Nice');
+INSERT INTO review (id, rating, description) VALUES (50002, '3', 'Awesome');
+INSERT INTO review (id, rating, description) VALUES (50003, '5', 'Fantatstic');

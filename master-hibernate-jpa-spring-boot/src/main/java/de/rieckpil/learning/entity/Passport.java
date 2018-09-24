@@ -12,6 +12,15 @@ public class Passport {
 	private Long id;
 
 	private String number;
+	
+	public Passport() {
+		super();
+	}
+	
+	public Passport(String number) {
+		super();
+		this.number = number;
+	}
 
 	public Long getId() {
 		return id;
