@@ -24,12 +24,12 @@ public class UsersResource {
   UserRepository userRepository;
 
   @GetMapping
-  public ResponseEntity<List<User>> getAllUsers(@Positive @RequestParam(defaultValue = "0", name = "page") int requiredPage,
+  public ResponseEntity<List<User>> getAllUsers(@Positive @RequestParam(defaultValue = "1", name = "page") int requiredPage,
       @Max(value = 1000) @Positive @RequestParam(defaultValue = "500", name = "size") int size) {
 
     Slice<User> resultList = userRepository.findAll(CassandraPageRequest.first(size));
 
-    int currentPage = 0;
+    int currentPage = 1;
 
     while (resultList.hasNext() && currentPage <= requiredPage) {
       System.out.println("Current Page Number: " + currentPage);
