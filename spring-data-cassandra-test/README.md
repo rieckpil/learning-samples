@@ -3,6 +3,7 @@
 ```
 create keyspace dev with replication = {'class':'SimpleStrategy','replication_factor':1};
 
+create table user (id int, firstname varchar, lastname varchar, code varchar, PRIMARY KEY(id));
 create table test (id int, firstname varchar, lastname varchar, code varchar, PRIMARY KEY(code, id)) WITH CLUSTERING ORDER BY (id ASC);
 
 CREATE TABLE playlists ( 

@@ -4,7 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.cassandra.core.mapping.Table;
 
 @Table
-public class Test {
+public class User {
 
   @Id
   private Long   id;

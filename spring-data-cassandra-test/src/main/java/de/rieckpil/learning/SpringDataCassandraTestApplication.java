@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Bean;
 public class SpringDataCassandraTestApplication implements CommandLineRunner {
 
   @Autowired
-  TestRepository testRepository;
+  UserRepository userRepository;
 
   @Bean
   public QueryLogger queryLogger(Cluster cluster) {
@@ -31,20 +31,20 @@ public class SpringDataCassandraTestApplication implements CommandLineRunner {
   @Override
   public void run(String... args) throws Exception {
 
-    long startingId = testRepository.count();
+    long startingId = userRepository.count();
 
-    if (testRepository.count() < 500_000) {
+    if (userRepository.count() < 100_000) {
 
-      for (int i = 1; i <= 50_000; i++) {
-        Test test = new Test();
+      for (int i = 1; i <= 100_000; i++) {
+        User test = new User();
         test.setCode(UUID.randomUUID().toString());
         test.setFirstname("Max");
         test.setLastname("Mustermann");
         test.setId(startingId + i);
-        testRepository.save(test);
+        userRepository.save(test);
       }
 
-      System.out.println("Finished inserting 50.000 entries");
+      System.out.println("Finished inserting 100.000 entries");
 
     }
 
