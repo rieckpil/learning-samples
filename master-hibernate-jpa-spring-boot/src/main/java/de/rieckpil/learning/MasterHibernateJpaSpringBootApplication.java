@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import de.rieckpil.learning.entity.Course;
 import de.rieckpil.learning.entity.Review;
+import de.rieckpil.learning.entity.Student;
 import de.rieckpil.learning.repositories.CourseRepository;
 import de.rieckpil.learning.repositories.StudentRepository;
 
@@ -49,6 +50,11 @@ public class MasterHibernateJpaSpringBootApplication implements CommandLineRunne
 		reviews.add(review2);
 
 		addReviewsToCourse(1002L, reviews);
+
+		Student s1 = studentRepository.findById(20001L);
+		System.out.println(s1.getCourses());
+
+		insertStudentAndCourse();
 	}
 
 	private void addReviewsToCourse(Long courseId, List<Review> reviews) {
@@ -59,6 +65,20 @@ public class MasterHibernateJpaSpringBootApplication implements CommandLineRunne
 			review.setCourse(course);
 			em.persist(review);
 		}
+	}
+
+	private void insertStudentAndCourse() {
+
+		Student student = new Student("Jack");
+		Course course = new Course("k8s in 100 steps!");
+
+		em.persist(student);
+		em.persist(course);
+
+		student.addCourse(course);
+		course.addStudent(student);
+
+		em.persist(student);
 	}
 
 	private void insertStuff() {
