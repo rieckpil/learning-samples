@@ -1,5 +1,13 @@
 package de.rieckpil.learning;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -7,7 +15,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.Transactional;
 
 import de.rieckpil.learning.entity.Course;
-import de.rieckpil.learning.entity.Student;
+import de.rieckpil.learning.entity.Review;
 import de.rieckpil.learning.repositories.CourseRepository;
 import de.rieckpil.learning.repositories.StudentRepository;
 
@@ -20,6 +28,11 @@ public class MasterHibernateJpaSpringBootApplication implements CommandLineRunne
 	@Autowired
 	StudentRepository studentRepository;
 
+	@PersistenceContext
+	EntityManager em;
+
+	private Logger logger = LoggerFactory.getLogger(this.getClass().getName());
+
 	public static void main(String[] args) {
 		SpringApplication.run(MasterHibernateJpaSpringBootApplication.class, args);
 	}
@@ -27,12 +40,25 @@ public class MasterHibernateJpaSpringBootApplication implements CommandLineRunne
 	@Override
 	@Transactional
 	public void run(String... args) throws Exception {
-		studentRepository.saveStudentWithPassport();
 
-		Student student = studentRepository.findById(2L);
+		Review review1 = new Review("5", "Great Hands-on Stuff.");
+		Review review2 = new Review("3", "Good course!");
 
-		System.out.println(student.getPassport());
+		List<Review> reviews = new ArrayList<>();
+		reviews.add(review1);
+		reviews.add(review2);
 
+		addReviewsToCourse(1002L, reviews);
+	}
+
+	private void addReviewsToCourse(Long courseId, List<Review> reviews) {
+		Course course = courseRepository.findById(courseId);
+		logger.info("Reviews of Course 1003 -> {}", course.getReviews());
+		for (Review review : reviews) {
+			course.addReview(review);
+			review.setCourse(course);
+			em.persist(review);
+		}
 	}
 
 	private void insertStuff() {

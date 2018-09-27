@@ -1,10 +1,18 @@
 package de.rieckpil.learning.entity;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-
-import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "CourseDetails")
@@ -16,6 +24,9 @@ public class Course {
 	private Long id;
 
 	private String name;
+
+	@OneToMany(mappedBy = "course")
+	private List<Review> reviews = new ArrayList<>();
 
 	@UpdateTimestamp
 	private LocalDateTime lastUpdatedDate;
@@ -64,13 +75,21 @@ public class Course {
 		this.creationDate = creationDate;
 	}
 
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+	public void addReview(Review review) {
+		this.reviews.add(review);
+	}
+
+	public void removeReview(Review review) {
+		this.reviews.remove(review);
+	}
+
 	@Override
 	public String toString() {
-		return "Course{" +
-				"id=" + id +
-				", name='" + name + '\'' +
-				", lastUpdatedDate=" + lastUpdatedDate +
-				", creationDate=" + creationDate +
-				'}';
+		return "Course{" + "id=" + id + ", name='" + name + '\'' + ", lastUpdatedDate=" + lastUpdatedDate
+				+ ", creationDate=" + creationDate + '}';
 	}
 }

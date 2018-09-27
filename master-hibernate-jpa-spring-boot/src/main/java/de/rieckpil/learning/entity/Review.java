@@ -3,6 +3,7 @@ package de.rieckpil.learning.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Review {
@@ -10,6 +11,9 @@ public class Review {
 	@Id
 	@GeneratedValue
 	private Long id;
+	
+	@ManyToOne
+	private Course course;
 
 	private String description;
 	
@@ -23,6 +27,14 @@ public class Review {
 		super();
 		this.description = description;
 		this.rating = rating;
+	}
+	
+	public Course getCourse() {
+		return course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 
 	public Long getId() {
