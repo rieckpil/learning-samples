@@ -1,5 +1,6 @@
 package de.rieckpil.learning;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,9 +16,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.Transactional;
 
 import de.rieckpil.learning.entity.Course;
+import de.rieckpil.learning.entity.FullTimeEmployee;
+import de.rieckpil.learning.entity.PartTimeEmployee;
 import de.rieckpil.learning.entity.Review;
 import de.rieckpil.learning.entity.Student;
 import de.rieckpil.learning.repositories.CourseRepository;
+import de.rieckpil.learning.repositories.EmployeeRepository;
 import de.rieckpil.learning.repositories.StudentRepository;
 
 @SpringBootApplication
@@ -28,6 +32,9 @@ public class MasterHibernateJpaSpringBootApplication implements CommandLineRunne
 
 	@Autowired
 	StudentRepository studentRepository;
+
+	@Autowired
+	EmployeeRepository employeeRepository;
 
 	@PersistenceContext
 	EntityManager em;
@@ -55,6 +62,10 @@ public class MasterHibernateJpaSpringBootApplication implements CommandLineRunne
 		System.out.println(s1.getCourses());
 
 		insertStudentAndCourse();
+
+		employeeRepository.save(new FullTimeEmployee("Jack", new BigDecimal("10000")));
+		employeeRepository.save(new PartTimeEmployee("Jill", new BigDecimal("50")));
+
 	}
 
 	private void addReviewsToCourse(Long courseId, List<Review> reviews) {
