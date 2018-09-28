@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.junit.Test;
@@ -42,6 +43,42 @@ public class StudentRepositoryTest {
 		List<Student> result = query.getResultList();
 
 		System.out.println(result);
+	}
+
+	@Test
+	public void testWithJPQL_join() {
+		Query query = em.createQuery("SELECT c,s FROM Course c JOIN c.students s");
+		List<Object[]> resultList = query.getResultList();
+
+		System.out.println(resultList.size());
+		for (Object[] result : resultList) {
+			System.out.println((Course) result[0]);
+			System.out.println((Student) result[1]);
+		}
+	}
+
+	@Test
+	public void testWithJPQL_left_join() {
+		Query query = em.createQuery("SELECT c,s FROM Course c LEFT JOIN c.students s");
+		List<Object[]> resultList = query.getResultList();
+
+		System.out.println(resultList.size());
+		for (Object[] result : resultList) {
+			System.out.println((Course) result[0]);
+			System.out.println((Student) result[1]);
+		}
+	}
+
+	@Test
+	public void testWithJPQL_cross_join() {
+		Query query = em.createQuery("SELECT c,s FROM Course c, Student s");
+		List<Object[]> resultList = query.getResultList();
+
+		System.out.println(resultList.size());
+		for (Object[] result : resultList) {
+			System.out.println((Course) result[0]);
+			System.out.println((Student) result[1]);
+		}
 	}
 
 }
