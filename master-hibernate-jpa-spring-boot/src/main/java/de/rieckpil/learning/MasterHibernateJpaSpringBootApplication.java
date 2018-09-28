@@ -66,6 +66,8 @@ public class MasterHibernateJpaSpringBootApplication implements CommandLineRunne
 		employeeRepository.save(new FullTimeEmployee("Jack", new BigDecimal("10000")));
 		employeeRepository.save(new PartTimeEmployee("Jill", new BigDecimal("50")));
 
+		logger.info("All employees: {} ", employeeRepository.retrieveAllEmployees());
+
 	}
 
 	private void addReviewsToCourse(Long courseId, List<Review> reviews) {

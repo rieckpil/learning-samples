@@ -25,4 +25,9 @@ public class FullTimeEmployee extends Employee {
 		this.salaray = salaray;
 	}
 
+	@Override
+	public String toString() {
+		return "FullTimeEmployee [salaray=" + salaray + "]";
+	}
+	
 }

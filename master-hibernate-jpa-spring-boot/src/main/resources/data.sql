@@ -19,6 +19,10 @@ INSERT INTO course_details (id, name, last_updated_date, creation_date) VALUES (
 (), sysdate());
 INSERT INTO course_details (id, name, last_updated_date, creation_date) VALUES (1002, 'SpringframeworkGuru', sysdate
 (), sysdate());
+INSERT INTO course_details (id, name, last_updated_date, creation_date) VALUES (1003, 'Not really interesting', sysdate
+(), sysdate());
+INSERT INTO course_details (id, name, last_updated_date, creation_date) VALUES (1004, 'Boring course', sysdate
+(), sysdate());
 
 INSERT INTO passport (id, number) VALUES (40001, '1337');
 INSERT INTO passport (id, number) VALUES (40002, '42');

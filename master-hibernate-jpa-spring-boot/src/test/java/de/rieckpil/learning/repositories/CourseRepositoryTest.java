@@ -4,6 +4,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +26,15 @@ public class CourseRepositoryTest {
 	@Autowired
 	CourseRepository courseRepository;
 
+	@Autowired
+	EntityManager em;
+	
 	@Test
 	public void testFindById() {
 		Course course = courseRepository.findById(1000L);
 
 		assertNotNull(course);
-		assertEquals("in28Minutes", course.getName());
+		assertEquals("in28Minutes Beginner", course.getName());
 	}
 	
 	@Test
@@ -43,4 +51,14 @@ public class CourseRepositoryTest {
 		courseRepository.playWithEntityManager();
 	}
 
+	@Test
+	public void testWithJPQL_CoursesWithoutStudents() {
+		
+		TypedQuery<Course> query = em.createQuery("SELECT c FROM Course c WHERE c.students is empty", Course.class);
+		
+		List<Course> result = query.getResultList();
+		
+		System.out.println(result);
+	}
+	
 }

@@ -1,5 +1,6 @@
 package de.rieckpil.learning.entity;
 
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -7,7 +8,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "EmployeeType")
 public abstract class Employee {
 
 	@Id
@@ -17,7 +19,6 @@ public abstract class Employee {
 	private String name;
 
 	protected Employee() {
-
 	}
 
 	public Employee(String name) {

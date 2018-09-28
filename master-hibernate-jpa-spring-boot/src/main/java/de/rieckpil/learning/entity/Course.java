@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -26,10 +27,10 @@ public class Course {
 
 	private String name;
 
-	@OneToMany(mappedBy = "course")
+	@OneToMany(mappedBy = "course", cascade = CascadeType.REMOVE)
 	private List<Review> reviews = new ArrayList<>();
 
-	@ManyToMany(mappedBy = "courses")
+	@ManyToMany(mappedBy = "courses", cascade = CascadeType.REMOVE)
 	private List<Student> students = new ArrayList<>();
 
 	@UpdateTimestamp
