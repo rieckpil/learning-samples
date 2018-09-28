@@ -25,8 +25,8 @@ INSERT INTO course_details (id, name, last_updated_date, creation_date) VALUES (
 (), sysdate());
 
 INSERT INTO passport (id, number) VALUES (40001, '1337');
-INSERT INTO passport (id, number) VALUES (40002, '42');
-INSERT INTO passport (id, number) VALUES (40003, '0815');
+INSERT INTO passport (id, number) VALUES (40002, '421234');
+INSERT INTO passport (id, number) VALUES (40003, '08154321');
 
 INSERT INTO student (id, name, passport_id) VALUES (20001, 'Max', 40001);
 INSERT INTO student (id, name, passport_id) VALUES (20002, 'Tom', 40002);

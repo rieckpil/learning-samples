@@ -28,7 +28,7 @@ public class CourseRepositoryTest {
 
 	@Autowired
 	EntityManager em;
-	
+
 	@Test
 	public void testFindById() {
 		Course course = courseRepository.findById(1000L);
@@ -36,7 +36,7 @@ public class CourseRepositoryTest {
 		assertNotNull(course);
 		assertEquals("in28Minutes Beginner", course.getName());
 	}
-	
+
 	@Test
 	@DirtiesContext
 	public void testDeleteById() {
@@ -44,7 +44,7 @@ public class CourseRepositoryTest {
 		Course course = courseRepository.findById(1001L);
 		assertNull(course);
 	}
-	
+
 	@Test
 	@DirtiesContext
 	public void testPlayWithEntityManager() {
@@ -53,12 +53,32 @@ public class CourseRepositoryTest {
 
 	@Test
 	public void testWithJPQL_CoursesWithoutStudents() {
-		
+
 		TypedQuery<Course> query = em.createQuery("SELECT c FROM Course c WHERE c.students is empty", Course.class);
-		
+
 		List<Course> result = query.getResultList();
-		
+
 		System.out.println(result);
 	}
-	
+
+	@Test
+	public void testWithJPQL_atLeastTwoStudents() {
+
+		TypedQuery<Course> query = em.createQuery("SELECT c FROM Course c WHERE size(c.students) >= 2", Course.class);
+
+		List<Course> result = query.getResultList();
+
+		System.out.println(result);
+	}
+
+	@Test
+	public void testWithJPQL_orderBySize() {
+
+		TypedQuery<Course> query = em.createQuery("SELECT c FROM Course c ORDER BY size(c.students) DESC",
+				Course.class);
+
+		List<Course> result = query.getResultList();
+
+		System.out.println(result);
+	}
 }
