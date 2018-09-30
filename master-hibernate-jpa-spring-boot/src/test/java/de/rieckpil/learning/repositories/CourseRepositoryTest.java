@@ -8,6 +8,9 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -81,4 +84,16 @@ public class CourseRepositoryTest {
 
 		System.out.println(result);
 	}
+
+	@Test
+	public void testWithCriteria_getAllCourses() {
+		// SELECT c FROM Course c
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+		CriteriaQuery<Course> cq = cb.createQuery(Course.class);
+		Root<Course> courseRoot = cq.from(Course.class);
+		TypedQuery<Course> query = em.createQuery(cq.select(courseRoot));
+		List<Course> resultList = query.getResultList();
+		System.out.println(resultList);
+	}
+
 }
