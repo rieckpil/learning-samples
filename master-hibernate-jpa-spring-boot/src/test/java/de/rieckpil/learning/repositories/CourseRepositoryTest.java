@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import org.junit.Test;
@@ -91,6 +92,34 @@ public class CourseRepositoryTest {
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<Course> cq = cb.createQuery(Course.class);
 		Root<Course> courseRoot = cq.from(Course.class);
+		TypedQuery<Course> query = em.createQuery(cq.select(courseRoot));
+		List<Course> resultList = query.getResultList();
+		System.out.println(resultList);
+	}
+
+	@Test
+	public void testWithCriteria_getAllCoursesLike() {
+		// SELECT c FROM Course c WHERE name like '%28%'
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+		CriteriaQuery<Course> cq = cb.createQuery(Course.class);
+		Root<Course> courseRoot = cq.from(Course.class);
+		Predicate like28 = cb.like(courseRoot.get("name"), "%28%");
+		cq.where(like28);
+
+		TypedQuery<Course> query = em.createQuery(cq.select(courseRoot));
+		List<Course> resultList = query.getResultList();
+		System.out.println(resultList);
+	}
+
+	@Test
+	public void testWithCriteria_getAllCoursesThatAreEmpty() {
+		// SELECT c FROM Course c WHERE c.students is empty
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+		CriteriaQuery<Course> cq = cb.createQuery(Course.class);
+		Root<Course> courseRoot = cq.from(Course.class);
+		Predicate studentsIsEmpty = cb.isEmpty(courseRoot.get("students"));
+		cq.where(studentsIsEmpty);
+
 		TypedQuery<Course> query = em.createQuery(cq.select(courseRoot));
 		List<Course> resultList = query.getResultList();
 		System.out.println(resultList);
