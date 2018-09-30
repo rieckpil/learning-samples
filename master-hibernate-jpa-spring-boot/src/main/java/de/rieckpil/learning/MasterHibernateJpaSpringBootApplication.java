@@ -36,6 +36,9 @@ public class MasterHibernateJpaSpringBootApplication implements CommandLineRunne
 	@Autowired
 	EmployeeRepository employeeRepository;
 
+	@Autowired
+	TransactionSample transactionSample;
+
 	@PersistenceContext
 	EntityManager em;
 
@@ -68,6 +71,7 @@ public class MasterHibernateJpaSpringBootApplication implements CommandLineRunne
 
 		logger.info("All employees: {} ", employeeRepository.retrieveAllEmployees());
 
+		transactionSample.doSomething();
 	}
 
 	private void addReviewsToCourse(Long courseId, List<Review> reviews) {
