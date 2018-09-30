@@ -10,6 +10,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
+import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
@@ -119,6 +121,20 @@ public class CourseRepositoryTest {
 		Root<Course> courseRoot = cq.from(Course.class);
 		Predicate studentsIsEmpty = cb.isEmpty(courseRoot.get("students"));
 		cq.where(studentsIsEmpty);
+
+		TypedQuery<Course> query = em.createQuery(cq.select(courseRoot));
+		List<Course> resultList = query.getResultList();
+		System.out.println(resultList);
+	}
+
+	@Test
+	public void testWithCriteria_join() {
+		// SELECT c FROM Course c JOIN students s
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+		CriteriaQuery<Course> cq = cb.createQuery(Course.class);
+		Root<Course> courseRoot = cq.from(Course.class);
+
+		Join<Object, Object> join = courseRoot.join("students", JoinType.LEFT);
 
 		TypedQuery<Course> query = em.createQuery(cq.select(courseRoot));
 		List<Course> resultList = query.getResultList();
