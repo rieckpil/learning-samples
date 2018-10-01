@@ -52,4 +52,11 @@ public class SpringCourseRepositoryTest {
 		logger.info("Second page : {}", secondPage.getContent());
 	}
 
+	@Test
+	public void customQuery() {
+		logger.info("Custom query (LIKE '%28%': {}", repository.courseWith28InName());
+		logger.info("Custom query NATIVE (LIKE '%28%': {}", repository.courseWith28InNameUsingNativeQuery());
+		logger.info("Custom query NAMED (LIKE '%28%': {}", repository.courseWith28InNameUsingNamedQuery());
+	}
+
 }
