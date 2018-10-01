@@ -21,7 +21,25 @@ INSERT INTO course_details (id, name, last_updated_date, creation_date) VALUES (
 (), sysdate());
 INSERT INTO course_details (id, name, last_updated_date, creation_date) VALUES (1003, 'Not really interesting', sysdate
 (), sysdate());
-INSERT INTO course_details (id, name, last_updated_date, creation_date) VALUES (1004, 'Boring course', sysdate
+INSERT INTO course_details (id, name, last_updated_date, creation_date) VALUES (1004, 'Boring course 1', sysdate
+(), sysdate());
+INSERT INTO course_details (id, name, last_updated_date, creation_date) VALUES (1005, 'Boring course 2', sysdate
+(), sysdate());
+INSERT INTO course_details (id, name, last_updated_date, creation_date) VALUES (1006, 'Boring course 3', sysdate
+(), sysdate());
+INSERT INTO course_details (id, name, last_updated_date, creation_date) VALUES (1007, 'Boring course 4', sysdate
+(), sysdate());
+INSERT INTO course_details (id, name, last_updated_date, creation_date) VALUES (1008, 'Boring course 5', sysdate
+(), sysdate());
+INSERT INTO course_details (id, name, last_updated_date, creation_date) VALUES (1009, 'Boring course 6', sysdate
+(), sysdate());
+INSERT INTO course_details (id, name, last_updated_date, creation_date) VALUES (1010, 'Boring course 7', sysdate
+(), sysdate());
+INSERT INTO course_details (id, name, last_updated_date, creation_date) VALUES (1011, 'Boring course 8', sysdate
+(), sysdate());
+INSERT INTO course_details (id, name, last_updated_date, creation_date) VALUES (1012, 'Boring course 9', sysdate
+(), sysdate());
+INSERT INTO course_details (id, name, last_updated_date, creation_date) VALUES (1013, 'Boring course 10', sysdate
 (), sysdate());
 
 INSERT INTO passport (id, number) VALUES (40001, '1337');
