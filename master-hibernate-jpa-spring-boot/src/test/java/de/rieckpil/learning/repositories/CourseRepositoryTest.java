@@ -21,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import de.rieckpil.learning.MasterHibernateJpaSpringBootApplication;
 import de.rieckpil.learning.entity.Course;
@@ -40,6 +41,33 @@ public class CourseRepositoryTest {
 		Course course = courseRepository.findById(1000L);
 
 		assertNotNull(course);
+		assertEquals("in28Minutes Beginner", course.getName());
+	}
+
+	@Test
+	@Transactional
+	public void testFindById_firstLevelCache() {
+		Course course = courseRepository.findById(1000L);
+
+		System.out.println("--- first course retrived");
+
+		Course course2 = courseRepository.findById(1000L);
+
+		assertNotNull(course);
+		assertNotNull(course2);
+		assertEquals("in28Minutes Beginner", course.getName());
+	}
+
+	@Test
+	public void testFindById_firstLevelCacheNoTransaction() {
+		Course course = courseRepository.findById(1000L);
+
+		System.out.println("--- first course retrived without transaction");
+
+		Course course2 = courseRepository.findById(1000L);
+
+		assertNotNull(course);
+		assertNotNull(course2);
 		assertEquals("in28Minutes Beginner", course.getName());
 	}
 
