@@ -52,6 +52,19 @@ public class MasterHibernateJpaSpringBootApplication implements CommandLineRunne
 	@Transactional
 	public void run(String... args) throws Exception {
 
+	}
+
+	private void addReviewsToCourse(Long courseId, List<Review> reviews) {
+		Course course = courseRepository.findById(courseId);
+		logger.info("Reviews of Course 1003 -> {}", course.getReviews());
+		for (Review review : reviews) {
+			course.addReview(review);
+			review.setCourse(course);
+			em.persist(review);
+		}
+	}
+
+	private void doInheritanceStuff() {
 		Review review1 = new Review("5", "Great Hands-on Stuff.");
 		Review review2 = new Review("3", "Good course!");
 
@@ -72,16 +85,6 @@ public class MasterHibernateJpaSpringBootApplication implements CommandLineRunne
 		logger.info("All employees: {} ", employeeRepository.retrieveAllEmployees());
 
 		transactionSample.doSomething();
-	}
-
-	private void addReviewsToCourse(Long courseId, List<Review> reviews) {
-		Course course = courseRepository.findById(courseId);
-		logger.info("Reviews of Course 1003 -> {}", course.getReviews());
-		for (Review review : reviews) {
-			course.addReview(review);
-			review.setCourse(course);
-			em.persist(review);
-		}
 	}
 
 	private void insertStudentAndCourse() {

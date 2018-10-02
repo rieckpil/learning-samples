@@ -12,6 +12,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Student {
 
@@ -22,9 +24,11 @@ public class Student {
 	private String name;
 
 	@OneToOne(fetch = FetchType.LAZY)
+	@JsonIgnore
 	private Passport passport;
 
 	@ManyToMany
+	@JsonIgnore
 	@JoinTable(name = "STUDENT_COURSE", joinColumns = @JoinColumn(name = "STUDENT_ID"), inverseJoinColumns = @JoinColumn(name = "COURSE_ID"))
 	private List<Course> courses = new ArrayList<>();
 
