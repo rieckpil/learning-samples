@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.PreRemove;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -45,6 +46,11 @@ public class Course {
 
 	@CreationTimestamp
 	private LocalDateTime creationDate;
+
+	@PreRemove
+	private void preRemove() {
+		this.isDeleted = true;
+	}
 
 	private boolean isDeleted;
 

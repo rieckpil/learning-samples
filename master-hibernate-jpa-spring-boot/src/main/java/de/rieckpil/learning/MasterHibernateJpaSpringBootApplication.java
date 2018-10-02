@@ -19,6 +19,7 @@ import de.rieckpil.learning.entity.Course;
 import de.rieckpil.learning.entity.FullTimeEmployee;
 import de.rieckpil.learning.entity.PartTimeEmployee;
 import de.rieckpil.learning.entity.Review;
+import de.rieckpil.learning.entity.ReviewRating;
 import de.rieckpil.learning.entity.Student;
 import de.rieckpil.learning.repositories.CourseRepository;
 import de.rieckpil.learning.repositories.EmployeeRepository;
@@ -51,7 +52,7 @@ public class MasterHibernateJpaSpringBootApplication implements CommandLineRunne
 	@Override
 	@Transactional
 	public void run(String... args) throws Exception {
-
+		doInheritanceStuff();
 	}
 
 	private void addReviewsToCourse(Long courseId, List<Review> reviews) {
@@ -65,8 +66,8 @@ public class MasterHibernateJpaSpringBootApplication implements CommandLineRunne
 	}
 
 	private void doInheritanceStuff() {
-		Review review1 = new Review("5", "Great Hands-on Stuff.");
-		Review review2 = new Review("3", "Good course!");
+		Review review1 = new Review("Great Hands-on Stuff.", ReviewRating.FIVE);
+		Review review2 = new Review("Good course!", ReviewRating.FIVE);
 
 		List<Review> reviews = new ArrayList<>();
 		reviews.add(review1);

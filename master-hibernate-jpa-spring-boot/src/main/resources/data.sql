@@ -50,9 +50,9 @@ INSERT INTO student (id, name, passport_id) VALUES (20001, 'Max', 40001);
 INSERT INTO student (id, name, passport_id) VALUES (20002, 'Tom', 40002);
 INSERT INTO student (id, name, passport_id) VALUES (20003, 'Duke', 40003);
 
-INSERT INTO review (id, rating, description, course_id) VALUES (50001, '1', 'Nice', 1000);
-INSERT INTO review (id, rating, description, course_id) VALUES (50002, '3', 'Awesome', 1000);
-INSERT INTO review (id, rating, description, course_id) VALUES (50003, '5', 'Fantatstic', 1001);
+INSERT INTO review (id, rating, description, course_id) VALUES (50001, 'FIVE', 'Nice', 1000);
+INSERT INTO review (id, rating, description, course_id) VALUES (50002, 'THREE', 'Awesome', 1000);
+INSERT INTO review (id, rating, description, course_id) VALUES (50003, 'ONE', 'Fantatstic', 1001);
 
 INSERT INTO student_course (student_id, course_id) VALUES (20001, 1000);
 INSERT INTO student_course (student_id, course_id) VALUES (20001, 1001);

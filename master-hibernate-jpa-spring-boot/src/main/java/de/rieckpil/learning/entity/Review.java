@@ -1,6 +1,8 @@
 package de.rieckpil.learning.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -20,13 +22,14 @@ public class Review {
 
 	private String description;
 
-	private String rating;
+	@Enumerated(EnumType.STRING)
+	private ReviewRating rating;
 
 	public Review() {
 
 	}
 
-	public Review(String description, String rating) {
+	public Review(String description, ReviewRating rating) {
 		super();
 		this.description = description;
 		this.rating = rating;
@@ -56,11 +59,11 @@ public class Review {
 		this.description = description;
 	}
 
-	public String getRating() {
+	public ReviewRating getRating() {
 		return rating;
 	}
 
-	public void setRating(String rating) {
+	public void setRating(ReviewRating rating) {
 		this.rating = rating;
 	}
 
