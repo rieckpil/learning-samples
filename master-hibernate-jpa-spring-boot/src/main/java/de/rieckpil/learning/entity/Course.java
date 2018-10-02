@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Cacheable;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,12 +15,17 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.Where;
 
 @Entity
 @Table(name = "CourseDetails")
 @NamedQuery(name = "get_all_courses", query = "SELECT c FROM Course c")
 @NamedQuery(name = "query_get_28_in_name", query = "SELECT c FROM Course c WHERE name like '%28%'")
+@Cacheable
+@SQLDelete(sql = "update course_details set is_deleted = true where id=?")
+@Where(clause = "is_deleted = false")
 public class Course {
 
 	@Id
@@ -40,6 +46,8 @@ public class Course {
 	@CreationTimestamp
 	private LocalDateTime creationDate;
 
+	private boolean isDeleted;
+
 	protected Course() {
 		super();
 	}
@@ -47,6 +55,14 @@ public class Course {
 	public Course(String name) {
 		super();
 		this.name = name;
+	}
+
+	public boolean isDeleted() {
+		return isDeleted;
+	}
+
+	public void setDeleted(boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 
 	public Long getId() {

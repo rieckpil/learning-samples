@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import de.rieckpil.learning.entity.Course;
+import de.rieckpil.learning.entity.Passport;
 import de.rieckpil.learning.repositories.CourseRepository;
+import de.rieckpil.learning.repositories.PassportRepository;
 
 @RestController
 @RequestMapping("/helloworld")
@@ -26,6 +28,9 @@ public class SampleController {
 
 	@Autowired
 	CourseRepository courseRepository;
+
+	@Autowired
+	PassportRepository passportRepository;
 
 	@GetMapping
 	public String sayHello() {
@@ -42,6 +47,11 @@ public class SampleController {
 	@GetMapping("/courses")
 	public ResponseEntity<List<Course>> getAllCourses() {
 		return ResponseEntity.ok(courseRepository.findAll());
+	}
+
+	@GetMapping("/passports")
+	public ResponseEntity<List<Passport>> getAllPassports() {
+		return ResponseEntity.ok(passportRepository.findAll());
 	}
 
 }

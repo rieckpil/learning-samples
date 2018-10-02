@@ -1,5 +1,6 @@
 package de.rieckpil.learning.entity;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -9,6 +10,7 @@ import javax.persistence.OneToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+@Cacheable
 public class Passport {
 
 	@Id
@@ -17,7 +19,8 @@ public class Passport {
 
 	private String number;
 
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "passport")
+	@OneToOne(fetch = FetchType.EAGER, mappedBy = "passport")
+	@JsonIgnore
 	private Student student;
 
 	public Passport() {

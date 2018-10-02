@@ -74,6 +74,9 @@ public class CourseRepositoryTest {
 	@Test
 	@DirtiesContext
 	public void testDeleteById() {
+
+		System.out.println("--- Deleting course 1001");
+
 		courseRepository.deleteById(1001L);
 		Course course = courseRepository.findById(1001L);
 		assertNull(course);
