@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNull;
 
 import java.util.List;
 
+import javax.persistence.EntityGraph;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -17,6 +18,8 @@ import javax.persistence.criteria.Root;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
@@ -35,6 +38,8 @@ public class CourseRepositoryTest {
 
 	@Autowired
 	EntityManager em;
+
+	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
 	@Test
 	public void testFindById() {
@@ -86,6 +91,49 @@ public class CourseRepositoryTest {
 	@DirtiesContext
 	public void testPlayWithEntityManager() {
 		courseRepository.playWithEntityManager();
+	}
+
+	@Test
+	@Transactional
+	@DirtiesContext
+	public void nPlusOneProblem() {
+
+		logger.info("---  N+1 issue with JPA");
+		List<Course> resultList = em.createNamedQuery("get_all_courses", Course.class).getResultList();
+		
+		for (Course course : resultList) {
+			logger.info("Course {} with Students {}", course, course.getStudents());
+		}
+	}
+
+	@Test
+	@Transactional
+	@DirtiesContext
+	public void fixNPlusOne_EntityGraph() {
+
+		logger.info("--- Fixing N+1 issue with JPA");
+
+		EntityGraph<Course> entityGraph = em.createEntityGraph(Course.class);
+		entityGraph.addSubgraph("students");
+
+		List<Course> resultList = em.createNamedQuery("get_all_courses", Course.class)
+				.setHint("javax.persistence.loadgraph", entityGraph).getResultList();
+		for (Course course : resultList) {
+			logger.info("Course {} with Students {}", course, course.getStudents());
+		}
+	}
+
+	@Test
+	@Transactional
+	@DirtiesContext
+	public void fixNPlusOne_JoinFetch() {
+
+		logger.info("--- Fixing N+1 issue with JPA");
+
+		List<Course> resultList = em.createNamedQuery("get_all_courses_join_fetch", Course.class).getResultList();
+		for (Course course : resultList) {
+			logger.info("Course {} with Students {}", course, course.getStudents());
+		}
 	}
 
 	@Test

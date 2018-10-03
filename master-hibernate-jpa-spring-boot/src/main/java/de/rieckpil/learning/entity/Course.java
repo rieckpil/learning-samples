@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.Cacheable;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -23,6 +24,7 @@ import org.hibernate.annotations.Where;
 @Entity
 @Table(name = "CourseDetails")
 @NamedQuery(name = "get_all_courses", query = "SELECT c FROM Course c")
+@NamedQuery(name = "get_all_courses_join_fetch", query = "SELECT c FROM Course c JOIN FETCH c.students")
 @NamedQuery(name = "query_get_28_in_name", query = "SELECT c FROM Course c WHERE name like '%28%'")
 @Cacheable
 @SQLDelete(sql = "update course_details set is_deleted = true where id=?")
@@ -38,7 +40,7 @@ public class Course {
 	@OneToMany(mappedBy = "course", cascade = CascadeType.REMOVE)
 	private List<Review> reviews = new ArrayList<>();
 
-	@ManyToMany(mappedBy = "courses", cascade = CascadeType.REMOVE)
+	@ManyToMany(mappedBy = "courses", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
 	private List<Student> students = new ArrayList<>();
 
 	@UpdateTimestamp
@@ -129,7 +131,7 @@ public class Course {
 
 	@Override
 	public String toString() {
-		return "Course{" + "id=" + id + ", name='" + name + '\'' + ", lastUpdatedDate=" + lastUpdatedDate
-				+ ", creationDate=" + creationDate + '}';
+		return "Course [name=" + name + "]";
 	}
+
 }
