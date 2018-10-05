@@ -11,6 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.PreRemove;
@@ -23,9 +24,11 @@ import org.hibernate.annotations.Where;
 
 @Entity
 @Table(name = "CourseDetails")
-@NamedQuery(name = "get_all_courses", query = "SELECT c FROM Course c")
-@NamedQuery(name = "get_all_courses_join_fetch", query = "SELECT c FROM Course c JOIN FETCH c.students")
-@NamedQuery(name = "query_get_28_in_name", query = "SELECT c FROM Course c WHERE name like '%28%'")
+@NamedQueries({
+		@NamedQuery(name = "get_all_courses", query = "SELECT c FROM Course c"),
+		@NamedQuery(name = "get_all_courses_join_fetch", query = "SELECT c FROM Course c JOIN FETCH c.students"),
+		@NamedQuery(name = "query_get_28_in_name", query = "SELECT c FROM Course c WHERE name like '%28%'")
+})
 @Cacheable
 @SQLDelete(sql = "update course_details set is_deleted = true where id=?")
 @Where(clause = "is_deleted = false")
