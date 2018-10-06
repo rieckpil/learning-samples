@@ -1,5 +1,7 @@
 package de.rieckpil.learning.order.control;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -12,5 +14,9 @@ public class OrderHistory {
 
 	public void save(Order order) {
 		this.em.merge(order);
+	}
+
+	public List<Order> getAllOrders() {
+		return em.createQuery("SELECT o FROM Order o", Order.class).getResultList();
 	}
 }

@@ -3,8 +3,10 @@ package de.rieckpil.learning.order.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "ORDER_ENTRIES")
 public class Order {
 
 	@Id
@@ -27,6 +29,11 @@ public class Order {
 
 	public void setOrderNumber(String orderNumber) {
 		this.orderNumber = orderNumber;
+	}
+
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", orderNumber=" + orderNumber + "]";
 	}
 
 }

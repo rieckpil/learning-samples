@@ -31,6 +31,6 @@ public class OrderProcessor {
 		Order order = new Order();
 		order.setOrderNumber(UUID.randomUUID().toString());
 		this.orderHistory.save(order);
+		System.out.println(orderHistory.getAllOrders());
 	}
-
 }
