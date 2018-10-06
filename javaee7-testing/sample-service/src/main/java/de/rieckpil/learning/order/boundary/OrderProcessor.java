@@ -1,24 +1,36 @@
 package de.rieckpil.learning.order.boundary;
 
-import de.rieckpil.learning.order.control.LegacyAuthenticator;
-import de.rieckpil.learning.order.control.PaymentProcessor;
+import java.util.UUID;
 
+import javax.ejb.Stateless;
+import javax.inject.Inject;
+
+import de.rieckpil.learning.order.control.LegacyAuthenticator;
+import de.rieckpil.learning.order.control.OrderHistory;
+import de.rieckpil.learning.order.control.PaymentProcessor;
+import de.rieckpil.learning.order.entity.Order;
+
+@Stateless
 public class OrderProcessor {
 
+	@Inject
 	LegacyAuthenticator authenticator;
+
+	@Inject
 	PaymentProcessor paymentProcessor;
 
-	public OrderProcessor() {
-		this.authenticator = new LegacyAuthenticator();
-		this.paymentProcessor = new PaymentProcessor();
-	}
+	@Inject
+	OrderHistory orderHistory;
 
 	public void order() {
 		if (!this.authenticator.authenticate()) {
 			throw new IllegalStateException("not authenticated!");
 		}
 
-		paymentProcessor.pay();
+		this.paymentProcessor.pay();
+		Order order = new Order();
+		order.setOrderNumber(UUID.randomUUID().toString());
+		this.orderHistory.save(order);
 	}
 
 }
