@@ -4,6 +4,7 @@ public class Thrower {
 
 	public void throwException() {
 		throw new IllegalArgumentException("illegal");
+		
 	}
 
 }

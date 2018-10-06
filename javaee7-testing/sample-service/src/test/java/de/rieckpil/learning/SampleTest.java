@@ -14,9 +14,17 @@ import java.util.List;
 
 import org.hamcrest.CustomMatcher;
 import org.hamcrest.Matcher;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.Timeout;
 
 public class SampleTest {
+
+	@Rule
+	public SystemOutRule rule = new SystemOutRule();
+
+	@Rule
+	public Timeout timeout = Timeout.seconds(1);
 
 	@Test
 	public void testLists() {
@@ -34,6 +42,13 @@ public class SampleTest {
 		assertThat(result, is("HelloWorld!"));
 	}
 
+	@Test(timeout = 2000)
+	public void tooSlow() {
+		while (true) {
+
+		}
+	}
+
 	@Test
 	public void customMatcher() {
 		Matcher<String> containsJ = new CustomMatcher<String>("contains j") {
@@ -48,7 +63,7 @@ public class SampleTest {
 				return content.contains("j");
 			}
 		};
-		
+
 		assertThat("java", containsJ);
 	}
 
