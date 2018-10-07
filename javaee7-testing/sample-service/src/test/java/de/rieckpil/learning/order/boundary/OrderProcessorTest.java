@@ -6,8 +6,10 @@ import static org.mockito.Mockito.when;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Matchers;
 
 import de.rieckpil.learning.order.control.LegacyAuthenticator;
+import de.rieckpil.learning.order.control.OrderHistory;
 import de.rieckpil.learning.order.control.PaymentProcessor;
 
 public class OrderProcessorTest {
@@ -19,6 +21,7 @@ public class OrderProcessorTest {
 		this.cut = new OrderProcessor();
 		this.cut.authenticator = mock(LegacyAuthenticator.class);
 		this.cut.paymentProcessor = mock(PaymentProcessor.class);
+		this.cut.orderHistory = mock(OrderHistory.class);
 	}
 
 	@Test
@@ -26,6 +29,7 @@ public class OrderProcessorTest {
 		when(this.cut.authenticator.authenticate()).thenReturn(true);
 		this.cut.order();
 		verify(this.cut.paymentProcessor).pay();
+		verify(this.cut.orderHistory).save(Matchers.anyObject());
 	}
 
 	@Test(expected = IllegalStateException.class)

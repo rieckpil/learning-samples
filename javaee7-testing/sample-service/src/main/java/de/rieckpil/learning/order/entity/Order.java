@@ -15,6 +15,15 @@ public class Order {
 
 	private String orderNumber;
 
+	public Order() {
+		super();
+	}
+
+	public Order(String orderNumber) {
+		super();
+		this.orderNumber = orderNumber;
+	}
+
 	public Long getId() {
 		return id;
 	}
