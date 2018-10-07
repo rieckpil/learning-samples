@@ -24,6 +24,14 @@ public class EntityManagerProvider implements TestRule {
 		return new EntityManagerProvider(unitName);
 	}
 
+	public void begin() {
+		this.tx.begin();
+	}
+
+	public void commit() {
+		this.tx.commit();
+	}
+
 	public EntityTransaction tx() {
 		return this.tx;
 	}

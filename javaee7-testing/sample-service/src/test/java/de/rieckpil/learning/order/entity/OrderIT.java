@@ -10,9 +10,9 @@ public class OrderIT {
 
 	@Test
 	public void crud() {
-		this.provider.tx().begin();
+		this.provider.begin();
 		this.provider.em().merge(new Order("42"));
 		System.out.println("sucessfully stored the order 42");
-		this.provider.tx().commit();
+		this.provider.commit();
 	}
 }
