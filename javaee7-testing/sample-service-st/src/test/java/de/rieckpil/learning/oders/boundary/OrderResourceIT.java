@@ -4,7 +4,9 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
+import javax.json.Json;
 import javax.json.JsonObject;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -23,5 +25,21 @@ public class OrderResourceIT {
 		JsonObject result = response.readEntity(JsonObject.class);
 		assertNotNull(result);
 		System.out.println(result);
+	}
+
+	@Test
+	public void testCrud() {
+
+		JsonObject body = Json.createObjectBuilder().add("java", "rocks").build();
+
+		Response response = provider.tut().request().post(Entity.json(body));
+
+		assertThat(response.getStatus(), is(201));
+		String uri = response.getHeaderString("Location");
+		assertNotNull(uri);
+
+		JsonObject result = JAXRSClient.target(uri).tut().request(MediaType.APPLICATION_JSON).get(JsonObject.class);
+		assertThat(result.getString("java"), is("rocks"));
+
 	}
 }
