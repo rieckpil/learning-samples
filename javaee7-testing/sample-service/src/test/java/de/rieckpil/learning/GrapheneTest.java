@@ -9,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 @RunWith(Arquillian.class)
 public class GrapheneTest {
 
+	// -Dwebdriver.chrome.driver=C:\Users\Philip\Downloads\chromedriver_win32\chromedriver.exe
+	
 	@Drone
 	WebDriver browser;
 
