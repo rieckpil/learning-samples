@@ -17,6 +17,9 @@ public class SpringDataCassandraTestApplication implements CommandLineRunner {
   @Autowired
   UserRepository userRepository;
 
+  @Autowired
+  UserService    userService;
+
   @Bean
   public QueryLogger queryLogger(Cluster cluster) {
     QueryLogger queryLogger = QueryLogger.builder().build();
@@ -31,6 +34,11 @@ public class SpringDataCassandraTestApplication implements CommandLineRunner {
   @Override
   public void run(String... args) throws Exception {
 
+    userService.alternativeWay();
+
+  }
+
+  private void insertData() {
     long startingId = userRepository.count();
 
     if (userRepository.count() < 100_000) {
@@ -47,6 +55,5 @@ public class SpringDataCassandraTestApplication implements CommandLineRunner {
       System.out.println("Finished inserting 100.000 entries");
 
     }
-
   }
 }
