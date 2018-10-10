@@ -6,4 +6,7 @@
 	<extension qualifier="webdriver">
 		<property name="browser">chrome</property>
 	</extension>
+	<extension qualifier="graphene">
+		<property name="url">http://localhost:8080/pageobject/</property>
+	</extension>
 </arquillian>
