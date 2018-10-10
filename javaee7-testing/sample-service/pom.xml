@@ -79,9 +79,31 @@
 			<version>2.3.5.Final</version>
 			<scope>test</scope>
 		</dependency>
+
 	</dependencies>
 	<build>
 		<finalName>sample-service</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.pitest</groupId>
+				<artifactId>pitest-maven</artifactId>
+				<version>1.4.3</version>
+				<configuration>
+					<jvmArgs>
+						<value>-Dwebdriver.chrome.driver=C:/Users/Philip/Downloads/chromedriver_win32/chromedriver.exe</value>
+					</jvmArgs>
+				</configuration>
+				<executions>
+					<execution>
+						<id>report</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>mutationCoverage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 	</build>
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>

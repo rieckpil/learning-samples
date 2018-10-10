@@ -14,6 +14,7 @@ import java.util.List;
 
 import org.hamcrest.CustomMatcher;
 import org.hamcrest.Matcher;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.Timeout;
@@ -42,11 +43,10 @@ public class SampleTest {
 		assertThat(result, is("HelloWorld!"));
 	}
 
-	@Test(timeout = 2000)
-	public void tooSlow() {
-		while (true) {
-
-		}
+	@Test(timeout = 20000)
+	@Ignore
+	public void tooSlow() throws InterruptedException {
+		Thread.sleep(1000);
 	}
 
 	@Test

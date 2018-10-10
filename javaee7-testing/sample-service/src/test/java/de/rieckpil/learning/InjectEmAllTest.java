@@ -12,7 +12,10 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.gargoylesoftware.htmlunit.WebConsole.Logger;
+
 import de.rieckpil.learning.injection.DataResolver;
+import de.rieckpil.learning.injection.LoggerProducer;
 import de.rieckpil.learning.injection.SuperService;
 
 @RunWith(Arquillian.class)
@@ -23,7 +26,8 @@ public class InjectEmAllTest {
 
 	@Deployment
 	public static WebArchive create() {
-		return ShrinkWrap.create(WebArchive.class).addClasses(SuperService.class, DataResolver.class)
+		return ShrinkWrap.create(WebArchive.class)
+				.addClasses(SuperService.class, DataResolver.class, LoggerProducer.class, Logger.class)
 				.addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
 	}
 
