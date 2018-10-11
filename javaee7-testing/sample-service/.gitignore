@@ -17,6 +17,7 @@
 *.ipr
 
 ### NetBeans ###
+nb-configuration.xml
 /nbproject/private/
 /build/
 /nbbuild/
@@ -28,3 +29,4 @@
 ### DERBY
 derby.log
 testDB/
+defaultDB/

@@ -9,7 +9,7 @@ import de.rieckpil.learning.order.entity.Order;
 
 public class OrderHistory {
 
-	@PersistenceContext
+	@PersistenceContext(unitName = "prod")
 	EntityManager em;
 
 	public void save(Order order) {
