@@ -7,7 +7,7 @@ import javax.ws.rs.core.Response;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
-@Path("sample")
+@Path("/sample")
 public class SampleResource {
 
 	@Inject
