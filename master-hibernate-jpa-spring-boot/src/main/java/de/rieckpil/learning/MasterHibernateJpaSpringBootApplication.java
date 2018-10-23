@@ -102,6 +102,7 @@ public class MasterHibernateJpaSpringBootApplication implements CommandLineRunne
 		em.persist(student);
 	}
 
+	@SuppressWarnings("unused")
 	private void insertStuff() {
 		Course course = new Course("Mathe I");
 		courseRepository.save(course);

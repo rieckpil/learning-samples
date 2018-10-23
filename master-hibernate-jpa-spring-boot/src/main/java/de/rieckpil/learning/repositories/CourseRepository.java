@@ -3,7 +3,6 @@ package de.rieckpil.learning.repositories;
 import de.rieckpil.learning.entity.Course;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -53,7 +52,7 @@ public class CourseRepository {
 		// em.detach(course2);
 
 		Course extracted = em.find(Course.class, 1L);
-
+		System.out.println(extracted);
 		course1.setName("Updated - Web Services");
 		course2.setName("Updated - React");
 
@@ -62,6 +61,7 @@ public class CourseRepository {
 		em.flush();
 	}
 
+	@SuppressWarnings({ "unused", "rawtypes" })
 	public void queryWithJPQL() {
 
 		List courseUnTyped = em.createQuery("SELECT c FROM Course c").getResultList();
@@ -81,6 +81,7 @@ public class CourseRepository {
 
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void nativeQuery() {
 
 		Query query = em.createNativeQuery("SELECT * FROM course_details WHERE id = ? AND name = :name", Course.class);

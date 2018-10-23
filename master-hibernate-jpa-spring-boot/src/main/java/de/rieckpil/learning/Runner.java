@@ -37,6 +37,7 @@ public class Runner implements CommandLineRunner {
 
 	}
 
+	@SuppressWarnings("unused")
 	private void doJdbcStuff() {
 		List<Person> result = jdbcRepository.findAll();
 

@@ -45,6 +45,7 @@ public class StudentRepositoryTest {
 		System.out.println(result);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Test
 	public void testWithJPQL_join() {
 		Query query = em.createQuery("SELECT c,s FROM Course c JOIN c.students s");
@@ -57,6 +58,7 @@ public class StudentRepositoryTest {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Test
 	public void testWithJPQL_left_join() {
 		Query query = em.createQuery("SELECT c,s FROM Course c LEFT JOIN c.students s");
@@ -69,6 +71,7 @@ public class StudentRepositoryTest {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Test
 	public void testWithJPQL_cross_join() {
 		Query query = em.createQuery("SELECT c,s FROM Course c, Student s");

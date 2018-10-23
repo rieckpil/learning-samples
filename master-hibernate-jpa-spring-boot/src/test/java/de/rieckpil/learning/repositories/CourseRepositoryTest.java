@@ -3,7 +3,6 @@ package de.rieckpil.learning.repositories;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
-import static org.mockito.Mockito.when;
 
 import java.util.List;
 
