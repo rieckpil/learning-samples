@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SpringBootJava10ApplicationTests {
+public class SpringBootJava11ApplicationTests {
 
     @Test
     public void contextLoads() {
