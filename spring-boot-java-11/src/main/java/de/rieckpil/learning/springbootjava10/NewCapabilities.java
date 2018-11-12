@@ -7,7 +7,10 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -52,6 +55,16 @@ public class NewCapabilities implements CommandLineRunner {
 				.thenAccept(System.out::println);
 
 		System.out.println("Async requested ...");
+
+		Path path = Files.writeString(Files.createTempFile("test", ".txt"), "test file \nhello 123 \ncontent");
+		System.out.println(path);
+		String s = Files.readString(path);
+		System.out.println(s);
+
+		List<String> listTwo = List.of("apple", "banana", "orange");
+		String[] array2 = listTwo.toArray(String[]::new);
+		System.out.println(Arrays.toString(array2));
+
 	}
 
 	private void writeToFile(FileWriter writer) {
