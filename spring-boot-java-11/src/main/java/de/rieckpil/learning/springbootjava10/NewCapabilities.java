@@ -14,11 +14,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 
 @Service
 public class NewCapabilities implements CommandLineRunner {
+	
+	private Logger logger = LoggerFactory.getLogger(NewCapabilities.class);
 
 	// @formatter:off
 	@Override
@@ -41,9 +45,13 @@ public class NewCapabilities implements CommandLineRunner {
 				.connectTimeout(Duration.ofSeconds(2)).build();
 
 		String astroUrl = "http://api.open-notify.org/astros.json";
-		var request = HttpRequest.newBuilder().uri(URI.create(astroUrl)).GET().build();
+		HttpRequest request = HttpRequest.newBuilder().uri(URI.create(astroUrl)).GET().build();
 
 		HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+		
+		logger.info("Response status code: " + response.statusCode());
+		logger.info("Response headers: " + response.headers());
+		logger.info("Response body: " + response.body());
 
 		String output = response.body();
 
