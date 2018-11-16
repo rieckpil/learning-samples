@@ -1,4 +1,4 @@
-package de.rieckpil.learning.codingchallenges.java;
+package de.rieckpil.learning.codingchallenges.interviews;
 
 import static org.junit.Assert.assertEquals;
 
@@ -15,6 +15,11 @@ public class HashMapThreadSafetyTest {
 	private static final int UUIDS_PER_THREAD = 5000;
 	private static final int AMOUNT_OF_THREADS = 15;
 
+	/**
+	 * The tests addresses the data loss of inserting map entries by several threads
+	 * in parallel due to the unsynchronized resizing operation during the insertion
+	 * of the values (explained in comment for second test)
+	 */
 	@Test
 	public void proveHashMapIsNotThreadSafeFirst() throws InterruptedException {
 
