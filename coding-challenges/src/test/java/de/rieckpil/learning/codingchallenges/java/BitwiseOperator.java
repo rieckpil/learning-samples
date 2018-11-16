@@ -11,6 +11,9 @@ public class BitwiseOperator {
 		int b = 13;
 
 		System.out.println(1 << 4);
+		System.out.println(1 << 30);
+		System.out.println("Amount of CPUs: " + Runtime.getRuntime().availableProcessors());
+		System.out.println(Integer.MAX_VALUE - 8);
 		System.out.println("XOR: " + (a ^ b));
 		System.out.println("AND: " + (a & b));
 		System.out.println("OR: " + (a | b));
