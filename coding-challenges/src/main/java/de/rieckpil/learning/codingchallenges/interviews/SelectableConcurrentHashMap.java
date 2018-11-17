@@ -18,6 +18,16 @@ public class SelectableConcurrentHashMap<K, V> extends ConcurrentHashMap<K, V> {
 		super(initialCapacity);
 	}
 
+	public SelectableConcurrentHashMap(int initialCapacity, float loadFactor, int concurrencyLevel) {
+		super(initialCapacity, loadFactor, concurrencyLevel);
+	}
+
+	@Override
+	public V get(Object key) {
+		System.out.println("Halloo");
+		return super.get(key);
+	}
+
 	/**
 	 * Selects, at random, the requested number of entries from this map. Latency is
 	 * less than 2 µs per requested item, regardless of map size. Assumes that the
@@ -33,12 +43,12 @@ public class SelectableConcurrentHashMap<K, V> extends ConcurrentHashMap<K, V> {
 
 	public static void main(String[] args) {
 
-		SelectableConcurrentHashMap<Long, String> x = new SelectableConcurrentHashMap<>(16);
+		SelectableConcurrentHashMap<Long, String> x = new SelectableConcurrentHashMap<>(10, 0.75f, 10);
 
 		LongStream.range(0, 10).forEach(l -> x.put(l, "Hello"));
-
+		
 		long start = System.nanoTime();
-		String result = x.get(ThreadLocalRandom.current().nextLong(11));
+		x.get(ThreadLocalRandom.current().nextLong(11));
 		long end = System.nanoTime();
 		long microseconds = (end - start) / 1000;
 
