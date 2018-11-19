@@ -11,7 +11,6 @@ public class ArrayLeftShift {
 	}
 
 	static int[] rotLeft(int[] a, int d) {
-
 		int[] orgArray = new int[a.length];
 		System.arraycopy(a, 0, orgArray, 0, a.length);
 
