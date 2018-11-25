@@ -1,0 +1,28 @@
+global de.rieckpil.learning.Fare rideFare;
+import de.rieckpil.learning.TaxiRide;
+
+dialect  "mvel"
+
+rule "Calculate Taxi Fare - Scenario 1"
+       when
+           taxiRideInstance:TaxiRide(isNightSurcharge == false && distanceInMile < 10);
+       then
+           rideFare.setNightSurcharge(0L);
+           rideFare.setRideFare(70L);
+end
+
+rule "Calculate Taxi Fare - Scenario 2"
+    when
+        taxiRideInstance:TaxiRide(isNightSurcharge == true && distanceInMile < 10);
+    then
+        rideFare.setNightSurcharge(50L);
+        rideFare.setRideFare(70L);
+end
+
+rule "Calculate Taxi Fare - Scenario 3"
+    when
+        taxiRideInstance:TaxiRide(isNightSurcharge == true && distanceInMile > 10);
+    then
+        rideFare.setNightSurcharge(50L);
+        rideFare.setRideFare(150L);
+end
