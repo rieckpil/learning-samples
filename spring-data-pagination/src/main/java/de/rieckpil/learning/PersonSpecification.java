@@ -14,7 +14,7 @@ import org.springframework.data.jpa.domain.Specification;
 public class PersonSpecification {
 
 	public static Specification<Person> findByCriteria(final String lastname, final String firstname,
-			final Integer budet, final Instant dobLimit) {
+			final Integer budet, final Long dobLimit) {
 
 		return new Specification<Person>() {
 			private static final long serialVersionUID = 1L;
@@ -33,7 +33,7 @@ public class PersonSpecification {
 					predicates.add(criteriaBuilder.greaterThanOrEqualTo(root.get("budget"), budet));
 				}
 				if (dobLimit != null) {
-					predicates.add(criteriaBuilder.lessThanOrEqualTo(root.get("dob"), dobLimit));
+					predicates.add(criteriaBuilder.lessThanOrEqualTo(root.get("dob"), Instant.ofEpochSecond(dobLimit)));
 				}
 
 				return criteriaBuilder.and(predicates.toArray(new Predicate[] {}));

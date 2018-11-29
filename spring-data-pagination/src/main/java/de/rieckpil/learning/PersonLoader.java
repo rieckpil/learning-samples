@@ -29,7 +29,7 @@ public class PersonLoader implements CommandLineRunner {
 
 			LocalDateTime initDate = LocalDateTime.of(1995, 9, 13, 12, 12);
 
-			for (int i = 0; i < 94993; i++) {
+			for (int i = 0; i < 100_000; i++) {
 
 				Person p = new Person();
 				p.setBudget(ThreadLocalRandom.current().nextInt(100000));

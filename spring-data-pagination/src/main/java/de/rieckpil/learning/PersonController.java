@@ -1,6 +1,5 @@
 package de.rieckpil.learning;
 
-import java.time.Instant;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +26,21 @@ public class PersonController {
 			@RequestParam(name = "budget", required = false) Integer budget,
 			@RequestParam(name = "dobLimit", required = false) Long dobLimit) {
 
-		return personRepository.findAll(
-				PersonSpecification.findByCriteria(lastname, firstname, budget, Instant.ofEpochSecond(dobLimit)),
+		return personRepository.findAll(PersonSpecification.findByCriteria(lastname, firstname, budget, dobLimit),
+				PageRequest.of(page, size, Sort.by("id"))).getContent();
+	}
+
+	// http://localhost:8080/persons/bySpecification?page=0&size=100&firstname=Max&budget=50000&dobLimit=946684800
+
+	@GetMapping("/bySpecification")
+	public List<Person> personsbySpecification(@RequestParam(name = "page", defaultValue = "0") int page,
+			@RequestParam(name = "size", defaultValue = "500") int size,
+			@RequestParam(name = "firstname", required = false) String firstname,
+			@RequestParam(name = "lastname", required = false) String lastname,
+			@RequestParam(name = "budget", required = false) Integer budget,
+			@RequestParam(name = "dobLimit", required = false) Long dobLimit) {
+
+		return personRepository.findAll(PersonSpecification.findByCriteria(lastname, firstname, budget, dobLimit),
 				PageRequest.of(page, size, Sort.by("id"))).getContent();
 	}
 
