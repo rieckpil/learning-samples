@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    username: test
+    password: test
+    url: jdbc:postgresql://localhost:5432/test
+  jpa:
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    schemas: test
+    enabled: true
