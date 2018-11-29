@@ -29,17 +29,19 @@ public class PersonLoader implements CommandLineRunner {
 
 			LocalDateTime initDate = LocalDateTime.of(1995, 9, 13, 12, 12);
 
-			for (int i = 0; i < 100_000; i++) {
+			for (int i = 0; i < 10_000; i++) {
 
 				Person p = new Person();
-				p.setBudget(ThreadLocalRandom.current().nextInt(100000));
+				p.setBudget(ThreadLocalRandom.current().nextInt(10000));
 				p.setDob(Instant.ofEpochSecond(initDate.plusDays(i).toEpochSecond(ZoneOffset.UTC)));
 				p.setFirstname(firstnames[ThreadLocalRandom.current().nextInt(0, firstnames.length)]);
 				p.setLastname(lastnames[ThreadLocalRandom.current().nextInt(0, lastnames.length)]);
 
 				personRepository.save(p);
-
 			}
+
+			System.out.println("...Finished loading 10.000 entities");
+
 		} else {
 			System.out.println("Not loading entries due to already filled database...");
 

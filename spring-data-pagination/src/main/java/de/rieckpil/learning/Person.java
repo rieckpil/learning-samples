@@ -7,10 +7,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.querydsl.core.annotations.QueryEntity;
+
 import lombok.Data;
 
 @Data
 @Entity
+@QueryEntity
 public class Person {
 
 	@Id

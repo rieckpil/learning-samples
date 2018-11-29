@@ -1,15 +1,15 @@
 spring:
-  datasource:
-    username: test
-    password: test
-    url: jdbc:postgresql://localhost:5432/test
+  #datasource:
+  #  username: test
+  #  password: test
+  #  url: jdbc:postgresql://localhost:5432/test
   jpa:
     properties:
       hibernate:
         temp:
           use_jdbc_metadata_defaults: false
     hibernate:
-      ddl-auto: validate    show-sql: true
+      ddl-auto: create-drop    #show-sql: true
   flyway:
     schemas: test
-    enabled: true
+    enabled: false
