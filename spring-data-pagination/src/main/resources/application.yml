@@ -9,7 +9,7 @@ spring:
         temp:
           use_jdbc_metadata_defaults: false
     hibernate:
-      ddl-auto: create-drop    #show-sql: true
+      ddl-auto: create-drop    show-sql: true
   flyway:
     schemas: test
     enabled: false
