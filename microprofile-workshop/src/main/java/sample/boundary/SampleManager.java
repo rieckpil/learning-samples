@@ -31,7 +31,8 @@ public class SampleManager {
         return longAdder.intValue();
     }
 
-    @Fallback(fallbackMethod = "defaultValue")
+    @Fallback(SampleFallback.class)
+    // @Timeout(200)
     @Retry(maxRetries = 3)
     public String getFoo() {
         System.out.println(".... called");
