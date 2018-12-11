@@ -1,5 +1,6 @@
 package sample.boundary;
 
+import org.eclipse.microprofile.faulttolerance.Bulkhead;
 import org.eclipse.microprofile.faulttolerance.Fallback;
 import org.eclipse.microprofile.faulttolerance.Retry;
 import org.eclipse.microprofile.metrics.annotation.Counted;
@@ -33,6 +34,7 @@ public class SampleManager {
 
     @Fallback(SampleFallback.class)
     // @Timeout(200)
+    @Bulkhead(2)
     @Retry(maxRetries = 3)
     public String getFoo() {
         System.out.println(".... called");
