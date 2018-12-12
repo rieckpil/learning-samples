@@ -29,6 +29,10 @@ public class FSTMessageBodyProvider implements MessageBodyWriter<Object>, Messag
         System.out.println("#### got initialized");
     }
 
+    public FSTMessageBodyProvider() {
+        System.out.println("--- constructor called");
+    }
+
     @Override
     public long getSize(Object object, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
         return -1;
