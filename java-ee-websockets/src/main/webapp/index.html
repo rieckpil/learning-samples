@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DUKE ETF</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <th>Price</th>
+                    <th>Volume</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody id="etfTable">
+                <tr>
+                    <td>--.--</td>
+                    <td>--</td>
+                    <td>n.A.</td>
+                </tr>
+            </tbody>
+        </table>
+        <script>
+            var wsocket;
+
+            function connect() {
+                wsocket = new WebSocket("ws://localhost:8080/java-ee-websockets/dukeetf");
+                wsocket.onmessage = onMessage;
+            }
+
+            function onMessage(evt) {
+                console.log(evt);
+                var etfTable = document.getElementById("etfTable");
+                var row = etfTable.insertRow(0);
+                row.insertCell(0).innerHTML = JSON.parse(evt.data).price;
+                row.insertCell(1).innerHTML = JSON.parse(evt.data).volume;
+                row.insertCell(2).innerHTML = new Date().toTimeString();
+            }
+
+            window.addEventListener("load", connect, false);
+        </script>
+    </body>
+</html>
