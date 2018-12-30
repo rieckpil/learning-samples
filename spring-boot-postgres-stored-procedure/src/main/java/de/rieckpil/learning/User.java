@@ -3,10 +3,16 @@ package de.rieckpil.learning;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedStoredProcedureQueries;
+import javax.persistence.NamedStoredProcedureQuery;
+import javax.persistence.ParameterMode;
+import javax.persistence.StoredProcedureParameter;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "application_users")
+@NamedStoredProcedureQueries({ @NamedStoredProcedureQuery(name = "inc", procedureName = "inc", parameters = {
+		@StoredProcedureParameter(mode = ParameterMode.IN, name = "inParam1", type = Integer.class) }) })
 public class User {
 
 	@Id
