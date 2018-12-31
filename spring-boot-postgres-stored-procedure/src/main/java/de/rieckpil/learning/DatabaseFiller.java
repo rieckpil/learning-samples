@@ -27,6 +27,8 @@ public class DatabaseFiller {
 		}
 
 		System.out.println(em.createNamedStoredProcedureQuery("inc").setParameter("inParam1", 1).getSingleResult());
+		System.out.println(em.createNamedStoredProcedureQuery("inc").setParameter("inParam1", -1).getSingleResult());
+		System.out.println(em.createNamedStoredProcedureQuery("inc").setParameter("inParam1", 10).getSingleResult());
 
 	}
 
