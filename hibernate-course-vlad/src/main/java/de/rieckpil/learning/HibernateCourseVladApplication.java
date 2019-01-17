@@ -11,6 +11,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.zaxxer.hikari.HikariDataSource;
+
 import de.rieckpil.learning.domain.Post;
 
 @SpringBootApplication
@@ -21,6 +23,9 @@ public class HibernateCourseVladApplication implements CommandLineRunner {
 
 	@Autowired
 	private DataSource dataSource;
+
+	@Autowired
+	private HikariDataSource hikariDatasource;
 
 	public static void main(String[] args) {
 		SpringApplication.run(HibernateCourseVladApplication.class, args);
@@ -33,6 +38,8 @@ public class HibernateCourseVladApplication implements CommandLineRunner {
 		System.out.println(dataSource.getConnection().getMetaData().getDefaultTransactionIsolation());
 		System.out.println(dataSource.getConnection().getMetaData().getCatalogTerm());
 		System.out.println(dataSource.getConnection().getMetaData().getCatalogSeparator());
+
+		System.out.println(hikariDatasource.getJdbcUrl());
 
 		System.out.println(DriverManager.getDrivers().nextElement());
 
