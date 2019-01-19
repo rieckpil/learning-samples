@@ -44,6 +44,10 @@ public class HibernateCourseVladApplication implements CommandLineRunner {
 		System.out.println(DriverManager.getDrivers().nextElement());
 
 		this.em.persist(new Post("Hello World!"));
+		this.em.persist(new Post("Hello World!"));
+		this.em.persist(new Post("Hello World!"));
+		this.em.persist(new Post("Hello World!"));
+		this.em.persist(new Post("Hello World!"));
 	}
 
 }
