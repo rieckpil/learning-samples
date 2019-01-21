@@ -1,8 +1,13 @@
 package de.rieckpil.learning.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Post {
@@ -13,11 +18,19 @@ public class Post {
 
 	private String name;
 
+	@Enumerated(EnumType.ORDINAL)
+	private PostStatus status;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "status", insertable = false, updatable = false)
+	private PostStatusInfo statusInfo;
+
 	public Post() {
 	}
 
-	public Post(String name) {
+	public Post(String name, PostStatus status) {
 		this.name = name;
+		this.status = status;
 	}
 
 	public Long getId() {
@@ -34,6 +47,22 @@ public class Post {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public PostStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(PostStatus status) {
+		this.status = status;
+	}
+
+	public PostStatusInfo getStatusInfo() {
+		return statusInfo;
+	}
+
+	public void setStatusInfo(PostStatusInfo statusInfo) {
+		this.statusInfo = statusInfo;
 	}
 
 }
