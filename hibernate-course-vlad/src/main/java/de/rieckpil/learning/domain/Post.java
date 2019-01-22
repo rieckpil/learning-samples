@@ -6,9 +6,11 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
@@ -23,7 +25,8 @@ import com.vladmihalcea.hibernate.type.json.JsonStringType;
 public class Post {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(generator = "sequence", strategy = GenerationType.SEQUENCE)
+	@SequenceGenerator(name = "sequence", allocationSize = 10)
 	private Long id;
 
 	private String name;

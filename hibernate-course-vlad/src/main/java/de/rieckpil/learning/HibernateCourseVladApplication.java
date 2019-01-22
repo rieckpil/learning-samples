@@ -73,7 +73,8 @@ public class HibernateCourseVladApplication implements CommandLineRunner {
 		Post p1 = this.em.find(Post.class, 1L);
 		System.out.println(p1.getStatusInfo().getDescription());
 
-		List<String> resultList = this.em.createNativeQuery("SELECT jsonb_pretty(p.content) FROM post p").getResultList();
+		List<String> resultList = this.em.createNativeQuery("SELECT jsonb_pretty(p.content) FROM post p")
+				.getResultList();
 
 		System.out.println(resultList.get(0));
 	}
