@@ -1,5 +1,6 @@
 package de.rieckpil.learning.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -9,7 +10,16 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
+import org.hibernate.annotations.TypeDefs;
+
+import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
+import com.vladmihalcea.hibernate.type.json.JsonStringType;
+
 @Entity
+@TypeDefs({ @TypeDef(name = "jsonb", typeClass = JsonBinaryType.class),
+		@TypeDef(name = "json", typeClass = JsonStringType.class) })
 public class Post {
 
 	@Id
@@ -17,6 +27,10 @@ public class Post {
 	private Long id;
 
 	private String name;
+
+	@Type(type = "jsonb")
+	@Column(columnDefinition = "jsonb")
+	private Content content;
 
 	@Enumerated(EnumType.ORDINAL)
 	private PostStatus status;
@@ -28,9 +42,10 @@ public class Post {
 	public Post() {
 	}
 
-	public Post(String name, PostStatus status) {
+	public Post(String name, PostStatus status, Content content) {
 		this.name = name;
 		this.status = status;
+		this.content = content;
 	}
 
 	public Long getId() {
@@ -63,6 +78,14 @@ public class Post {
 
 	public void setStatusInfo(PostStatusInfo statusInfo) {
 		this.statusInfo = statusInfo;
+	}
+
+	public Content getContent() {
+		return content;
+	}
+
+	public void setContent(Content content) {
+		this.content = content;
 	}
 
 }

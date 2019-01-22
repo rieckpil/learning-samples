@@ -8,7 +8,7 @@ public class PostStatusInfo {
 
 	@Id
 	private Long id;
-
+	
 	private String name;
 
 	private String description;

@@ -1,6 +1,8 @@
 package de.rieckpil.learning;
 
 import java.sql.DriverManager;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.sql.DataSource;
@@ -15,6 +17,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 
 import com.zaxxer.hikari.HikariDataSource;
 
+import de.rieckpil.learning.domain.Content;
 import de.rieckpil.learning.domain.Post;
 import de.rieckpil.learning.domain.PostStatus;
 import de.rieckpil.learning.domain.PostStatusInfo;
@@ -52,19 +55,27 @@ public class HibernateCourseVladApplication implements CommandLineRunner {
 		this.em.persist(new PostStatusInfo(1L, "APPROVED", "Already approved"));
 		this.em.persist(new PostStatusInfo(2L, "SPAM", "Marked as spam"));
 
-		this.em.persist(new Post("Hello World!", PostStatus.APPROVED));
-		this.em.persist(new Post("Hello World!", PostStatus.APPROVED));
-		this.em.persist(new Post("Hello World!", PostStatus.SPAM));
-		this.em.persist(new Post("Hello World!", PostStatus.APPROVED));
-		this.em.persist(new Post("Hello World!", PostStatus.PENDING));
+		Content content1 = new Content("This is a cool post", "Hello World", Arrays.asList("Stuff", "Hello", "World"));
+		Content content2 = new Content("Buy this cool stuff", "Spam 0815", Arrays.asList("Spam", "Ad", "Marketing"));
+
+		this.em.persist(new Post("Hello World!", PostStatus.APPROVED, content1));
+		this.em.persist(new Post("Hello World!", PostStatus.APPROVED, null));
+		this.em.persist(new Post("Hello World!", PostStatus.SPAM, content2));
+		this.em.persist(new Post("Hello World!", PostStatus.APPROVED, null));
+		this.em.persist(new Post("Hello World!", PostStatus.PENDING, null));
 
 	}
 
 	@Transactional
+	@SuppressWarnings("unchecked")
 	@Scheduled(fixedDelay = 1000)
 	public void findPost() {
 		Post p1 = this.em.find(Post.class, 1L);
 		System.out.println(p1.getStatusInfo().getDescription());
+
+		List<String> resultList = this.em.createNativeQuery("SELECT jsonb_pretty(p.content) FROM post p").getResultList();
+
+		System.out.println(resultList.get(0));
 	}
 
 }
