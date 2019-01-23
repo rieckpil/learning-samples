@@ -70,7 +70,7 @@ public class HibernateCourseVladApplication implements CommandLineRunner {
 	@SuppressWarnings("unchecked")
 	@Scheduled(fixedDelay = 1000)
 	public void findPost() {
-		Post p1 = this.em.find(Post.class, 1L);
+		Post p1 = this.em.find(Post.class, 1000L);
 		System.out.println(p1.getStatusInfo().getDescription());
 
 		List<String> resultList = this.em.createNativeQuery("SELECT jsonb_pretty(p.content) FROM post p")
