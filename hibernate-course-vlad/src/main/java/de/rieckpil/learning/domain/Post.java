@@ -1,5 +1,6 @@
 package de.rieckpil.learning.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 import org.hibernate.annotations.Type;
@@ -31,6 +33,9 @@ public class Post {
 
 	private String name;
 
+	@OneToOne(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+	private PublishInfo publishInfo;
+
 	@Type(type = "jsonb")
 	@Column(columnDefinition = "jsonb")
 	private Content content;
@@ -44,11 +49,18 @@ public class Post {
 
 	public Post() {
 	}
-
+	
 	public Post(String name, PostStatus status, Content content) {
 		this.name = name;
 		this.status = status;
 		this.content = content;
+	}
+
+	public Post(String name, PostStatus status, Content content, PublishInfo publishInfo) {
+		this.name = name;
+		this.status = status;
+		this.content = content;
+		this.publishInfo = publishInfo;
 	}
 
 	public Long getId() {
@@ -91,4 +103,13 @@ public class Post {
 		this.content = content;
 	}
 
+	public PublishInfo getPublishInfo() {
+		return publishInfo;
+	}
+
+	public void setPublishInfo(PublishInfo publishInfo) {
+		this.publishInfo = publishInfo;
+		publishInfo.setPost(this);
+	}
+	
 }

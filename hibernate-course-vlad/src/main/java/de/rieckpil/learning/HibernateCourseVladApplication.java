@@ -21,6 +21,7 @@ import de.rieckpil.learning.domain.Content;
 import de.rieckpil.learning.domain.Post;
 import de.rieckpil.learning.domain.PostStatus;
 import de.rieckpil.learning.domain.PostStatusInfo;
+import de.rieckpil.learning.domain.PublishInfo;
 
 @SpringBootApplication
 @EnableScheduling
@@ -58,7 +59,10 @@ public class HibernateCourseVladApplication implements CommandLineRunner {
 		Content content1 = new Content("This is a cool post", "Hello World", Arrays.asList("Stuff", "Hello", "World"));
 		Content content2 = new Content("Buy this cool stuff", "Spam 0815", Arrays.asList("Spam", "Ad", "Marketing"));
 
-		this.em.persist(new Post("Hello World!", PostStatus.APPROVED, content1));
+		Post p1 = new Post("Hello World!", PostStatus.APPROVED, content1);
+		p1.setPublishInfo(new PublishInfo());
+		
+		this.em.persist(p1);
 		this.em.persist(new Post("Hello World!", PostStatus.APPROVED, null));
 		this.em.persist(new Post("Hello World!", PostStatus.SPAM, content2));
 		this.em.persist(new Post("Hello World!", PostStatus.APPROVED, null));
@@ -68,7 +72,7 @@ public class HibernateCourseVladApplication implements CommandLineRunner {
 
 	@Transactional
 	@SuppressWarnings("unchecked")
-	@Scheduled(fixedDelay = 1000)
+	@Scheduled(fixedDelay = 10000)
 	public void findPost() {
 		Post p1 = this.em.find(Post.class, 1000L);
 		System.out.println(p1.getStatusInfo().getDescription());
