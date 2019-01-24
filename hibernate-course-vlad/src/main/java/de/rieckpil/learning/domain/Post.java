@@ -1,5 +1,8 @@
 package de.rieckpil.learning.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +13,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
@@ -43,13 +48,17 @@ public class Post {
 	@Enumerated(EnumType.ORDINAL)
 	private PostStatus status;
 
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.PERSIST })
+	@JoinTable(name = "post_tag", joinColumns = @JoinColumn(name = "post_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
+	private List<Tag> tags = new ArrayList<>();
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "status", insertable = false, updatable = false)
 	private PostStatusInfo statusInfo;
 
 	public Post() {
 	}
-	
+
 	public Post(String name, PostStatus status, Content content) {
 		this.name = name;
 		this.status = status;
@@ -111,5 +120,17 @@ public class Post {
 		this.publishInfo = publishInfo;
 		publishInfo.setPost(this);
 	}
-	
+
+	public List<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(List<Tag> tags) {
+		this.tags = tags;
+	}
+
+	public void addTag(Tag tag) {
+		this.tags.add(tag);
+	}
+
 }
