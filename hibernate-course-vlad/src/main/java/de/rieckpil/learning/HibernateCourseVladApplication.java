@@ -2,6 +2,8 @@ package de.rieckpil.learning;
 
 import java.io.IOException;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.Arrays;
 import java.util.List;
 
@@ -9,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.sql.DataSource;
 import javax.transaction.Transactional;
 
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -78,6 +81,16 @@ public class HibernateCourseVladApplication implements CommandLineRunner {
 		this.em.persist(new Post("Hello World!", PostStatus.APPROVED, content1));
 		this.em.persist(new Post("Hello World!", PostStatus.PENDING, content1));
 
+		this.em.flush();
+
+		this.em.unwrap(Session.class).doWork(con -> {
+			try (Statement st = con.createStatement()) {
+				ResultSet rs = st.executeQuery("SELECT * FROM post");
+				while (rs.next()) {
+					System.out.println(rs.getLong("id"));
+				}
+			}
+		});
 	}
 
 	@Transactional
