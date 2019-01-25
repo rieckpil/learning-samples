@@ -3,6 +3,7 @@ package de.rieckpil.learning;
 import java.io.IOException;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Arrays;
 import java.util.List;
@@ -52,7 +53,7 @@ public class HibernateCourseVladApplication implements CommandLineRunner {
 
 	@Override
 	@Transactional
-	public void run(String... args) throws Exception {
+	public void run(String... args) throws SQLException {
 
 		System.out.println(dataSource.getConnection().getMetaData().getDefaultTransactionIsolation());
 		System.out.println(dataSource.getConnection().getMetaData().getCatalogTerm());
@@ -91,6 +92,9 @@ public class HibernateCourseVladApplication implements CommandLineRunner {
 				}
 			}
 		});
+		
+		// test result transformers for native SQL Queries
+		// test Hibernate AUTO flush mode -> should auto detect when flush is needed to reduce flushes
 	}
 
 	@Transactional
