@@ -1,5 +1,6 @@
 package de.rieckpil.learning;
 
+import java.io.IOException;
 import java.sql.DriverManager;
 import java.util.Arrays;
 import java.util.List;
@@ -15,6 +16,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zaxxer.hikari.HikariDataSource;
 
 import de.rieckpil.learning.domain.Content;
@@ -33,6 +36,9 @@ public class HibernateCourseVladApplication implements CommandLineRunner {
 
 	@Autowired
 	private DataSource dataSource;
+
+	@Autowired
+	private ObjectMapper mapper;
 
 	@Autowired
 	private HikariDataSource hikariDatasource;
@@ -67,24 +73,27 @@ public class HibernateCourseVladApplication implements CommandLineRunner {
 		p1.addTag(t1);
 
 		this.em.persist(p1);
-		this.em.persist(new Post("Hello World!", PostStatus.APPROVED, null));
+		this.em.persist(new Post("Hello World!", PostStatus.APPROVED, content1));
 		this.em.persist(new Post("Hello World!", PostStatus.SPAM, content2));
-		this.em.persist(new Post("Hello World!", PostStatus.APPROVED, null));
-		this.em.persist(new Post("Hello World!", PostStatus.PENDING, null));
+		this.em.persist(new Post("Hello World!", PostStatus.APPROVED, content1));
+		this.em.persist(new Post("Hello World!", PostStatus.PENDING, content1));
 
 	}
 
 	@Transactional
 	@SuppressWarnings("unchecked")
 	@Scheduled(fixedDelay = 10000)
-	public void findPost() {
+	public void findPost() throws IOException {
 		Post p1 = this.em.find(Post.class, 1000L);
 		System.out.println(p1.getStatusInfo().getDescription());
 
 		List<String> resultList = this.em.createNativeQuery("SELECT jsonb_pretty(p.content) FROM post p")
 				.getResultList();
 
-		System.out.println(resultList.get(0));
+		for (String string : resultList) {
+			JsonNode node = mapper.readTree(string);
+			System.out.println("[mainContent] == " + node.get("mainContent"));
+		}
 	}
 
 }
