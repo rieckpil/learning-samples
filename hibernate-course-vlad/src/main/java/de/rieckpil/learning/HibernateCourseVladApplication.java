@@ -18,7 +18,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -92,14 +91,12 @@ public class HibernateCourseVladApplication implements CommandLineRunner {
 				}
 			}
 		});
-		
-		// test result transformers for native SQL Queries
-		// test Hibernate AUTO flush mode -> should auto detect when flush is needed to reduce flushes
+
 	}
 
 	@Transactional
 	@SuppressWarnings("unchecked")
-	@Scheduled(fixedDelay = 10000)
+	// @Scheduled(fixedDelay = 10000)
 	public void findPost() throws IOException {
 		Post p1 = this.em.find(Post.class, 1000L);
 		System.out.println(p1.getStatusInfo().getDescription());

@@ -33,7 +33,7 @@ public class Post {
 
 	@Id
 	@GeneratedValue(generator = "sequence", strategy = GenerationType.SEQUENCE)
-	@SequenceGenerator(name = "sequence", allocationSize = 10, initialValue = 1000)
+	@SequenceGenerator(name = "sequence", allocationSize = 20, initialValue = 1000)
 	private Long id;
 
 	private String name;
