@@ -1,5 +1,7 @@
 package de.rieckpil.learning;
 
+import java.util.UUID;
+
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
@@ -8,8 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 
-import de.rieckpil.learning.domain.Post;
-import de.rieckpil.learning.domain.PostStatus;
+import de.rieckpil.learning.domain.Orders;
 
 @Service
 public class BatchingExample implements CommandLineRunner {
@@ -24,7 +25,7 @@ public class BatchingExample implements CommandLineRunner {
 		this.em.unwrap(Session.class).setJdbcBatchSize(20);
 
 		for (int i = 0; i < 20; i++) {
-			this.em.persist(new Post("Hello World!", PostStatus.APPROVED, null));
+			this.em.persist(new Orders(UUID.randomUUID().toString()));
 		}
 
 	}
