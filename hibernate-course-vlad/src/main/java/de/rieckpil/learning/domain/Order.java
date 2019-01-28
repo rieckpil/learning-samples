@@ -1,9 +1,15 @@
 package de.rieckpil.learning.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -17,6 +23,9 @@ public class Order {
 	private Long id;
 
 	private String number;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "order", fetch = FetchType.EAGER)
+	private List<Item> items = new ArrayList<>();
 
 	public Order(String number) {
 		this.number = number;
@@ -40,6 +49,15 @@ public class Order {
 
 	public void setNumber(String number) {
 		this.number = number;
+	}
+
+	public List<Item> getItems() {
+		return items;
+	}
+
+	public void addItem(Item item) {
+		item.setOrder(this);
+		this.items.add(item);
 	}
 
 }

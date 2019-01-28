@@ -20,7 +20,7 @@ public class OrdersResource {
 
 	@GetMapping
 	@Transactional
-	public Integer doFoo() {
+	public List<Order> doFoo() {
 
 		List<Order> orders = repository.findAll();
 		Iterator<Order> iterator = orders.iterator();
@@ -28,11 +28,14 @@ public class OrdersResource {
 		while (iterator.hasNext()) {
 			Order order = iterator.next();
 			order.setNumber(order.getNumber() + "X");
+			order.getItems().get(0).setName("MANUAL");
 		}
+
+		repository.delete(orders.get(0));
 
 		System.out.println(orders.size());
 		List<Order> remainingOrders = repository.findAll();
-		return remainingOrders.size();
+		return remainingOrders;
 	}
 
 }
