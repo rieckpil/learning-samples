@@ -26,14 +26,8 @@ public class OrdersResource {
 		Iterator<Order> iterator = orders.iterator();
 
 		while (iterator.hasNext()) {
-
 			Order order = iterator.next();
 			order.setNumber(order.getNumber() + "X");
-
-			if (Math.random() < 0.5) {
-				iterator.remove();
-				repository.delete(order);
-			}
 		}
 
 		System.out.println(orders.size());
