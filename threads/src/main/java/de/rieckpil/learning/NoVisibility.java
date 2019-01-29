@@ -2,7 +2,7 @@ package de.rieckpil.learning;
 
 public class NoVisibility {
 
-	private static boolean ready;
+	private static volatile boolean ready;
 	private static int nr;
 
 	private static class Reader extends Thread {
