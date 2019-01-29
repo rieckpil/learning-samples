@@ -18,9 +18,13 @@ public class SimpleThread {
 
 		System.out.println(Thread.currentThread().getName());
 
-		HelloThread t1 = new HelloThread();
+		Counter c = new Counter();
 
-		HelloThread t2 = new HelloThread();
+		HelloThread t1 = new HelloThread(c);
+		HelloThread t2 = new HelloThread(c);
+		HelloThread t3 = new HelloThread(c);
+		HelloThread t4 = new HelloThread(c);
+		HelloThread t5 = new HelloThread(c);
 
 		ExecutorService executorService = Executors.newSingleThreadExecutor();
 		ExecutorService executorServicePool = Executors.newFixedThreadPool(5);
@@ -30,6 +34,9 @@ public class SimpleThread {
 
 		executorServicePool.execute(t1);
 		executorServicePool.execute(t2);
+		executorServicePool.execute(t3);
+		executorServicePool.execute(t4);
+		executorServicePool.execute(t5);
 
 		Future<String> result = executorServicePool.submit(new HelloCallable());
 
