@@ -9,55 +9,57 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "orders")
+@NamedQuery(name = "allOrders", query = "SELECT o FROM Order o JOIN FETCH o.items")
 public class Order {
 
-	@Id
-	@GeneratedValue(generator = "sequence", strategy = GenerationType.SEQUENCE)
-	@SequenceGenerator(name = "sequence", allocationSize = 20, initialValue = 1000)
-	private Long id;
+  @Id
+  @GeneratedValue(generator = "sequence", strategy = GenerationType.SEQUENCE)
+  @SequenceGenerator(name = "sequence", allocationSize = 20, initialValue = 1000)
+  private Long       id;
 
-	private String number;
+  private String     number;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "order", fetch = FetchType.EAGER)
-	private List<Item> items = new ArrayList<>();
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "order", fetch = FetchType.EAGER)
+  private List<Item> items = new ArrayList<>();
 
-	public Order(String number) {
-		this.number = number;
-	}
+  public Order(String number) {
+    this.number = number;
+  }
 
-	public Order() {
+  public Order() {
 
-	}
+  }
 
-	public Long getId() {
-		return id;
-	}
+  public Long getId() {
+    return id;
+  }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-	public String getNumber() {
-		return number;
-	}
+  public String getNumber() {
+    return number;
+  }
 
-	public void setNumber(String number) {
-		this.number = number;
-	}
+  public void setNumber(String number) {
+    this.number = number;
+  }
 
-	public List<Item> getItems() {
-		return items;
-	}
+  public List<Item> getItems() {
+    return items;
+  }
 
-	public void addItem(Item item) {
-		item.setOrder(this);
-		this.items.add(item);
-	}
+  public void addItem(Item item) {
+    item.setOrder(this);
+    this.items.add(item);
+  }
 
 }
