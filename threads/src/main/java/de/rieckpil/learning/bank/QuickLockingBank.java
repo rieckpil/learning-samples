@@ -1,6 +1,6 @@
 package de.rieckpil.learning.bank;
 
-public class DeadlockBank implements Bank {
+public class QuickLockingBank implements Bank {
 
 	@Override
 	public boolean transfer(Account fromAccount, Account toAccount, int money) {
@@ -22,7 +22,6 @@ public class DeadlockBank implements Bank {
 		} else {
 			return false;
 		}
-
 	}
 
 }
