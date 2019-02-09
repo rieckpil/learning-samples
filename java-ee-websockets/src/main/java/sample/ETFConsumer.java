@@ -30,7 +30,7 @@ public class ETFConsumer {
 			Logger.getLogger(ETFConsumer.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
-
+	
 	public void doFoo() {
 		System.out.println(session.getId());
 	}

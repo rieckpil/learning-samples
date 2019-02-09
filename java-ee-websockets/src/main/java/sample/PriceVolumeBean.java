@@ -1,6 +1,5 @@
 package sample;
 
-import java.io.IOException;
 import java.util.Random;
 
 import javax.annotation.PostConstruct;
@@ -10,7 +9,6 @@ import javax.ejb.Startup;
 import javax.ejb.Timeout;
 import javax.ejb.TimerConfig;
 import javax.ejb.TimerService;
-import javax.websocket.DeploymentException;
 
 @Startup
 @Singleton
@@ -31,7 +29,7 @@ public class PriceVolumeBean {
 	}
 
 	@Timeout
-	public void timeout() throws DeploymentException, IOException {
+	public void timeout() {
 		System.out.println("Sending new prices...");
 		price += 1.0 * (random.nextInt(100) - 50) / 100.0;
 		volume += random.nextInt(5000) - 2500;
