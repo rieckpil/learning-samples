@@ -16,18 +16,22 @@ import javax.websocket.WebSocketContainer;
 @Singleton
 public class ETFConsumer {
 
-    private Session session;
+	private Session session;
 
-    @PostConstruct
-    public void init() {
+	@PostConstruct
+	public void init() {
 
-        WebSocketContainer webSocketContainer = ContainerProvider.getWebSocketContainer();
+		WebSocketContainer webSocketContainer = ContainerProvider.getWebSocketContainer();
 
-        try {
-            this.session = webSocketContainer.connectToServer(
-                    ETFClient.class, URI.create("ws://localhost:8080/java-ee-websockets/dukeetf"));
-        } catch (DeploymentException | IOException ex) {
-            Logger.getLogger(ETFConsumer.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+		try {
+			this.session = webSocketContainer.connectToServer(ETFClient.class,
+					URI.create("ws://localhost:8080/java-ee-websockets/dukeetf"));
+		} catch (DeploymentException | IOException ex) {
+			Logger.getLogger(ETFConsumer.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
+
+	public void doFoo() {
+		System.out.println(session.getId());
+	}
 }
