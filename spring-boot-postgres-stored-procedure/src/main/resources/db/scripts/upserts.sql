@@ -1,0 +1,2 @@
+INSERT INTO application_users( name, user_id ) VALUES('Duke0', 'UPSERTCONFLICT') ON CONFLICT ( name ) DO UPDATE SET user_id = EXCLUDED.user_id;
+INSERT INTO application_users( name, user_id ) VALUES('Duke0', 'UPSERTCONFLICT') ON CONFLICT ( name ) DO UPDATE SET user_id = EXCLUDED.user_id WHERE application_users.id < 5;

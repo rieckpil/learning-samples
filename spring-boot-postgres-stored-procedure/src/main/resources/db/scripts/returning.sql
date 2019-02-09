@@ -1,0 +1,1 @@
+INSERT INTO application_users (name, user_id) VALUES ('Hans1', 'XYZ'), ('Hans2', 'XYZ'), ('Hans3', 'XYZ') RETURNING id, name, user_id;
