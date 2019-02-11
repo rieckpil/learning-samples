@@ -2,6 +2,7 @@ package de.rieckpil.learning;
 
 import java.sql.SQLException;
 import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -32,7 +33,7 @@ public class DatabaseFiller {
 		System.out.println("JDBC Minor version: " + dataSource.getConnection().getMetaData().getJDBCMinorVersion());
 
 		for (int i = 0; i < 100; i++) {
-			repository.save(new User("Duke" + i, UUID.randomUUID().toString()));
+			repository.save(new User("Duke" + ThreadLocalRandom.current().nextLong(), UUID.randomUUID().toString()));
 		}
 
 		System.out.println(em.createNamedStoredProcedureQuery("inc").setParameter("inParam1", 1).getSingleResult());
