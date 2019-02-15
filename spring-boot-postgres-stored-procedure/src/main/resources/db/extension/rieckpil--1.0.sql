@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS history (
+	id BIGSERIAL PRIMARY KEY,
+	sql_text VARCHAR(255)
+);
