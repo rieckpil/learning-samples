@@ -14,6 +14,8 @@ public class CollectionFactoryMethods {
 		final Set<String> sets = Set.of("Hans", "Meier", "Mueller");
 
 		// sets.add("Tom"); throws exception -> umodifiable collection is created
+
+        // Set.of("MAX", "MAX"); exception as duplicates are not checked here
 	}
 
 }
