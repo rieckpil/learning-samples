@@ -30,6 +30,8 @@ public class UnicodeSupport {
 				desktop.browse(tmpFile.toURI());
 			}
 		}
+		
+		Thread.onSpinWait();
 	}
 
 }
