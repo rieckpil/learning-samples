@@ -1,0 +1,5 @@
+digraph "summary" {
+  "jigsawapp"                                        -> "java.base (java.base)";
+  "jigsawapp"                                        -> "services";
+  "services"                                         -> "java.base (java.base)";
+}

@@ -22,4 +22,16 @@ java -p lib\ -m jigsawapp/com.rieckpil.MessageExample
 
 jar --create --file lib/jigsawapp.jar --main-class com.rieckpil.MessageExample -C build/jigsawapp .
 java -p lib -m jigsawapp
+
+jlink --module-path "%JAVA_HOME%\jmods;lib" --add-modules jigsawapp --launcher jigsawapp=jigsawapp/com.rieckpil.MessageExample --output exec_example
+
+exec_example\bin\jigsawapp.bat
+
+jdeps lib\*.jar
+jdeps -s lib\*.jar
+jdeps -dotoutput graphs lib\*.jar
+
+dot -Tpng -Gdpi=300 graphs\summary.dot > summary.png
+
+jmod describe "%JAVA_HOME%\jmods\java.base.jmod"
 ```

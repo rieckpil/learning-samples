@@ -1,0 +1,8 @@
+digraph "services" {
+    // Path: C:\Development\Git\learning-samples\java-9-modules\lib\services.jar
+   "com.services"                                     -> "java.lang (java.base)";
+   "com.services.api"                                 -> "com.services.impl (services)";
+   "com.services.api"                                 -> "java.lang (java.base)";
+   "com.services.impl"                                -> "com.services.api (services)";
+   "com.services.impl"                                -> "java.lang (java.base)";
+}

@@ -1,0 +1,7 @@
+digraph "jigsawapp" {
+    // Path: C:\Development\Git\learning-samples\java-9-modules\lib\jigsawapp.jar
+   "com.rieckpil"                                     -> "com.services.api (services)";
+   "com.rieckpil"                                     -> "java.io (java.base)";
+   "com.rieckpil"                                     -> "java.lang (java.base)";
+   "com.rieckpil"                                     -> "java.lang.invoke (java.base)";
+}
