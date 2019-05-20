@@ -21,6 +21,8 @@ fun main(args: Array<String>) {
             print("$it, ")
         }
 
+        println()
+
         val direction = readLine()?.toUpperCase() ?: "Z"
 
         if (location.exits.containsKey(direction)) {

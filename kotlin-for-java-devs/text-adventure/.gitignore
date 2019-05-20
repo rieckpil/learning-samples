@@ -1,4 +1,4 @@
-    .gradle
+.gradle
 /build/
 !gradle/wrapper/gradle-wrapper.jar
 
@@ -12,7 +12,7 @@
 .sts4-cache
 
 ### IntelliJ IDEA ###
-.idea
+.idea/
 *.iws
 *.iml
 *.ipr
