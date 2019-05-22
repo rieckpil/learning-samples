@@ -1,6 +1,7 @@
 package de.rieckpil.learning
 
-import java.time.Instant
+typealias EmplyoeeSet = Set<Employee>
+
 
 fun main() {
     val time: String
@@ -13,11 +14,14 @@ fun main() {
     val employee2: Employee
     val number2 = 100
 
-    if(number < number2) {
+    if (number < number2) {
         employee2 = Employee("Mike Mile", 111)
-    }else {
+    } else {
         employee2 = Employee("John Doe", 42)
     }
+
+    val employees: EmplyoeeSet = mutableSetOf(employee1, employee2)
+    println(employees.size)
 
     print(employee1)
 }
