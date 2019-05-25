@@ -6,6 +6,15 @@ public class Book {
     private String genre;
     private String isbn;
 
+    public Book(String title, String genre, String isbn) {
+        this.title = title;
+        this.genre = genre;
+        this.isbn = isbn;
+    }
+
+    public Book() {
+    }
+
     public String getTitle() {
         return title;
     }
