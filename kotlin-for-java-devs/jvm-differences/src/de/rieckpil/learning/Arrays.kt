@@ -27,4 +27,9 @@ fun main() {
         println(number)
     }
 
+    val arrayOfShort: Array<Short> = Array(5) { i -> (i + 1).toShort()}
+    for(short in arrayOfShort) {
+        println(short)
+    }
+
 }

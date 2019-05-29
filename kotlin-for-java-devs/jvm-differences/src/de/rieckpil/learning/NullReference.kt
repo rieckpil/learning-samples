@@ -20,5 +20,13 @@ fun main() {
     val str2 = nullString ?: "This is the default value"
     println(str2)
 
-    println(nullString!!.toUpperCase())
+    // println(nullString!!.toUpperCase())
+
+    val nullableInts = arrayOfNulls<Int>(5)
+    nullableInts[3] = 42
+
+    for(i in nullableInts) {
+        println(i)
+    }
+
 }
