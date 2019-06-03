@@ -11,6 +11,8 @@ fun main() {
     println(specialLaserPrinter.bestSellingPrice())
 
     val something = SomethingElse("Test")
+
+    val coloredSpecialLaserPrinter = SpecialLaserPrinter("Dell", "Yellow")
 }
 
 abstract class Printer(val modelName: String) {
@@ -27,6 +29,10 @@ open class LaserPrinter(modelName: String): Printer(modelName) {
 }
 
 class SpecialLaserPrinter(modelName: String): LaserPrinter(modelName) {
+
+    constructor(modelName: String, color: String): this(modelName) {
+        println("The color of the printer is: $color")
+    }
 
     override fun bestSellingPrice(): Double {
         return super.bestSellingPrice() * -13.37
