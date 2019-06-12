@@ -4,7 +4,8 @@ fun main() {
 
     val immutableMap = mapOf<Int, House>(
         1 to House("Green", "Main"),
-        2 to House("White", "Linden")
+        2 to House("White", "Linden"),
+        3 to House("Green", "Church")
     )
 
     println(immutableMap.javaClass)
@@ -28,6 +29,12 @@ fun main() {
     val (color, street) = houseOne
     println(color)
     println(street)
+
+    println(mutableMap.all { it.key.equals("First") })
+    println(mutableMap.any { it.key.equals("First") })
+    println(mutableMap.count { it.key.equals("First") })
+
+    println(immutableMap.values.groupBy { it.color })
 
 }
 
