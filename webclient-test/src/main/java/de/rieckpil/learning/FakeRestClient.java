@@ -42,7 +42,7 @@ public class FakeRestClient {
                 .baseUrl(BASE_URL)
                 .clientConnector(new ReactorClientHttpConnector(HttpClient.from(tcpClient)))
                 .defaultCookie("cookieKey", "cookieValue", "teapot", "amsterdam")
-                .defaultCookie("ga", UUID.randomUUID().toString())
+                .defaultCookie("secretToken", UUID.randomUUID().toString())
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .defaultHeader(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
                 .defaultHeader(HttpHeaders.USER_AGENT, "I'm a teapot")
