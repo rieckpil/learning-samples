@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: ee
+  name: ee
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: ee
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: ee
+    spec:
+      containers:
+      - image: ee
+        name: ee
+        ports:
+        - containerPort: 8080
+        resources: {}
+status: {}
