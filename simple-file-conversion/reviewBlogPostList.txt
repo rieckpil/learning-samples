@@ -1,0 +1,18 @@
+#REVIEW: Whats new in Spring Boot 2.2 — Draft
+#REVIEW: CKAD Certified Kubernetes Application Developer
+#REVIEW: Kotlin for Java Developers (Udemy Course)
+#REVIEW: Whats new in MicroProfile 3.0
+#REVIEW: 5 Java 9 Features you might not know yet
+#REVIEW: SQL Performance Explained
+#REVIEW: Improved JavaJakarta EE productivity with Adam Biens WAD
+#REVIEW: Committing code to GitHub for 365 consecutive days
+#REVIEW: High-Performance Java Persistence Video Course
+#REVIEW: Whats new in Spring Boot 2.1
+#REVIEW: Making first place at my second Hackathon
+#REVIEW: Baeldungs REST with Spring masterclass
+#REVIEW: Java by Comparison
+#REVIEW: My first Hackathon
+#REVIEW: Effective Java
+#REVIEW: Why I joined Stack Overflow
+#REVIEW: React 16 – Udemy course
+#REVIEW: Summary of the Container Conf 2017

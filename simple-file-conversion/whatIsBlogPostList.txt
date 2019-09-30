@@ -1,0 +1,15 @@
+#WHATIS?: Jakarta RESTful Web Services (JAX-RS)
+#WHATIS?: JSON Processing (JSON-P)
+#WHATIS?: JSON Binding (JSON-B)
+#WHATIS?: Eclipse MicroProfile Fault Tolerance
+#WHATIS?: Eclipse MicroProfile JWT Auth
+#WHATIS?: Eclipse MicroProfile Rest Client
+#WHATIS?: Eclipse MicroProfile OpenTracing
+#WHATIS?: Eclipse MicroProfile OpenAPI
+#WHATIS?: Eclipse MicroProfile Health
+#WHATIS?: Eclipse MicroProfile Metrics
+#WHATIS?: Eclipse MicroProfile Config
+#WHATIS?: GraalVM
+#WHATIS?: JavaServer Faces. An introduction to JSF 2.3
+#WHATIS?: Spring Cloud Config
+#WHATIS?: Dependency Injection
