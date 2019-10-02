@@ -23,7 +23,11 @@ public class HelloWorld {
         elProcessor.getELManager().addELResolver(beanManager.getELResolver());
 
         MyService myService = (MyService) elProcessor.getValue("myService", MyService.class);
-        MyService myServiceTwo  = (MyService) CDI.current().select(Object.class, NamedLiteral.of("myService")).get();
-        CDI.current().select(MyService.class, MyQualifier.Literal.INSTANCE).get().sayHello();
+        MyService myServiceTwo = (MyService) CDI.current().select(Object.class, NamedLiteral.of("myService")).get();
+        MyService myServiceThree = CDI.current().select(MyService.class, MyQualifier.Literal.INSTANCE).get();
+
+        myService.sayHello();
+        myServiceTwo.sayHello();
+        myServiceThree.sayHello();
     }
 }

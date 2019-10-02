@@ -5,8 +5,9 @@ import javax.enterprise.context.Initialized;
 import javax.enterprise.event.Observes;
 import javax.inject.Named;
 
-@MyQualifier
 @Named
+@MyQualifier
+@ApplicationScoped
 public class MyService {
 
     public void sayHello() {
