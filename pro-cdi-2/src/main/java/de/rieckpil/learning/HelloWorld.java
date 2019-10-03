@@ -21,8 +21,13 @@ public class HelloWorld {
     @Inject
     SampleBean sampleBean;
 
+    @Inject
+    String myString;
+
     @PostConstruct
     public void sayHello() {
+
+        System.out.println(myString);
 
         ELProcessor elProcessor = new ELProcessor();
         elProcessor.getELManager().addELResolver(beanManager.getELResolver());
