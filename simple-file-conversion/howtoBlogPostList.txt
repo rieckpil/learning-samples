@@ -1,15 +1,45 @@
-#WHATIS?: Jakarta RESTful Web Services (JAX-RS)
-#WHATIS?: JSON Processing (JSON-P)
-#WHATIS?: JSON Binding (JSON-B)
-#WHATIS?: Eclipse MicroProfile Fault Tolerance
-#WHATIS?: Eclipse MicroProfile JWT Auth
-#WHATIS?: Eclipse MicroProfile Rest Client
-#WHATIS?: Eclipse MicroProfile OpenTracing
-#WHATIS?: Eclipse MicroProfile OpenAPI
-#WHATIS?: Eclipse MicroProfile Health
-#WHATIS?: Eclipse MicroProfile Metrics
-#WHATIS?: Eclipse MicroProfile Config
-#WHATIS?: GraalVM
-#WHATIS?: JavaServer Faces. An introduction to JSF 2.3
-#WHATIS?: Spring Cloud Config
-#WHATIS?: Dependency Injection
+Bootstrap your first Jakarta EE 8 application
+Feature Toggles for Spring Boot applications with Togglz
+Write Java EE applications with Kotlin
+Send Telegram Bot notifications with Java
+Deploy a Spring Boot application to GKE
+Generate random data in Java using Java Faker
+Intercept method calls using CDI interceptors
+Deploy a React application to Kubernetes
+MicroProfile Rest Client for RESTful communication
+Deploy Java EE applications to Kubernetes
+Use Springs WebClient for RESTful communication
+Send emails with Java EE using Payara
+CRUD application with Spring Boot 2.2, Java 11 and H2
+Consumer-Driven Contracts with Spring Cloud Contract
+Remote Debug Spring Boot Applications (IntelliJ IDEA + Eclipse)
+Java Benchmarking with JMH (Java Microbenchmark Harness)
+Create nice-looking JSF 2.3 applications with PrimeFaces 7.0
+Messaging with JMS using Payara with embedded OpenMQ broker
+RESTEasy (WildFly JAX-RS 2.1) file up- and downloading
+Up- and download files with Java EE and Web Components
+Best Practices for Flyway and Hibernate with Spring Boot
+Writing PostgreSQL functions with Java using PLJava
+Generate PDFs (Apache PDFBox) including Charts (XChart) with Java EE
+Simple load-testing with Apache Benchmark
+Preview PDF files with React
+Simple database documentation with SchemaSpy
+MicroProfile JWT Authentication with Keycloak and React
+Bootstrap a JSF 2.3 Maven project in seconds
+Dynamic SQL Querying And Pagination with Querydsl and Spring Data JPA
+JPA integration tests with Java EE
+Bootstrap a Java EE 8 and MicroProfile 2.0.1 Maven project in seconds
+Convert .docx files to .pdf files format loss-free
+Generate documents from Word templates with Docx4j on Wildfly 14
+Up- and download files with React and Spring Boot
+JAX-RS user-based rate-limiting with JSR-375
+Simple JMS application with the embedded messaging engine in Open Liberty
+Simple form-based authentication for JSF 2.3 with Java EE 8 Security API
+Simple CRUD table with JSF 2.3 and PrimeFaces
+Send E-Mails with SendGrid and Spring Boot
+Deploy a Spring Boot Uber-Jar application within Open Liberty
+Lazy Loading of JPA attributes with Hibernate
+Avoid repeating attributes in JPA entities
+Write Spring Boot integration tests with a real database
+Expose git information with Spring Boots Actuator
+Sync Atom editor settings

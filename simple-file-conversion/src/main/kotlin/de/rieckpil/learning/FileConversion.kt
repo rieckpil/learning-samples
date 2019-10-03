@@ -3,12 +3,12 @@ package de.rieckpil.learning
 import java.io.File
 import java.util.stream.Collectors
 
-const val SOCIAL_MEDIA_TYPE = "F"
+val blogType = BlogType.HOWTO
 
-const val INPUT_FILE = "./reviewBlogPostList.txt"
-const val PREFIX = "${SOCIAL_MEDIA_TYPE}_review"
-const val PREFIX_TO_REMOVE = "#REVIEW:"
-const val FOLDER_OF_IMAGES = "/home/rieckpil/Downloads/${SOCIAL_MEDIA_TYPE}_REVIEW/"
+val INPUT_FILE = blogType.inputFile
+val PREFIX = blogType.socialMediaType + blogType.prefix
+val PREFIX_TO_REMOVE = blogType.prefixToRemove
+val FOLDER_OF_IMAGES = "/home/rieckpil/Downloads/${blogType.socialMediaType}_${blogType.name.toUpperCase()}/"
 
 fun main() {
 
@@ -25,4 +25,10 @@ fun main() {
                 val newFile = File(FOLDER_OF_IMAGES + newFileName)
                 it.renameTo(newFile)
             }
+}
+
+enum class BlogType(val inputFile: String, val prefix: String, val prefixToRemove: String, val socialMediaType: String) {
+    HOWTO("./howtoBlogPostList.txt", "_howto", "#HOWTO:", "T"),
+    WHATIS("./whatisBlogPostList.txt", "_whatis", "#WHATIS:", "B"),
+    REVIEW("./reviewBlogPostList.txt", "_review", "#REVIEW:", "B"),
 }

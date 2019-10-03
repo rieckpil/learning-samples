@@ -4,7 +4,7 @@
 #REVIEW: Whats new in MicroProfile 3.0
 #REVIEW: 5 Java 9 Features you might not know yet
 #REVIEW: SQL Performance Explained
-#REVIEW: Improved JavaJakarta EE productivity with Adam Biens WAD
+#REVIEW: Improved JavaJakarta EE productivity
 #REVIEW: Committing code to GitHub for 365 consecutive days
 #REVIEW: High-Performance Java Persistence Video Course
 #REVIEW: Whats new in Spring Boot 2.1
