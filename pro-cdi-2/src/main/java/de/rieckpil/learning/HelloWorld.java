@@ -1,5 +1,7 @@
 package de.rieckpil.learning;
 
+import de.rieckpil.learning.decorators.SampleBean;
+
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
@@ -16,6 +18,9 @@ public class HelloWorld {
     @Inject
     BeanManager beanManager;
 
+    @Inject
+    SampleBean sampleBean;
+
     @PostConstruct
     public void sayHello() {
 
@@ -29,5 +34,8 @@ public class HelloWorld {
         myService.sayHello();
         myServiceTwo.sayHello();
         myServiceThree.sayHello();
+
+        System.out.println(sampleBean.sayHello("Philip"));
+        System.out.println(sampleBean.sayGoodbye("Philip"));
     }
 }
