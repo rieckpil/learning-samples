@@ -1,4 +1,4 @@
-package de.rieckpil.learning;
+package de.rieckpil.learning.customscope;
 
 import javax.enterprise.context.NormalScope;
 import java.lang.annotation.Documented;
@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 import static java.lang.annotation.ElementType.*;
 
 @Documented
-@NormalScope(passivating = false)
+@NormalScope
 @Target({FIELD, TYPE, METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface CustomScoped {

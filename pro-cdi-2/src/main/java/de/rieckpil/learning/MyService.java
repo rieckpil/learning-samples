@@ -1,5 +1,7 @@
 package de.rieckpil.learning;
 
+import de.rieckpil.learning.customscope.CustomScoped;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.Initialized;
 import javax.enterprise.event.Observes;
@@ -7,7 +9,7 @@ import javax.inject.Named;
 
 @Named
 @MyQualifier
-@ApplicationScoped
+@CustomScoped
 public class MyService {
 
     public void sayHello() {
