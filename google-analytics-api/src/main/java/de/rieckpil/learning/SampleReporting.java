@@ -1,6 +1,5 @@
 package de.rieckpil.learning;
 
-import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.http.HttpRequestInitializer;
 import com.google.api.client.http.HttpTransport;
@@ -8,47 +7,37 @@ import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.analyticsreporting.v4.AnalyticsReporting;
 import com.google.api.services.analyticsreporting.v4.AnalyticsReportingScopes;
-import com.google.api.services.analyticsreporting.v4.model.ColumnHeader;
 import com.google.api.services.analyticsreporting.v4.model.DateRange;
-import com.google.api.services.analyticsreporting.v4.model.DateRangeValues;
 import com.google.api.services.analyticsreporting.v4.model.Dimension;
 import com.google.api.services.analyticsreporting.v4.model.GetReportsRequest;
 import com.google.api.services.analyticsreporting.v4.model.GetReportsResponse;
 import com.google.api.services.analyticsreporting.v4.model.Metric;
-import com.google.api.services.analyticsreporting.v4.model.MetricHeaderEntry;
 import com.google.api.services.analyticsreporting.v4.model.ReportRequest;
-import com.google.api.services.analyticsreporting.v4.model.ReportRow;
 import com.google.auth.http.HttpCredentialsAdapter;
 import com.google.auth.oauth2.GoogleCredentials;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 public class SampleReporting {
     private static final String APPLICATION_NAME = "Hello Analytics Reporting";
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
-    private static final String KEY_FILE_LOCATION = "<REPLACE_WITH_JSON_FILE>";
-    private static final String VIEW_ID = "<REPLACE_WITH_VIEW_ID>";
+    private static final String KEY_FILE_LOCATION = "/tokens.json";
+    private static final String VIEW_ID = System.getenv("VIEW_ID");
 
-    public static void main(String[] args) {
-        try {
-            AnalyticsReporting service = initializeAnalyticsReporting();
-
-            GetReportsResponse response = getReport(service);
-            printResponse(response);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public static void main(String[] args) throws GeneralSecurityException, IOException {
+        AnalyticsReporting service = initializeAnalyticsReporting();
+        GetReportsResponse response = getReport(service);
+        printResponse(response);
     }
 
     private static AnalyticsReporting initializeAnalyticsReporting() throws GeneralSecurityException, IOException {
         HttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
         GoogleCredentials credentials = GoogleCredentials
-                .fromStream(new FileInputStream(KEY_FILE_LOCATION))
+                .fromStream(SampleReporting.class.getResourceAsStream(KEY_FILE_LOCATION))
                 .createScoped(AnalyticsReportingScopes.all());
 
         HttpRequestInitializer requestInitializer = new HttpCredentialsAdapter(credentials);
@@ -59,8 +48,8 @@ public class SampleReporting {
 
     private static GetReportsResponse getReport(AnalyticsReporting service) throws IOException {
         DateRange dateRange = new DateRange();
-        dateRange.setStartDate("7DaysAgo");
-        dateRange.setEndDate("today");
+        dateRange.setStartDate("2019-10-21");
+        dateRange.setEndDate("2019-10-21");
 
         Metric sessions = new Metric()
                 .setExpression("ga:sessions")
@@ -74,46 +63,40 @@ public class SampleReporting {
                 .setMetrics(Arrays.asList(sessions))
                 .setDimensions(Arrays.asList(pageTitle));
 
-        ArrayList<ReportRequest> requests = new ArrayList<ReportRequest>();
-        requests.add(request);
+        var getReport = new GetReportsRequest().setReportRequests(List.of(request));
 
-        GetReportsRequest getReport = new GetReportsRequest()
-                .setReportRequests(requests);
-
-        GetReportsResponse response = service.reports().batchGet(getReport).execute();
-
-        return response;
+        return service.reports().batchGet(getReport).execute();
     }
 
     private static void printResponse(GetReportsResponse response) {
+        response.getReports().stream()
+                .map(report -> report.getData().getRows())
+                .flatMap(List::stream)
+                .map(reportRow -> new PageReporting(reportRow.getDimensions().get(0), Long.valueOf(reportRow.getMetrics().get(0).getValues().get(0))))
+                .sorted(Comparator.reverseOrder())
+                .forEach(System.out::println);
+    }
+}
 
-        for (var report : response.getReports()) {
-            ColumnHeader header = report.getColumnHeader();
-            List<String> dimensionHeaders = header.getDimensions();
-            List<MetricHeaderEntry> metricHeaders = header.getMetricHeader().getMetricHeaderEntries();
-            List<ReportRow> rows = report.getData().getRows();
+class PageReporting implements Comparable<PageReporting> {
+    String pageName;
+    long amountOfSessions;
 
-            if (rows == null) {
-                System.out.println("No data found for " + VIEW_ID);
-                return;
-            }
+    public PageReporting(String pageName, long amountOfSessions) {
+        this.pageName = pageName;
+        this.amountOfSessions = amountOfSessions;
+    }
 
-            for (ReportRow row : rows) {
-                List<String> dimensions = row.getDimensions();
-                List<DateRangeValues> metrics = row.getMetrics();
+    @Override
+    public String toString() {
+        return "PageReporting{" +
+                "pageName='" + pageName + '\'' +
+                ", amountOfSessions=" + amountOfSessions +
+                '}';
+    }
 
-                for (int i = 0; i < dimensionHeaders.size() && i < dimensions.size(); i++) {
-                    System.out.println(dimensionHeaders.get(i) + ": " + dimensions.get(i));
-                }
-
-                for (int j = 0; j < metrics.size(); j++) {
-                    System.out.print("Date Range (" + j + "): ");
-                    DateRangeValues values = metrics.get(j);
-                    for (int k = 0; k < values.getValues().size() && k < metricHeaders.size(); k++) {
-                        System.out.println(metricHeaders.get(k).getName() + ": " + values.getValues().get(k));
-                    }
-                }
-            }
-        }
+    @Override
+    public int compareTo(PageReporting pageReporting) {
+        return Long.compare(this.amountOfSessions, pageReporting.amountOfSessions);
     }
 }
