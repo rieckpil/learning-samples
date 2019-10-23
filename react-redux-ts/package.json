@@ -1,7 +1,6 @@
 {
-  "name": "react-redux-ts",
+  "name": "@rieckpil/learning-samples",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "@types/jest": "24.0.19",
     "@types/node": "12.11.5",
@@ -37,5 +36,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "files": [
+    "build"
+  ],
+  "typings": "build/index.d.ts",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }

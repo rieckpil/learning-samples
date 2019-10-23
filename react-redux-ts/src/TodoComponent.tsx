@@ -1,6 +1,6 @@
 import React from 'react'
 
-interface TodoProps {
+export interface TodoProps {
     onClick: () => void
     completed: boolean
     text: string
