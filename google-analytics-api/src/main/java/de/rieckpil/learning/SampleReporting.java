@@ -48,8 +48,8 @@ public class SampleReporting {
 
     private static GetReportsResponse getReport(AnalyticsReporting service) throws IOException {
         DateRange dateRange = new DateRange();
-        dateRange.setStartDate("2019-10-21");
-        dateRange.setEndDate("2019-10-21");
+        dateRange.setStartDate("2019-10-22");
+        dateRange.setEndDate("2019-10-22");
 
         Metric sessions = new Metric()
                 .setExpression("ga:sessions")
