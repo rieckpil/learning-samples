@@ -8,6 +8,8 @@ import * as serviceWorker from './serviceWorker';
 import {Action, createStore, Store} from "redux";
 import {VisibilityFilters} from "./actions/visibilityActions";
 
+import 'semantic-ui-css/semantic.min.css'
+
 const initialState: TodoAppState = {
     todos: [],
     visbilityFilter: VisibilityFilters.SHOW_ALL
