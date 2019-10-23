@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "ESNext" ,
+    "jsx": "react",
+    "declaration": true,
+    "outDir": "./dist",
+    "strict": true,     
+    "moduleResolution": "node",
+    "esModuleInterop": true,                   /* Enable all strict type-checking options. */
+  },
+  "include": ["src/**/*"]
+}

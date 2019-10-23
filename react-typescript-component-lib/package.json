@@ -1,0 +1,26 @@
+{
+  "name": "@rieckpil/learning-samples",
+  "version": "1.0.0",
+  "description": "My first React TypeScript Component Library",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "scripts": {
+    "build": "rollup -c",
+    "build-watch": "rollup -c -w"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react": "^16.9.9",
+    "@types/react-dom": "^16.9.2",
+    "rollup": "^1.25.2",
+    "rollup-plugin-delete": "^1.1.0",
+    "rollup-plugin-typescript2": "^0.24.3",
+    "typescript": "^3.6.4"
+  },
+  "files": ["dist"],
+  "typings": "dist/index.d.ts",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
+}
