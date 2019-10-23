@@ -1,7 +1,9 @@
 {
-  "name": "@rieckpil/learning-samples",
+  "name": "react-redux-ts",
+  "private": true,
   "version": "0.1.0",
   "dependencies": {
+    "@rieckpil/learning-samples": "^1.0.0",
     "@types/jest": "24.0.19",
     "@types/node": "12.11.5",
     "@types/react": "16.9.9",

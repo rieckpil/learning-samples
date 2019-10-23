@@ -5,6 +5,7 @@ import { addTodo, Todo, toggleTodo } from "./actions/todoActions";
 import { AnyAction, Dispatch } from "redux";
 import TodoComponent from "./TodoComponent";
 import { Container, Header, Input, Button } from 'semantic-ui-react';
+import { HelloWorldComponent } from "@rieckpil/learning-samples";
 
 type AppComponentProps = {
     todos: Todo[]
@@ -35,6 +36,7 @@ const App: React.FC<AppComponentProps> = ({ todos, addNewTodo, toggleExistingTod
                             text={todo.text}
                         />)
                 }
+                <HelloWorldComponent index={1} isValid={false} text={'HelloWorldComponent'} ></HelloWorldComponent>
             </Container>
         </div>
     );

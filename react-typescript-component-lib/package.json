@@ -16,9 +16,15 @@
     "rollup": "^1.25.2",
     "rollup-plugin-delete": "^1.1.0",
     "rollup-plugin-typescript2": "^0.24.3",
-    "typescript": "^3.6.4"
+    "source-map-loader": "^0.2.4",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.6.4",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "typings": "dist/index.d.ts",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"

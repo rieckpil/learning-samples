@@ -4,7 +4,8 @@
     "module": "ESNext" ,
     "jsx": "react",
     "declaration": true,
-    "outDir": "./dist",
+    "sourceMap": true,
+    "outDir": "lib",
     "strict": true,     
     "moduleResolution": "node",
     "esModuleInterop": true,                   /* Enable all strict type-checking options. */
