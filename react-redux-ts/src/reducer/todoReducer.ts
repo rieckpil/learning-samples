@@ -1,4 +1,4 @@
-import {ADD_TODO, Todo, TodoActionTypes, TOGGLE_TODO} from "../actions/todoActions";
+import {ADD_TODO, DELETE_TODO, Todo, TodoActionTypes, TOGGLE_TODO} from "../actions/todoActions";
 
 function todoReducer(state = Array<Todo>(), action: TodoActionTypes) {
     switch (action.type) {
@@ -9,6 +9,11 @@ function todoReducer(state = Array<Todo>(), action: TodoActionTypes) {
                     text: action.text,
                     completed: false
                 }
+            ]
+        case DELETE_TODO:
+            return [
+                ...state.slice(0, action.index),
+                ...state.slice(action.index + 1)
             ]
         case TOGGLE_TODO:
             return state.map((todo, index) => {
