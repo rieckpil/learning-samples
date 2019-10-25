@@ -1,0 +1,18 @@
+# Idea
+.idea/*
+*.iml
+*.ipr
+*.iws
+
+# Maven
+target/
+
+# macOS
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# secure files
+*.unencrypted
