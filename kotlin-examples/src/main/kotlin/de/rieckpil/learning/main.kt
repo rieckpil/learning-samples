@@ -9,15 +9,17 @@ import kotlinx.serialization.protobuf.ProtoBuf
 fun main() {
   println("Hello World")
 
-  val json = Json(JsonConfiguration.Stable)
+  val json = Json(JsonConfiguration(
+    encodeDefaults = true,
+    unquoted = false,
+    prettyPrint = true
+  ))
   val personOne = Person("Philip", 1337)
   val jsonData = json.stringify(Person.serializer(), personOne)
   val jsonList = json.stringify(Person.serializer().list, listOf(Person("Philip", 1337), Person("Mike", 42, "MK")))
 
-
   println(jsonData)
   println(jsonList)
-
   println(ProtoBuf.dump(Person.serializer(), personOne))
 
   val person = json.parse(Person.serializer(), """{"name":"John","id":1}""")

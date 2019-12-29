@@ -10,11 +10,6 @@ repositories {
   jcenter()
 }
 
-java {
-  sourceCompatibility = JavaVersion.VERSION_11
-  targetCompatibility = JavaVersion.VERSION_11
-}
-
 dependencies {
   implementation(kotlin("stdlib-js"))
   implementation("org.jetbrains.kotlinx", "kotlinx-html-js", "0.6.12")
@@ -25,8 +20,5 @@ kotlin {
   target {
     browser {
     }
-  }
-  sourceSets["main"].dependencies {
-    implementation(npm("react", "16.8.3"))
   }
 }
