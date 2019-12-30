@@ -37,8 +37,8 @@ class DiamondTest {
   fun `top-left quadrant is single character indented`() {
     inputsAfterA.forEach { c ->
       val lines = diamond(c).lines()
-      val top = lines.take(lines.size / 2)
-      val topLeft = top.map { it.take(it.length/2) }
+      val top = lines.take((lines.size + 1) / 2)
+      val topLeft = top.map { it.take((it.length + 1) / 2) }
       topLeft
         .forEachIndexed { lineIndex, line ->
           val expectedChar = 'A' + lineIndex

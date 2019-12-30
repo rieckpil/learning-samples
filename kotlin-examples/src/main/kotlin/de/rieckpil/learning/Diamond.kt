@@ -1,16 +1,18 @@
 package de.rieckpil.learning
 
 fun main() {
-  println(diamond('C'))
+  println(diamond('P'))
 }
 
 fun diamond(c: Char): String {
-  val topHalf = ('A'..c)
-    .mapIndexed { lineIndex, lineChar ->
-      val indent = order(c) - lineIndex
-      " ".repeat(indent) + lineChar + " ".repeat(lineIndex)
-    }
 
+  fun line(lineIndex: Int): String {
+    val indent = order(c) - lineIndex
+    val lineChar = 'A' + lineIndex
+    return " ".repeat(indent) + lineChar + " ".repeat(lineIndex)
+  }
+
+  val topHalf = (0..order(c)).map(::line)
   val allLines = (topHalf + topHalf.reversed().drop(1))
     .map { l -> l + l.reversed().drop(1) }
 
