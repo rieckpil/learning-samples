@@ -46,9 +46,14 @@ class SampleTest {
     fun `test two`() {
 
       val expected = TestData(1, "Duke")
+      val secondExpected = TestData(2, "Duke")
 
-      assertThat(TestData(1, "Duke")).isEqualTo(expected)
+      val testData = TestData(1, "Duke")
+      assertThat(testData).isEqualTo(expected)
       assertEquals("h", "H".toLowerCase())
+
+      assertThat(testData).isEqualToIgnoringGivenFields(secondExpected, "id")
+      assertThat(testData).isEqualToComparingOnlyGivenFields(secondExpected, "name")
     }
   }
 
@@ -57,6 +62,12 @@ class SampleTest {
 
     @Test
     fun `test one`() {
+
+      val userClient = UserClient()
+
+      println(userClient.fetchDetails("D"))
+      println(userClient.getLocale())
+
       assertEquals("HELLO", "hello".toUpperCase())
     }
 
