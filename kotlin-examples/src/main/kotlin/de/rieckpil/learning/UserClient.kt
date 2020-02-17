@@ -26,10 +26,9 @@ class UserClient {
     Locale.ENGLISH to listOf("EN")
   )) = tags
 
-
   @JvmName("sortStrings")
   fun sort(strings: List<String>) = "Duke"
-  
+
   @JvmName("sortInts")
   fun sort(ints: List<Int>) = "Duke"
 }
