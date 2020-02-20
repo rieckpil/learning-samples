@@ -20,6 +20,7 @@ class ApiController(val applicationEventPublisher: ApplicationEventPublisher) {
   fun triggerEvent(): String {
 
     applicationEventPublisher.publishEvent(InvoiceEvent(this, "Hello World"))
+    applicationEventPublisher.publishEvent(AssignmentEvent("Got a new Assignment!"))
 
     println("---------------------")
     println("Returning API message")
@@ -33,7 +34,12 @@ class InvoiceEventListener {
 
   @EventListener
   fun listen(invoiceEvent: InvoiceEvent) {
-    println("invoiceEvent- ${Thread.currentThread().name}")
+    println("$invoiceEvent - ${Thread.currentThread().name}")
+  }
+
+  @EventListener
+  fun listenToAssignment(assignmentEvent: AssignmentEvent) {
+    println("$assignmentEvent - ${Thread.currentThread().name}")
   }
 
   @Async
@@ -57,5 +63,7 @@ class InvoiceEventListener {
   }
 
 }
+
+data class AssignmentEvent(val payload: String)
 
 class InvoiceEvent(source: Any, val message: String) : ApplicationEvent(source)
