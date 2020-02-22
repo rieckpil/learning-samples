@@ -33,7 +33,6 @@ class MainControllerTest {
 
   @Test
   fun testData() {
-
     `when`(personProvider.getPersons()).thenReturn(listOf(
       Person("Duke", LocalDate.MIN, UUID.randomUUID()),
       Person("Mike", LocalDate.MAX, UUID.randomUUID())))
