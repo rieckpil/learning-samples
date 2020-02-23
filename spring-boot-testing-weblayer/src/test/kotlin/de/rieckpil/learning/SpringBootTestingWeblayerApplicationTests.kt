@@ -1,6 +1,5 @@
 package de.rieckpil.learning
 
-import com.fasterxml.jackson.databind.JsonNode
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -35,4 +34,7 @@ class SpringBootTestingWeblayerApplicationTests {
     println(webTestClient.get().uri("/api").exchange().returnResult(String.javaClass))
   }
 
+  @Test
+  fun testLogging() {
+  }
 }

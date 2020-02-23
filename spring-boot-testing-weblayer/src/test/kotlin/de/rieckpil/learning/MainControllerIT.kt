@@ -25,4 +25,15 @@ class MainControllerIT {
       .jsonPath("$.full.name", `is`("Duke"))
   }
 
+  @Test
+  fun testApi() {
+    this.webTestClient
+      .get()
+      .uri("/api")
+      .header("X-Custom-Header", "foo")
+      .header("User-Agent", "WebClient")
+      .exchange()
+      .expectStatus().is2xxSuccessful
+  }
+
 }
