@@ -9,25 +9,30 @@ import java.util.List;
 @RestController
 public class HelloWorldRestController {
 
-    private final PersonRepository personRepository;
+  private final PersonRepository personRepository;
+  private final Dog dog;
 
-    public HelloWorldRestController(PersonRepository personRepository) {
-        this.personRepository = personRepository;
-    }
+  public HelloWorldRestController(PersonRepository personRepository, Dog dog) {
+    this.personRepository = personRepository;
+    this.dog = dog;
+  }
 
-    @GetMapping("/persons")
-    private List<Person> getPersons() {
+  @GetMapping("/persons")
+  private List<Person> getPersons() {
 
-        var persons = personRepository.findAll();
+    // dog.setName(null);
+    System.out.println(dog.getName());
 
-        return persons;
-    }
+    var persons = personRepository.findAll();
 
-    @GetMapping("/persons/{name}")
-    private Person getPersonByName(@PathVariable("name") String name) {
+    return persons;
+  }
 
-        var person = personRepository.findByName(name);
+  @GetMapping("/persons/{name}")
+  private Person getPersonByName(@PathVariable("name") String name) {
 
-        return person.orElseThrow(() -> new PersonNotFoundException());
-    }
+    var person = personRepository.findByName(name);
+
+    return person.orElseThrow(() -> new PersonNotFoundException());
+  }
 }
