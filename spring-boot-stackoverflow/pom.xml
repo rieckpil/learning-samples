@@ -40,6 +40,7 @@
       <artifactId>spring-boot-starter-thymeleaf</artifactId>
     </dependency>
 
+
     <dependency>
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
@@ -73,6 +74,25 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>1.4.1</version>
+        <executions>
+          <execution>
+            <id>enforce</id>
+            <configuration>
+              <rules>
+                <DependencyConvergence/>
+              </rules>
+            </configuration>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <phase>validate</phase>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>

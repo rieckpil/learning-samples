@@ -13,6 +13,14 @@
     <h2>
       <span th:text="'Hello, ' + ${message}"></span>
     </h2>
+    <form action="#" th:action="@{/public/index}" modelAttribute="order" th:object="${order}" method="POST">
+      <div class="div">
+        <h5>Amount</h5>
+        <input type="text" class="input" th:field="*{amountValue}">
+      </div>
+
+      <input type="submit" class="btn" value="Process Payment">
+    </form>
   </div>
 </main>
 
