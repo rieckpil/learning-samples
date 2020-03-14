@@ -1,0 +1,14 @@
+<web-app xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0" xmlns:xsi="http://xmlns.jcp.org/xml/ns/javaee">
+  <display-name>Hello, World Application</display-name>
+  <description>
+  </description>
+  <servlet>
+    <servlet-name>MyServlet</servlet-name>
+    <servlet-class>de.rieckpil.learning.MyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MyServlet</servlet-name>
+    <url-pattern>/myServlet</url-pattern>
+  </servlet-mapping>
+</web-app>
