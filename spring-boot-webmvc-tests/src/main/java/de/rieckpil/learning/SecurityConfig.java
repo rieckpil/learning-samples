@@ -10,7 +10,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     http.authorizeRequests(authorize -> authorize
-      .mvcMatchers("/sample").permitAll()
+      .mvcMatchers("/sample", "/sample/xml").permitAll()
       .mvcMatchers("/sample/secure").hasRole("ADMIN")
       .anyRequest().authenticated());
   }

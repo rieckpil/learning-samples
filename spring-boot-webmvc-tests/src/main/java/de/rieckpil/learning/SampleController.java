@@ -1,5 +1,6 @@
 package de.rieckpil.learning;
 
+import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,10 +21,15 @@ public class SampleController {
     return "Hello World";
   }
 
+  @GetMapping(value = "/xml", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
+  public XmlData xmlData() {
+    return new XmlData("Hello World");
+  }
+
   @GetMapping("/secure")
   public String getSecureData(Principal principal) {
 
-    UserDetails userDetails= (UserDetails) principal;
+    UserDetails userDetails = (UserDetails) principal;
     System.out.println(userDetails.getUsername());
     System.out.println(userDetails.getPassword());
     System.out.println(userDetails.getAuthorities());
