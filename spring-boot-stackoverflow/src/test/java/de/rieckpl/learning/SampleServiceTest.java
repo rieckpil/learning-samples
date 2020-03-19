@@ -10,16 +10,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class SampleServiceTest {
+public class SampleServiceTest {
 
   @Mock
-  private OtherService otherService;
+  OtherService otherService;
 
   @InjectMocks
-  private SampleService sampleService;
+  SampleService sampleService;
 
   @Test
-  public void testMe() {
+  void testMe() {
     when(otherService.doFoo()).thenReturn("Hello World");
 
     assertEquals("Hello World", sampleService.getData());
