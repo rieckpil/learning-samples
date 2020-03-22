@@ -1,10 +1,13 @@
 package de.rieckpil.learning
 
-import org.springframework.context.ApplicationContext
-import org.springframework.context.support.ClassPathXmlApplicationContext
+import org.springframework.beans.factory.xml.XmlBeanDefinitionReader
+import org.springframework.context.support.GenericApplicationContext
+
 
 fun main() {
-  val context: ApplicationContext = ClassPathXmlApplicationContext("services.xml")
+  val context = GenericApplicationContext()
+  XmlBeanDefinitionReader(context).loadBeanDefinitions("services.xml")
+  context.refresh()
   val petStore = context.getBean("petStore", PetStore::class.java)
   println(petStore.saySomething())
 }

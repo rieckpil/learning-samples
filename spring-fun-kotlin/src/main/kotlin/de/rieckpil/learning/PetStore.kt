@@ -1,10 +1,8 @@
 package de.rieckpil.learning
 
-class PetStore() {
-
-  lateinit var remoteService: RemoteService
+class PetStore(private val remoteService: RemoteService, private val message: String) {
 
   fun saySomething(): String {
-    return remoteService.getData()
+    return remoteService.getData(message)
   }
 }

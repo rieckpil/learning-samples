@@ -5,11 +5,15 @@
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
   <bean id="petStore" class="de.rieckpil.learning.PetStore">
-    <property name="remoteService" ref="remoteService"/>
+    <constructor-arg ref="remoteService"/>
+    <constructor-arg type="java.lang.String" value="42"/>
   </bean>
 
   <bean id="remoteService" class="de.rieckpil.learning.RemoteService">
+    <property name="loggingService" ref="loggingService"/>
   </bean>
+
+  <bean id="loggingService" class="de.rieckpil.learning.LoggingService"></bean>
 
 </beans>
 
