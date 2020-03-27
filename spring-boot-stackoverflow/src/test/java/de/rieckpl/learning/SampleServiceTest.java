@@ -1,5 +1,6 @@
 package de.rieckpl.learning;
 
+import com.jayway.jsonpath.JsonPath;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -23,6 +24,12 @@ public class SampleServiceTest {
     when(otherService.doFoo()).thenReturn("Hello World");
 
     assertEquals("Hello World", sampleService.getData());
+
+    String result = "{\"age\":\"42\", \"name\": \"duke\", \"tags\":[\"java\", \"jdk\"]}";
+
+    assertEquals(2, JsonPath.parse(result).read("$.tags.length()", Long.class));
+    assertEquals("duke", JsonPath.parse(result).read("$.name", String.class));
+    assertEquals("your value", JsonPath.parse(result).read("$.my.nested.values[0].name", String.class));
   }
 
 }
