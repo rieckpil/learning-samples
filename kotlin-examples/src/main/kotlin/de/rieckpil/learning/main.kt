@@ -1,19 +1,18 @@
 package de.rieckpil.learning
 
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.builtins.list
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
-import kotlinx.serialization.list
 import kotlinx.serialization.protobuf.ProtoBuf
+
+@Serializable
+data class Person(val name: String, val id: Long, val nickname: String = "duke")
 
 fun main() {
   println("Hello World")
 
-  val json = Json(JsonConfiguration(
-    encodeDefaults = true,
-    unquoted = false,
-    prettyPrint = true
-  ))
+  val json = Json(JsonConfiguration.Stable)
   val personOne = Person("Philip", 1337)
   val jsonData = json.stringify(Person.serializer(), personOne)
   val jsonList = json.stringify(Person.serializer().list, listOf(Person("Philip", 1337), Person("Mike", 42, "MK")))
@@ -27,5 +26,3 @@ fun main() {
 }
 
 
-@Serializable
-data class Person(val name: String, val id: Long, val nickname: String = "duke")

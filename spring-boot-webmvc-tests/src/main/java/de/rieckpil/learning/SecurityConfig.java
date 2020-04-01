@@ -12,6 +12,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     http.authorizeRequests(authorize -> authorize
       .mvcMatchers("/sample", "/sample/xml").permitAll()
       .mvcMatchers("/sample/secure").hasRole("ADMIN")
-      .anyRequest().authenticated());
+      .anyRequest().authenticated())
+      .cors().disable();
   }
 }

@@ -10,7 +10,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(SampleController.class)
+@WebMvcTest(value = SampleController.class)
 class SampleControllerTest {
 
   @Autowired
@@ -31,6 +31,13 @@ class SampleControllerTest {
       .andExpect(status().isOk())
       .andExpect(content().contentType("text/plain;charset=UTF-8"))
       .andExpect(content().string("Secure Hello World"));
+  }
+
+  @Test
+  @WithMockUser
+  public void testAccessIsForbidden() throws Exception {
+    this.mockMvc.perform(MockMvcRequestBuilders.get("/sample/secure"))
+      .andExpect(status().isForbidden());
   }
 
 }
