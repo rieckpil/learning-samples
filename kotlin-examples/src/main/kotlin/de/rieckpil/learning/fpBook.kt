@@ -8,11 +8,21 @@ fun main() {
   println(isSorted(listOf(1, 10, 20, 30)) { x, y ->
     x < y
   })
-  println(isSorted(listOf("Mike", "Hansi","Dukeduke", "Alphabetz")) { x, y ->
+  println(isSorted(listOf("Mike", "Hansi", "Dukeduke", "Alphabetz")) { x, y ->
     x.length < y.length
   })
+
+  val curry = curry { i: Int, s: String -> s[i] }
+  println(curry(1)("Hello"))
+
+  val uncurry = uncurry { i: Int -> { s: String -> s[i] } }
+  println(uncurry(1, "Hello"))
+
 }
 
+/**
+ * Chapter II
+ */
 
 fun factorial(i: Int): Int {
   tailrec fun go(n: Int, acc: Int): Int =
@@ -54,3 +64,15 @@ fun <A> isSorted(aa: List<A>, ordered: (A, A) -> Boolean): Boolean {
     }
   return loop(aa.head, aa.tail)
 }
+
+fun <A, B, C> partiall(a: A, f: (A, B) -> C): (B) -> C = { b -> f(a, b) }
+
+fun <A, B, C> curry(f: (A, B) -> C): (A) -> (B) -> C = { a -> { b -> f(a, b) } }
+
+fun <A, B, C> uncurry(f: (A) -> (B) -> C): (A, B) -> C = { a: A, b: B -> f(a)(b) }
+
+fun <A, B, C> compose(f: (B) -> C, g: (A) -> B): (A) -> C = { f(g(it)) }
+
+/**
+ * Chapter III
+ */
