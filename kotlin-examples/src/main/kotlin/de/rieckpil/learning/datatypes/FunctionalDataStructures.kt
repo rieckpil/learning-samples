@@ -26,7 +26,7 @@ sealed class List<out A> {
     fun <A> tail(xs: List<A>): List<A> =
       when (xs) {
         is Nil -> throw IllegalStateException("Not possible to get tail of Nil")
-        is Cons -> xs.tail
+        is Cons -> drop(xs, 1)
       }
 
     fun <A> setHead(xs: List<A>, x: A): List<A> =
@@ -36,12 +36,18 @@ sealed class List<out A> {
       }
 
     fun <A> drop(l: List<A>, n: Int): List<A> {
-      // page 45
-      TODO()
+      return if (n == 0) l
+      else when (l) {
+        is Nil -> throw IllegalStateException("Not possible to drop Nil")
+        is Cons -> drop(l.tail, n - 1)
+      }
     }
 
     fun <A> dropWhile(l: List<A>, f: (A) -> Boolean): List<A> {
-      TODO()
+      return when (l) {
+        is Nil -> l
+        is Cons -> if (f(l.head)) l else dropWhile(l.tail, f)
+      }
     }
   }
 }
@@ -57,4 +63,11 @@ val exampleThree: List<String> = Cons("a", Cons("b", Nil))
 fun main() {
   val ints = List.of(1, 2, 3, 4, 5)
   println(List.sum(ints))
+
+  val droppedResult = List.drop(ints, 2)
+  val droppedWhile = List.dropWhile(ints) {
+    it == 5
+  }
+
+  println(droppedWhile)
 }
