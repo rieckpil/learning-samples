@@ -1,8 +1,11 @@
 package de.rieckpil.learning
 
 fun main() {
-  println(factorial(7))
   println(fib(10))
+  println(fib(2  ))
+  println(fib(1))
+  println(fib(0))
+  println(factorial(7))
   println(findFirst(arrayOf("Duke", "Foo", "Mike", "Phil", "Tom")) { it == "Phil" })
   println(findFirst(arrayOf(true, false, true, false)) { !it })
   println(isSorted(listOf(1, 10, 20, 30)) { x, y ->

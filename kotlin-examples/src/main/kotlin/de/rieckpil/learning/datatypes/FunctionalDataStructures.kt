@@ -46,7 +46,7 @@ sealed class List<out A> {
     fun <A> dropWhile(l: List<A>, f: (A) -> Boolean): List<A> {
       return when (l) {
         is Nil -> l
-        is Cons -> if (f(l.head)) l else dropWhile(l.tail, f)
+        is Cons -> if (f(l.head)) dropWhile(l.tail, f) else l
       }
     }
   }
@@ -66,7 +66,7 @@ fun main() {
 
   val droppedResult = List.drop(ints, 2)
   val droppedWhile = List.dropWhile(ints) {
-    it == 5
+    it < 5
   }
 
   println(droppedWhile)
