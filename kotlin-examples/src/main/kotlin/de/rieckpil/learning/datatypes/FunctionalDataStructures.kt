@@ -65,6 +65,31 @@ sealed class List<out A> {
 
     fun <A> length(l: List<A>): Int = foldRight(l, 0) { _, acc -> acc + 1 }
 
+    fun sumLeft(ints: List<Int>): Int = foldLeft(ints, 0, { a, b -> a + b })
+
+    fun productLeft(ints: List<Double>): Double = foldLeft(ints, 1.0, { a, b -> a * b })
+
+    fun <A> lengthLeft(l: List<A>): Int = foldLeft(l, 0, { acc, _ -> acc + 1 })
+
+    fun <A> reverse(l: List<A>): List<A> = foldLeft(l, empty()) { a, b -> Cons(b, a) }
+
+    fun <A> append(a1: List<A>, a2: List<A>): List<A> =
+      when (a1) {
+        is Nil -> a2
+        is Cons -> Cons(a1.head, append(a1.tail, a2))
+      }
+
+    fun <A> appendRight(l1: List<A>, l2: List<A>): List<A> = foldRight(l1, l2) { a, b -> Cons(a, b) }
+
+    // How to do this properly
+    fun <A> appendLeft(l1: List<A>, l2: List<A>): List<A> = foldLeft(reverse(l1), l2) { a, b -> Cons(b, a) }
+
+    fun <A, B> foldLeftR(xs: List<A>, z: B, f: (B, A) -> B): B =
+      foldRight(xs, { b: B -> b }, { a, g -> { b -> g(f(b, a)) } })(z)
+
+    fun <A, B> foldRightL(xs: List<A>, z: B, f: (A, B) -> B): B =
+      foldLeft(xs, { b: B -> b }, { g, a -> { b -> g(f(a, b)) } })(z)
+
     fun <A, B> foldRight(l: List<A>, z: B, f: (A, B) -> B): B =
       when (l) {
         is Nil -> z
@@ -77,11 +102,20 @@ sealed class List<out A> {
         is Cons -> foldLeft(l.tail, f(z, l.head), f)
       }
 
-    fun sumLeft(ints: List<Int>): Int = foldLeft(ints, 0, { a, b -> a + b })
+    fun <A> concat(l: List<List<A>>): List<A> = foldRight(l, empty()) { a, b -> append(a, b) }
 
-    fun productLeft(ints: List<Double>): Double = foldLeft(ints, 1.0, { a, b -> a * b })
+    fun transform(l: List<Int>): List<Int> = foldRight(l, empty()) { a, b -> Cons(a + 1, b) }
 
-    fun <A> lengthLeft(l: List<A>): Int = foldLeft(l, 0, { acc, _ -> acc + 1 })
+    fun transformToString(l: List<Double>): List<String> = foldRight(l, empty()) { a, b -> Cons(a.toString(), b) }
+
+    fun <A, B> map(xs: List<A>, f: (A) -> B): List<B> = foldRight(xs, empty()) { a, b -> Cons(f(a), b) }
+
+    fun <A> filter(xs: List<A>, f: (A) -> Boolean): List<A> = foldRight(xs, empty()) { a, b -> if (f(a)) Cons(a, b) else b }
+
+    fun <A> flatMap(xs: List<A>, f: (A) -> List<A>): List<A> = foldRight(xs, empty()) { a, b -> append(f(a), b) }
+
+    fun <A> flatMapFilter(xs: List<A>, f: (A) -> Boolean): List<A> = flatMap(xs) { i -> if(f(i)) Cons(i, Nil) else Nil}
+
   }
 }
 
@@ -94,24 +128,30 @@ val exampleTwo: List<Int> = Cons(1, Nil)
 val exampleThree: List<String> = Cons("a", Cons("b", Nil))
 
 fun main() {
-  val ints = List.of(1, 2, 3, 4, 5)
-  println(List.sum(ints))
 
-  val droppedResult = List.drop(ints, 2)
-  val droppedWhile = List.dropWhile(ints) {
-    it < 5
-  }
-
-  println(droppedWhile)
+  // println(List.sum(List.of(1, 2, 3, 4, 5)))
+  // println(List.drop(List.of(1, 2, 3, 4, 5), 2))
+  // println(List.dropWhile(List.of(1, 2, 3, 4, 5)) { it < 5 })
 
   // println(List.init(List.of(1, 2, 3, 4, 5, 6, 7)))
 
   // val f = { x: Int, y: List<Int> -> Cons(x, y) }
   // println(List.foldRight(List.of(1, 2, 3), List.empty(), f))
   // println(List.length(List.of(1, 2, 3, 4, 5)))
+  // println(List.sumLeft(List.of(1, 2, 3, 4)))
+  // println(List.lengthLeft(List.of(1, 2, 3, 4)))
 
-
-  println(List.sumLeft(List.of(1, 2, 3, 4)))
-  println(List.lengthLeft(List.of(1, 2, 3, 4)))
+  // println(List.append(List.of(1, 2, 3), List.of(4, 5)))
+  // println(List.appendRight(List.of(1, 2, 3), List.of(4, 5)))
+  // println(List.appendLeft(List.of(1, 2, 3), List.of(4, 5)))
+  // println(List.concat(List.of(List.of(1, 2), List.of(3, 4), List.of(5, 6))))
+  // println(List.transform(List.of(1, 2, 3, 4, 5)))
+  // println(List.transformToString(List.of(1.0, 2.0, 3.0, 4.0, 5.0)))
+  // println(List.map(List.of(1.0, 2.0, 3.0, 4.0, 5.0)) { it * 2 })
+  // println(List.map(List.of(1.0, 2.0, 3.0, 4.0, 5.0)) { "$it is stringified" })
+  // println(List.filter(List.of(1, 2, 3, 4, 5)) { it % 2 == 0 })
+  // println(List.flatMap(List.of(1, 2, 3)) { i -> List.of(i, i) })
+  // println(List.flatMapFilter(List.of(1, 2, 3, 4, 5)) { it % 2 == 0 })
 
 }
+
