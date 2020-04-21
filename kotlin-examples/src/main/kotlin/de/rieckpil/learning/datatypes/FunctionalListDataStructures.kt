@@ -114,8 +114,46 @@ sealed class List<out A> {
 
     fun <A> flatMap(xs: List<A>, f: (A) -> List<A>): List<A> = foldRight(xs, empty()) { a, b -> append(f(a), b) }
 
-    fun <A> flatMapFilter(xs: List<A>, f: (A) -> Boolean): List<A> = flatMap(xs) { i -> if(f(i)) Cons(i, Nil) else Nil}
+    fun <A> flatMapFilter(xs: List<A>, f: (A) -> Boolean): List<A> = flatMap(xs) { i -> if (f(i)) Cons(i, Nil) else Nil }
 
+    fun addElements(listOne: List<Int>, listTwo: List<Int>): List<Int> =
+      when (listOne) {
+        is Nil -> Nil
+        is Cons -> when (listTwo) {
+          is Nil -> Nil
+          is Cons -> Cons(listOne.head + listTwo.head, addElements(listOne.tail, listTwo.tail))
+        }
+      }
+
+    fun <A> zipWith(listOne: List<A>, listTwo: List<A>, f: (A, A) -> A): List<A> =
+      when (listOne) {
+        is Nil -> Nil
+        is Cons -> when (listTwo) {
+          is Nil -> Nil
+          is Cons -> Cons(f(listOne.head, listTwo.head), zipWith(listOne.tail, listTwo.tail, f))
+        }
+      }
+
+    tailrec fun <A> startsWith(l1: List<A>, l2: List<A>): Boolean =
+      when (l1) {
+        is Nil -> l2 == Nil
+        is Cons -> when (l2) {
+          is Nil -> true
+          is Cons ->
+            if (l1.head == l2.head)
+              startsWith(l1.tail, l2.tail)
+            else false
+        }
+      }
+
+    tailrec fun <A> hasSubsequence(xs: List<A>, sub: List<A>): Boolean =
+      when (xs) {
+        is Nil -> false
+        is Cons -> when (sub) {
+          is Nil -> true
+          is Cons -> if (startsWith(xs, sub)) true else hasSubsequence(xs.tail, sub)
+        }
+      }
   }
 }
 
@@ -152,6 +190,10 @@ fun main() {
   // println(List.filter(List.of(1, 2, 3, 4, 5)) { it % 2 == 0 })
   // println(List.flatMap(List.of(1, 2, 3)) { i -> List.of(i, i) })
   // println(List.flatMapFilter(List.of(1, 2, 3, 4, 5)) { it % 2 == 0 })
+
+  // println(List.addElements(List.of(1, 2, 3), List.of(4, 5, 6)))
+  // println(List.zipWith(List.of(1, 2, 3), List.of(4, 5, 6)) { a, b -> a + b })
+  println(List.hasSubsequence(List.of(1, 2, 3), List.of(2, 3)))
 
 }
 
