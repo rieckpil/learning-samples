@@ -17,6 +17,12 @@ sealed class List<out A> {
         is Cons -> ints.head + sum(ints.tail)
       }
 
+    fun sum(doubles: List<Double>): Double =
+      when (doubles) {
+        is Nil -> 0.0
+        is Cons -> doubles.head + sum(doubles.tail)
+      }
+
     fun product(doubles: List<Double>): Double =
       when (doubles) {
         is Nil -> 1.0
