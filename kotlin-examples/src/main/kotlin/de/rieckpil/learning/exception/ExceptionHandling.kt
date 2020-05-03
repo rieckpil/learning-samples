@@ -1,5 +1,6 @@
 package de.rieckpil.learning.exception
 
+import kotlin.math.abs
 import kotlin.math.pow
 
 fun failingFn(i: Int): Int {
@@ -12,33 +13,54 @@ fun failingFn(i: Int): Int {
   }
 }
 
+fun main() {
+  val myList = listOf(1.0, 2.5, 6.5, 10.0)
+  println(mean(myList))
+  println(variance(myList))
+  println(variance(listOf()))
+  println(timDepartment().getOrElse { "No Department" })
+  println(timManager().getOrElse { "No Manager" })
+
+
+  println(abs(-1.0))
+  // println(abs(Some(-1.0))) does not compile
+
+  println(absO(Some(-1.0)))
+  println(roundO(Some(-1.45)))
+}
+
+
+sealed class Option<out A>
+
+data class Some<out A>(val get: A) : Option<A>()
+object None : Option<Nothing>()
+
+
 data class Employee(
   val name: String,
   val department: String,
   val manager: Option<String>
 )
 
-fun lookupByName(name: String): Option<Employee> = TODO()
-fun timDepartment(): Option<String> = lookupByName("Tim").map { it.department }
+val employees = listOf(
+  Employee("Tim", "IT", None),
+  Employee("Anna", "IT", Some("Tim")),
+  Employee("Duke", "Marketing", Some("Larry"))
+)
 
-
-fun main() {
-  val myList = listOf(1.0, 2.5, 6.5, 10.0)
-  println(mean(myList))
-  println(variance(myList))
-  println(variance(listOf()))
+fun lookupByName(name: String): Option<Employee> {
+  val employee = employees.firstOrNull { it.name == name }
+  return if (employee == null) None else Some(employee)
 }
+
+fun timDepartment(): Option<String> = lookupByName("Tim").map { it.department }
+fun timManager(): Option<String> = lookupByName("Tim").flatMap { it.manager }
+
 
 fun mean(xs: List<Double>): Option<Double> =
   if (xs.isEmpty()) None
   else Some(xs.sum() / xs.size)
 
-
-sealed class Option<out A> {
-}
-
-data class Some<out A>(val get: A) : Option<A>()
-object None : Option<Nothing>()
 
 fun <A, B> Option<A>.map(f: (A) -> B): Option<B> =
   when (this) {
@@ -78,3 +100,8 @@ fun variance(xs: List<Double>): Option<Double> =
     .flatMap { m ->
       mean(xs.map { (it - m).pow(2) })
     }
+
+fun <A, B> lift(f: (A) -> B): (Option<A>) -> Option<B> = { oa -> oa.map(f) }
+
+val absO: (Option<Double>) -> Option<Double> = lift { kotlin.math.abs(it) }
+val roundO: (Option<Double>) -> Option<Double> = lift { kotlin.math.round(it) }

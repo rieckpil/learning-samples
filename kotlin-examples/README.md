@@ -18,5 +18,7 @@ transparency
 - Kotlin creators did not introduce Option types as they see performance overhead in instantiating wrapper classes, but introduced nullable types
 
 
-
-
+- option is deferring error handling to later code
+- use ordinary values instead of throwing exceptions
+- lifting existing functions to work with Option does not need a rewrite to handle Some and None
+-
