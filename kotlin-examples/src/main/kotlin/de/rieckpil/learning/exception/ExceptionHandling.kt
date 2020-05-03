@@ -105,3 +105,28 @@ fun <A, B> lift(f: (A) -> B): (Option<A>) -> Option<B> = { oa -> oa.map(f) }
 
 val absO: (Option<Double>) -> Option<Double> = lift { kotlin.math.abs(it) }
 val roundO: (Option<Double>) -> Option<Double> = lift { kotlin.math.round(it) }
+
+fun <A, B, C> map2(
+  a: Option<A>,
+  b: Option<B>,
+  f: (A, B) -> C
+): Option<C> = a.flatMap { a -> b.map { b -> f(a, b) } }
+
+fun parseInsuranceQuote(age: String, speedingTickets: String): Option<Double> {
+  val optAge: Option<Int> = catches { age.toInt() }
+  val optTickets: Option<Int> = catches { speedingTickets.toInt() }
+
+  return map2(optAge, optTickets) { a, t ->
+    insuranceRateQuote(a, t)
+  }
+}
+
+fun <A> catches(a: () -> A): Option<A> =
+  try {
+    Some(a())
+  } catch (e: Throwable) {
+    None
+  }
+
+fun insuranceRateQuote(age: Int, numberOfSpeedingTickets: Int): Double =
+  Double.MAX_VALUE / (age * numberOfSpeedingTickets)
