@@ -1,5 +1,7 @@
 package de.rieckpil.learning.exception
 
+import de.rieckpil.learning.datatypes.Cons
+import de.rieckpil.learning.datatypes.Nil
 import kotlin.math.abs
 import kotlin.math.pow
 
@@ -28,7 +30,6 @@ fun main() {
   println(absO(Some(-1.0)))
   println(roundO(Some(-1.45)))
 }
-
 
 sealed class Option<out A>
 
@@ -130,3 +131,5 @@ fun <A> catches(a: () -> A): Option<A> =
 
 fun insuranceRateQuote(age: Int, numberOfSpeedingTickets: Int): Double =
   Double.MAX_VALUE / (age * numberOfSpeedingTickets)
+
+
