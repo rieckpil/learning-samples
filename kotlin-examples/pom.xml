@@ -15,6 +15,7 @@
     <junit-jupiter.version>5.5.0</junit-jupiter.version>
     <assertj.version>3.14.0</assertj.version>
     <mockk.version>1.9.3</mockk.version>
+    <arrow.version>0.10.4</arrow.version>
   </properties>
 
   <dependencies>
@@ -37,6 +38,21 @@
       <groupId>org.jetbrains.kotlinx</groupId>
       <artifactId>kotlinx-serialization-protobuf</artifactId>
       <version>${serialization.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.arrow-kt</groupId>
+      <artifactId>arrow-core</artifactId>
+      <version>${arrow.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.arrow-kt</groupId>
+      <artifactId>arrow-syntax</artifactId>
+      <version>${arrow.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.arrow-kt</groupId>
+      <artifactId>arrow-fx</artifactId>
+      <version>${arrow.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>
@@ -73,6 +89,24 @@
         <artifactId>kotlin-maven-plugin</artifactId>
         <version>${kotlin.version}</version>
         <executions>
+          <execution>
+            <id>kapt</id>
+            <goals>
+              <goal>kapt</goal>
+            </goals>
+            <configuration>
+              <sourceDirs>
+                <sourceDir>src/main/kotlin</sourceDir>
+              </sourceDirs>
+              <annotationProcessorPaths>
+                <annotationProcessorPath>
+                  <groupId>io.arrow-kt</groupId>
+                  <artifactId>arrow-meta</artifactId>
+                  <version>${arrow.version}</version>
+                </annotationProcessorPath>
+              </annotationProcessorPaths>
+            </configuration>
+          </execution>
           <execution>
             <id>compile</id>
             <phase>compile</phase>

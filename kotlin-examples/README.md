@@ -21,4 +21,15 @@ transparency
 - option is deferring error handling to later code
 - use ordinary values instead of throwing exceptions
 - lifting existing functions to work with Option does not need a rewrite to handle Some and None
+- no need to extend existing non-optinal functions, map, lift, sequence, traverse, map2 (map3) should be enough
 -
+
+
+- for-comprehensions: syntactic sugar over  a series of flatMap and map operations -> more pleasing and concise syntax than imperative code
+- works with the Arrow Datatypes
+
+- downside of using Option, rather simplistic and does not tell what went wrong (e.g. while parsing the Strings, which one was not a integer)
+- Either -> disjoint union of types, similar to Option two cases, but both cases carry a value
+- By convetion, Right is success case and Left is error
+
+- for-comprehension also available for Either

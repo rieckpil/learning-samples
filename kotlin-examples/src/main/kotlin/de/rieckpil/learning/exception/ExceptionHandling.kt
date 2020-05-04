@@ -1,7 +1,5 @@
 package de.rieckpil.learning.exception
 
-import de.rieckpil.learning.datatypes.Cons
-import de.rieckpil.learning.datatypes.Nil
 import kotlin.math.abs
 import kotlin.math.pow
 
