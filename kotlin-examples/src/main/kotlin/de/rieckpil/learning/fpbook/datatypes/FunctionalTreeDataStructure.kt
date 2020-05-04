@@ -1,4 +1,4 @@
-package de.rieckpil.learning.datatypes
+package de.rieckpil.learning.fpbook.datatypes
 
 sealed class Tree<out A> {
 

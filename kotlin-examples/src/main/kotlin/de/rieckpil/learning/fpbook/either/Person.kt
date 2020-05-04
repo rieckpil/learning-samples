@@ -1,4 +1,4 @@
-package de.rieckpil.learning.either
+package de.rieckpil.learning.fpbook.either
 
 data class Person(val name: Name, val age: Age)
 

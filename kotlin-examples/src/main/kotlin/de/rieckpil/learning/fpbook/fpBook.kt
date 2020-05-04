@@ -1,8 +1,8 @@
-package de.rieckpil.learning
+package de.rieckpil.learning.fpbook
 
 fun main() {
   println(fib(10))
-  println(fib(2  ))
+  println(fib(2))
   println(fib(1))
   println(fib(0))
   println(factorial(7))

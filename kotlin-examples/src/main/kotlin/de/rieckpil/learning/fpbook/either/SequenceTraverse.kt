@@ -1,8 +1,8 @@
-package de.rieckpil.learning.either
+package de.rieckpil.learning.fpbook.either
 
-import de.rieckpil.learning.datatypes.Cons
-import de.rieckpil.learning.datatypes.List
-import de.rieckpil.learning.datatypes.Nil
+import de.rieckpil.learning.fpbook.datatypes.Cons
+import de.rieckpil.learning.fpbook.datatypes.List
+import de.rieckpil.learning.fpbook.datatypes.Nil
 
 fun <E, A> sequence(xs: List<Either<E, A>>): Either<E, List<A>> = traverse(xs) { it }
 

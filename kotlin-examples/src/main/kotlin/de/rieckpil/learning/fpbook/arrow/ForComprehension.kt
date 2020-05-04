@@ -1,8 +1,8 @@
-package de.rieckpil.learning.arrow
+package de.rieckpil.learning.fpbook.arrow
 
 import arrow.core.Either
 import arrow.core.extensions.fx
-import de.rieckpil.learning.exception.insuranceRateQuote
+import de.rieckpil.learning.fpbook.exception.insuranceRateQuote
 
 suspend fun main() {
   println(parseInsuranceRateQuote("18", "2"))

@@ -1,4 +1,4 @@
-package de.rieckpil.learning.exception
+package de.rieckpil.learning.fpbook.exception
 
 import kotlin.math.abs
 import kotlin.math.pow

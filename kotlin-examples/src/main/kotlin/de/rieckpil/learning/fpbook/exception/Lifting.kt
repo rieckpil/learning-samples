@@ -1,8 +1,8 @@
-package de.rieckpil.learning.exception
+package de.rieckpil.learning.fpbook.exception
 
-import de.rieckpil.learning.datatypes.Cons
-import de.rieckpil.learning.datatypes.List
-import de.rieckpil.learning.datatypes.Nil
+import de.rieckpil.learning.fpbook.datatypes.Cons
+import de.rieckpil.learning.fpbook.datatypes.List
+import de.rieckpil.learning.fpbook.datatypes.Nil
 
 fun main() {
   println(sequence(List.of(Some("Hello"), Some("My"), Some("Friend"))))

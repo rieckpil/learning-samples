@@ -1,4 +1,4 @@
-package de.rieckpil.learning.either
+package de.rieckpil.learning.fpbook.either
 
 sealed class Either<out E, out A>
 
