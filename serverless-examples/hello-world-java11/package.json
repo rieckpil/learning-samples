@@ -1,0 +1,9 @@
+{
+  "name": "hello-world-java11",
+  "description": "",
+  "version": "0.1.0",
+  "dependencies": {},
+  "devDependencies": {
+    "serverless-offline-ssm": "^4.1.2"
+  }
+}

@@ -1,28 +1,23 @@
 package com.serverless;
 
-import java.util.Collections;
-import java.util.Map;
-
+import com.amazonaws.services.lambda.runtime.Context;
+import com.amazonaws.services.lambda.runtime.RequestHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.amazonaws.services.lambda.runtime.Context;
-import com.amazonaws.services.lambda.runtime.RequestHandler;
+import java.util.Map;
 
-public class Handler implements RequestHandler<Map<String, Object>, ApiGatewayResponse> {
+public class Handler implements RequestHandler<Map<String, Object>, Person> {
 
 	private static final Logger LOG = LogManager.getLogger(Handler.class);
 
 	@Override
-	public ApiGatewayResponse handleRequest(Map<String, Object> input, Context context) {
+	public Person handleRequest(Map<String, Object> input, Context context) {
 		LOG.info("received: {}", input);
 		LOG.error("error!");
 		LOG.debug("debug!");
-		Response responseBody = new Response("Go Serverless v1.x! Your function executed successfully!", input);
-		return ApiGatewayResponse.builder()
-				.setStatusCode(200)
-				.setObjectBody(responseBody)
-				.setHeaders(Collections.singletonMap("X-Powered-By", "AWS Lambda & serverless"))
-				.build();
+		LOG.info(System.getenv("GLOBAL_SECRET"));
+		LOG.info(System.getenv("FUNCTION_SECRET"));
+		return new Person("Duke", true, 42);
 	}
 }
