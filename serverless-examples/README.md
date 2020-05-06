@@ -28,4 +28,6 @@ serverless rollback function -f my-function --function-version 23
 sls plugin list
 sls plugin search --query sqs
 sls plugin install --name serverless-offline-ssm
+
+sls print
 ```
