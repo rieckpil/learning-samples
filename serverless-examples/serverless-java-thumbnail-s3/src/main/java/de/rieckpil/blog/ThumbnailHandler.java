@@ -2,36 +2,27 @@ package de.rieckpil.blog;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import software.amazon.awssdk.regions.Region;
-import software.amazon.awssdk.services.s3.S3Client;
+import com.amazonaws.services.lambda.runtime.events.S3Event;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.s3.model.S3Object;
 
-import java.util.Map;
-
-public class ThumbnailHandler implements RequestHandler<Map<String, Object>, Void> {
-
-  private static final Logger LOG = LogManager.getLogger(ThumbnailHandler.class);
-  private static final Region region = Region.EU_CENTRAL_1;
-
-  private S3Client s3Client;
+public class ThumbnailHandler implements RequestHandler<S3Event, Void> {
 
   @Override
-  public Void handleRequest(Map<String, Object> input, Context context) {
-    LOG.info("received new S3 event: {}", input);
+  public Void handleRequest(S3Event s3Event, Context context) {
+    String bucket = s3Event.getRecords().get(0).getS3().getBucket().getName();
+    String key = s3Event.getRecords().get(0).getS3().getObject().getKey();
+    System.out.println("Going to create a thumbnail for: " + bucket + "/" + key);
 
-    S3Client s3 = S3Client.builder().region(region).build();
+    AmazonS3 s3Client = AmazonS3ClientBuilder.defaultClient();
+    System.out.println("Connection to S3 established");
 
-    //s3.getObject(GetObjectRequest.builder().bucket("bucket").key("key").build(),ResponseTransformer.toFile(Paths.get("multiPartKey")));
+    S3Object s3object = s3Client.getObject(bucket, key);
+    System.out.println("Successfully read S3 object with lenght: " + s3object.getObjectMetadata().getContentLength());
 
- /*   try {
-      BufferedImage img = new BufferedImage(100, 100, BufferedImage.TYPE_INT_RGB);
-      img.createGraphics().drawImage(ImageIO.read(new File("test.jpg")).getScaledInstance(100, 100, Image.SCALE_SMOOTH), 0, 0, null);
-      ImageIO.write(img, "jpg", new File("test_thumb.jpg"));
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-*/
+    // create thumbnail and upload it again
+
     return null;
   }
 }

@@ -5,8 +5,8 @@ provider:
   runtime: java11
   profile: serverless-admin
   region: eu-central-1
-  timeout: 5
-  memorySize: 128
+  timeout: 30
+  memorySize: 256
   iamRoleStatements:
     - Effect: 'Allow'
       Action:

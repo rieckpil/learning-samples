@@ -15,6 +15,9 @@ fun main() {
   println(mean(listOf()))
   println(safeDiv(2, 4))
   println(safeDiv(2, 0))
+
+  val error = Left(IllegalArgumentException("wrong input"))
+  val success = Right(42.50)
 }
 
 fun safeDiv(x: Int, y: Int): Either<Exception, Int> = catches { x / y }
