@@ -18,15 +18,27 @@ fun main() {
   println(mean(myList))
   println(variance(myList))
   println(variance(listOf()))
-  println(timDepartment().getOrElse { "No Department" })
-  println(timManager().getOrElse { "No Manager" })
 
+  println(timDepartment().getOrElse { "No Department for Tim" }) // -> ?
+  println(timManager().getOrElse { "No Manager for Tim" }) // -> ?
+  println(annaManager().getOrElse { "No Manager for Anna" }) // -> ?
 
   println(abs(-1.0))
   // println(abs(Some(-1.0))) does not compile
 
   println(absO(Some(-1.0)))
   println(roundO(Some(-1.45)))
+
+
+  println(toInt("duke")) // -> None
+  println(toInt("")) // -> None
+  println(toInt("123")) // -> Some(123)
+  println(toInt("124x")) // -> None
+
+  println(mean(emptyList())) // -> None
+  println(mean(listOf(3.55, 7.77))) // -> 5.66
+
+
 }
 
 sealed class Option<out A>
@@ -35,30 +47,41 @@ data class Some<out A>(val get: A) : Option<A>()
 object None : Option<Nothing>()
 
 
-data class Employee(
-  val name: String,
-  val department: String,
-  val manager: Option<String>
-)
+  data class Employee(
+    val name: String,
+    val department: String,
+    val manager: Option<String>
+  )
 
-val employees = listOf(
-  Employee("Tim", "IT", None),
-  Employee("Anna", "IT", Some("Tim")),
-  Employee("Duke", "Marketing", Some("Larry"))
-)
+  val employees = listOf(
+    Employee("Tim", "IT", None),
+    Employee("Anna", "IT", Some("Tim")),
+    Employee("Duke", "Marketing", Some("Larry"))
+  )
 
-fun lookupByName(name: String): Option<Employee> {
-  val employee = employees.firstOrNull { it.name == name }
-  return if (employee == null) None else Some(employee)
-}
+  fun lookupByName(name: String): Option<Employee> {
+    val employee = employees.firstOrNull { it.name == name }
+    return if (employee == null) None else Some(employee)
+  }
 
-fun timDepartment(): Option<String> = lookupByName("Tim").map { it.department }
-fun timManager(): Option<String> = lookupByName("Tim").flatMap { it.manager }
+  fun timDepartment(): Option<String> = lookupByName("Tim").map { it.department }
+
+  fun timManager(): Option<String> = lookupByName("Tim").flatMap { it.manager }
+
+  fun annaManager(): Option<String> = lookupByName("Anna").flatMap { it.manager }
 
 
-fun mean(xs: List<Double>): Option<Double> =
-  if (xs.isEmpty()) None
-  else Some(xs.sum() / xs.size)
+  fun toInt(s: String): Option<Int> =
+    try {
+      Some(s.toInt())
+    } catch (e: NumberFormatException) {
+      None
+    }
+
+
+  fun mean(xs: List<Double>): Option<Double> =
+    if (xs.isEmpty()) None
+    else Some(xs.sum() / xs.size)
 
 
 fun <A, B> Option<A>.map(f: (A) -> B): Option<B> =
@@ -73,21 +96,18 @@ fun <A> Option<A>.getOrElse(default: () -> A): A =
     is Some -> this.get
   }
 
-// -> this.map(f).getOrElse { None }
 fun <A, B> Option<A>.flatMap(f: (A) -> Option<B>): Option<B> =
   when (this) {
     is None -> None
     is Some -> f(this.get)
   }
 
-// -> this.map { Some(it) }.getOrElse { ob() }
 fun <A> Option<A>.orElse(ob: () -> Option<A>): Option<A> =
   when (this) {
     is None -> ob()
     is Some -> this
   }
 
-// -> this.flatMap { a -> if (f(a)) Some(a) else None }
 fun <A> Option<A>.filter(f: (A) -> Boolean): Option<A> =
   when (this) {
     is None -> None
@@ -131,3 +151,6 @@ fun insuranceRateQuote(age: Int, numberOfSpeedingTickets: Int): Double =
   Double.MAX_VALUE / (age * numberOfSpeedingTickets)
 
 
+// -> this.map(f).getOrElse { None }
+// -> this.map { Some(it) }.getOrElse { ob() }
+// -> this.flatMap { a -> if (f(a)) Some(a) else None }

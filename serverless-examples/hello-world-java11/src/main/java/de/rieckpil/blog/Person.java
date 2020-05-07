@@ -1,4 +1,4 @@
-package com.serverless;
+package de.rieckpil.blog;
 
 public class Person {
 

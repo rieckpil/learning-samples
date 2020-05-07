@@ -1,0 +1,32 @@
+service: serverless-java-thumbnail-s3
+
+provider:
+  name: aws
+  runtime: java11
+  profile: serverless-admin
+  region: eu-central-1
+  timeout: 5
+  memorySize: 128
+  iamRoleStatements:
+    - Effect: 'Allow'
+      Action:
+        - 's3:*'
+      Resource: '*'
+
+package:
+  artifact: target/thumbnail-s3-example.jar
+
+custom:
+  thumbnailBucket: image-folder-java-example
+
+functions:
+  thumbnailer:
+    handler: de.rieckpil.blog.ThumbnailHandler
+    events:
+      - s3:
+          bucket: ${self:custom.thumbnailBucket}
+          event: s3:ObjectCreated:*
+          rules:
+            - suffix: .png
+    environment:
+      THUMBNAIL_SIZE: 100
