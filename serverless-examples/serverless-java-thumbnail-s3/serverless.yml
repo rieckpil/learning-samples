@@ -5,13 +5,15 @@ provider:
   runtime: java11
   profile: serverless-admin
   region: eu-central-1
-  timeout: 30
-  memorySize: 256
+  timeout: 10
+  memorySize: 1024
   iamRoleStatements:
     - Effect: 'Allow'
       Action:
         - 's3:*'
-      Resource: '*'
+      Resource:
+        - 'arn:aws:s3:::${self:custom.thumbnailBucket}/*'
+        - !Join ['', ['arn:aws:s3:::', !Ref ServerlessDeploymentBucket, '/*']]
 
 package:
   artifact: target/thumbnail-s3-example.jar
@@ -27,6 +29,7 @@ functions:
           bucket: ${self:custom.thumbnailBucket}
           event: s3:ObjectCreated:*
           rules:
+            - prefix: uploads/
             - suffix: .png
     environment:
       THUMBNAIL_SIZE: 100
