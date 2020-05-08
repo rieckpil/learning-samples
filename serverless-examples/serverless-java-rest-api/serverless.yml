@@ -1,0 +1,26 @@
+service: serverless-java-rest-api
+
+provider:
+  name: aws
+  runtime: java11
+  region: eu-central-1
+  profile: serverless-admin
+
+package:
+  artifact: target/rest-api.jar
+
+functions:
+  get:
+    handler: com.serverless.GetHandler
+    events:
+      - http:
+          path: persons
+          method: get
+          cors: true
+  create:
+    handler: com.serverless.PostHandler
+    events:
+      - http:
+          path: persons
+          method: post
+          cors: true

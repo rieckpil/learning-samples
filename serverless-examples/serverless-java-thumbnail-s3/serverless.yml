@@ -11,9 +11,7 @@ provider:
     - Effect: 'Allow'
       Action:
         - 's3:*'
-      Resource:
-        - 'arn:aws:s3:::${self:custom.thumbnailBucket}/*'
-        - !Join ['', ['arn:aws:s3:::', !Ref ServerlessDeploymentBucket, '/*']]
+      Resource: '*'
 
 package:
   artifact: target/thumbnail-s3-example.jar
