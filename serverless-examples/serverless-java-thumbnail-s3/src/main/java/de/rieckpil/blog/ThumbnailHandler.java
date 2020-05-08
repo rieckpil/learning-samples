@@ -5,13 +5,16 @@ import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.S3Event;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
-import com.amazonaws.services.s3.model.GetObjectRequest;
+import com.amazonaws.services.s3.model.ObjectMetadata;
+import com.amazonaws.services.s3.model.S3Object;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class ThumbnailHandler implements RequestHandler<S3Event, Void> {
 
@@ -28,18 +31,23 @@ public class ThumbnailHandler implements RequestHandler<S3Event, Void> {
     System.out.println("Connection to S3 established");
 
     try {
-      File tempFile = File.createTempFile(key, ".tmp");
-      s3Client.getObject(new GetObjectRequest(bucket, key), tempFile);
-      System.out.println("Successfully read S3 object to local temp file");
+      S3Object s3Object = s3Client.getObject(bucket, key);
+      BufferedImage sourceImage = ImageIO.read(s3Object.getObjectContent());
+      System.out.println("Successfully read S3 object");
 
-      BufferedImage img = new BufferedImage(THUMBNAIL_SIZE, THUMBNAIL_SIZE, BufferedImage.TYPE_INT_RGB);
-      img.createGraphics().drawImage(ImageIO.read(tempFile).getScaledInstance(100, 100, Image.SCALE_SMOOTH), 0, 0, null);
-      File resizedTempFile = File.createTempFile(key, ".resized.tmp");
-      ImageIO.write(img, "png", resizedTempFile);
+      BufferedImage thumbnailImage = new BufferedImage(THUMBNAIL_SIZE, THUMBNAIL_SIZE, BufferedImage.TYPE_INT_RGB);
+      thumbnailImage.createGraphics().drawImage(sourceImage.getScaledInstance(100, 100, Image.SCALE_SMOOTH), 0, 0, null);
+      ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+      ImageIO.write(thumbnailImage, ".png", outputStream);
       System.out.println("Successfully created resized image");
 
+      InputStream inputStream = new ByteArrayInputStream(outputStream.toByteArray());
+      ObjectMetadata meta = new ObjectMetadata();
+      meta.setContentLength(outputStream.size());
+      meta.setContentType("image/png");
+
       String targetKey = THUMBNAIL_PREFIX + key.replace("uploads/", "");
-      s3Client.putObject(bucket, targetKey, resizedTempFile);
+      s3Client.putObject(bucket, targetKey, inputStream, meta);
       System.out.println("Successfully uploaded resized image with key " + targetKey);
     } catch (IOException e) {
       e.printStackTrace();
