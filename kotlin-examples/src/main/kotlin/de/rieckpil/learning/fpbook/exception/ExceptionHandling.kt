@@ -26,8 +26,8 @@ fun main() {
   println(abs(-1.0))
   // println(abs(Some(-1.0))) does not compile
 
-  println(absO(Some(-1.0)))
-  println(roundO(Some(-1.45)))
+  println(absLifted(Some(-1.0)))
+  println(roundLifted(Some(-1.45)))
 
 
   println(toInt("duke")) // -> None
@@ -39,6 +39,14 @@ fun main() {
   println(mean(listOf(3.55, 7.77))) // -> 5.66
 
 
+  val someValue = Some(-3.50)
+
+  // println(abs(someValue)) -> does not compile
+
+  println(absLifted(someValue)) // -> Some(3.50)
+  println(absLifted(None)) // -> None
+
+
 }
 
 sealed class Option<out A>
@@ -47,41 +55,41 @@ data class Some<out A>(val get: A) : Option<A>()
 object None : Option<Nothing>()
 
 
-  data class Employee(
-    val name: String,
-    val department: String,
-    val manager: Option<String>
-  )
+data class Employee(
+  val name: String,
+  val department: String,
+  val manager: Option<String>
+)
 
-  val employees = listOf(
-    Employee("Tim", "IT", None),
-    Employee("Anna", "IT", Some("Tim")),
-    Employee("Duke", "Marketing", Some("Larry"))
-  )
+val employees = listOf(
+  Employee("Tim", "IT", None),
+  Employee("Anna", "IT", Some("Tim")),
+  Employee("Duke", "Marketing", Some("Larry"))
+)
 
-  fun lookupByName(name: String): Option<Employee> {
-    val employee = employees.firstOrNull { it.name == name }
-    return if (employee == null) None else Some(employee)
+fun lookupByName(name: String): Option<Employee> {
+  val employee = employees.firstOrNull { it.name == name }
+  return if (employee == null) None else Some(employee)
+}
+
+fun timDepartment(): Option<String> = lookupByName("Tim").map { it.department }
+
+fun timManager(): Option<String> = lookupByName("Tim").flatMap { it.manager }
+
+fun annaManager(): Option<String> = lookupByName("Anna").flatMap { it.manager }
+
+
+fun toInt(s: String): Option<Int> =
+  try {
+    Some(s.toInt())
+  } catch (e: NumberFormatException) {
+    None
   }
 
-  fun timDepartment(): Option<String> = lookupByName("Tim").map { it.department }
 
-  fun timManager(): Option<String> = lookupByName("Tim").flatMap { it.manager }
-
-  fun annaManager(): Option<String> = lookupByName("Anna").flatMap { it.manager }
-
-
-  fun toInt(s: String): Option<Int> =
-    try {
-      Some(s.toInt())
-    } catch (e: NumberFormatException) {
-      None
-    }
-
-
-  fun mean(xs: List<Double>): Option<Double> =
-    if (xs.isEmpty()) None
-    else Some(xs.sum() / xs.size)
+fun mean(xs: List<Double>): Option<Double> =
+  if (xs.isEmpty()) None
+  else Some(xs.sum() / xs.size)
 
 
 fun <A, B> Option<A>.map(f: (A) -> B): Option<B> =
@@ -120,16 +128,11 @@ fun variance(xs: List<Double>): Option<Double> =
       mean(xs.map { (it - m).pow(2) })
     }
 
-fun <A, B> lift(f: (A) -> B): (Option<A>) -> Option<B> = { oa -> oa.map(f) }
+fun <A, B> lift(f: (A) -> B): (Option<A>) -> Option<B> = { it.map(f) }
 
-val absO: (Option<Double>) -> Option<Double> = lift { kotlin.math.abs(it) }
-val roundO: (Option<Double>) -> Option<Double> = lift { kotlin.math.round(it) }
+val absLifted: (Option<Double>) -> Option<Double> = lift { kotlin.math.abs(it) }
+val roundLifted: (Option<Double>) -> Option<Double> = lift { kotlin.math.round(it) }
 
-fun <A, B, C> map2(
-  a: Option<A>,
-  b: Option<B>,
-  f: (A, B) -> C
-): Option<C> = a.flatMap { a -> b.map { b -> f(a, b) } }
 
 fun parseInsuranceQuote(age: String, speedingTickets: String): Option<Double> {
   val optAge: Option<Int> = catches { age.toInt() }
@@ -140,12 +143,19 @@ fun parseInsuranceQuote(age: String, speedingTickets: String): Option<Double> {
   }
 }
 
+fun <A, B, C> map2(
+  a: Option<A>,
+  b: Option<B>,
+  f: (A, B) -> C
+): Option<C> = a.flatMap { a -> b.map { b -> f(a, b) } }
+
 fun <A> catches(a: () -> A): Option<A> =
   try {
     Some(a())
   } catch (e: Throwable) {
     None
   }
+
 
 fun insuranceRateQuote(age: Int, numberOfSpeedingTickets: Int): Double =
   Double.MAX_VALUE / (age * numberOfSpeedingTickets)
