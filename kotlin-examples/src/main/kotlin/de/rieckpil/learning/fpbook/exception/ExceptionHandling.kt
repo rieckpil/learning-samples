@@ -128,7 +128,7 @@ fun variance(xs: List<Double>): Option<Double> =
       mean(xs.map { (it - m).pow(2) })
     }
 
-fun <A, B> lift(f: (A) -> B): (Option<A>) -> Option<B> = { it.map(f) }
+fun <A, B> lift(f: (A) -> B): (Option<A>) -> Option<B> = { a -> a.map(f) }
 
 val absLifted: (Option<Double>) -> Option<Double> = lift { kotlin.math.abs(it) }
 val roundLifted: (Option<Double>) -> Option<Double> = lift { kotlin.math.round(it) }

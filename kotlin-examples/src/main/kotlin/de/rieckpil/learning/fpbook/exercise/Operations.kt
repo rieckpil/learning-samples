@@ -23,7 +23,7 @@ fun <A, B> Option<A>.flatMap(f: (A) -> Option<B>): Option<B> =
     is Some -> f(this.get)
   }
 
-fun <A, B> Option<A>.flatMapTwo(f: (A) -> Option<B>): Option<B> = TODO()
+fun <A, B> Option<A>.flatMapTwo(f: (A) -> Option<B>): Option<B> = this.map(f).getOrElse { None }
 
 fun <A> Option<A>.orElse(ob: () -> Option<A>): Option<A> =
   when (this) {
@@ -31,7 +31,7 @@ fun <A> Option<A>.orElse(ob: () -> Option<A>): Option<A> =
     is Some -> this
   }
 
-fun <A> Option<A>.orElseTwo(ob: () -> Option<A>): Option<A> = TODO()
+fun <A> Option<A>.orElseTwo(ob: () -> Option<A>): Option<A> = this.map { Some(it) }.getOrElse { ob() }
 
 fun <A> Option<A>.filter(f: (A) -> Boolean): Option<A> =
   when (this) {
@@ -39,7 +39,7 @@ fun <A> Option<A>.filter(f: (A) -> Boolean): Option<A> =
     is Some -> if (f(this.get)) this else None
   }
 
-fun <A> Option<A>.filterTwo(f: (A) -> Boolean): Option<A> = TODO()
+fun <A> Option<A>.filterTwo(f: (A) -> Boolean): Option<A> = this.flatMap { if(f(it)) Some(it) else None }
 
 fun main() {
 
