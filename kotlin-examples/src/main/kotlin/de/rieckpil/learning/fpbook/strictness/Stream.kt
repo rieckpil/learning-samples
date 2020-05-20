@@ -45,6 +45,9 @@ fun <A> Stream<A>.headOption(): Option<A> =
     is Cons -> Some(h())
   }
 
+fun <A> Stream<A>.headOptionTwo(): Option<A> =
+  foldRight({ None }, { a, b: () -> Option<A> -> Some(a) })
+
 fun <A> Stream<A>.take(n: Int): Stream<A> =
   if (n == 0) empty()
   else when (this) {
@@ -77,6 +80,18 @@ fun <A> Stream<A>.exists(p: (A) -> Boolean): Boolean =
 fun <A> Stream<A>.existsTwo(p: (A) -> Boolean): Boolean =
   foldRight({ false }, { a, b -> p(a) || b() })
 
+fun <A, B> Stream<A>.map(f: (A) -> (B)): Stream<B> =
+  foldRight({ empty() }, { h, t -> Cons({ f(h) }, t) })
+
+fun <A> Stream<A>.filter(f: (A) -> Boolean): Stream<A> =
+  foldRight({ empty() }, { h, t -> if (f(h)) Cons({ h }, t) else t() })
+
+fun <A> Stream<A>.append(sa: () -> Stream<A>): Stream<A> =
+  foldRight(sa, { h, t -> Cons({ h }, t) })
+
+fun <A, B> Stream<A>.flatMap(f: (A) -> Stream<B>): Stream<B> =
+  foldRight({ empty() }, { h, t -> f(h).append(t) })
+
 fun <A, B> Stream<A>.foldRight(z: () -> B, f: (A, () -> B) -> B): B =
   when (this) {
     is Cons -> f(this.h()) { t().foldRight(z, f) }
@@ -86,6 +101,33 @@ fun <A, B> Stream<A>.foldRight(z: () -> B, f: (A, () -> B) -> B): B =
 fun <A> Stream<A>.forAll(p: (A) -> Boolean): Boolean =
   foldRight({ false }, { a, b -> p(a) && b() })
 
+fun ones(): Stream<Int> = Stream.cons({ 1 }, { ones() })
+
+fun onesTwo(): Stream<Int> = unfold(1, { Some(Pair(1, 1)) })
+
+fun <A> constant(a: A): Stream<A> = Stream.cons({ a }, { constant(a) })
+
+fun <A> constantTwo(a: A): Stream<A> = unfold(a, { a -> Some(Pair(a, a)) })
+
+fun from(n: Int): Stream<Int> = Stream.cons({ n }, { from(n + 1) })
+
+fun fromTwo(n: Int): Stream<Int> = unfold(n, { n -> Some(Pair(n, n + 1)) })
+
+fun fibs(): Stream<Int> {
+  fun go(curr: Int, nxt: Int): Stream<Int> =
+    cons({ curr }, { go(nxt, curr + nxt) })
+  return go(0, 1)
+}
+
+fun fibsTwo(): Stream<Int> =
+  unfold(Pair(0, 1), { (curr, next) -> Some(Pair(curr, Pair(next, curr + next))) })
+
+fun <A, S> unfold(z: S, f: (S) -> Option<Pair<A, S>>): Stream<A> =
+  when (val result = f(z)) {
+    is None -> empty()
+    is Some -> Stream.cons({ result.get.first }, { unfold(result.get.second, f) })
+  }
+
 data class Cons<out A>(val h: () -> A, val t: () -> Stream<A>) : Stream<A>()
 object Empty : Stream<Nothing>()
 
@@ -93,13 +135,28 @@ fun main() {
   val x = Cons({ expensive() }, { Empty })
   val h1 = x.headOption()
   val h2 = x.headOption()
+  println(h1)
+  println(x.headOptionTwo())
 
   val stream = Stream.of("dukeduke ", "mikemike", "fuchsfuchs", "foo", "bar")
-  println(stream)
-  println(stream.take(2).toList())
-  println(stream.drop(2).toList())
-  println(stream.takeWhile { it.length > 3 }.toList())
-  println(stream.takeWhileTwo { it.length > 3 }.toList())
+  //println(stream)
+  //println(stream.take(2).toList())
+  //println(stream.drop(2).toList())
+  //println(stream.takeWhile { it.length > 3 }.toList())
+  //println(stream.takeWhileTwo { it.length > 3 }.toList())
+
+  println(ones().take(5).map { it * 2 }.toList())
+  println(onesTwo().take(5).map { it * 2 }.toList())
+  println("-------------------------")
+  println(constant(5).take(5).map { it * 2 }.toList())
+  println(constantTwo(5).take(5).map { it * 2 }.toList())
+  println("-------------------------")
+  println(from(5).take(5).map { it * 2 }.toList())
+  println(fromTwo(5).take(5).map { it * 2 }.toList())
+  println("-------------------------")
+  println(fibs().take(10).toList())
+  println(fibsTwo().take(10).toList())
+
 
 }
 
