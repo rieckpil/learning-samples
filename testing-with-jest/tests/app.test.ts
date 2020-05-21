@@ -1,11 +1,23 @@
+import {app} from '../src/app';
+
 const request = require('supertest');
 
-import {app} from '../src/app';
+const mockGetTodo = jest.fn();
+
+jest.mock('../src/apiClient', () => {
+  return {
+    ApiClient: jest.fn().mockImplementation(() => {
+      return {
+        getTodo: jest.fn()
+      }
+    })
+  }
+});
 
 describe("test simple Express server", () => {
 
   beforeEach(() => {
-    console.log('before each');
+    mockGetTodo.mockClear();
   });
 
   afterEach(() => {
@@ -13,11 +25,13 @@ describe("test simple Express server", () => {
   })
 
   it('should get a todo from root endpoint', async () => {
-    await request(app)
+    const response = await request(app)
       .get('/')
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(200);
+
+    console.log(response.body);
   });
 
 });
