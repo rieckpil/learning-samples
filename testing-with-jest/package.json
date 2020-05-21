@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "tsc && node dist/app.js",
-    "test": "jest"
+    "test": "jest --watch"
   },
   "author": "",
   "license": "ISC",
