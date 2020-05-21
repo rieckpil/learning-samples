@@ -1,23 +1,27 @@
-import {app} from '../src/app';
+import {app} from './app';
 
 const request = require('supertest');
 
-const mockGetTodo = jest.fn();
+const mockGetFileUrl = jest.fn();
 
-jest.mock('../src/apiClient', () => {
+jest.mock('./apiClient');
+jest.mock('./s3Client', () => {
   return {
-    ApiClient: jest.fn().mockImplementation(() => {
+    S3Client: jest.fn().mockImplementation(() => {
       return {
-        getTodo: jest.fn()
+        getFileUrl: jest.fn().mockImplementation(() => {
+          return {LastModified: 'Duke'};
+        })
       }
     })
+
   }
 });
 
 describe("test simple Express server", () => {
 
   beforeEach(() => {
-    mockGetTodo.mockClear();
+    mockGetFileUrl.mockClear();
   });
 
   afterEach(() => {
