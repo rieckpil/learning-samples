@@ -4,6 +4,14 @@ import {app} from '../src/app';
 
 describe("test simple Express server", () => {
 
+  beforeEach(() => {
+    console.log('before each');
+  });
+
+  afterEach(() => {
+    console.log('after each');
+  })
+
   it('should get a todo from root endpoint', async () => {
     await request(app)
       .get('/')
