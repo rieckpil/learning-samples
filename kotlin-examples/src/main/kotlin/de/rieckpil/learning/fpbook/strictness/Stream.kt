@@ -101,15 +101,15 @@ fun <A, B> Stream<A>.foldRight(z: () -> B, f: (A, () -> B) -> B): B =
 fun <A> Stream<A>.forAll(p: (A) -> Boolean): Boolean =
   foldRight({ false }, { a, b -> p(a) && b() })
 
-fun ones(): Stream<Int> = Stream.cons({ 1 }, { ones() })
+fun ones(): Stream<Int> = cons({ 1 }, { ones() })
 
 fun onesTwo(): Stream<Int> = unfold(1, { Some(Pair(1, 1)) })
 
-fun <A> constant(a: A): Stream<A> = Stream.cons({ a }, { constant(a) })
+fun <A> constant(a: A): Stream<A> = cons({ a }, { constant(a) })
 
 fun <A> constantTwo(a: A): Stream<A> = unfold(a, { a -> Some(Pair(a, a)) })
 
-fun from(n: Int): Stream<Int> = Stream.cons({ n }, { from(n + 1) })
+fun from(n: Int): Stream<Int> = cons({ n }, { from(n + 1) })
 
 fun fromTwo(n: Int): Stream<Int> = unfold(n, { n -> Some(Pair(n, n + 1)) })
 
@@ -125,8 +125,114 @@ fun fibsTwo(): Stream<Int> =
 fun <A, S> unfold(z: S, f: (S) -> Option<Pair<A, S>>): Stream<A> =
   when (val result = f(z)) {
     is None -> empty()
-    is Some -> Stream.cons({ result.get.first }, { unfold(result.get.second, f) })
+    is Some -> cons({ result.get.first }, { unfold(result.get.second, f) })
   }
+
+fun <A, B> Stream<A>.mapTwo(f: (A) -> B): Stream<B> =
+  unfold(this,
+    { s: Stream<A> ->
+      when (s) {
+        is Cons -> Some(Pair(f(s.h()), s.t()))
+        else -> None
+      }
+    })
+
+fun <A> Stream<A>.takeTwo(n: Int): Stream<A> =
+  unfold(this, { s: Stream<A> ->
+    when (s) {
+      is Cons ->
+        if (n > 0)
+          Some(Pair(s.h(), s.t().take(n - 1)))
+        else None
+      else -> None
+    }
+  })
+
+fun <A> Stream<A>.takeWhileThree(p: (A) -> Boolean): Stream<A> =
+  unfold(this, { s: Stream<A> ->
+    when (s) {
+      is Cons ->
+        if (p(s.h()))
+          Some(Pair(s.h(), s.t()))
+        else None
+      else -> None
+    }
+  })
+
+fun <A, B, C> Stream<A>.zipWith(
+  that: Stream<B>, f: (A, B) -> C
+): Stream<C> =
+  unfold(Pair(this, that)) { (ths: Stream<A>, tht: Stream<B>) ->
+    when (ths) {
+      is Cons ->
+        when (tht) {
+          is Cons ->
+            Some(
+              Pair(
+                f(ths.h(), tht.h()),
+                Pair(ths.t(), tht.t())
+              )
+            )
+          else -> None
+        }
+      else -> None
+    }
+  }
+
+fun <A, B> Stream<A>.zipAll(
+  that: Stream<B>
+): Stream<Pair<Option<A>, Option<B>>> =
+  unfold(Pair(this, that)) { (ths, tht) ->
+    when (ths) {
+      is Cons -> when (tht) {
+        is Cons ->
+          Some(
+            Pair(
+              Pair(Some(ths.h()), Some(tht.h())),
+              Pair(ths.t(), tht.t())
+            )
+          )
+        else ->
+          Some(
+            Pair(
+              Pair(Some(ths.h()), None),
+              Pair(ths.t(), empty<B>())
+            )
+          )
+      }
+      else -> when (tht) {
+        is Cons ->
+          Some(
+            Pair(
+              Pair(None, Some(tht.h())),
+              Pair(empty<A>(), tht.t())
+            )
+          )
+        else -> None
+      }
+    }
+  }
+
+fun <A> Stream<A>.startsWith(that: Stream<A>): Boolean =
+  when (this) {
+    is Empty -> false
+    is Cons ->
+      when (that) {
+        is Empty -> true
+        is Cons -> this.h() == that.h() && this.t().startsWith(that.t())
+      }
+  }
+
+fun <A> Stream<A>.tails(): Stream<Stream<A>> =
+  unfold(this, { stream: Stream<A> ->
+    when (stream) {
+      is Empty -> None
+      is Cons -> Some(Pair(stream, stream.t()))
+    }
+  })
+
+fun <A> Stream<A>.hasSubsequence(s: Stream<A>): Boolean =
+  this.tails().exists { it.startsWith(s) }
 
 data class Cons<out A>(val h: () -> A, val t: () -> Stream<A>) : Stream<A>()
 object Empty : Stream<Nothing>()
@@ -157,7 +263,8 @@ fun main() {
   println(fibs().take(10).toList())
   println(fibsTwo().take(10).toList())
 
-
+  println(Stream.of(1, 2, 3).startsWith(Stream.of(1, 2)))
+  println(Stream.of(1, 2, 3).tails().toList())
 }
 
 fun expensive(): String {
