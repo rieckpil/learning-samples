@@ -213,6 +213,7 @@ fun <A, B> Stream<A>.zipAll(
     }
   }
 
+
 fun <A> Stream<A>.startsWith(that: Stream<A>): Boolean =
   when (this) {
     is Empty -> false
