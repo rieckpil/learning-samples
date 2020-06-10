@@ -61,6 +61,8 @@ object Pars {
       }
     }
   }
+
+  fun <A> delay(pa: () -> Par<A>): Par<A> = { es -> pa()(es) }
 }
 
 data class TimedMap2Future<A, B, C>(
