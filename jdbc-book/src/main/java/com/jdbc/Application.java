@@ -11,7 +11,7 @@ import java.util.Arrays;
 import javax.sql.DataSource;
 
 import com.zaxxer.hikari.HikariDataSource;
-import org.h2.jdbcx.JdbcDataSource;
+import net.ttddyy.dsproxy.support.ProxyDataSourceBuilder;
 
 public class Application {
 
@@ -25,7 +25,6 @@ public class Application {
           "values (?,?,?)"
         , Statement.RETURN_GENERATED_KEYS)) {
         // basicInsert(stmt);
-
         // batchInsert(stmt);
       }
 
@@ -77,6 +76,11 @@ public class Application {
     ds.setJdbcUrl("jdbc:h2:~/Desktop/junk;INIT=RUNSCRIPT FROM 'classpath:schema.sql'");
     ds.setUsername("sa");
     ds.setPassword("s3cr3tPassword");
-    return ds;
+
+    DataSource dataSource =
+      ProxyDataSourceBuilder.create(ds) // pass original datasource
+        .logQueryToSysOut()
+        .build();
+    return dataSource;
   }
 }
