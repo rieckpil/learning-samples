@@ -62,6 +62,47 @@ object Pars {
     }
   }
 
+  fun <A> choice(cond: Par<Boolean>, t: Par<A>, f: Par<A>): Par<A> =
+    { es: ExecutorService ->
+      when (run(es, cond).get()) {
+        true -> run(es, t)
+        false -> run(es, f)
+      }
+    }
+
+  fun <A> choice2(cond: Par<Boolean>, t: Par<A>, f: Par<A>): Par<A> =
+    { es: ExecutorService ->
+      choiceN(map(cond, { if (it) 1 else 0 }), listOf(t, f))(es)
+    }
+
+  fun <A> choiceChooser(cond: Par<Boolean>, t: Par<A>, f: Par<A>): Par<A> =
+    { es: ExecutorService ->
+      chooser(cond) { resolvedCond -> if (resolvedCond) f else t }(es)
+    }
+
+
+  fun <A> choiceN(n: Par<Int>, choices: List<Par<A>>): Par<A> = { es: ExecutorService ->
+    choices[run(es, n).get()].invoke(es)
+  }
+
+  fun <A> choiceChooser(n: Par<Int>, choices: List<Par<A>>): Par<A> = { es: ExecutorService ->
+    chooser(n) { resolvedN: Int -> choices[resolvedN] }(es)
+  }
+
+  fun <K, V> choiceMap(key: Par<K>, choices: Map<K, Par<V>>): Par<V> = { es: ExecutorService ->
+    choices.getValue(key.invoke(es).get())(es)
+  }
+
+  fun <K, V> choiceMapChooser(key: Par<K>, choices: Map<K, Par<V>>): Par<V> = { es: ExecutorService ->
+    chooser(key) { resolvedKey: K -> choices.getValue(resolvedKey) }(es)
+  }
+
+  fun <A, B> chooser(pa: Par<A>, choices: (A) -> Par<B>): Par<B> = { es: ExecutorService ->
+    choices(pa(es).get())(es)
+  }
+
+  fun <A, B> flatMap(pa: Par<A>, f: (A) -> Par<B>): Par<B> = TODO()
+
   fun <A> delay(pa: () -> Par<A>): Par<A> = { es -> pa()(es) }
 }
 
