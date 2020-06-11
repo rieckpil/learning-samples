@@ -101,9 +101,14 @@ object Pars {
     choices(pa(es).get())(es)
   }
 
-  fun <A, B> flatMap(pa: Par<A>, f: (A) -> Par<B>): Par<B> = TODO()
+  fun <A, B> flatMap(pa: Par<A>, f: (A) -> Par<B>): Par<B> = join(map(pa, f))
+
+  fun <A> join(a: Par<Par<A>>): Par<A> = { es: ExecutorService ->
+    a(es).get().invoke(es)
+  }
 
   fun <A> delay(pa: () -> Par<A>): Par<A> = { es -> pa()(es) }
+
 }
 
 data class TimedMap2Future<A, B, C>(
