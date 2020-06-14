@@ -42,7 +42,9 @@ object Pars {
 
   fun <A> lazyUnit(a: () -> A): Par<A> = fork { unit(a()) }
 
-  fun <A, B> asyncF(f: (A) -> B): (A) -> Par<B> = { a: A -> lazyUnit { f(a) } }
+  fun <A, B> asyncF(f: (A) -> B): (A) -> Par<B> = {
+    a: A -> lazyUnit { f(a) }
+  }
 
   fun sortPar(parList: Par<List<Int>>): Par<List<Int>> = map(parList) { it.sorted() }
 
