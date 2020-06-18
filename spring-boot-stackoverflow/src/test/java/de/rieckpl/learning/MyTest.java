@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class MyTest {
 
@@ -16,11 +17,10 @@ public class MyTest {
     System.out.println(input + " " + index);
   }
 
-  static List<Arguments> methodSource() {
+  static Stream<Arguments> methodSource() {
     List<String> params = List.of("a", "b", "c");
 
     return IntStream.range(0, params.size())
-      .mapToObj(index -> Arguments.arguments(params.get(index), index))
-      .collect(Collectors.toList());
+      .mapToObj(index -> Arguments.arguments(params.get(index), index));
   }
 }

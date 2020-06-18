@@ -1,20 +1,26 @@
 package de.rieckpl.learning;
 
-import org.junit.ClassRule;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.engine.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.client.AutoConfigureWebClient;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.testcontainers.containers.GenericContainer;
-
-import java.time.Duration;
+import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.junit.jupiter.Container;
 
 @SpringBootTest
-public class SomeIntegrationTest {
+public class SomeIT {
+
+  public static GenericContainer postgreSQLContainer = new PostgreSQLContainer().
+    withReuse(true);
+
+  @BeforeAll
+  public static void beforeAll() {
+    postgreSQLContainer.start();
+  }
 
   @TestConfiguration
   static class Config {
