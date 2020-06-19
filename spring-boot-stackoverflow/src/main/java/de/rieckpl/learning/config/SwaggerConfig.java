@@ -1,4 +1,4 @@
-package de.rieckpl.learning;
+package de.rieckpl.learning.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

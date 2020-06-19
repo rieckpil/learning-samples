@@ -1,4 +1,4 @@
-package de.rieckpl.learning;
+package de.rieckpl.learning.config;
 
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.web.server.SecurityWebFilterChain;
