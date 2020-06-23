@@ -18,7 +18,18 @@
     <mockito.version>3.1.0</mockito.version>
     <java.version>11</java.version>
     <testcontainers.version>1.14.3</testcontainers.version>
+    <okhttp3.version>4.7.2</okhttp3.version>
   </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.jetbrains</groupId>
+        <artifactId>annotations</artifactId>
+        <version>19.0.0</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <dependencies>
     <dependency>
@@ -48,6 +59,13 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-websocket</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.squareup.okhttp3</groupId>
+      <artifactId>mockwebserver</artifactId>
+      <version>4.7.2</version>
+      <scope>test</scope>
     </dependency>
 
     <dependency>
