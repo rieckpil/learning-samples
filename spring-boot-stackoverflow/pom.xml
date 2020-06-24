@@ -19,6 +19,7 @@
     <java.version>11</java.version>
     <testcontainers.version>1.14.3</testcontainers.version>
     <okhttp3.version>4.7.2</okhttp3.version>
+    <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
   </properties>
 
   <dependencyManagement>
@@ -28,9 +29,15 @@
         <artifactId>annotations</artifactId>
         <version>19.0.0</version>
       </dependency>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring-cloud.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
     </dependencies>
   </dependencyManagement>
-
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -60,7 +67,10 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-websocket</artifactId>
     </dependency>
-
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-aws</artifactId>
+    </dependency>
     <dependency>
       <groupId>com.squareup.okhttp3</groupId>
       <artifactId>mockwebserver</artifactId>
@@ -98,6 +108,12 @@
     <dependency>
       <groupId>org.testcontainers</groupId>
       <artifactId>testcontainers</artifactId>
+      <version>${testcontainers.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.testcontainers</groupId>
+      <artifactId>localstack</artifactId>
       <version>${testcontainers.version}</version>
       <scope>test</scope>
     </dependency>
