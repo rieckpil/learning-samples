@@ -3,7 +3,23 @@
 <head>
   <title>Order Application</title>
 </head>
-<body>
+<body ng-init="name='Duke'; loggedIn='true'">
+<h1>Hello World!</h1>
+<div ng-switch on="loggedIn">
+  <div ng-switch-when="true" ng-class="'navy'">
+    true
+  </div>
+  <div ng-switch-default ng-class="'red'">
+    default
+  </div>
+</div>
 
+<div ng-cloak ng-hide="isHidden">
+  Name: <input type="text" ng-model="name"/> {{name}}
+</div>
+Hide: <input type="checkbox" ng-model="isHidden">
+<span ng-bind="name"></span>
+<br/>
+<button ng-click="name='Foo'; loggedIn=!loggedIn">Change name</button>
 </body>
 </html>
