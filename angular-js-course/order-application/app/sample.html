@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="order-app">
+<head>
+  <title>Order Application</title>
+</head>
+<body
+  ng-init="name='Duke'; loggedIn='true';names=['Duke', 'John'];customers=[{name: 'Duke', orderTotal: 42.5},{name: 'Marry', orderTotal: 22.5},{name: 'Andre', orderTotal: 12.5}]">
+<h1>Hello World!</h1>
+<div ng-switch on="loggedIn">
+  <div ng-switch-when="true" ng-class="'navy'">
+    true
+  </div>
+  <div ng-switch-default ng-class="'red'">
+    default
+  </div>
+</div>
+<ul>
+  <li ng-repeat="n in names">{{n}}</li>
+</ul>
+<ul>
+  <li ng-repeat="customer in customers | limitTo:2 | orderBy:'name'">{{customer.name}}: {{customer.orderTotal | currency}}</li>
+</ul>
+
+<div ng-cloak ng-hide="isHidden">
+  Name: <input type="text" ng-model="name"/> {{name}}
+</div>
+Hide: <input type="checkbox" ng-model="isHidden">
+<span ng-bind="name"></span>
+<br/>
+<button ng-click="name='Foo'; loggedIn=!loggedIn">Change name</button>
+</body>
+</html>
