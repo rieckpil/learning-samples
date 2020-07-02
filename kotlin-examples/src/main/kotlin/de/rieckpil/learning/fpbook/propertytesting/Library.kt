@@ -1,8 +1,37 @@
 package de.rieckpil.learning.fpbook.propertytesting
 
 import de.rieckpil.learning.fpbook.either.Either
+import kotlin.math.absoluteValue
 
-data class Gen<A>(val sample: State<RNG, A>)
+data class Gen<A>(val sample: State<RNG, A>) {
+  companion object {
+    fun <A> listOfN(gn: Gen<Int>, ga: Gen<A>): Gen<List<A>> =
+      gn.flatMap { n -> listOfN(n, ga) }
+
+    fun <A> union(ga: Gen<A>, gb: Gen<A>): Gen<A> =
+      boolean().flatMap { if (it) ga else gb }
+
+    fun <A> weighted(
+      pga: Pair<Gen<A>, Double>,
+      pgb: Pair<Gen<A>, Double>
+    ): Gen<A> {
+      val weightA = pga.second
+      val weightB = pgb.second
+
+      val genA = pga.first
+      val genB = pgb.first
+
+      val prob = weightA.absoluteValue / (weightA.absoluteValue + weightB.absoluteValue)
+      return Gen(State { rng: RNG -> double(rng) })
+        .flatMap { d ->
+          if (d < prob) genA else genB
+        }
+    }
+  }
+
+  fun <B> flatMap(f: (A) -> Gen<B>): Gen<B> =
+    Gen(this.sample.flatMap { a -> f(a).sample })
+}
 
 typealias SuccessCount = Int
 typealias FailedCase = String
