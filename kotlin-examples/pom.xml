@@ -16,6 +16,7 @@
     <assertj.version>3.14.0</assertj.version>
     <mockk.version>1.9.3</mockk.version>
     <arrow.version>0.10.4</arrow.version>
+    <kotest.version>4.1.1</kotest.version>
   </properties>
 
   <dependencies>
@@ -77,6 +78,12 @@
       <artifactId>mockk</artifactId>
       <version>${mockk.version}</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.kotest</groupId>
+      <artifactId>kotest-runner-junit5</artifactId>
+      <version>${kotest.version}</version>
+      <type>pom</type>
     </dependency>
   </dependencies>
 
