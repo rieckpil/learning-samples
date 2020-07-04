@@ -14,8 +14,8 @@ import org.testcontainers.junit.jupiter.Container;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class SomeIT {
 
-  public static GenericContainer postgreSQLContainer = new PostgreSQLContainer().
-    withReuse(true);
+  public static GenericContainer postgreSQLContainer = new PostgreSQLContainer()
+    .withReuse(true);
 
   @BeforeAll
   public static void beforeAll() {
