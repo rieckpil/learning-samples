@@ -42,7 +42,7 @@ interface Prop {
 }
 
 fun choose(start: Int, stopExclusive: Int): Gen<Int> = Gen(State { rng: RNG -> nonNegativeInt(rng) }
-  .map { start + (it % (stopExclusive - start)) })
+  .map {it % (stopExclusive - start) + start })
 
 fun <A> unit(a: A): Gen<A> = Gen(State.unit(a))
 
