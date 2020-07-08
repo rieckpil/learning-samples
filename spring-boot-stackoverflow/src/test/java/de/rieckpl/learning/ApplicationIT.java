@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
 @ContextConfiguration(initializers = MongoDbDataInitializer.class)
-class SpringBootStackoverflowApplicationTests {
+class ApplicationIT {
 
   @Autowired
   private Environment environment;

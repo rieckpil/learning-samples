@@ -159,12 +159,7 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.0.0-M5</version>
         <configuration>
-          <properties>
-            <configurationParameters>
-              junit.platform.output.capture.stdout=true
-              junit.platform.output.capture.stderr=true
-            </configurationParameters>
-          </properties>
+          <redirectTestOutputToFile>true</redirectTestOutputToFile>
         </configuration>
       </plugin>
       <plugin>
