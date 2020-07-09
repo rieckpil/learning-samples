@@ -20,6 +20,8 @@
     <testcontainers.version>1.14.3</testcontainers.version>
     <okhttp3.version>4.7.2</okhttp3.version>
     <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
+    <selenium.version>3.141.59</selenium.version>
+    <selenide.version>5.12.2</selenide.version>
   </properties>
 
   <dependencyManagement>
@@ -144,6 +146,18 @@
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>${selenium.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.codeborne</groupId>
+      <artifactId>selenide</artifactId>
+      <version>${selenide.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
