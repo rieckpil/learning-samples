@@ -3,6 +3,6 @@
 Steps to run this project:
 
 1. Start your Docker daemon
-2. Execute `./buildAndRun.sh` (Linux/MacOs) or `buildAndRun.bat` (Windows)
-3. Wait until Open Liberty is up- and running (e.g. use `docker logs -f CONTAINER_ID`)
-4. Visit http://localhost:8080/resources/sample
+2. Start a PostgreSQL database `docker run --name some-postgres -e POSTGRES_PASSWORD=duke -p 5432:5432  postgres`
+3. Execute `./buildAndRun.sh` (Linux/MacOs) or `buildAndRun.bat` (Windows)
+4. Check logs with `docker logs -f CONTAINER_ID`
