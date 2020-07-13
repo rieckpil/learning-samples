@@ -13,7 +13,7 @@ public class GreetingController {
   @SendTo("/topic/greetings")
   public String greeting(String message) {
     System.out.println(message);
-    System.out.println(SecurityContextHolder.getContext().getAuthentication());
+    System.out.println("Authentication: " + SecurityContextHolder.getContext().getAuthentication());
 
     if (SecurityContextHolder.getContext().getAuthentication() != null) {
       System.out.println(SecurityContextHolder.getContext().getAuthentication().isAuthenticated());

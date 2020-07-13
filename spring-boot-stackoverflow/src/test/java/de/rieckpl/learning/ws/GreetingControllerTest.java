@@ -10,16 +10,18 @@ import org.springframework.messaging.simp.stomp.StompHeaders;
 import org.springframework.messaging.simp.stomp.StompSession;
 import org.springframework.messaging.simp.stomp.StompSessionHandlerAdapter;
 import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.web.socket.client.WebSocketClient;
 import org.springframework.web.socket.client.standard.StandardWebSocketClient;
 import org.springframework.web.socket.messaging.WebSocketStompClient;
 
 import java.lang.reflect.Type;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
@@ -27,6 +29,8 @@ class GreetingControllerTest {
 
   @LocalServerPort
   private Integer port;
+
+  private BlockingQueue<String> blockingQueue = new ArrayBlockingQueue(1);
 
   @Test
   @WithMockUser(username = "duke")
@@ -50,11 +54,15 @@ class GreetingControllerTest {
 
       @Override
       public void handleFrame(StompHeaders headers, Object payload) {
+        blockingQueue.add(payload.toString());
         System.out.println("Response: " + payload);
       }
     });
 
     session.send("/app/hello", "Mike");
+
+    Object payload = blockingQueue.poll(1, SECONDS);
+    assertEquals("Hello, Mike!", payload);
   }
 
   private String getWsPath() {
