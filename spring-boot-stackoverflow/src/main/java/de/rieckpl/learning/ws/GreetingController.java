@@ -22,4 +22,12 @@ public class GreetingController {
     return "Hello, " + HtmlUtils.htmlEscape(message) + "!";
   }
 
+  @MessageMapping("/object")
+  @SendTo("/topic/objects")
+  public WsMessage greetingObject(WsMessage message) {
+    WsMessage result = new WsMessage();
+    result.setMessage(message.getMessage().toUpperCase());
+    return result;
+  }
+
 }
