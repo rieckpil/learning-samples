@@ -70,7 +70,7 @@ class PublicControllerIT {
     MockMultipartFile filePart = new MockMultipartFile(
       "file", "file.jpg", "image/jpeg", file);
 
-    MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.fileUpload("/api/loadfile")
+    MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.multipart("/api/loadfile")
       .file(filePart)
       .param("json", "json"))
       .andExpect(status().isOk())
