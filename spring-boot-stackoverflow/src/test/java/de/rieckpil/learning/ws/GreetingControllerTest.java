@@ -62,14 +62,14 @@ class GreetingControllerTest {
 
       @Override
       public void handleFrame(StompHeaders headers, Object payload) {
-        blockingQueue.offer(payload.toString());
+        blockingQueue.offer((String) payload);
         System.out.println("Response: " + payload);
       }
     });
 
     session.send("/app/hello", "Mike");
 
-    Object payload = blockingQueue.poll(1, SECONDS);
+    String payload = blockingQueue.poll(1, SECONDS);
     assertEquals("Hello, Mike!", payload);
   }
 
