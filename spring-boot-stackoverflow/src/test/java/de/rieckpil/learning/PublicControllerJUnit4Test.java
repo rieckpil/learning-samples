@@ -44,6 +44,9 @@ public class PublicControllerJUnit4Test {
   public void testMe() throws Exception {
     this.mockMvc
       .perform(get("/public"))
+      //.with(SecurityMockMvcRequestPostProcessors.jwt()))
+      //.jwt(YOUR_JWT_HERE) // also optional
+      //.authorities(new SimpleGrantedAuthority("ROLE_ADMIN")))) // also optional
       .andExpect(status().isOk());
   }
 
