@@ -1,5 +1,5 @@
 <configuration>
-  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+  <appender name="${APPENDER_NAME:-mike}" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <layout class="ch.qos.logback.classic.PatternLayout">
       <Pattern>
         %d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n
