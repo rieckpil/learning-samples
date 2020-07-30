@@ -7,6 +7,9 @@ module.exports = {
     path: __dirname + '/dist/app/',
     filename: '[hash].bundle.js'
   },
+  resolve: {
+    extensions: ['.js']
+  },
   devtool: 'source-map',
   module: {
     rules: [
@@ -33,7 +36,14 @@ module.exports = {
       },
       {
         test: /\.html/,
-        use: 'html-loader'
+        use: [
+          {
+            loader: 'html-loader',
+            options: {
+              minimize: true,
+            },
+          },
+        ],
       }
     ]
   },
@@ -41,6 +51,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './app/index.html',
       filename: 'index.html',
+      favicon: "./app/public/favicon.ico",
       inject: 'head'
     })
   ],

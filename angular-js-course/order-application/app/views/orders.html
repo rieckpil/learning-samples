@@ -1,0 +1,17 @@
+<h2>Orders</h2>
+<p>You'll see orders here</p>
+<table>
+  <thead>
+  <tr>
+    <th>Product</th>
+    <th>Total</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="order in orders">
+      <td>{{ order.product }}</td>
+      <td>{{ order.total | currency }}</td>
+    </tr>
+  </tbody>
+</table>
+<a href="/#/">Go back</a>

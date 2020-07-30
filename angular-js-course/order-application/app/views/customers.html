@@ -1,0 +1,26 @@
+<h2>Customers</h2>
+Filter: <input type="text" ng-model="customerFilter.name"/>
+<br/>
+<table>
+  <thead>
+  <tr>
+    <th ng-click="doSort('name')">Name</th>
+    <th ng-click="doSort('city')">City</th>
+    <th ng-click="doSort('orderTotal')">Order Total</th>
+    <th ng-click="doSort('joined')">Joined</th>
+    <th>&nbsp;</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="customer in customers | filter:customerFilter | orderBy:sortBy:reverse">
+    <td>{{ customer.name }}</td>
+    <td>{{ customer.city }}</td>
+    <td>{{ customer.orderTotal | currency }}</td>
+    <td>{{ customer.joined | date }}</td>
+    <td><a href="/#/orders/{{ customer.id }}">View Orders</a></td>
+  </tr>
+  </tbody>
+  <br/>
+</table>
+<br/>
+<span>Total customers: {{ customers.length }}</span>
