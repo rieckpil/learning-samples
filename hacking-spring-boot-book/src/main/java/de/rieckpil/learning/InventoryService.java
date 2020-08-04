@@ -14,14 +14,11 @@ import static org.springframework.data.mongodb.core.query.Query.query;
 class InventoryService {
 
   private ItemRepository repository;
-  private ItemByExampleRepository exampleRepository;
   private ReactiveFluentMongoOperations fluentOperations;
 
   InventoryService(ItemRepository repository,
-                   ItemByExampleRepository exampleRepository,
                    ReactiveFluentMongoOperations fluentOperations) {
     this.repository = repository;
-    this.exampleRepository = exampleRepository;
     this.fluentOperations = fluentOperations;
   }
 
@@ -64,7 +61,7 @@ class InventoryService {
 
     Example<Item> probe = Example.of(item, matcher);
 
-    return exampleRepository.findAll(probe);
+    return repository.findAll(probe);
   }
 
   Flux<Item> searchByFluentExample(String name, String description) {
