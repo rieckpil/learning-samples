@@ -5,6 +5,7 @@ import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.mongodb.core.ReactiveFluentMongoOperations;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import static org.springframework.data.mongodb.core.query.Criteria.byExample;
 import static org.springframework.data.mongodb.core.query.Criteria.where;
@@ -13,12 +14,14 @@ import static org.springframework.data.mongodb.core.query.Query.query;
 @Service
 class InventoryService {
 
-  private ItemRepository repository;
-  private ReactiveFluentMongoOperations fluentOperations;
+  private final ItemRepository itemRepository;
+  private final CartRepository cartRepository;
+  private final ReactiveFluentMongoOperations fluentOperations;
 
-  InventoryService(ItemRepository repository,
-                   ReactiveFluentMongoOperations fluentOperations) {
-    this.repository = repository;
+  InventoryService(ItemRepository itemRepository,
+                   CartRepository cartRepository, ReactiveFluentMongoOperations fluentOperations) {
+    this.itemRepository = itemRepository;
+    this.cartRepository = cartRepository;
     this.fluentOperations = fluentOperations;
   }
 
@@ -30,21 +33,21 @@ class InventoryService {
     if (partialName != null) {
       if (partialDescription != null) {
         if (useAnd) {
-          return repository //
+          return itemRepository //
             .findByNameContainingAndDescriptionContainingAllIgnoreCase( //
               partialName, partialDescription);
         } else {
-          return repository.findByNameContainingOrDescriptionContainingAllIgnoreCase( //
+          return itemRepository.findByNameContainingOrDescriptionContainingAllIgnoreCase( //
             partialName, partialDescription);
         }
       } else {
-        return repository.findByNameContaining(partialName);
+        return itemRepository.findByNameContaining(partialName);
       }
     } else {
       if (partialDescription != null) {
-        return repository.findByDescriptionContainingIgnoreCase(partialDescription);
+        return itemRepository.findByDescriptionContainingIgnoreCase(partialDescription);
       } else {
-        return repository.findAll();
+        return itemRepository.findAll();
       }
     }
   }
@@ -61,7 +64,7 @@ class InventoryService {
 
     Example<Item> probe = Example.of(item, matcher);
 
-    return repository.findAll(probe);
+    return itemRepository.findAll(probe);
   }
 
   Flux<Item> searchByFluentExample(String name, String description) {
@@ -83,6 +86,27 @@ class InventoryService {
     return fluentOperations.query(Item.class)
       .matching(query(byExample(Example.of(item, matcher))))
       .all();
+  }
+
+  public Mono<Cart> addItemToCart(String cartId, String itemId) {
+    return this.cartRepository.findById(cartId)
+      .defaultIfEmpty(new Cart(cartId)) //
+      .flatMap(cart -> cart.getCartItems().stream()
+        .filter(cartItem -> cartItem.getItem().getId().equals(itemId))
+        .findAny() //
+        .map(cartItem -> {
+          cartItem.increment();
+          return Mono.just(cart);
+        }) //
+        .orElseGet(() -> {
+          return this.itemRepository.findById(itemId) //
+            .map(item -> new CartItem(item)) //
+            .map(cartItem -> {
+              cart.getCartItems().add(cartItem);
+              return cart;
+            });
+        }))
+      .flatMap(cart -> this.cartRepository.save(cart));
   }
 
 }

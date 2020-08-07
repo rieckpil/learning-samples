@@ -17,6 +17,7 @@
 
   <properties>
     <java.version>14</java.version>
+    <blockhound.version>1.0.4.RELEASE</blockhound.version>
   </properties>
 
   <dependencies>
@@ -41,6 +42,12 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-webflux</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>io.projectreactor.tools</groupId>
+      <artifactId>blockhound</artifactId>
+      <version>${blockhound.version}</version>
     </dependency>
 
     <dependency>
