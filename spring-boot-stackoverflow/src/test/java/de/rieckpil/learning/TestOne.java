@@ -1,25 +1,27 @@
 package de.rieckpil.learning;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.context.annotation.Bean;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
-@ExtendWith(PropertyExtension.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = SpringBootStackoverflowApplication.class)
+@SpringBootTest(webEnvironment = RANDOM_PORT)
 public class TestOne {
 
-  @BeforeAll
-  public static void beforeAll() {
-    System.out.println("Before All");
-  }
+  @TestConfiguration
+  static class TestConfig {
 
-  static {
-    System.out.println("Static code access");
+    @Bean
+    public RestTemplateBuilder restTemplateBuilder() {
+      return new RestTemplateBuilder().interceptors(new UrlRewriter());
+    }
+
   }
 
   @Autowired
@@ -28,5 +30,7 @@ public class TestOne {
   @Test
   public void test() {
     assertNotNull(testRestTemplate);
+
+    testRestTemplate.getForObject("/public", String.class);
   }
 }
