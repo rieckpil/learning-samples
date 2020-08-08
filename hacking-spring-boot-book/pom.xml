@@ -41,6 +41,11 @@
 
     <dependency>
       <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-webflux</artifactId>
     </dependency>
 
@@ -48,6 +53,12 @@
       <groupId>io.projectreactor.tools</groupId>
       <artifactId>blockhound</artifactId>
       <version>${blockhound.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.projectreactor.tools</groupId>
+      <artifactId>blockhound-junit-platform</artifactId>
+      <version>${blockhound.version}</version>
+      <scope>test</scope>
     </dependency>
 
     <dependency>
@@ -80,6 +91,10 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>pl.project13.maven</groupId>
+        <artifactId>git-commit-id-plugin</artifactId>
       </plugin>
     </plugins>
   </build>
