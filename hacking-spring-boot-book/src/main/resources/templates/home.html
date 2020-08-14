@@ -9,6 +9,19 @@
 
 <h2>Inventory Management</h2>
 <table>
+  <tr>
+    <td>Name:</td>
+    <td th:text="${auth.name}"></td>
+  </tr>
+  <tr>
+    <td>Authorities:</td>
+    <td th:text="${auth.authorities}"></td>
+  </tr>
+</table>
+<form action="/logout" method="post">
+  <input type="submit" value="Logout">
+</form>
+<table>
   <thead>
   <tr>
     <th>Id</th>

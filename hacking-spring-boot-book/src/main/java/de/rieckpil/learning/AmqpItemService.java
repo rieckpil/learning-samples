@@ -6,10 +6,12 @@ import org.springframework.amqp.rabbit.annotation.Exchange;
 import org.springframework.amqp.rabbit.annotation.Queue;
 import org.springframework.amqp.rabbit.annotation.QueueBinding;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 @Service
+@ConditionalOnProperty(value = "listener.enabled", havingValue = "true")
 public class AmqpItemService {
 
   private static final Logger LOG = LoggerFactory.getLogger(AmqpItemService.class);

@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.web.reactive.server.WebTestClient;
@@ -14,7 +15,7 @@ import reactor.test.StepVerifier;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest
+@SpringBootTest(properties = "listener.enabled=true")
 @Testcontainers
 @AutoConfigureWebTestClient
 public class RabbitMqTest {
@@ -35,6 +36,7 @@ public class RabbitMqTest {
   }
 
   @Test
+  @WithMockUser
   void test() throws InterruptedException {
     this.webTestClient.post().uri("/amqp/items")
       .bodyValue(new Item("Duke", "Bar", 19.99))

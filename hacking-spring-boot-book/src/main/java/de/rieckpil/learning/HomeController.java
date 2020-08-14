@@ -1,5 +1,6 @@
 package de.rieckpil.learning;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.result.view.Rendering;
@@ -20,10 +21,12 @@ public class HomeController {
   }
 
   @GetMapping
-  Mono<Rendering> home() {
+  Mono<Rendering> home(Authentication authentication) {
+    System.out.println(authentication);
     return Mono.just(Rendering.view("home.html")
       .modelAttribute("items", this.itemRepository.findAll().doOnNext(System.out::println))
       .modelAttribute("cart", this.cartRepository.findById("My Cart").defaultIfEmpty(new Cart("My Cart")))
+      .modelAttribute("auth", authentication)
       .build());
   }
 
