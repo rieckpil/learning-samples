@@ -13,11 +13,7 @@ import org.testcontainers.containers.PostgreSQLContainer;
 @SpringBootTest
 public class SecondIT {
 
-  public static GenericContainer postgreSQLContainer = new PostgreSQLContainer()
-    .withDatabaseName("test")
-    .withPassword("test")
-    .withUsername("test")
-    .withReuse(true);
+  public static PostgreSQLContainer postgreSQLContainer = new PostgreSQLContainer();
 
   @BeforeAll
   public static void beforeAll() {
