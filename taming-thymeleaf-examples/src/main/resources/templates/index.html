@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Taming Thymeleaf</title>
+  <link rel="stylesheet" th:href="@{/css/application.css}">
+</head>
+<body>
+<h1 th:text="${pageTitle}">Taming Thymeleaf</h1>
+<div th:text="|Sum of 2 + 2 = ${ 2 + 2 }|"></div>
+<div>
+  <ul>
+    <li th:each="scientist : ${scientists}">
+      <span th:text="${scientist}"></span>
+    </li>
+  </ul>
+</div>
+</body>
+</html>
