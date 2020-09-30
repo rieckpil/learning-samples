@@ -5,6 +5,7 @@ target/
 !**/src/test/**/target/
 
 node_modules
+node
 
 ### STS ###
 .apt_generated
