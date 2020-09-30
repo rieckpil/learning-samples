@@ -44,10 +44,14 @@ gulp.task('copy-js', () =>
     .pipe(gulp.dest('target/classes/'))
 );
 
+gulp.task('copy-svg', () => gulp.src(['src/main/resources/**/*.svg'])
+  .pipe(gulp.dest('target/classes/')));
+
+gulp.task('copy-svg-and-reload', gulp.series('copy-svg', reload));
 gulp.task('copy-html-and-reload', gulp.series('copy-html', reload));
 gulp.task('copy-css-and-reload', gulp.series('copy-css', reload));
 gulp.task('copy-js-and-reload', gulp.series('copy-js', reload));
-gulp.task('build', gulp.series('copy-html', 'copy-css', 'copy-js'));
+gulp.task('build', gulp.series('copy-html', 'copy-svg', 'copy-css', 'copy-js'));
 gulp.task('default', gulp.series('watch'));
 
 function reload(done) {
