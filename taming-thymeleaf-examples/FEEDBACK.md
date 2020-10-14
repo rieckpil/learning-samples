@@ -12,13 +12,12 @@
 - Trying to get the Tailwind Application Shell: https://tailwindui.com/components/application-ui/application-shells/sidebar redirects me to their pricing
 - Copying the whole template index.html (as I couldn't access Tailwind without paying them) is a little tedious. Maybe reduce the initial template and add stuff step-by-step
 
-# Feedback for Wim II
-
 + great refactoring effort and introduction to fragments
-- after JS refactoring part: Uncaught (in promise) ReferenceError: sidebarMenu is not defined (code examples lack the function sidebarMenu -> plain copy and paste failed)
 + full file name on top of each code example is extremely helpful
 
+- after JS refactoring part: Uncaught (in promise) ReferenceError: sidebarMenu is not defined (code examples lack the function sidebarMenu -> plain copy and paste failed)
 
+## Next Feedback (Chapter 7)
 
 # Questions
 
