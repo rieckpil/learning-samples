@@ -15,10 +15,11 @@
 # Feedback for Wim II
 
 + great refactoring effort and introduction to fragments
-- after JS refactoring: Uncaught (in promise) ReferenceError: sidebarMenu is not defined (code examples lack the func sidebarMenu -> plain copy and paste failed)
+- after JS refactoring part: Uncaught (in promise) ReferenceError: sidebarMenu is not defined (code examples lack the function sidebarMenu -> plain copy and paste failed)
++ full file name on top of each code example is extremely helpful
 
 
 
 # Questions
 
-- how to create the nice shortcuts with background
+- how to create the nice screenshots with background

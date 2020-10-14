@@ -19,5 +19,4 @@ public class RootController {
       "James Clerk Maxwell"));
     return "index";
   }
-
 }
