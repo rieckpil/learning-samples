@@ -19,6 +19,9 @@
 
 ## Next Feedback (Chapter 7)
 
+- wrong file name for User Thymeleaf view Page 99, it conains the UserController fully qualified class name
+- idea: short note on how to work with this book: Each chapter has first some intro (don't start copying here) and then we'll apply the knowledge -> you can now start copying
+
 # Questions
 
 - how to create the nice screenshots with background
