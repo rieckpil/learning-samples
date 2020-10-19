@@ -17,10 +17,13 @@
 
 - after JS refactoring part: Uncaught (in promise) ReferenceError: sidebarMenu is not defined (code examples lack the function sidebarMenu -> plain copy and paste failed)
 
-## Next Feedback (Chapter 7)
-
 - wrong file name for User Thymeleaf view Page 99, it conains the UserController fully qualified class name
 - idea: short note on how to work with this book: Each chapter has first some intro (don't start copying here) and then we'll apply the knowledge -> you can now start copying
+- short and concise chapter about i18n -> nice
+
+## Next Feedback (Chapter 7)
+
+
 
 # Questions
 
