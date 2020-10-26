@@ -20,11 +20,11 @@ class ServletInitializerTest {
   @Test
   public void testIt() {
     ServletInitializer servletInitializer = new ServletInitializer();
-    when(springApplicationBuilder.sources(SpringBootStackoverflowApplication.class)).thenReturn(springApplicationBuilder);
+    when(springApplicationBuilder.sources(Application.class)).thenReturn(springApplicationBuilder);
 
     SpringApplicationBuilder result = servletInitializer.configure(springApplicationBuilder);
 
-    verify(springApplicationBuilder).sources(SpringBootStackoverflowApplication.class);
+    verify(springApplicationBuilder).sources(Application.class);
     assertEquals(springApplicationBuilder,result);
   }
 

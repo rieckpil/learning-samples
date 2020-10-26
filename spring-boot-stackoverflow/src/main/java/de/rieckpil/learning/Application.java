@@ -8,10 +8,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @ServletComponentScan
 @EnableScheduling
 @SpringBootApplication
-public class SpringBootStackoverflowApplication {
+public class Application {
 
   public static void main(String[] args) {
-    SpringApplication.run(SpringBootStackoverflowApplication.class, args);
+    SpringApplication.run(Application.class, args);
   }
 
 }
