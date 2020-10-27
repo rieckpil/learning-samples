@@ -16,8 +16,4 @@ public class SomeService {
     return myInterface.getName();
   }
 
-  @Bean
-  public MyInterface myInterface() {
-    return () -> "Hello";
-  }
 }

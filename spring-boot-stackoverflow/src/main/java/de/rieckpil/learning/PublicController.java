@@ -1,11 +1,11 @@
 package de.rieckpil.learning;
 
 import io.micrometer.core.instrument.MeterRegistry;
-import io.micrometer.core.instrument.Tag;
 import io.micrometer.core.instrument.Tags;
 import org.springframework.core.env.Environment;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,6 +31,11 @@ public class PublicController {
   public String sayHello() {
     meterRegistry.counter("duke", Tags.of("enabled", String.valueOf(ThreadLocalRandom.current().nextBoolean()))).increment();
     return "Hello";
+  }
+
+  @PutMapping
+  public String sayHelloPut(String content) {
+    return content.toUpperCase();
   }
 
   @GetMapping("/data")
