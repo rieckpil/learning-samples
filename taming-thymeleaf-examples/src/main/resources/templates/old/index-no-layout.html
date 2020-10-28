@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      lang="en">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Taming Thymeleaf</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <link href="https://rsms.me/inter/inter.css" rel="stylesheet">
   <link rel="stylesheet" th:href="@{/css/application.css}">
 </head>
 <body>
-<div class="h-screen flex overflow-hidden bg-gray-100"
-     x-data="sidebarMenu()"
-     @keydown.window.escape="closeSidebar">
+<div @keydown.window.escape="closeSidebar"
+     class="h-screen flex overflow-hidden bg-gray-100"
+     x-data="sidebarMenu()">
 
   <div th:replace="fragments/sidebar-menu :: mobile"></div>
   <div th:replace="fragments/sidebar-menu :: desktop"></div>
@@ -35,7 +35,7 @@
     </main>
   </div>
 </div>
-<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.3.5/dist/alpine.js" defer></script>
+<script defer src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.3.5/dist/alpine.js"></script>
 <script th:src="@{/js/user-popup-menu.js}"></script>
 </body>
 </html>
