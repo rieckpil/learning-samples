@@ -21,8 +21,12 @@
 - idea: short note on how to work with this book: Each chapter has first some intro (don't start copying here) and then we'll apply the knowledge -> you can now start copying
 - short and concise chapter about i18n -> nice
 
-## Next Feedback (Chapter 7)
+## Next Feedback (Chapter 9)
 
+- more reasoning behind JPearl, why do we want the primary to be early-initialized
+- injecting the EM should also work with @Autowired -> maybe confusion for new devs
+- enrich "See the sources on GitHub for the full details of all classes. Note that we also added
+          Guava as a dependency (for the toString() implementation):" with an link to GitHub
 
 
 # Questions
