@@ -30,6 +30,9 @@
 - "The UserService currently only has a single method createUser with a single argument CreateUserParameters:" at this stage it already had two methods in the book
 - not sure what's going on but with postgres:12 I always got auth issues connection to db with password. Wasn't also able to do it via IDEA, postgres:11 works however. Did they change some auth mechanisms? The integration test with Testcontainers works however
 - not sure if that's missing/important but the book talks about the InMemoryUniqueIdGenerator class but does not show the @Bean definition (or I overlooked it). So once you say in the book, now start with local,init-db profiles, this bean is missing in the context
+- getFullName() is introducted between Chapter 9 and 10
+- page 148, the UserService interface now shows createUser and getUsers, but lacks the already mentioned and implemented getAllUsers method
+- nice sophisticated paging solution, I guess helpful for a lot of developers
 
 # Questions
 

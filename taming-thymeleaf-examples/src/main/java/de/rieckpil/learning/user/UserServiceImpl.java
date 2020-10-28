@@ -1,5 +1,6 @@
 package de.rieckpil.learning.user;
 
+import com.google.common.collect.ImmutableSet;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -24,4 +25,13 @@ public class UserServiceImpl implements UserService {
     return repository.save(user);
   }
 
+  @Override
+  public ImmutableSet<User> getAllUsers() {
+    return ImmutableSet.copyOf(repository.findAll());
+  }
+
+  @Override
+  public Page<User> getUsers(Pageable pageable) {
+    return repository.findAll(pageable);
+  }
 }
