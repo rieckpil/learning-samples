@@ -25,9 +25,11 @@
 
 - more reasoning behind JPearl, why do we want the primary to be early-initialized
 - injecting the EM should also work with @Autowired -> maybe confusion for new devs
-- enrich "See the sources on GitHub for the full details of all classes. Note that we also added
-          Guava as a dependency (for the toString() implementation):" with an link to GitHub
-
+- do I need a plugin for this .env to work? Tried it on Ubuntu Linux
+- you could enrich "See the sources on GitHub for the full details of all classes. Note that we also added Guava as a dependency (for the toString() implementation):" with an link to GitHub
+- "The UserService currently only has a single method createUser with a single argument CreateUserParameters:" at this stage it already had two methods in the book
+- not sure what's going on but with postgres:12 I always got auth issues connection to db with password. Wasn't also able to do it via IDEA, postgres:11 works however. Did they change some auth mechanisms? The integration test with Testcontainers works however
+- not sure if that's missing/important but the book talks about the InMemoryUniqueIdGenerator class but does not show the @Bean definition (or I overlooked it). So once you say in the book, now start with local,init-db profiles, this bean is missing in the context
 
 # Questions
 
