@@ -20,9 +20,6 @@
 - wrong file name for User Thymeleaf view Page 99, it conains the UserController fully qualified class name
 - idea: short note on how to work with this book: Each chapter has first some intro (don't start copying here) and then we'll apply the knowledge -> you can now start copying
 - short and concise chapter about i18n -> nice
-
-## Next Feedback (Chapter 9)
-
 - more reasoning behind JPearl, why do we want the primary to be early-initialized
 - injecting the EM should also work with @Autowired -> maybe confusion for new devs
 - do I need a plugin for this .env to work? Tried it on Ubuntu Linux
@@ -33,6 +30,10 @@
 - getFullName() is introducted between Chapter 9 and 10
 - page 148, the UserService interface now shows createUser and getUsers, but lacks the already mentioned and implemented getAllUsers method
 - nice sophisticated paging solution, I guess helpful for a lot of developers
+
+## Next Feedback (Chapter 11+)
+
+
 
 # Questions
 
