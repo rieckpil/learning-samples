@@ -44,7 +44,7 @@ class SomeServiceTest {
 
   @Test
   void test() {
-    SomeService someService = new SomeService(myInterface);
+    SomeService someService = new SomeService(myInterface, null);
     System.out.println(someService.doFoo());
   }
 
