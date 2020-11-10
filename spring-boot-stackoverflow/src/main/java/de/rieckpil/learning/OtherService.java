@@ -8,4 +8,8 @@ public class OtherService {
   public String doFoo() {
     return "foo";
   }
+
+  public String doBar(String a, String b) {
+    return a + b;
+  }
 }
