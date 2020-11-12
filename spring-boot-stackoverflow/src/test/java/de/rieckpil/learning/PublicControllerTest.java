@@ -17,7 +17,7 @@ import static org.mockito.Mockito.mock;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(PublicController.class)
+@WebMvcTest(controllers = PublicController.class)
 @Import(PublicControllerTest.TestConfig.class)
 class PublicControllerTest {
 
