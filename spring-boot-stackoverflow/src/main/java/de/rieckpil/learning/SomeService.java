@@ -1,7 +1,11 @@
 package de.rieckpil.learning;
 
+import kong.unirest.HttpResponse;
+import kong.unirest.JsonNode;
+import kong.unirest.Unirest;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.stereotype.Component;
+
 
 @Component
 public class SomeService {
@@ -19,6 +23,18 @@ public class SomeService {
     taskExecutor.execute(new MyRunnable(myInterface));
 
     return myInterface.getName();
+  }
+
+  public String doRequest() {
+    HttpResponse<JsonNode> response = Unirest
+      .post("http://httpbin.org/post")
+      .header("accept", "application/json")
+      .queryString("apiKey", "123")
+      .field("parameter", "value")
+      .field("firstname", "Gary")
+      .asJson();
+
+    return response.getStatusText();
   }
 
 }
