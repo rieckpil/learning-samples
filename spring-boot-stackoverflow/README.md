@@ -6,4 +6,5 @@ java -jar junit-platform-console-standalone-1.6.2.jar --class-path 'target/test-
 
 # Stats
 
-- 11.10.2020: 504
+- 11.11.2020: 504
+- 16.11.2020: 505
