@@ -6,6 +6,8 @@ import kong.unirest.Unirest;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 
 @Component
 public class SomeService {
@@ -35,6 +37,11 @@ public class SomeService {
       .asJson();
 
     return response.getStatusText();
+  }
+
+  public void doBar() {
+    System.out.println(LocalDateTime.now());
+    System.out.println(LocalDateTime.of(2020, 12, 31, 12, 0));
   }
 
 }
