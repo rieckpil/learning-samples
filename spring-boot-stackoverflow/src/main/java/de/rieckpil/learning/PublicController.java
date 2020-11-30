@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.persistence.EntityManager;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -28,7 +30,10 @@ public class PublicController {
   }
 
   @GetMapping
-  public String sayHello() {
+  public String sayHello(HttpServletRequest request, HttpServletResponse response) {
+    request.getHeaderNames().asIterator().forEachRemaining(System.out::println);
+    System.out.println(request.getMethod());
+    System.out.println(response.toString());
     meterRegistry.counter("duke", Tags.of("enabled", String.valueOf(ThreadLocalRandom.current().nextBoolean()))).increment();
     return "Hello";
   }

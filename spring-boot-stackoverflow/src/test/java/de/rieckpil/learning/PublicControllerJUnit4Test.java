@@ -17,7 +17,7 @@ import static org.mockito.Mockito.mock;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest
+@WebMvcTest(PublicController.class)
 @RunWith(SpringJUnit4ClassRunner.class)
 // @RunWith(SpringRunner.class)
 public class PublicControllerJUnit4Test {
@@ -43,7 +43,7 @@ public class PublicControllerJUnit4Test {
   @Test
   public void testMe() throws Exception {
     this.mockMvc
-      .perform(get("/public"))
+      .perform(get("/public").header("X-Foo", "bar"))
       //.with(SecurityMockMvcRequestPostProcessors.jwt()))
       //.jwt(YOUR_JWT_HERE) // also optional
       //.authorities(new SimpleGrantedAuthority("ROLE_ADMIN")))) // also optional
