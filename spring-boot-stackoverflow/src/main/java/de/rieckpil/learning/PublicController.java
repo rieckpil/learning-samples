@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
@@ -19,13 +18,11 @@ import java.util.concurrent.ThreadLocalRandom;
 @RequestMapping("/public")
 public class PublicController {
 
-  private final EntityManager entityManager;
-  private final Environment environment;
+  private final UserService userService;
   private final MeterRegistry meterRegistry;
 
-  public PublicController(EntityManager entityManager, Environment environment, MeterRegistry meterRegistry) {
-    this.entityManager = entityManager;
-    this.environment = environment;
+  public PublicController(UserService userService, MeterRegistry meterRegistry) {
+    this.userService = userService;
     this.meterRegistry = meterRegistry;
   }
 
@@ -46,7 +43,7 @@ public class PublicController {
   @GetMapping("/data")
   public Object returnFoo(Model model) {
 
-    String envValue = environment.getProperty("debug");
+    String envValue = "duke53";
     boolean isDebugMode = (envValue != null && !envValue.equals("false"));
     model.addAttribute("DEBUG", isDebugMode);
 

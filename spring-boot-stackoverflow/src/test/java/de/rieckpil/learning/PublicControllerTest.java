@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.security.test.context.support.WithMockUser;
@@ -17,27 +18,18 @@ import static org.mockito.Mockito.mock;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(controllers = PublicController.class)
-@Import(PublicControllerTest.TestConfig.class)
+@WebMvcTest(PublicController.class)
+@Import(DefaultRegistryConfig.class)
 class PublicControllerTest {
 
   @Autowired
   private MockMvc mockMvc;
 
-  @TestConfiguration
-  static class TestConfig {
+  @Autowired
+  private MeterRegistry meterRegistry;
 
-    @Bean
-    public EntityManager entityManager() {
-      return mock(EntityManager.class);
-    }
-
-    @Bean
-    public MeterRegistry meterRegistry() {
-      return new SimpleMeterRegistry();
-    }
-
-  }
+  @MockBean
+  private UserService userService;
 
   @Test
   public void testMe() throws Exception {

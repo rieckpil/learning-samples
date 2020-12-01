@@ -8,8 +8,6 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
-
-@Component
 public class SomeService {
 
   private final TaskExecutor taskExecutor;
