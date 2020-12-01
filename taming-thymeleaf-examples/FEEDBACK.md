@@ -33,7 +33,12 @@
 
 ## Next Feedback (Chapter 11+)
 
-
+- maybe add path to `edit.html`
+- maybe short note to add new messages for the form
+- adding the @NotExistingUser on top of the form data class is missing, however it comes in the next chapter about validator groups
+- awesome features with the validation groups I wasn't aware of yet, saves DB load in this example
+- reasoning why the birthday is not in any group? Is the intention to demo the Default validation group?
+- site 165 shows `@NotNull` on the `phoneNumber`, but the sources for chapter use `@NotBlank` -> with `@NotNull` no valid error message is shown for me for the phoneNumber and I was getting crazy what's the difference because I couldn't find any in the template :D
 
 # Questions
 
