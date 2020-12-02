@@ -49,7 +49,7 @@ class PublicControllerTest {
   @WithMockUser("duke")
   public void testDataSuccess() throws Exception {
     this.mockMvc
-      .perform(get("/public/data"))
-      .andExpect(status().isOk());
+      .perform(get("/public/data?q={query}&sort={desc}", "duke", "desc"))
+      .andExpect(status().isForbidden());
   }
 }

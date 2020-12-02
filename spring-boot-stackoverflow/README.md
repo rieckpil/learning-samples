@@ -12,3 +12,4 @@ java -jar junit-platform-console-standalone-1.6.2.jar --class-path 'target/test-
 - 22.11.2020: 514
 - 26.11.2020: 520
 - 30.11.2020: 524
+- 02.12.2020: 526

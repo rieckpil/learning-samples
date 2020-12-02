@@ -43,7 +43,7 @@ public class PublicControllerJUnit4Test {
   @Test
   public void testMe() throws Exception {
     this.mockMvc
-      .perform(get("/public").header("X-Foo", "bar"))
+      .perform(get("/public?q={a}", "duke").header("X-Foo", "bar"))
       //.with(SecurityMockMvcRequestPostProcessors.jwt()))
       //.jwt(YOUR_JWT_HERE) // also optional
       //.authorities(new SimpleGrantedAuthority("ROLE_ADMIN")))) // also optional
