@@ -62,4 +62,9 @@ public class UserServiceImpl implements UserService {
   public Optional<User> getUser(UserId userId) {
     return repository.findById(userId);
   }
+
+  @Override
+  public void deleteUser(UserId userId) {
+    repository.deleteById(userId);
+  }
 }

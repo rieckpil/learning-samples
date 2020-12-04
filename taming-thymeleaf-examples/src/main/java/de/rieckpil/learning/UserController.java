@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -79,6 +80,16 @@ public class UserController {
 
     service.editUser(userId, formData.toParameters());
 
+    return "redirect:/users";
+  }
+
+  @PostMapping("/{id}/delete")
+  public String doDeleteUser(@PathVariable("id") UserId userId, RedirectAttributes redirectAttributes) {
+    User user = service.getUser(userId).orElseThrow(() -> new UserNotFoundException(userId));
+
+    service.deleteUser(userId);
+
+    redirectAttributes.addFlashAttribute("deletedUserName", user.getUserName().getFullName());
     return "redirect:/users";
   }
 }
