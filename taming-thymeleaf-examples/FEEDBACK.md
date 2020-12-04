@@ -30,11 +30,8 @@
 - getFullName() is introducted between Chapter 9 and 10
 - page 148, the UserService interface now shows createUser and getUsers, but lacks the already mentioned and implemented getAllUsers method
 - nice sophisticated paging solution, I guess helpful for a lot of developers
-
-## Next Feedback (Chapter 11+)
-
-- maybe add path to `edit.html`
-- maybe short note to add new messages for the form
+- Used PDF version: 2020-11-27.pdf
+- maybe add the full-path to edit.html that the reader knows it's inside the users folder
 - adding the @NotExistingUser on top of the form data class is missing, however it comes in the next chapter about validator groups
 - awesome features with the validation groups I wasn't aware of yet, saves DB load in this example
 - reasoning why the birthday is not in any group? Is the intention to demo the Default validation group?
@@ -49,6 +46,8 @@
 - page 207: @Validated(CreateUserValidationGroupSequence.class), should be still @Validated(ValidationGroupSequence.class) at this point in the book
 - really nice error pages, with the general shell layout of the application this looks really sophisticated
 - the delete modal markup code is quite big, not sure if it's worth to explain it with more babysteps or e.g. remove the CSS classes from the book source code for a better reading experience
+
+## Next Feedback (Chapter 14+)
 
 # Questions
 
