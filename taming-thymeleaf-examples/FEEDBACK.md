@@ -47,7 +47,7 @@
 - idea: any external JS + CSS as WebJars? Helps at least me while reading the book in train without internet connection :D
 - whenever you say "Add this to the template", it's not clear where exactly to add it sometimes also id does not matter much where. I know that I can easily look this up but still a short hint would be nice to switch constantly between book, IDEA and original source code. Example: the hidden version field
 - page 207: @Validated(CreateUserValidationGroupSequence.class), should be still @Validated(ValidationGroupSequence.class) at this point in the book
-
+- really nice error pages, with the general shell layout of the application this looks really sophisticated
 # Questions
 
 - how to create the nice screenshots with background

@@ -19,4 +19,9 @@ public class RootController {
       "James Clerk Maxwell"));
     return "index";
   }
+
+  @GetMapping("/ex")
+  public String throwException() {
+    throw new RuntimeException("This is a fake exception for testing");
+  }
 }
