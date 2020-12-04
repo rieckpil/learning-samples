@@ -1,19 +1,17 @@
 package de.rieckpil.learning;
 
-import de.rieckpil.learning.infrastructure.ValidationGroupSequence;
-import de.rieckpil.learning.user.Gender;
-import de.rieckpil.learning.user.UserService;
+import de.rieckpil.learning.infrastructure.CreateUserValidationGroupSequence;
+import de.rieckpil.learning.infrastructure.EditUserValidationGroupSequence;
+import de.rieckpil.learning.user.*;
 import de.rieckpil.learning.user.web.CreateUserFormData;
+import de.rieckpil.learning.user.web.EditUserFormData;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.SortDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -44,7 +42,7 @@ public class UserController {
   }
 
   @PostMapping("/create")
-  public String doCreateUser(@Validated(ValidationGroupSequence.class)
+  public String doCreateUser(@Validated(CreateUserValidationGroupSequence.class)
                              @ModelAttribute("user") CreateUserFormData formData,
                              BindingResult bindingResult, Model model) {
     if (bindingResult.hasErrors()) {
@@ -53,6 +51,34 @@ public class UserController {
       return "users/edit";
     }
     service.createUser(formData.toParameters());
+    return "redirect:/users";
+  }
+
+  @GetMapping("/{id}")
+  public String editUserForm(@PathVariable("id") UserId userId,
+                             Model model) {
+    User user = service.getUser(userId)
+      .orElseThrow(() -> new UserNotFoundException(userId));
+    model.addAttribute("user", EditUserFormData.fromUser(user));
+    model.addAttribute("genders", List.of(Gender.MALE, Gender.FEMALE, Gender.
+      OTHER));
+    model.addAttribute("editMode", EditMode.UPDATE);
+    return "users/edit";
+  }
+
+  @PostMapping("/{id}")
+  public String doEditUser(@PathVariable("id") UserId userId,
+                           @Validated(EditUserValidationGroupSequence.class) @ModelAttribute("user") EditUserFormData formData,
+                           BindingResult bindingResult,
+                           Model model) {
+    if (bindingResult.hasErrors()) {
+      model.addAttribute("genders", List.of(Gender.MALE, Gender.FEMALE, Gender.OTHER));
+      model.addAttribute("editMode", EditMode.UPDATE);
+      return "users/edit";
+    }
+
+    service.editUser(userId, formData.toParameters());
+
     return "redirect:/users";
   }
 }

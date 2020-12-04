@@ -39,6 +39,14 @@
 - awesome features with the validation groups I wasn't aware of yet, saves DB load in this example
 - reasoning why the birthday is not in any group? Is the intention to demo the Default validation group?
 - site 165 shows `@NotNull` on the `phoneNumber`, but the sources for chapter use `@NotBlank` -> with `@NotNull` no valid error message is shown for me for the phoneNumber and I was getting crazy what's the difference because I couldn't find any in the template :D
+- UserNotFoundException is new? Maybe hint or small code example
+- parameters.update() function is missing in book, however you have tagged it in the source code
+- "update happens automatically by JPA/Hibernate" -> but only if wrapped inside a transaction. Not sure if I forgot it to add but at this stage in the book I don't have it yet at my UserService
+- getUser(UserId) is added without extending the interface
+- page 197: Add the path to the fragment as it's not stated how to name it and when using the fragment in the view, maybe add a sentence to remove the old title
+- idea: any external JS + CSS as WebJars? Helps at least me while reading the book in train without internet connection :D
+- whenever you say "Add this to the template", it's not clear where exactly to add it sometimes also id does not matter much where. I know that I can easily look this up but still a short hint would be nice to switch constantly between book, IDEA and original source code. Example: the hidden version field
+- page 207: @Validated(CreateUserValidationGroupSequence.class), should be still @Validated(ValidationGroupSequence.class) at this point in the book
 
 # Questions
 

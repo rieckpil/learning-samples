@@ -13,7 +13,7 @@
 <div layout:fragment="page-content">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
     <h1 class="text-2xl font-semibold text-gray-900"
-        th:text="#{user.create}">Create user</h1>
+        th:text="${editMode?.name() == 'UPDATE'}?#{user.edit}:#{user.create}">Create user</h1>
   </div>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
     <div class="py-4">
@@ -21,11 +21,12 @@
 
         <form id="user-form"
               th:object="${user}"
-              th:action="@{/users/create}"
+              th:action="${editMode?.name() == 'UPDATE'}?@{/users/{id}(id=${user.id})}:@{/users/create}"
               method="post">
           <div>
             <div th:replace="fragments/forms :: fielderrors"></div>
             <div class="grid grid-cols-1 row-gap-6 col-gap-4 sm:grid-cols-6">
+              <input type="hidden" th:field="*{version}" th:if="${editMode?.name() == 'UPDATE'}">
               <!-- tag::gender[] -->
               <div class="sm:col-span-6">
                 <label class="block text-sm font-medium leading-5 text-gray-700"
@@ -151,7 +152,8 @@
                 </div>
                 <p th:if="${#fields.hasErrors('phoneNumber')}"
                    th:text="${#strings.listJoin(#fields.errors('phoneNumber'), ', ')}"
-                   class="mt-2 text-sm text-red-600" id="phoneNumber-error">Phone number validation error message(s).</p>
+                   class="mt-2 text-sm text-red-600" id="phoneNumber-error">Phone number validation error
+                  message(s).</p>
               </div>
               <!-- end::phoneNumber[] -->
               <div class="sm:col-span-2"></div>
@@ -193,12 +195,11 @@
         </button>
       </span>
               <span class="ml-3 inline-flex rounded-md shadow-sm">
-        <button type="submit"
-                class="inline-flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-green-600 hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-green active:bg-green-700 transition duration-150 ease-in-out"
-                th:text="#{save}">
-          Save
-        </button>
-      </span>
+               <button type="submit"
+                       class="inline-flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-green-600 hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-green active:bg-green-700 transition duration-150 ease-in-out"
+                       th:text="${editMode?.name() == 'UPDATE'}?#{save}:#{create}">
+             Save</button>
+             </span>
             </div>
           </div>
         </form>
