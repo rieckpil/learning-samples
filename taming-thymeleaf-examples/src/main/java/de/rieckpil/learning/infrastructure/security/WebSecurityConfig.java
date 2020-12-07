@@ -16,7 +16,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   private final UserDetailsService userDetailsService;
 
   public WebSecurityConfig(PasswordEncoder passwordEncoder,
-                                  UserDetailsService userDetailsService) {
+                           UserDetailsService userDetailsService) {
     this.passwordEncoder = passwordEncoder;
     this.userDetailsService = userDetailsService;
   }
@@ -26,6 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     auth.userDetailsService(userDetailsService)
       .passwordEncoder(passwordEncoder);
   }
+
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     http.authorizeRequests()

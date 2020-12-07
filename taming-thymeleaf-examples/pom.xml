@@ -17,8 +17,8 @@
   <properties>
     <java.version>14</java.version>
     <frontend-maven-plugin.version>1.10.0</frontend-maven-plugin.version>
-    <frontend-maven-plugin.nodeVersion>v13.5.0</frontend-maven-plugin.nodeVersion>
-    <frontend-maven-plugin.npmVersion>6.14.5</frontend-maven-plugin.npmVersion>
+    <frontend-maven-plugin.nodeVersion>v14.7.0</frontend-maven-plugin.nodeVersion>
+    <frontend-maven-plugin.npmVersion>6.14.7</frontend-maven-plugin.npmVersion>
     <thymeleaf-layout-dialect.version>2.4.1</thymeleaf-layout-dialect.version>
     <jpearl.version>1.0.0</jpearl.version>
     <testcontainers.version>1.14.2</testcontainers.version>
@@ -124,6 +124,11 @@
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>net.sourceforge.htmlunit</groupId>
+      <artifactId>htmlunit</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>
