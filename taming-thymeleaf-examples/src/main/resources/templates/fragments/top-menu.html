@@ -1,4 +1,5 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <div class="relative z-10 flex-shrink-0 flex h-16 bg-white shadow" th:fragment="menu">
   <button
     @click.stop="openSidebar"
@@ -21,7 +22,8 @@
            x-data="userPopupMenu()">
         <div>
           <button @click="toggleVisibility"
-                  aria-haspopup="true" aria-label="User menu" class="max-w-xs flex items-center text-sm rounded-full focus:outline-none focus:shadow-outline"
+                  aria-haspopup="true" aria-label="User menu"
+                  class="max-w-xs flex items-center text-sm rounded-full focus:outline-none focus:shadow-outline"
                   id="user-menu">
             <img alt=""
                  class="h-8 w-8 rounded-full"
@@ -42,6 +44,10 @@
         >
           <div aria-labelledby="user-menu" aria-orientation="vertical" class="py-1 rounded-md bg-white shadow-xs"
                role="menu">
+            <div class="block px-4 pt-1 text-sm text-gray-700"
+                 sec:authentication="principal.displayName"></div>
+            <div class="block px-4 pb-2 text-xs font-mono text-gray-400 border-b"
+                 sec:authentication="principal.username"></div>
             <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition ease-in-out duration-150"
                href="#"
                role="menuitem"
@@ -52,11 +58,13 @@
                role="menuitem"
                th:text="#{menu.settings}">Settings
             </a>
-            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition ease-in-out duration-150"
-               href="#"
-               role="menuitem"
-               th:text="#{menu.signout}">Sign out
-            </a>
+            <div class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition ease-in-out duration-150">
+              <form th:action="@{/logout}" method="post">
+                <button type="submit" th:text="#{menu.signout}">
+                  Sign out
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </div>

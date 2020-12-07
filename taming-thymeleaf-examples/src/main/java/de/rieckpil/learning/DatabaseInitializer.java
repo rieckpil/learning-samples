@@ -8,16 +8,17 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Nonnull;
 import java.time.LocalDate;
 import java.time.ZoneId;
 
 @Component
-@Profile("init-db") //<.>
-public class DatabaseInitializer implements CommandLineRunner { //<.>
-  private final Faker faker = new Faker(); //<.>
+@Profile("init-db")
+public class DatabaseInitializer implements CommandLineRunner {
+  private final Faker faker = new Faker();
   private final UserService userService;
 
-  public DatabaseInitializer(UserService userService) { //<.>
+  public DatabaseInitializer(UserService userService) {
     this.userService = userService;
   }
 
@@ -27,21 +28,54 @@ public class DatabaseInitializer implements CommandLineRunner { //<.>
       CreateUserParameters parameters = newRandomUserParameters();
       userService.createUser(parameters);
     }
+
+    UserName userName = randomUserName();
+    CreateUserParameters parameters = new CreateUserParameters(userName,
+      userName.getFirstName(), // <.>
+      randomGender(),
+      LocalDate.parse("2000-01-01"),
+      generateEmailForUserName(userName),
+      randomPhoneNumber());
+    userService.createAdministrator(parameters); //<.>
   }
+
+  //end::class-until-run[]
 
   private CreateUserParameters newRandomUserParameters() {
-    Name name = faker.name();
-    UserName userName = new UserName(name.firstName(), name.lastName());
-    Gender gender = faker.bool().bool() ? Gender.MALE : Gender.FEMALE;
+    UserName userName = randomUserName();
+    Gender gender = randomGender();
     LocalDate birthday = LocalDate.ofInstant(faker.date().birthday(10, 40).toInstant(), ZoneId.systemDefault());
-    Email email = new Email(faker.internet().emailAddress(generateEmailLocalPart(userName)));
-    PhoneNumber phoneNumber = new PhoneNumber(faker.phoneNumber().phoneNumber());
-    return new CreateUserParameters(userName, gender, birthday, email, phoneNumber);
+    Email email = generateEmailForUserName(userName);
+    PhoneNumber phoneNumber = randomPhoneNumber();
+    return new CreateUserParameters(userName, userName.getFirstName(), gender, birthday, email, phoneNumber);
   }
 
+  @Nonnull
+  private UserName randomUserName() {
+    Name name = faker.name();
+    return new UserName(name.firstName(), name.lastName());
+  }
+
+  @Nonnull
+  private PhoneNumber randomPhoneNumber() {
+    return new PhoneNumber(faker.phoneNumber().phoneNumber());
+  }
+
+  @Nonnull
+  private Email generateEmailForUserName(UserName userName) {
+    return new Email(faker.internet().emailAddress(generateEmailLocalPart(userName)));
+  }
+
+  @Nonnull
+  private Gender randomGender() {
+    return faker.bool().bool() ? Gender.MALE : Gender.FEMALE;
+  }
+
+  @Nonnull
   private String generateEmailLocalPart(UserName userName) {
     return String.format("%s.%s",
       StringUtils.remove(userName.getFirstName().toLowerCase(), "'"),
       StringUtils.remove(userName.getLastName().toLowerCase(), "'"));
   }
 }
+

@@ -1,95 +1,43 @@
 package de.rieckpil.learning.user.web;
 
-import de.rieckpil.learning.infrastructure.ValidationGroupOne;
 import de.rieckpil.learning.infrastructure.ValidationGroupTwo;
 import de.rieckpil.learning.user.CreateUserParameters;
-import de.rieckpil.learning.user.Gender;
 import de.rieckpil.learning.user.PhoneNumber;
 import de.rieckpil.learning.user.UserName;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.validation.constraints.*;
-import java.time.LocalDate;
+import javax.validation.constraints.NotBlank;
 
-@NotExistingUser(groups = ValidationGroupTwo.class)
-public class CreateUserFormData {
+@PasswordsMatch(groups = ValidationGroupTwo.class)
+public class CreateUserFormData extends AbstractUserFormData {
 
   @NotBlank
-  @Size(min = 1, max = 200, groups = ValidationGroupOne.class)
-  private String firstName;
+  private String password;
 
   @NotBlank
-  @Size(min = 1, max = 200, groups = ValidationGroupOne.class)
-  private String lastName;
+  private String passwordRepeated;
 
-  @NotNull
-  private Gender gender;
-
-  @NotBlank
-  @Email(groups = ValidationGroupOne.class)
-  private String email;
-
-  @NotNull
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private LocalDate birthday;
-
-  @NotBlank
-  @Pattern(regexp = "[0-9.\\-() x/+]+", groups = ValidationGroupOne.class)
-  private String phoneNumber;
-
-  public String getFirstName() {
-    return firstName;
+  public String getPassword() {
+    return password;
   }
 
-  public void setFirstName(String firstName) {
-    this.firstName = firstName;
+  public void setPassword(String password) {
+    this.password = password;
   }
 
-  public String getLastName() {
-    return lastName;
+  public String getPasswordRepeated() {
+    return passwordRepeated;
   }
 
-  public void setLastName(String lastName) {
-    this.lastName = lastName;
-  }
-
-  public Gender getGender() {
-    return gender;
-  }
-
-  public void setGender(Gender gender) {
-    this.gender = gender;
-  }
-
-  public String getEmail() {
-    return email;
-  }
-
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
-  public LocalDate getBirthday() {
-    return birthday;
-  }
-
-  public void setBirthday(LocalDate birthday) {
-    this.birthday = birthday;
-  }
-
-  public String getPhoneNumber() {
-    return phoneNumber;
-  }
-
-  public void setPhoneNumber(String phoneNumber) {
-    this.phoneNumber = phoneNumber;
+  public void setPasswordRepeated(String passwordRepeated) {
+    this.passwordRepeated = passwordRepeated;
   }
 
   public CreateUserParameters toParameters() {
-    return new CreateUserParameters(new UserName(firstName, lastName),
-      gender,
-      birthday,
-      new de.rieckpil.learning.user.Email(email),
-      new PhoneNumber(phoneNumber));
+    return new CreateUserParameters(new UserName(getFirstName(), getLastName()),
+      password,
+      getGender(),
+      getBirthday(),
+      new de.rieckpil.learning.user.Email(getEmail()),
+      new PhoneNumber(getPhoneNumber()));
   }
 }

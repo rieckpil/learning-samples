@@ -2,12 +2,12 @@ package de.rieckpil.learning.user;
 
 import java.time.LocalDate;
 
-public class EditUsersParameters extends CreateUserParameters{
+public class EditUserParameters extends CreateUserParameters {
 
   private final long version;
 
-  public EditUsersParameters(UserName userName, Gender gender, LocalDate birthday, Email email, PhoneNumber phoneNumber, long version) {
-    super(userName, gender, birthday, email, phoneNumber);
+  public EditUserParameters(long version, UserName userName, Gender gender, LocalDate birthday, Email email, PhoneNumber phoneNumber) {
+    super(userName, null, gender, birthday, email, phoneNumber);
     this.version = version;
   }
 
@@ -15,6 +15,7 @@ public class EditUsersParameters extends CreateUserParameters{
     return version;
   }
 
+  // tag::update[]
   public void update(User user) {
     user.setUserName(getUserName());
     user.setGender(getGender());
@@ -22,4 +23,5 @@ public class EditUsersParameters extends CreateUserParameters{
     user.setEmail(getEmail());
     user.setPhoneNumber(getPhoneNumber());
   }
+  // end::update[]
 }

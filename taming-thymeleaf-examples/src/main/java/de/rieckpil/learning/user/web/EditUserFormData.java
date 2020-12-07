@@ -2,8 +2,7 @@ package de.rieckpil.learning.user.web;
 
 import de.rieckpil.learning.user.*;
 
-
-public class EditUserFormData extends CreateUserFormData {
+public class EditUserFormData extends AbstractUserFormData {
 
   private String id;
   private long version;
@@ -18,17 +17,17 @@ public class EditUserFormData extends CreateUserFormData {
     result.setBirthday(user.getBirthday());
     result.setEmail(user.getEmail().asString());
     result.setPhoneNumber(user.getPhoneNumber().asString());
+
     return result;
   }
 
-  public EditUsersParameters toParameters() {
-    return new EditUsersParameters(
+  public EditUserParameters toParameters() {
+    return new EditUserParameters(version,
       new UserName(getFirstName(), getLastName()),
       getGender(),
       getBirthday(),
       new Email(getEmail()),
-      new PhoneNumber(getPhoneNumber()),
-      version);
+      new PhoneNumber(getPhoneNumber()));
   }
 
   public String getId() {
@@ -47,4 +46,3 @@ public class EditUserFormData extends CreateUserFormData {
     this.version = version;
   }
 }
-

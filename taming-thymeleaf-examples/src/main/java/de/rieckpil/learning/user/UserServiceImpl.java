@@ -1,9 +1,12 @@
 package de.rieckpil.learning.user;
 
 import com.google.common.collect.ImmutableSet;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -12,17 +15,39 @@ import java.util.Optional;
 @Service
 @Transactional
 public class UserServiceImpl implements UserService {
-  private final UserRepository repository;
 
-  public UserServiceImpl(UserRepository repository) {
+  private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
+
+  private final UserRepository repository;
+  private final PasswordEncoder passwordEncoder;
+
+  public UserServiceImpl(UserRepository repository, PasswordEncoder passwordEncoder) {
     this.repository = repository;
+    this.passwordEncoder = passwordEncoder;
   }
 
   @Override
   public User createUser(CreateUserParameters parameters) {
+    LOGGER.debug("Creating user {} ({})", parameters.getUserName().getFullName(), parameters.getEmail().asString());
     UserId userId = repository.nextId();
-    User user = new User(userId,
+    String encodedPassword = passwordEncoder.encode(parameters.getPassword());
+    User user = User.createUser(userId,
       parameters.getUserName(),
+      encodedPassword,
+      parameters.getGender(),
+      parameters.getBirthday(),
+      parameters.getEmail(),
+      parameters.getPhoneNumber());
+    return repository.save(user);
+  }
+
+  @Override
+  public User createAdministrator(CreateUserParameters parameters) {
+    LOGGER.debug("Creating administrator {} ({})", parameters.getUserName().getFullName(), parameters.getEmail().asString());
+    UserId userId = repository.nextId();
+    User user = User.createAdministrator(userId,
+      parameters.getUserName(),
+      passwordEncoder.encode(parameters.getPassword()),
       parameters.getGender(),
       parameters.getBirthday(),
       parameters.getEmail(),
@@ -41,7 +66,7 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public User editUser(UserId userId, EditUsersParameters parameters) {
+  public User editUser(UserId userId, EditUserParameters parameters) {
     User user = repository.findById(userId)
       .orElseThrow(() -> new UserNotFoundException(userId));
 

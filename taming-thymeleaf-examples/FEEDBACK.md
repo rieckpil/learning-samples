@@ -47,7 +47,11 @@
 - really nice error pages, with the general shell layout of the application this looks really sophisticated
 - the delete modal markup code is quite big, not sure if it's worth to explain it with more babysteps or e.g. remove the CSS classes from the book source code for a better reading experience
 
-## Next Feedback (Chapter 14+)
+## Next Feedback (Chapter 14+) Version 1.0.0
+
+- page 253, we also have to wrap the table header in <th:block sec>, right?
+- DatabaseInitializer why @Nonnull annotation (not part of the book, but saw it in the sources)
+- After adding the new factory method to create User, you could mention to also update the tests as otherwise the project won't compile
 
 # Questions
 

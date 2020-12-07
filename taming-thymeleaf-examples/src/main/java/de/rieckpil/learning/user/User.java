@@ -4,11 +4,9 @@ import com.sun.istack.NotNull;
 import io.github.wimdeblauwe.jpearl.AbstractEntity;
 import io.github.wimdeblauwe.jpearl.AbstractVersionedEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Table(name = "tt_user")
@@ -30,21 +28,63 @@ public class User extends AbstractVersionedEntity<UserId> {
   @NotNull
   private PhoneNumber phoneNumber;
 
+  @ElementCollection(targetClass = UserRole.class)
+  @Enumerated(EnumType.STRING)
+  @CollectionTable(name = "user_roles")
+  @Column(name = "role")
+  private Set<UserRole> roles;
+
+  @NotNull
+  private String password;
+
   protected User() {
   }
 
-  public User(UserId id,
-              UserName userName,
-              Gender gender,
-              LocalDate birthday,
-              Email email,
-              PhoneNumber phoneNumber) {
+  private User(UserId id,
+               Set<UserRole> roles,
+               UserName userName,
+               String password,
+               Gender gender,
+               LocalDate birthday,
+               Email email,
+               PhoneNumber phoneNumber) {
     super(id);
+    this.roles = roles;
     this.userName = userName;
+    this.password = password;
     this.gender = gender;
     this.birthday = birthday;
     this.email = email;
     this.phoneNumber = phoneNumber;
+  }
+
+  public static User createUser(UserId id,
+                                UserName userName,
+                                String encodedPassword,
+                                Gender gender,
+                                LocalDate birthday,
+                                Email email,
+                                PhoneNumber phoneNumber) {
+    return new User(id, Set.of(UserRole.USER), userName, encodedPassword, gender, birthday, email, phoneNumber);
+  }
+
+  public static User createAdministrator(UserId id,
+                                         UserName userName,
+                                         String encodedPassword,
+                                         Gender gender,
+                                         LocalDate birthday,
+                                         Email email,
+                                         PhoneNumber phoneNumber) {
+    return new User(id, Set.of(UserRole.USER, UserRole.ADMIN), userName, encodedPassword, gender, birthday, email, phoneNumber);
+  }
+  // end::constructors[]
+
+  public Set<UserRole> getRoles() {
+    return roles;
+  }
+
+  public String getPassword() {
+    return password;
   }
 
   public UserName getUserName() {

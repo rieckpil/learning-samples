@@ -9,11 +9,13 @@ import java.util.Optional;
 public interface UserService {
   User createUser(CreateUserParameters parameters);
 
+  User createAdministrator(CreateUserParameters parameters);
+
   ImmutableSet<User> getAllUsers();
 
   Page<User> getUsers(Pageable pageable);
 
-  User editUser(UserId userId, EditUsersParameters parameters);
+  User editUser(UserId userId, EditUserParameters parameters);
 
   boolean userWithEmailExists(Email email);
 

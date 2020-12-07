@@ -47,8 +47,9 @@ class UserRepositoryTest {
   @Test
   void testSaveUser() {
     UserId id = repository.nextId();
-    repository.save(new User(id,
+    repository.save(User.createUser(id,
       new UserName("Tommy", "Walton"),
+      "duke",
       Gender.MALE,
       LocalDate.of(2001, Month.FEBRUARY, 17),
       new Email("tommy.walton@gmail.com"),
