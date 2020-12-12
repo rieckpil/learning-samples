@@ -46,14 +46,14 @@
 - page 207: @Validated(CreateUserValidationGroupSequence.class), should be still @Validated(ValidationGroupSequence.class) at this point in the book
 - really nice error pages, with the general shell layout of the application this looks really sophisticated
 - the delete modal markup code is quite big, not sure if it's worth to explain it with more babysteps or e.g. remove the CSS classes from the book source code for a better reading experience
-
-## Next Feedback (Chapter 14+, page 309) Version 1.0.0
-
 - page 253, we also have to wrap the table header in <th:block sec>, right?
-- DatabaseInitializer why @Nonnull annotation (not part of the book, but saw it in the sources)
+- DatabaseInitializer why are there @Nonnull annotations (not part of the book, but saw it in the sources)
 - After adding the new factory method to create User, you could mention to also update the tests as otherwise the project won't compile
 - page 290 "... JUnit test and this will start our complete application, including an embedded Tomcat to server the HTML pages" -> serve instead of server
-- you updated from 14 -> 15 the titles.html fragment and added CSS ids, might mention this to make the tests succeed
+- you updated from chapter 14 -> 15 the titles.html fragment and added CSS ids to identify the elements during tests, you might want to mention this
+
+## Next Feedback (Tips & Tricks) Version 1.0.0
+
 
 # Questions
 
