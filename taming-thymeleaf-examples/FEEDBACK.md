@@ -54,6 +54,11 @@
 
 ## Next Feedback (Tips & Tricks) Version 1.0.0
 
+- add the repo to your pinned GitHub repos
+- wasn't aware of the String trimmer
+- global model attributes -> awesome
+- easy readme
+- quick end at page 401, maybe a quick summary with all important links and further reads?
 
 # Questions
 
