@@ -10,6 +10,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -20,6 +21,17 @@ public class SampleServiceTest {
 
   @InjectMocks
   SampleService sampleService;
+
+  @Test
+  void bddTest() {
+
+    doAnswer(invocationOnMock -> {
+      return "duuue";
+    }).when(otherService).doFoo();
+
+    System.out.println(sampleService.getData());
+
+  }
 
   @Test
   void testMe() {
