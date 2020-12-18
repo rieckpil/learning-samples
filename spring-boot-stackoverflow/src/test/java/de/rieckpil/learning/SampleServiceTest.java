@@ -24,13 +24,8 @@ public class SampleServiceTest {
 
   @Test
   void bddTest() {
-
-    doAnswer(invocationOnMock -> {
-      return "duuue";
-    }).when(otherService).doFoo();
-
-    System.out.println(sampleService.getData());
-
+    doAnswer(invocationOnMock -> "duuke").when(otherService).doFoo();
+    assertEquals("duuke", sampleService.getData());
   }
 
   @Test
