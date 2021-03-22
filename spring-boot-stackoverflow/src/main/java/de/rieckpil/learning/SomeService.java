@@ -5,17 +5,19 @@ import kong.unirest.JsonNode;
 import kong.unirest.Unirest;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
+@Service
 public class SomeService {
 
   private final TaskExecutor taskExecutor;
   private final MyInterface myInterface;
 
-  public SomeService(MyInterface myInterface, TaskExecutor taskExecutor) {
+  public SomeService(MyInterface myInterface, TaskExecutor brokerChannelExecutor) {
     this.myInterface = myInterface;
-    this.taskExecutor = taskExecutor;
+    this.taskExecutor = brokerChannelExecutor;
   }
 
   public String doFoo() {
