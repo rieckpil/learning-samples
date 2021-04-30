@@ -47,8 +47,8 @@ class FractionTest {
 
     Fraction result = base.add(addend);
 
-    assertEquals(2, result.getDenominator());
-    assertEquals(2, result.getNumerator());
+    assertEquals(1, result.getDenominator());
+    assertEquals(1, result.getNumerator());
   }
 
   @Test
@@ -63,4 +63,38 @@ class FractionTest {
     assertEquals(20, result.getDenominator());
   }
 
+  @Test
+  void shouldAddFractionWithWholeNumber() {
+
+    Fraction base = new Fraction(4, 3);
+    Fraction addend = new Fraction(5);
+
+    Fraction result = base.add(addend);
+
+    assertEquals(19, result.getNumerator());
+    assertEquals(3, result.getDenominator());
+  }
+
+  @Test
+  void shouldExpressFractionInTheLowestTerms() {
+
+    Fraction base = new Fraction(2, 6);
+    Fraction addend = new Fraction(2, 6);
+
+    Fraction result = base.add(addend);
+
+    assertEquals(2, result.getNumerator());
+    assertEquals(3, result.getDenominator());
+  }
+
+  @Test
+  void shouldExpressFractionInTheLowestTermsWithMultipleReducing() {
+    Fraction base = new Fraction(6, 4);
+    Fraction addend = new Fraction(6, 4);
+
+    Fraction result = base.add(addend);
+
+    assertEquals(3, result.getNumerator());
+    assertEquals(1, result.getDenominator());
+  }
 }

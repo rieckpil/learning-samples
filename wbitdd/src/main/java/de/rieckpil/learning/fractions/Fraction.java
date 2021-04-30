@@ -25,8 +25,8 @@ public class Fraction {
 
   public Fraction add(Fraction addend) {
 
-    int resultNumerator = 0;
-    int resultDenominator = 0;
+    int resultNumerator;
+    int resultDenominator;
 
     if (this.denominator == addend.denominator) {
       resultNumerator = this.numerator + addend.numerator;
@@ -36,6 +36,25 @@ public class Fraction {
       resultDenominator = this.denominator * addend.denominator;
     }
 
+    System.out.println("Result numerator: " + resultNumerator);
+    System.out.println("Result denominator: " + resultDenominator);
+
+    int greatestCommonDivisor = determineGreatestCommonDivisor(resultNumerator, resultDenominator);
+    System.out.println(greatestCommonDivisor);
+
+    if (greatestCommonDivisor != 1) {
+      resultNumerator = resultNumerator / greatestCommonDivisor;
+      resultDenominator = resultDenominator / greatestCommonDivisor;
+    }
+
     return new Fraction(resultNumerator, resultDenominator);
+  }
+
+  private int determineGreatestCommonDivisor(int resultNumerator, int resultDenominator) {
+    if (resultDenominator == 0) {
+      return resultNumerator;
+    } else {
+      return determineGreatestCommonDivisor(resultDenominator, resultNumerator % resultDenominator);
+    }
   }
 }
