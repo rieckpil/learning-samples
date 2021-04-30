@@ -25,16 +25,8 @@ public class Fraction {
 
   public Fraction add(Fraction addend) {
 
-    int resultNumerator;
-    int resultDenominator;
-
-    if (this.denominator == addend.denominator) {
-      resultNumerator = this.numerator + addend.numerator;
-      resultDenominator = this.denominator;
-    } else {
-      resultNumerator = this.numerator * addend.denominator + addend.numerator * this.denominator;
-      resultDenominator = this.denominator * addend.denominator;
-    }
+    int resultNumerator = this.numerator * addend.denominator + addend.numerator * this.denominator;
+    int resultDenominator = this.denominator * addend.denominator;
 
     System.out.println("Result numerator: " + resultNumerator);
     System.out.println("Result denominator: " + resultDenominator);
