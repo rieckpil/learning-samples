@@ -50,4 +50,17 @@ class FractionTest {
     assertEquals(2, result.getDenominator());
     assertEquals(2, result.getNumerator());
   }
+
+  @Test
+  void shouldAddFractionsWithDifferentDenominators() {
+
+    Fraction base = new Fraction(3, 4);
+    Fraction addend = new Fraction(1, 5);
+
+    Fraction result = base.add(addend);
+
+    assertEquals(19, result.getNumerator());
+    assertEquals(20, result.getDenominator());
+  }
+
 }

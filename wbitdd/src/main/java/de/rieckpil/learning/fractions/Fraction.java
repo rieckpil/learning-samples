@@ -31,6 +31,9 @@ public class Fraction {
     if (this.denominator == addend.denominator) {
       resultNumerator = this.numerator + addend.numerator;
       resultDenominator = this.denominator;
+    } else {
+      resultNumerator = this.numerator * addend.denominator + addend.numerator * this.denominator;
+      resultDenominator = this.denominator * addend.denominator;
     }
 
     return new Fraction(resultNumerator, resultDenominator);
