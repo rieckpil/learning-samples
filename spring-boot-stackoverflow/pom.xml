@@ -17,7 +17,7 @@
   <properties>
     <mockito.version>3.5.15</mockito.version>
     <java.version>11</java.version>
-    <testcontainers.version>1.15.1</testcontainers.version>
+    <testcontainers.version>1.16.0</testcontainers.version>
     <okhttp3.version>4.7.2</okhttp3.version>
     <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
     <selenium.version>3.141.59</selenium.version>
@@ -144,6 +144,12 @@
     <dependency>
       <groupId>org.testcontainers</groupId>
       <artifactId>mongodb</artifactId>
+      <version>${testcontainers.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.testcontainers</groupId>
+      <artifactId>mariadb</artifactId>
       <version>${testcontainers.version}</version>
       <scope>test</scope>
     </dependency>
